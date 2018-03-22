@@ -8,21 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace ManageSystem
 {
-    public partial class Form2 : Form
+    public partial class mainForm : Form
     {
-        public Form2()
+        public mainForm()
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void mainForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
         }

@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿namespace ManageSystem
 {
-    partial class Form2
+    partial class mainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -113,10 +113,10 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Form2";
+            this.Name = "mainForm";
             this.Text = "Desoutter工具管理系统";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

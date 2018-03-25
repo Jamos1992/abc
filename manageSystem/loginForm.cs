@@ -8,21 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace manageSystem
 {
-    public partial class mainForm : Form
+    public partial class LoginForm : Form
     {
-        public mainForm()
+        public LoginForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("first app!");
-        }
-
-        private void Desoutter工具管理系统_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
 
         }
@@ -32,12 +27,12 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
+            MainForm mf = new MainForm();
             this.Hide();
-        //    form2.Show();
-            if (form2.ShowDialog() == DialogResult.OK)
+            //mf.Show();
+            if (mf.ShowDialog() == DialogResult.OK)
             {
                 this.Show();
             }

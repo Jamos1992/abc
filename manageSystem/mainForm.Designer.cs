@@ -1,6 +1,6 @@
-﻿namespace ManageSystem
+﻿namespace manageSystem
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(290, 56);
+            this.label1.Location = new System.Drawing.Point(289, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(279, 31);
             this.label1.TabIndex = 15;
@@ -100,8 +100,9 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "工具信息录入";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form2
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,10 +114,10 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "mainForm";
+            this.Name = "MainForm";
             this.Text = "Desoutter工具管理系统";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
-            this.Load += new System.EventHandler(this.mainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

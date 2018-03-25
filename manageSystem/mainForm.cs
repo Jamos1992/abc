@@ -8,23 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ManageSystem
+namespace manageSystem
 {
-    public partial class mainForm : Form
+    public partial class MainForm : Form
     {
-        public mainForm()
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void mainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InfoInputForm iif = new InfoInputForm();
+            this.Hide();
+            if (iif.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
     }
 }

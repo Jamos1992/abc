@@ -53,6 +53,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BatchInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchInputForm.Designer.cs">
+      <DependentUpon>BatchInputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InfoInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryInfoForm.Designer.cs">
+      <DependentUpon>QueryInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingleInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleInputForm.Designer.cs">
+      <DependentUpon>SingleInputForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BatchInputForm.resx">
+      <DependentUpon>BatchInputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InfoInputForm.resx">
       <DependentUpon>InfoInputForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +112,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QueryInfoForm.resx">
+      <DependentUpon>QueryInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingleInputForm.resx">
+      <DependentUpon>SingleInputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

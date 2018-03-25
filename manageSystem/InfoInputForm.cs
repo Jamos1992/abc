@@ -18,8 +18,38 @@ namespace manageSystem
 
         private void InfoInputForm_Load(object sender, EventArgs e)
         {
-            //this.treeView1.
-            this.splitContainer1.Panel2.Hide();
+            this.treeviewInput.ExpandAll();
+        }
+
+        private void InfoInputForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void treeviewInput_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+           // lablHint.Text = treeviewInput.SelectedNode.Text;
+            this.splitContainer1.Panel2.Controls.Clear();
+            switch (e.Node.Text)
+            {
+                case "单条增删":
+                    SingleInputForm sim = new SingleInputForm();
+                    sim.Text = e.Node.Text;
+                    sim.TopLevel = false;
+                    this.splitContainer1.Panel2.Controls.Add(sim);
+                    sim.Show();
+                    break;
+
+                case "批量录入":
+                    BatchInputForm bim = new BatchInputForm();
+                    bim.Text = e.Node.Text;
+                    bim.TopLevel = false;
+                    this.splitContainer1.Panel2.Controls.Add(bim);
+                    bim.Show();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

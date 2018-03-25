@@ -24,14 +24,24 @@ namespace manageSystem
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            //this.DialogResult = DialogResult.OK;
+            Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             InfoInputForm iif = new InfoInputForm();
-            this.Hide();
+            //this.Hide();
             if (iif.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QueryInfoForm qif = new QueryInfoForm();
+            if (qif.ShowDialog() == DialogResult.OK)
             {
                 this.Show();
             }

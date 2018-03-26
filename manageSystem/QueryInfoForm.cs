@@ -18,8 +18,16 @@ namespace manageSystem
 
         private void QueryInfoForm_Load(object sender, EventArgs e)
         {
-            this.tabControl1.ItemSize = new Size(this.tabControl1.Size.Width / 2-2,30);
+        
            // this.tabPage2.Width = this.tabControl1.Size.Width / 2;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            QueryInfoBySNForm qibsf = new QueryInfoBySNForm();
+            qibsf.TopLevel = false;
+            this.splitContainer1.Panel2.Controls.Add(qibsf);
+            qibsf.Show();
         }
     }
 }

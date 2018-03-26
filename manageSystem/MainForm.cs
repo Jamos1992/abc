@@ -15,6 +15,8 @@ namespace manageSystem
         public MainForm()
         {
             InitializeComponent();
+            Database db = new Database();
+            db.Get();
         }
 
         private void MainForm_Load(object sender, EventArgs e)

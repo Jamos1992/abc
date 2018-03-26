@@ -15,3 +15,4 @@ C:\workspace\ManageSystem\obj\Debug\manageSystem.InfoInputForm.resources
 C:\workspace\manageSystem\obj\Debug\manageSystem.BatchInputForm.resources
 C:\workspace\manageSystem\obj\Debug\manageSystem.SingleInputForm.resources
 C:\workspace\manageSystem\obj\Debug\manageSystem.QueryInfoForm.resources
+C:\workspace\manageSystem\obj\Debug\manageSystem.QueryInfoBySNForm.resources

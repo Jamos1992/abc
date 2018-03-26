@@ -78,6 +78,7 @@
       <DependentUpon>BatchInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="DataStruct.cs" />
     <Compile Include="InfoInputForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -16,7 +16,7 @@ namespace manageSystem
         {
             InitializeComponent();
             Database db = new Database();
-            db.Get();
+            db.QueryBySql("select * from table1");
         }
 
         private void MainForm_Load(object sender, EventArgs e)

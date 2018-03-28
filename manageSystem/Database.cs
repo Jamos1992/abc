@@ -9,7 +9,7 @@ namespace manageSystem
 {
     class Database
     {
-        OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\database\Database1.mdb");
+        OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\workspace\manageSystem\database\Database1.mdb");
         public Database()
         {
             conn.Open();

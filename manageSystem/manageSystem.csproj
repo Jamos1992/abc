@@ -52,6 +52,9 @@
     <Reference Include="CSkin">
       <HintPath>..\..\..\..\..\workspace\CSkin 16.1.14.2\CSkin 4.0\CSkin.dll</HintPath>
     </Reference>
+    <Reference Include="CYQ.Data, Version=5.7.8.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\cyqdata.5.7.8.3\lib\net\CYQ.Data.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -147,6 +150,7 @@
     <EmbeddedResource Include="SingleInputForm.resx">
       <DependentUpon>SingleInputForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

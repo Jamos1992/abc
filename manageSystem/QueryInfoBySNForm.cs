@@ -18,7 +18,7 @@ namespace manageSystem
 
         private void QueryInfoBySNForm_Load(object sender, EventArgs e)
         {
-            this.tabControl1.ItemSize = new Size(this.tabControl1.Size.Width / 2 - 2, 30);
+            
         }
     }
 }

@@ -32,7 +32,7 @@ namespace manageSystem
             this.splitContainer1.Panel2.Controls.Clear();
             switch (e.Node.Text)
             {
-                case "单条增删":
+                case "手动单条录入":
                     SingleInputForm sim = new SingleInputForm();
                     sim.Text = e.Node.Text;
                     sim.TopLevel = false;
@@ -40,7 +40,7 @@ namespace manageSystem
                     sim.Show();
                     break;
 
-                case "批量录入":
+                case "手动批量录入":
                     BatchInputForm bim = new BatchInputForm();
                     bim.Text = e.Node.Text;
                     bim.TopLevel = false;

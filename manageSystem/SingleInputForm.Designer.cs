@@ -49,7 +49,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lablHint = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label11
@@ -223,22 +222,12 @@
             this.lablHint.TabIndex = 21;
             this.lablHint.Text = "手动更改工具信息";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(512, 280);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 42;
-            this.button2.Text = "修改";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // SingleInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(683, 379);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox7);
@@ -292,6 +281,5 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lablHint;
-        private System.Windows.Forms.Button button2;
     }
 }

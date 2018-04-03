@@ -18,16 +18,41 @@ namespace manageSystem
 
         private void QueryInfoForm_Load(object sender, EventArgs e)
         {
-        
-           // this.tabPage2.Width = this.tabControl1.Size.Width / 2;
+
+            this.treeViewQuery.ExpandAll();
+            // this.tabPage2.Width = this.tabControl1.Size.Width / 2;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void treeViewQuery_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            QueryInfoBySNForm qibsf = new QueryInfoBySNForm();
-            qibsf.TopLevel = false;
-            this.splitContainer1.Panel2.Controls.Add(qibsf);
-            qibsf.Show();
+            this.splitContainer1.Panel2.Controls.Clear();
+            switch (e.Node.Text)
+            {
+                case "单个序列号查询":
+                    QueryInfoBySNForm qibsnf = new QueryInfoBySNForm();
+                    qibsnf.Text = e.Node.Text;
+                    qibsnf.TopLevel = false;
+                    this.splitContainer1.Panel2.Controls.Add(qibsnf);
+                    qibsnf.Show();
+                    break;
+
+                case "多个序列号查询":
+                    BatchInputForm bim = new BatchInputForm();
+                    bim.Text = e.Node.Text;
+                    bim.TopLevel = false;
+                    this.splitContainer1.Panel2.Controls.Add(bim);
+                    bim.Show();
+                    break;
+                case "根据型号查询":
+                    BatchInputForm bim1 = new BatchInputForm();
+                    bim1.Text = e.Node.Text;
+                    bim1.TopLevel = false;
+                    this.splitContainer1.Panel2.Controls.Add(bim1);
+                    bim1.Show();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

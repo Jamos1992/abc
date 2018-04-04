@@ -37,18 +37,18 @@ namespace manageSystem
                     break;
 
                 case "多个序列号查询":
-                    BatchInputForm bim = new BatchInputForm();
-                    bim.Text = e.Node.Text;
-                    bim.TopLevel = false;
-                    this.splitContainer1.Panel2.Controls.Add(bim);
-                    bim.Show();
+                    BatchQueryForm bqm = new BatchQueryForm();
+                    bqm.Text = e.Node.Text;
+                    bqm.TopLevel = false;
+                    this.splitContainer1.Panel2.Controls.Add(bqm);
+                    bqm.Show();
                     break;
                 case "根据型号查询":
-                    BatchInputForm bim1 = new BatchInputForm();
-                    bim1.Text = e.Node.Text;
-                    bim1.TopLevel = false;
-                    this.splitContainer1.Panel2.Controls.Add(bim1);
-                    bim1.Show();
+                    QueryByModelForm qbmf = new QueryByModelForm();
+                    qbmf.Text = e.Node.Text;
+                    qbmf.TopLevel = false;
+                    this.splitContainer1.Panel2.Controls.Add(qbmf);
+                    qbmf.Show();
                     break;
                 default:
                     break;

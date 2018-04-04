@@ -38,3 +38,7 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.csproj.CoreCompileInputs.ca
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.csproj.CopyComplete
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.exe
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.pdb
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.BatchQueryForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryByModelForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QuerySpareByToolForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryToolBySpareForm.resources

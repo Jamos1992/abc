@@ -80,6 +80,12 @@
     <Compile Include="BatchInputForm.Designer.cs">
       <DependentUpon>BatchInputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BatchQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchQueryForm.Designer.cs">
+      <DependentUpon>BatchQueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="DataStruct.cs" />
     <Compile Include="InfoInputForm.cs">
@@ -102,6 +108,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryByModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryByModelForm.Designer.cs">
+      <DependentUpon>QueryByModelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryInfoBySNForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +126,18 @@
     <Compile Include="QueryInfoForm.Designer.cs">
       <DependentUpon>QueryInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuerySpareByToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuerySpareByToolForm.Designer.cs">
+      <DependentUpon>QuerySpareByToolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QueryToolBySpareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryToolBySpareForm.Designer.cs">
+      <DependentUpon>QueryToolBySpareForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SingleInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="BatchInputForm.resx">
       <DependentUpon>BatchInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchQueryForm.resx">
+      <DependentUpon>BatchQueryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InfoInputForm.resx">
       <DependentUpon>InfoInputForm.cs</DependentUpon>
@@ -141,11 +168,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QueryByModelForm.resx">
+      <DependentUpon>QueryByModelForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QueryInfoBySNForm.resx">
       <DependentUpon>QueryInfoBySNForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QueryInfoForm.resx">
       <DependentUpon>QueryInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuerySpareByToolForm.resx">
+      <DependentUpon>QuerySpareByToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryToolBySpareForm.resx">
+      <DependentUpon>QueryToolBySpareForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SingleInputForm.resx">
       <DependentUpon>SingleInputForm.cs</DependentUpon>

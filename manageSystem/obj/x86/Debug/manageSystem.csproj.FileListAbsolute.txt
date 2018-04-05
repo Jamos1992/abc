@@ -46,3 +46,7 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.SpareInfoInputForm.resource
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryRepoSpareForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryToolSpareForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.SpareManageForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.RepairAndMaintainForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.RepairOperatorForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.RepairRegisterForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.tool_KPI_manage.ToolKPIManageForm.resources

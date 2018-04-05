@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using manageSystem.src.tool_KPI_manage;
+using manageSystem.src.maintain_manage;
 
 namespace manageSystem
 {
@@ -53,6 +55,18 @@ namespace manageSystem
         {
             SpareManageForm smf = new SpareManageForm();
             smf.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ToolKPIManageForm tkmf = new ToolKPIManageForm();
+            tkmf.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            RepairAndMaintainForm rmf = new RepairAndMaintainForm();
+            rmf.Show();
         }
     }
 }

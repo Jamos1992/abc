@@ -74,6 +74,24 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\maintain_manage\RepairAndMaintainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\maintain_manage\RepairAndMaintainForm.Designer.cs">
+      <DependentUpon>RepairAndMaintainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\maintain_manage\RepairOperatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\maintain_manage\RepairOperatorForm.Designer.cs">
+      <DependentUpon>RepairOperatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\maintain_manage\RepairRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\maintain_manage\RepairRegisterForm.Designer.cs">
+      <DependentUpon>RepairRegisterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\tool_info_input\BatchInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +186,21 @@
     <Compile Include="src\spare_manage\SpareManageForm.Designer.cs">
       <DependentUpon>SpareManageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\tool_KPI_manage\ToolKPIManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\tool_KPI_manage\ToolKPIManageForm.Designer.cs">
+      <DependentUpon>ToolKPIManageForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="src\maintain_manage\RepairAndMaintainForm.resx">
+      <DependentUpon>RepairAndMaintainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\maintain_manage\RepairOperatorForm.resx">
+      <DependentUpon>RepairOperatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\maintain_manage\RepairRegisterForm.resx">
+      <DependentUpon>RepairRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\tool_info_input\BatchInputForm.resx">
       <DependentUpon>BatchInputForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +255,9 @@
     <EmbeddedResource Include="src\spare_manage\SpareManageForm.resx">
       <DependentUpon>SpareManageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\tool_KPI_manage\ToolKPIManageForm.resx">
+      <DependentUpon>ToolKPIManageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -235,8 +271,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\demarcate_manage\" />
-    <Folder Include="src\maintain_manage\" />
-    <Folder Include="src\tool_KPI_manage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

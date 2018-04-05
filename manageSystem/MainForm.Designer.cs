@@ -55,6 +55,7 @@
             this.button6.TabIndex = 13;
             this.button6.Text = "维修保养管理";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -64,6 +65,7 @@
             this.button5.TabIndex = 12;
             this.button5.Text = "工具KPI";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 

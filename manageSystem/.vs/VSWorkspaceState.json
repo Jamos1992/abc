@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\database"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\packages.config",
   "PreviewInSolutionExplorer": false
 }

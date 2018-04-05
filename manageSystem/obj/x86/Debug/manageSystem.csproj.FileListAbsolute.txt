@@ -50,3 +50,13 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.RepairA
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.RepairOperatorForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.RepairRegisterForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.tool_KPI_manage.ToolKPIManageForm.resources
+D:\workspace\manageSystem\bin\x86\Debug\manageSystem.exe.config
+D:\workspace\manageSystem\bin\x86\Debug\EntityFramework.dll
+D:\workspace\manageSystem\bin\x86\Debug\EntityFramework.SqlServer.dll
+D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.dll
+D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.EF6.dll
+D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.Linq.dll
+D:\workspace\manageSystem\bin\x86\Debug\EntityFramework.xml
+D:\workspace\manageSystem\bin\x86\Debug\EntityFramework.SqlServer.xml
+D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.xml
+D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.dll.config

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using manageSystem.src.tool_KPI_manage;
 using manageSystem.src.maintain_manage;
+using System.Data.SQLite;
 
 namespace manageSystem
 {
@@ -17,8 +18,29 @@ namespace manageSystem
         public MainForm()
         {
             InitializeComponent();
-            Database db = new Database();
-            db.QueryBySql("select * from table1");
+            SqLiteHelper db = new SqLiteHelper(@"data source=d:\workspace\manageSystem\database\test.db");
+            //db.CreateTable("table1", new string[] { "ID", "Name", "Age", "Email" }, new string[] { "INTEGER", "TEXT", "INTEGER", "TEXT" });
+            ////插入两条数据
+            //db.InsertValues("table1", new string[] { "1", "张三", "22", "Zhang@163.com" });
+            //db.InsertValues("table1", new string[] { "2", "李四", "25", "Li4@163.com" });
+            //SQLiteDataReader reader = db.ReadFullTable("table1");
+            //while (reader.Read())
+            //{
+            //    //读取ID
+            //    Log("" + reader.GetInt32(reader.GetOrdinal("ID")));
+            //    //读取Name
+            //    Log("" + reader.GetString(reader.GetOrdinal("Name")));
+            //    //读取Age
+            //    Log("" + reader.GetInt32(reader.GetOrdinal("Age")));
+            //    //读取Email
+            //    Log(reader.GetString(reader.GetOrdinal("Email")));
+            //}
+
+        }
+
+        static void Log(string s)
+        {
+            Console.WriteLine("" + s);
         }
 
         private void MainForm_Load(object sender, EventArgs e)

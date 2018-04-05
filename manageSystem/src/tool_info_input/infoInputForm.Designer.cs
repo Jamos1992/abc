@@ -37,6 +37,7 @@
             this.treeviewInput = new System.Windows.Forms.TreeView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.skinAnimator1 = new CCWin.SkinControl.SkinAnimator(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -46,18 +47,25 @@
             // 
             this.skinAnimator1.SetDecoration(this.treeviewInput, CCWin.SkinControl.DecorationType.None);
             this.treeviewInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeviewInput.ImageIndex = 0;
+            this.treeviewInput.ImageList = this.imageList1;
+            this.treeviewInput.LabelEdit = true;
             this.treeviewInput.Location = new System.Drawing.Point(0, 0);
             this.treeviewInput.Name = "treeviewInput";
+            treeNode1.ImageIndex = 0;
             treeNode1.Name = "节点2";
             treeNode1.Text = "手动单条录入";
+            treeNode2.ImageIndex = 1;
             treeNode2.Name = "节点3";
             treeNode2.Text = "手动批量录入";
+            treeNode3.ImageIndex = 2;
             treeNode3.Name = "节点4";
             treeNode3.Text = "控制器导入";
             this.treeviewInput.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3});
+            this.treeviewInput.SelectedImageIndex = 0;
             this.treeviewInput.Size = new System.Drawing.Size(169, 404);
             this.treeviewInput.TabIndex = 0;
             this.treeviewInput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeviewInput_AfterSelect);
@@ -102,6 +110,14 @@
             animation1.TransparencyCoeff = 0F;
             this.skinAnimator1.DefaultAnimation = animation1;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "add.png");
+            this.imageList1.Images.SetKeyName(1, "add_package.png");
+            this.imageList1.Images.SetKeyName(2, "arrow_right.png");
+            // 
             // InfoInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -126,5 +142,6 @@
         private System.Windows.Forms.TreeView treeviewInput;
         private CCWin.SkinControl.SkinAnimator skinAnimator1;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

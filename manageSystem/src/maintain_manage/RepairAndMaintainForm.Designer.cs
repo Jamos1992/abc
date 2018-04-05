@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("维修登记");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("工具维修");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("维修管理", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10});
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("保养管理");
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("维修登记");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("工具维修");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("维修管理", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("保养管理");
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -59,20 +61,26 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode9.Name = "节点1";
-            treeNode9.Text = "维修登记";
-            treeNode10.Name = "节点3";
-            treeNode10.Text = "工具维修";
-            treeNode11.Name = "节点0";
-            treeNode11.Text = "维修管理";
-            treeNode12.Name = "节点4";
-            treeNode12.Text = "保养管理";
+            treeNode1.Name = "节点1";
+            treeNode1.Text = "维修登记";
+            treeNode2.Name = "节点3";
+            treeNode2.Text = "工具维修";
+            treeNode3.Name = "节点0";
+            treeNode3.Text = "维修管理";
+            treeNode4.Name = "节点4";
+            treeNode4.Text = "保养管理";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12});
+            treeNode3,
+            treeNode4});
             this.treeView1.Size = new System.Drawing.Size(194, 404);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // RepairAndMaintainForm
             // 
@@ -95,5 +103,6 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

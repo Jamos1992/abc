@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("单个序列号查询");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("多个序列号查询");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("根据型号查询");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryInfoForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeViewQuery = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -54,21 +57,34 @@
             // treeViewQuery
             // 
             this.treeViewQuery.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewQuery.ImageIndex = 0;
+            this.treeViewQuery.ImageList = this.imageList1;
             this.treeViewQuery.Location = new System.Drawing.Point(0, 0);
             this.treeViewQuery.Name = "treeViewQuery";
             treeNode1.Name = "节点0";
             treeNode1.Text = "单个序列号查询";
+            treeNode2.ImageIndex = 1;
             treeNode2.Name = "节点1";
             treeNode2.Text = "多个序列号查询";
+            treeNode3.ImageIndex = 2;
             treeNode3.Name = "节点2";
             treeNode3.Text = "根据型号查询";
             this.treeViewQuery.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3});
+            this.treeViewQuery.SelectedImageIndex = 0;
             this.treeViewQuery.Size = new System.Drawing.Size(164, 404);
             this.treeViewQuery.TabIndex = 2;
             this.treeViewQuery.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewQuery_AfterSelect);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "table_tab_search.png");
+            this.imageList1.Images.SetKeyName(1, "box_search.png");
+            this.imageList1.Images.SetKeyName(2, "search_field.png");
             // 
             // QueryInfoForm
             // 
@@ -91,5 +107,6 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeViewQuery;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

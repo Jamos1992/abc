@@ -48,5 +48,11 @@ namespace manageSystem
                 this.Show();
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SpareManageForm smf = new SpareManageForm();
+            smf.Show();
+        }
     }
 }

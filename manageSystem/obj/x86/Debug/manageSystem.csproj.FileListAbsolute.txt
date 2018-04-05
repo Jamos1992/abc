@@ -42,3 +42,7 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.BatchQueryForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryByModelForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QuerySpareByToolForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryToolBySpareForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.SpareInfoInputForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryRepoSpareForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryToolSpareForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.SpareManageForm.resources

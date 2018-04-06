@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.OleDb;
 using System.Data;
 using System.Data.SQLite;
+using System.Reflection;
 
 namespace manageSystem
 {
@@ -174,6 +175,32 @@ namespace manageSystem
             return ExecuteQuery(queryString);
         }
 
+        public SQLiteDataReader InsertValuesByStruct(string tableName, object obj)
+        {
+            PropertyInfo[] propertys = obj.GetType().GetProperties();
+            int fieldCount = ReadFullTable(tableName).FieldCount;
+            //当插入的数据长度不等于字段数目时引发异常
+            if (propertys.Length != fieldCount)
+            {
+                throw new SQLiteException("propertys.Length!=fieldCount");
+            }
+            int i = 0;
+            string queryString = "";
+            foreach (PropertyInfo pinfo in propertys)
+            {
+                if (i == 0)
+                {
+                    queryString = "INSERT INTO " + tableName + " VALUES (" + "'" + pinfo.GetValue(obj, null) + "'";
+                }else
+                {
+                    queryString += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                i++;
+            }
+            queryString += " )";
+            return ExecuteQuery(queryString);
+        }
+
         /// <summary>
         /// 更新指定数据表内的数据
         /// </summary>
@@ -198,6 +225,43 @@ namespace manageSystem
                 queryString += ", " + colNames[i] + "=" + "'" + colValues[i] + "'";
             }
             queryString += " WHERE " + key + operation + "'" + value + "'";
+            return ExecuteQuery(queryString);
+        }
+
+        public SQLiteDataReader UpdateValuesByStruct(string tableName, object obj, string []colNames, string[] values)
+        {
+            PropertyInfo[] propertys = obj.GetType().GetProperties();
+            //当字段名称和字段数值不对应时引发异常
+            int fieldCount = ReadFullTable(tableName).FieldCount;
+            if (propertys.Length != fieldCount || colNames.Length != values.Length)
+            {
+                throw new SQLiteException("propertys.Length!=fieldCount");
+            }
+            int i = 0;
+            string queryString = "";
+            foreach (PropertyInfo pinfo in propertys)
+            {
+                if (i == 0)
+                {
+                    queryString = "UPDATE " + tableName + " SET " + pinfo.Name + "=" + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                else
+                {
+                    queryString += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                i++;
+            }
+            for(int j=0;j < values.Length;j++)
+            {
+                if (j == 0)
+                {
+                    queryString += " where " + colNames[j] + "=" + "'" + values[j] + "'";
+                }
+                else
+                {
+                    queryString += " and " + colNames[j] + "=" + "'" + values[j] + "'";
+                }
+            }           
             return ExecuteQuery(queryString);
         }
 
@@ -297,6 +361,13 @@ namespace manageSystem
         static void Log(string s)
         {
             Console.WriteLine("class SqLiteHelper:::" + s);
+        }
+
+        public void CeateAllTable()
+        {
+            string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Workstation", "Torque", "Status", "QualityAssureDate", "MaintainContractStyle", "MaintainContractData", "Remark", "RepairList" };
+            string[] toolsInfoFeildType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
+            this.CreateTable("ToolsInfo", toolsInfoFeildName, toolsInfoFeildType);
         }
     }
 }

@@ -61,11 +61,10 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(396, 356);
+            this.label11.Location = new System.Drawing.Point(384, 358);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.Size = new System.Drawing.Size(0, 12);
             this.label11.TabIndex = 89;
-            this.label11.Text = "状态";
             // 
             // button2
             // 
@@ -100,6 +99,7 @@
             this.button1.TabIndex = 87;
             this.button1.Text = "查询";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox11
             // 
@@ -119,7 +119,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(163, 320);
+            this.textBox10.Location = new System.Drawing.Point(467, 137);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 21);
             this.textBox10.TabIndex = 83;
@@ -144,7 +144,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(467, 137);
+            this.textBox7.Location = new System.Drawing.Point(163, 320);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 21);
             this.textBox7.TabIndex = 85;
@@ -176,14 +176,14 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(467, 94);
+            this.textBox8.Location = new System.Drawing.Point(467, 52);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 21);
             this.textBox8.TabIndex = 82;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(163, 137);
+            this.textBox4.Location = new System.Drawing.Point(163, 179);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 71;
@@ -208,7 +208,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(163, 182);
+            this.textBox3.Location = new System.Drawing.Point(163, 137);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 21);
             this.textBox3.TabIndex = 73;
@@ -240,14 +240,14 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(467, 52);
+            this.textBox9.Location = new System.Drawing.Point(467, 94);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 21);
             this.textBox9.TabIndex = 79;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(163, 229);
+            this.textBox6.Location = new System.Drawing.Point(163, 279);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 21);
             this.textBox6.TabIndex = 75;
@@ -263,7 +263,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(163, 277);
+            this.textBox5.Location = new System.Drawing.Point(163, 229);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 21);
             this.textBox5.TabIndex = 77;
@@ -285,6 +285,7 @@
             this.button3.TabIndex = 93;
             this.button3.Text = "修改";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // QueryInfoBySNForm
             // 

@@ -26,10 +26,10 @@ namespace manageSystem
                 return;
 
             }
-            string sql = "insert into table1 values(" + ")";
             try
             {
-                (new Database()).InsertBySql(sql);
+                SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+                db.InsertValuesByStruct("ToolsInfo",toolsInfo);
             }
             catch
             {
@@ -38,6 +38,13 @@ namespace manageSystem
                 return;
             }
             this.label11.Text = "录入成功!";
+            foreach(Control c in this.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    c.Text = "";
+                }               
+            }
             return;
         }
 
@@ -53,6 +60,7 @@ namespace manageSystem
             toolsInfo.MaintainContractStyle = this.textBox7.Text;
             toolsInfo.MaintainContractData = this.textBox8.Text;
             toolsInfo.Remark = this.textBox9.Text;
+            toolsInfo.RepairList = "";
             return toolsInfo;
         }
     }

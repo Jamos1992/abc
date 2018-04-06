@@ -18,7 +18,7 @@ namespace manageSystem
         public MainForm()
         {
             InitializeComponent();
-            SqLiteHelper db = new SqLiteHelper(@"data source=d:\workspace\manageSystem\database\test.db");
+            
             //db.CreateTable("table1", new string[] { "ID", "Name", "Age", "Email" }, new string[] { "INTEGER", "TEXT", "INTEGER", "TEXT" });
             ////插入两条数据
             //db.InsertValues("table1", new string[] { "1", "张三", "22", "Zhang@163.com" });

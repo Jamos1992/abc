@@ -7,15 +7,15 @@ namespace manageSystem
 {
     class ToolsInfo
     {
-        public string SerialNum;                        //序列号
-        public string Model;                            //型号
-        public string Workstation;                      //工位信息
-        public string Torque;                           //扭矩信息
-        public string Status;                           //工具当前状态
-        public string QualityAssureDate;                //质保期
-        public string MaintainContractStyle;            //保养合同类型
-        public string MaintainContractData;             //保养合同起止
-        public string Remark;                           //备注信息
-        public string RepairList;                       //维修记录
+        public string SerialNum { get; set; }                        //序列号
+        public string Model { get; set; }                            //型号
+        public string Workstation { get; set; }                      //工位信息
+        public string Torque { get; set; }                           //扭矩信息
+        public string Status { get; set; }                           //工具当前状态
+        public string QualityAssureDate { get; set; }                //质保期
+        public string MaintainContractStyle { get; set; }            //保养合同类型
+        public string MaintainContractData { get; set; }             //保养合同起止
+        public string Remark { get; set; }                           //备注信息
+        public string RepairList { get; set; }                       //维修记录
     }
 }

@@ -77,56 +77,56 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(211, 137);
+            this.textBox3.Location = new System.Drawing.Point(88, 137);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 21);
             this.textBox3.TabIndex = 5;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(88, 137);
+            this.textBox4.Location = new System.Drawing.Point(211, 137);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 4;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(211, 174);
+            this.textBox5.Location = new System.Drawing.Point(88, 173);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 21);
             this.textBox5.TabIndex = 7;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(88, 174);
+            this.textBox6.Location = new System.Drawing.Point(211, 173);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 21);
             this.textBox6.TabIndex = 6;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(211, 212);
+            this.textBox7.Location = new System.Drawing.Point(88, 210);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 21);
             this.textBox7.TabIndex = 9;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(88, 212);
+            this.textBox8.Location = new System.Drawing.Point(211, 210);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 21);
             this.textBox8.TabIndex = 8;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(211, 250);
+            this.textBox9.Location = new System.Drawing.Point(88, 250);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 21);
             this.textBox9.TabIndex = 11;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(88, 250);
+            this.textBox10.Location = new System.Drawing.Point(211, 250);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 21);
             this.textBox10.TabIndex = 10;
@@ -139,6 +139,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "批量录入";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BatchInputForm
             // 

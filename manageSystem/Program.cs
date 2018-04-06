@@ -15,6 +15,9 @@ namespace manageSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            db.CeateAllTable();
+            db.CloseConnection();
             Application.Run(new LoginForm());
         }
     }

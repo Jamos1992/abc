@@ -92,6 +92,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Declare.cs" />
     <Compile Include="src\maintain_manage\RepairAndMaintainForm.cs">
       <SubType>Form</SubType>
     </Compile>

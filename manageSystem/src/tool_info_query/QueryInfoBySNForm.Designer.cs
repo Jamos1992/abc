@@ -56,6 +56,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // label11
@@ -74,6 +75,7 @@
             this.button2.TabIndex = 91;
             this.button2.Text = "导出至excel表格";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox12
             // 
@@ -127,7 +129,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(85, 323);
+            this.label1.Location = new System.Drawing.Point(85, 316);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 80;
@@ -144,7 +146,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(163, 320);
+            this.textBox7.Location = new System.Drawing.Point(163, 313);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 21);
             this.textBox7.TabIndex = 85;
@@ -247,7 +249,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(163, 279);
+            this.textBox6.Location = new System.Drawing.Point(163, 272);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 21);
             this.textBox6.TabIndex = 75;
@@ -271,7 +273,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(97, 282);
+            this.label6.Location = new System.Drawing.Point(97, 275);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 76;
@@ -361,5 +363,6 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

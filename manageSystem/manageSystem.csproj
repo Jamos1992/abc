@@ -63,6 +63,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -93,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Declare.cs" />
+    <Compile Include="ExcelOperator.cs" />
     <Compile Include="src\maintain_manage\RepairAndMaintainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,16 +174,16 @@
     <Compile Include="src\spare_manage\QueryRepoSpareForm.Designer.cs">
       <DependentUpon>QueryRepoSpareForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\spare_manage\QuerySpareByToolForm.cs">
+    <Compile Include="src\tool_info_query\QuerySpareByToolForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\spare_manage\QuerySpareByToolForm.Designer.cs">
+    <Compile Include="src\tool_info_query\QuerySpareByToolForm.Designer.cs">
       <DependentUpon>QuerySpareByToolForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\spare_manage\QueryToolBySpareForm.cs">
+    <Compile Include="src\tool_info_query\QueryToolBySpareForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\spare_manage\QueryToolBySpareForm.Designer.cs">
+    <Compile Include="src\tool_info_query\QueryToolBySpareForm.Designer.cs">
       <DependentUpon>QueryToolBySpareForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\spare_manage\QueryToolSpareForm.cs">
@@ -256,10 +261,10 @@
     <EmbeddedResource Include="src\spare_manage\QueryRepoSpareForm.resx">
       <DependentUpon>QueryRepoSpareForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\spare_manage\QuerySpareByToolForm.resx">
+    <EmbeddedResource Include="src\tool_info_query\QuerySpareByToolForm.resx">
       <DependentUpon>QuerySpareByToolForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\spare_manage\QueryToolBySpareForm.resx">
+    <EmbeddedResource Include="src\tool_info_query\QueryToolBySpareForm.resx">
       <DependentUpon>QueryToolBySpareForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\spare_manage\QueryToolSpareForm.resx">

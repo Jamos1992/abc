@@ -37,10 +37,11 @@ namespace manageSystem
                 this.label11.Text = "录入失败，数据库操作失败";
                 return;
             }
+            MessageBox.Show("数据录入成功！");
             this.label11.Text = "录入成功!";
             foreach(Control c in this.Controls)
             {
-                if (c.GetType() == typeof(TextBox))
+                if (c.GetType() == typeof(TextBox) || c.GetType() == typeof(ComboBox) || c.GetType() == typeof(DateTimePicker))
                 {
                     c.Text = "";
                 }               
@@ -51,16 +52,18 @@ namespace manageSystem
         private ToolsInfo getAllInput()
         {
             ToolsInfo toolsInfo = new ToolsInfo();
-            toolsInfo.SerialNum = this.textBox1.Text;
-            toolsInfo.Model = this.textBox2.Text;
+            toolsInfo.Model = this.comboBox1.Text;
+            toolsInfo.SerialNum = this.textBox2.Text;
             toolsInfo.Workstation = this.textBox3.Text;
             toolsInfo.Torque = this.textBox4.Text;
-            toolsInfo.Status = this.textBox5.Text;
-            toolsInfo.QualityAssureDate = this.textBox6.Text;
+            toolsInfo.Status = this.comboBox2.Text;
+            toolsInfo.QualityAssureDate = this.dateTimePicker1.Text;
             toolsInfo.MaintainContractStyle = this.textBox7.Text;
-            toolsInfo.MaintainContractData = this.textBox8.Text;
+            toolsInfo.MaintainContractDate = this.textBox8.Text;
             toolsInfo.Remark = this.textBox9.Text;
             toolsInfo.RepairList = "";
+            toolsInfo.MaintainInfo = "";
+            toolsInfo.RepoSpareTool = "";
             return toolsInfo;
         }
     }

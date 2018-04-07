@@ -36,9 +36,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,9 +44,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lablHint = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label11
@@ -73,7 +73,7 @@
             // 
             this.textBox7.Location = new System.Drawing.Point(462, 133);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 21);
+            this.textBox7.Size = new System.Drawing.Size(109, 21);
             this.textBox7.TabIndex = 39;
             // 
             // label8
@@ -89,7 +89,7 @@
             // 
             this.textBox8.Location = new System.Drawing.Point(462, 183);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 21);
+            this.textBox8.Size = new System.Drawing.Size(109, 21);
             this.textBox8.TabIndex = 37;
             // 
             // label9
@@ -105,7 +105,7 @@
             // 
             this.textBox9.Location = new System.Drawing.Point(462, 230);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 21);
+            this.textBox9.Size = new System.Drawing.Size(109, 21);
             this.textBox9.TabIndex = 35;
             // 
             // label10
@@ -117,13 +117,6 @@
             this.label10.TabIndex = 34;
             this.label10.Text = "保养合同类型";
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(158, 282);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 21);
-            this.textBox5.TabIndex = 33;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -132,13 +125,6 @@
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 32;
             this.label6.Text = "质保期至";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(462, 83);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 21);
-            this.textBox6.TabIndex = 31;
             // 
             // label7
             // 
@@ -197,13 +183,6 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "*序列号";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(158, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 23;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -222,12 +201,44 @@
             this.lablHint.TabIndex = 21;
             this.lablHint.Text = "手动更改工具信息";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(158, 83);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 20);
+            this.comboBox1.TabIndex = 42;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "在线试用",
+            "维修间送修",
+            "保养未还",
+            "备用",
+            "借用"});
+            this.comboBox2.Location = new System.Drawing.Point(158, 280);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(100, 20);
+            this.comboBox2.TabIndex = 43;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(462, 82);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(109, 21);
+            this.dateTimePicker1.TabIndex = 44;
+            // 
             // SingleInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(683, 379);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox7);
@@ -236,9 +247,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
@@ -246,7 +255,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lablHint);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -268,9 +276,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
@@ -278,8 +284,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lablHint;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

@@ -20,4 +20,9 @@ namespace manageSystem
         public string MaintainInfo { get; set; }                     //保养信息
         public string RepairList { get; set; }                       //维修记录
     }
+
+    class EmailAddress
+    {
+        public string EmailAddr { get; set; }                        //邮件地址
+    }
 }

@@ -97,7 +97,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Declare.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="ExcelOperator.cs" />
+    <Compile Include="src\EmailAddressManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\EmailAddressManageForm.Designer.cs">
+      <DependentUpon>EmailAddressManageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\maintain_manage\RepairAndMaintainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +223,9 @@
     <Compile Include="src\tool_KPI_manage\ToolKPIManageForm.Designer.cs">
       <DependentUpon>ToolKPIManageForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="src\EmailAddressManageForm.resx">
+      <DependentUpon>EmailAddressManageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\maintain_manage\RepairAndMaintainForm.resx">
       <DependentUpon>RepairAndMaintainForm.cs</DependentUpon>
     </EmbeddedResource>

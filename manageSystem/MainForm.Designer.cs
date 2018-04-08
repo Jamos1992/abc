@@ -36,6 +36,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.菜单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.驻场人员登记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看驻场人员信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具信息录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具信息查询导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,10 +47,9 @@
             this.备件管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具KPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修保养管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.菜单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.驻场人员登记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看驻场人员信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.邮件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RecieveManBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendMailbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -124,13 +127,42 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.菜单ToolStripMenuItem,
-            this.功能ToolStripMenuItem});
+            this.功能ToolStripMenuItem,
+            this.邮件ToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(686, 25);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 菜单ToolStripMenuItem
+            // 
+            this.菜单ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.驻场人员登记ToolStripMenuItem,
+            this.查看驻场人员信息ToolStripMenuItem,
+            this.退出ToolStripMenuItem});
+            this.菜单ToolStripMenuItem.Name = "菜单ToolStripMenuItem";
+            this.菜单ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.菜单ToolStripMenuItem.Text = "菜单";
+            // 
+            // 驻场人员登记ToolStripMenuItem
+            // 
+            this.驻场人员登记ToolStripMenuItem.Name = "驻场人员登记ToolStripMenuItem";
+            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.驻场人员登记ToolStripMenuItem.Text = "驻场人员登记";
+            // 
+            // 查看驻场人员信息ToolStripMenuItem
+            // 
+            this.查看驻场人员信息ToolStripMenuItem.Name = "查看驻场人员信息ToolStripMenuItem";
+            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.查看驻场人员信息ToolStripMenuItem.Text = "查看驻场人员信息";
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
             // 
             // 功能ToolStripMenuItem
             // 
@@ -181,33 +213,28 @@
             this.维修保养管理ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.维修保养管理ToolStripMenuItem.Text = "维修保养管理";
             // 
-            // 菜单ToolStripMenuItem
+            // 邮件ToolStripMenuItem
             // 
-            this.菜单ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.驻场人员登记ToolStripMenuItem,
-            this.查看驻场人员信息ToolStripMenuItem,
-            this.退出ToolStripMenuItem});
-            this.菜单ToolStripMenuItem.Name = "菜单ToolStripMenuItem";
-            this.菜单ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.菜单ToolStripMenuItem.Text = "菜单";
+            this.邮件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RecieveManBtn,
+            this.sendMailbtn});
+            this.邮件ToolStripMenuItem.Name = "邮件ToolStripMenuItem";
+            this.邮件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.邮件ToolStripMenuItem.Text = "邮件";
             // 
-            // 退出ToolStripMenuItem
+            // RecieveManBtn
             // 
-            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.退出ToolStripMenuItem.Text = "退出";
+            this.RecieveManBtn.Name = "RecieveManBtn";
+            this.RecieveManBtn.Size = new System.Drawing.Size(180, 22);
+            this.RecieveManBtn.Text = "收件人管理";
+            this.RecieveManBtn.Click += new System.EventHandler(this.RecieveManBtn_Click);
             // 
-            // 驻场人员登记ToolStripMenuItem
+            // sendMailbtn
             // 
-            this.驻场人员登记ToolStripMenuItem.Name = "驻场人员登记ToolStripMenuItem";
-            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.驻场人员登记ToolStripMenuItem.Text = "驻场人员登记";
-            // 
-            // 查看驻场人员信息ToolStripMenuItem
-            // 
-            this.查看驻场人员信息ToolStripMenuItem.Name = "查看驻场人员信息ToolStripMenuItem";
-            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.查看驻场人员信息ToolStripMenuItem.Text = "查看驻场人员信息";
+            this.sendMailbtn.Name = "sendMailbtn";
+            this.sendMailbtn.Size = new System.Drawing.Size(180, 22);
+            this.sendMailbtn.Text = "发送邮件";
+            this.sendMailbtn.Click += new System.EventHandler(this.sendMailbtn_Click);
             // 
             // statusStrip1
             // 
@@ -266,5 +293,8 @@
         private System.Windows.Forms.ToolStripMenuItem 驻场人员登记ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查看驻场人员信息ToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 邮件ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RecieveManBtn;
+        private System.Windows.Forms.ToolStripMenuItem sendMailbtn;
     }
 }

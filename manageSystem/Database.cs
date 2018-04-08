@@ -365,9 +365,23 @@ namespace manageSystem
 
         public void CeateAllTable()
         {
+            this.CreateToolsInfoDb();
+            this.CreateEmailAddrDb();
+        }
+
+        public void CreateToolsInfoDb()
+        {
             string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Workstation", "Torque", "Status", "QualityAssureDate", "RepoSpareTool", "MaintainContractStyle", "MaintainContractData", "Remark", "MaintainInfo", "RepairList" };
             string[] toolsInfoFeildType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
             this.CreateTable("ToolsInfo", toolsInfoFeildName, toolsInfoFeildType);
         }
+
+        public void CreateEmailAddrDb()
+        {
+            string[] emailAddrName = new string[] { "EmailAddr" };
+            string[] emailAddrType = new string[] { "VARCHAR(255) PRIMARY KEY" };
+            this.CreateTable("EmailAddress", emailAddrName, emailAddrType);
+        }
+        
     }
 }

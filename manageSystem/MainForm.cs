@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using manageSystem.src.tool_KPI_manage;
 using manageSystem.src.maintain_manage;
+using manageSystem.src;
 using System.Data.SQLite;
 
 namespace manageSystem
@@ -89,6 +90,18 @@ namespace manageSystem
         {
             RepairAndMaintainForm rmf = new RepairAndMaintainForm();
             rmf.Show();
+        }
+
+        private void RecieveManBtn_Click(object sender, EventArgs e)
+        {
+            EmailAddressManageForm eamf = new EmailAddressManageForm();
+            eamf.Show(); 
+        }
+
+        private void sendMailbtn_Click(object sender, EventArgs e)
+        {
+            Email email = new Email();
+            email.SendEmail();
         }
     }
 }

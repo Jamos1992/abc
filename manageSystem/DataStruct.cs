@@ -23,6 +23,7 @@ namespace manageSystem
 
     class EmailAddress
     {
+        public int? ID { get; set; }                                 //ID
         public string EmailAddr { get; set; }                        //邮件地址
     }
 }

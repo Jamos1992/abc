@@ -49,14 +49,15 @@ namespace manageSystem
             try
             {
                 client.Send(mailMessage);
-                Console.WriteLine("发送成功");
-                MessageBox.Show("发送邮件成功");
             }
             catch (SmtpException ex)
             {
                 Console.WriteLine(ex.Message, "发送邮件出错");
-                MessageBox.Show("发送邮件出错");
+                MessageBox.Show("发送邮件出错,错误原因："+ ex.Message);
+                return;
             }
+            Console.WriteLine("发送成功");
+            MessageBox.Show("发送邮件成功,邮箱地址：" + toAddr);
         }
     }
 }

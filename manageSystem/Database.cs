@@ -198,6 +198,7 @@ namespace manageSystem
                 i++;
             }
             queryString += " )";
+            Console.WriteLine("sql is {0}", queryString);
             return ExecuteQuery(queryString);
         }
 
@@ -378,8 +379,8 @@ namespace manageSystem
 
         public void CreateEmailAddrDb()
         {
-            string[] emailAddrName = new string[] { "EmailAddr" };
-            string[] emailAddrType = new string[] { "VARCHAR(255) PRIMARY KEY" };
+            string[] emailAddrName = new string[] { "ID","EmailAddr" };
+            string[] emailAddrType = new string[] { "INTEGER PRIMARY KEY AUTOINCREMENT", "VARCHAR(255) UNIQUE" };
             this.CreateTable("EmailAddress", emailAddrName, emailAddrType);
         }
         

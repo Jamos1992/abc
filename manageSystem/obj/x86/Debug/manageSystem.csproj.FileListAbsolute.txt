@@ -61,3 +61,4 @@ D:\workspace\manageSystem\bin\x86\Debug\EntityFramework.SqlServer.xml
 D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.xml
 D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.dll.config
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.EmailAddressManageForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.ToolDataExportForm.resources

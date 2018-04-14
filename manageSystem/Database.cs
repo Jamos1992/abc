@@ -352,6 +352,7 @@ namespace manageSystem
             {
                 queryString += " AND " + colNames[i] + " " + operations[i] + " " + colValues[0] + " ";
             }
+            Console.WriteLine("querystring is ", queryString);
             return ExecuteQuery(queryString);
         }
 

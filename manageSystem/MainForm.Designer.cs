@@ -50,9 +50,9 @@
             this.邮件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RecieveManBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.sendMailbtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.数据管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具数据导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -228,24 +228,16 @@
             // RecieveManBtn
             // 
             this.RecieveManBtn.Name = "RecieveManBtn";
-            this.RecieveManBtn.Size = new System.Drawing.Size(180, 22);
+            this.RecieveManBtn.Size = new System.Drawing.Size(136, 22);
             this.RecieveManBtn.Text = "收件人管理";
             this.RecieveManBtn.Click += new System.EventHandler(this.RecieveManBtn_Click);
             // 
             // sendMailbtn
             // 
             this.sendMailbtn.Name = "sendMailbtn";
-            this.sendMailbtn.Size = new System.Drawing.Size(180, 22);
+            this.sendMailbtn.Size = new System.Drawing.Size(136, 22);
             this.sendMailbtn.Text = "发送邮件";
             this.sendMailbtn.Click += new System.EventHandler(this.sendMailbtn_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(686, 22);
-            this.statusStrip1.TabIndex = 17;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // 数据管理ToolStripMenuItem
             // 
@@ -260,6 +252,15 @@
             this.工具数据导出ToolStripMenuItem.Name = "工具数据导出ToolStripMenuItem";
             this.工具数据导出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.工具数据导出ToolStripMenuItem.Text = "工具数据导出";
+            this.工具数据导出ToolStripMenuItem.Click += new System.EventHandler(this.工具数据导出ToolStripMenuItem_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(686, 22);
+            this.statusStrip1.TabIndex = 17;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // MainForm
             // 

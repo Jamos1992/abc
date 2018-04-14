@@ -36,7 +36,7 @@ namespace manageSystem
             }
         }
 
-        public bool SaveDataTableToExcel(string filePath)
+        public bool SaveDataTableToExcel(object obj, string filePath)
         {
             try
             {
@@ -45,9 +45,23 @@ namespace manageSystem
                 OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
                 ole_conn.Open();
                 OleDbCommand ole_cmd = ole_conn.CreateCommand();
-                ole_cmd.CommandText = "insert into [Sheet1$](商户ID,商家名称)values('DJ001','点击科技')";
+                PropertyInfo[] propertys = obj.GetType().GetProperties();
+                int i = 0;
+                foreach (PropertyInfo pinfo in propertys)
+                {
+                    if (i == 0)
+                    {
+                        ole_cmd.CommandText = "insert into 工具信息(序列号,型号,工位信息,扭矩信息,工具当前状态,质保期,仓库中备件,保养合同类型,保养合同起止,备注信息,保养信息,维修记录) values(" + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    else
+                    {
+                        ole_cmd.CommandText += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    i++;
+                }
+                ole_cmd.CommandText += ")";
                 ole_cmd.ExecuteNonQuery();
-                MessageBox.Show("数据插入成功......");
+                MessageBox.Show("生成Excel文件成功并写入一条数据......");
                 return true;
             }           
             catch (Exception err)

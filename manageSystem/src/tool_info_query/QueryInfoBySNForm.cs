@@ -20,15 +20,21 @@ namespace manageSystem
         private void QueryInfoBySNForm_Load(object sender, EventArgs e)
         {
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
+            this.button3.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         { 
             ToolsInfo toolsInfo = new ToolsInfo();
-            if (this.textBox1.Text != "")
+            if (this.textBox1.Text == "")
             {
-                toolsInfo.SerialNum = this.textBox1.Text;
+                label11.ForeColor = Color.Red;
+                label11.Text = "查询失败，请输入查询序列号！";
+                clearTextBox4Query();
+                this.button3.Enabled = false;
+                return;
             }
+            toolsInfo.SerialNum = this.textBox1.Text;
             SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { toolsInfo.SerialNum });
             Console.WriteLine(reader);
@@ -36,12 +42,15 @@ namespace manageSystem
             {
                 label11.ForeColor = Color.Red;
                 label11.Text = "查询失败，该记录不存在！";
+                this.button3.Enabled = false;
+                clearTextBox4Query();
                 return;
             }
             this.setTextBox(reader);
             label11.ForeColor = Color.Green;
             label11.Text = "查询成功！";
             changeTextBoxReadOnly();
+            this.button3.Enabled = true;
             db.CloseConnection();
         }
 
@@ -86,15 +95,42 @@ namespace manageSystem
             if (this.button3.Text == "保存")
             {
                 SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-                db.UpdateValuesByStruct("ToolsInfo", this.getTextBox(), new string[] { "SerialNum" }, new string[] { this.textBox1.Text });
-                label11.ForeColor = Color.Green;
-                this.label11.Text = "修改成功";
+                try
+                {
+                    db.UpdateValuesByStruct("ToolsInfo", this.getTextBox(), new string[] { "SerialNum" }, new string[] { this.textBox1.Text });
+                }
+                catch(Exception ex)
+                {
+                    label11.ForeColor = Color.Red;
+                    this.label11.Text = "修改失败";
+                    MessageBox.Show("修改失败,原因：{0}",ex.Message);
+                    return;
+                }
                 this.button3.Text = "修改";
+                label11.ForeColor = Color.Green;
+                this.label11.Text = "修改成功!";
                 clearTextBox();
-                changeTextBoxReadOnly();
+                this.button1.Enabled = true;
                 db.CloseConnection();
+                return;
             }
             this.button3.Text = "保存";
+            this.button1.Enabled = false;
+        }
+
+        private bool isTextBoxNull()
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    if (c.Text != "")
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private void clearTextBox()
@@ -108,6 +144,21 @@ namespace manageSystem
             }
         }
 
+        private void clearTextBox4Query()
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    TextBox txtBox = (TextBox)c;
+                    if (c != textBox1)
+                    {
+                        c.Text = "";
+                    }                       
+                }
+            }
+        }
+
         private void changeTextBoxReadOnly()
         {
             foreach (Control c in this.Controls)
@@ -115,7 +166,10 @@ namespace manageSystem
                 if (c.GetType() == typeof(TextBox))
                 {
                     TextBox txtBox = (TextBox)c;
-                    txtBox.ReadOnly = true;
+                    if (c != textBox1)
+                    {
+                        txtBox.ReadOnly = true;
+                    }   
                 }
             }
         }
@@ -134,6 +188,10 @@ namespace manageSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (this.isTextBoxNull()){
+                MessageBox.Show("没有记录可以导出,请先查询！");
+                return;
+            }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 ExcelOperator excel = new ExcelOperator();
@@ -141,11 +199,13 @@ namespace manageSystem
                 {
                     label11.ForeColor = Color.Green;
                     label11.Text = "导出Excel成功！";
+                    MessageBox.Show("导出Excel成功！");
                 }
                 else
                 {
                     label11.ForeColor = Color.Red;
                     label11.Text = "导出Excel失败！";
+                    MessageBox.Show("导出Excel失败！");
                 }
             }
         }

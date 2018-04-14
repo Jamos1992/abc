@@ -103,5 +103,11 @@ namespace manageSystem
             Email email = new Email();
             email.SendEmail();
         }
+
+        private void 工具数据导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolDataExportForm tdef = new ToolDataExportForm();
+            tdef.Show();
+        }
     }
 }

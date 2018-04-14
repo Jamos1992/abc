@@ -261,6 +261,7 @@
             this.Name = "SingleInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "单条信息录入";
+            this.Load += new System.EventHandler(this.SingleInputForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

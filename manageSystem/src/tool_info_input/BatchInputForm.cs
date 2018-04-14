@@ -15,33 +15,35 @@ namespace manageSystem
         public BatchInputForm()
         {
             InitializeComponent();
+            InitTextBoxHint();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ToolsInfo[] toolsInfos = new ToolsInfo[] { };
             List<ToolsInfo> ktls = toolsInfos.ToList();
-            if (textBox1.Text != null && textBox2.Text != null)
+            if (textBox1.Text != "" && textBox2.Text != "")
             {
                 ktls.Add(this.getOneInput(textBox1, textBox2));
             }
-            if (textBox3.Text != null && textBox4.Text != null)
+            if (textBox3.Text != "" && textBox4.Text != "")
             {
                 ktls.Add(this.getOneInput(textBox3, textBox4));
             }
-            if (textBox5.Text != null && textBox6.Text != null)
+            if (textBox5.Text != "" && textBox6.Text != "")
             {
                 ktls.Add(this.getOneInput(textBox5, textBox6));
             }
-            if (textBox7.Text != null && textBox8.Text != null)
+            if (textBox7.Text != "" && textBox8.Text != "")
             {
                 ktls.Add(this.getOneInput(textBox7, textBox8));
             }
-            if (textBox9.Text != null && textBox10.Text != null)
+            if (textBox9.Text != "" && textBox10.Text != "")
             {
                 ktls.Add(this.getOneInput(textBox9, textBox10));
             }
             toolsInfos = ktls.ToArray();
+            insertValue2Db(toolsInfos);
 
         }
 
@@ -61,20 +63,91 @@ namespace manageSystem
             return toolsInfo;
         }
 
-        private void InsertValue2Db(ToolsInfo[] toolsInfos)
+        private void insertValue2Db(ToolsInfo[] toolsInfos)
         {
             SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             foreach(ToolsInfo toolsInfo in toolsInfos)
             {
                 try
                 {
-                    SQLiteDataReader reader = db.InsertValuesByStruct("ToolsInfo", toolsInfo);
+                    SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { toolsInfo.SerialNum });
+                    if (reader != null)
+                    {
+                        MessageBox.Show("序列号("+ toolsInfo.SerialNum+") 插入失败, 已存在序列号相同的记录！");
+                        return;
+                    }
+                    db.InsertValuesByStruct("ToolsInfo", toolsInfo);
                 }
                 catch
                 {
                     MessageBox.Show("插入数据失败！");
                 }
             }            
+        }
+
+        private string[] getHintFromDb()
+        {
+            string[] records = new string[] { };
+            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            try
+            {
+                SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "Model" }, new string[] { "Model" }, new string[] { "like" }, new string[] { "'%%'" });
+                if (!reader.HasRows)
+                {
+                    Console.Write("no such record");
+                    return null;
+                }
+                List<string> recordList = records.ToList();
+                while (reader.Read())
+                {
+                    recordList.Add(reader.GetString(reader.GetOrdinal("Model")));
+                    
+                }
+                records = recordList.ToArray();               
+            }
+            catch
+            {
+                Console.WriteLine("query db fail");
+                return null;
+            }
+
+            return records;
+        }
+
+        private void InitTextBoxHint()
+        {
+            string[] str = this.getHintFromDb();
+            if (str == null)
+            {
+                return;
+            }
+            Console.WriteLine(str);
+            this.textBox1.AutoCompleteCustomSource.AddRange(str);
+            this.textBox3.AutoCompleteCustomSource.AddRange(str);
+            this.textBox5.AutoCompleteCustomSource.AddRange(str);
+            this.textBox7.AutoCompleteCustomSource.AddRange(str);
+            this.textBox9.AutoCompleteCustomSource.AddRange(str);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //Button btn = (Button)sender;
+            ////lb.Parent.BackColor = Color.Red;
+
+            ////ControlHelper是一个控件复制类，clone是类中的复制方法
+            //Control gb = ControlHelper.Clone(btn.Parent, true) as Control;
+            ////Control cp_lb_First_Menu = cp_pn_MenuBlock.Controls.Find(lb_First_Menu.Name, true)[0];
+
+            //Control lb2 = gb.Controls.Find(button4.Name, true)[0];
+
+            //Control lb1 = gb.Controls.Find(button2.Name, true)[0];
+            ////lb1.Visible = false;
+            //lb2.Visible = true;
+
+            //lb1.BackColor = Color.Red;
+            //this.Controls.Add(gb);
+            ////保证复制后的控件都在原控件下方显示
+            //gb.BringToFront();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace manageSystem
         public SingleInputForm()
         {
             InitializeComponent();
+           // this.dateTimePicker1.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,6 +66,12 @@ namespace manageSystem
             toolsInfo.MaintainInfo = "";
             toolsInfo.RepoSpareTool = "";
             return toolsInfo;
+        }
+
+        private void SingleInputForm_Load(object sender, EventArgs e)
+        {
+            this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            this.dateTimePicker1.CustomFormat = " ";
         }
     }
 }

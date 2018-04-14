@@ -51,6 +51,8 @@
             this.RecieveManBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.sendMailbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.数据管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工具数据导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,7 +130,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.菜单ToolStripMenuItem,
             this.功能ToolStripMenuItem,
-            this.邮件ToolStripMenuItem});
+            this.邮件ToolStripMenuItem,
+            this.数据管理ToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -244,6 +247,20 @@
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // 数据管理ToolStripMenuItem
+            // 
+            this.数据管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.工具数据导出ToolStripMenuItem});
+            this.数据管理ToolStripMenuItem.Name = "数据管理ToolStripMenuItem";
+            this.数据管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.数据管理ToolStripMenuItem.Text = "数据管理";
+            // 
+            // 工具数据导出ToolStripMenuItem
+            // 
+            this.工具数据导出ToolStripMenuItem.Name = "工具数据导出ToolStripMenuItem";
+            this.工具数据导出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.工具数据导出ToolStripMenuItem.Text = "工具数据导出";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -296,5 +313,7 @@
         private System.Windows.Forms.ToolStripMenuItem 邮件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RecieveManBtn;
         private System.Windows.Forms.ToolStripMenuItem sendMailbtn;
+        private System.Windows.Forms.ToolStripMenuItem 数据管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工具数据导出ToolStripMenuItem;
     }
 }

@@ -26,4 +26,12 @@ namespace manageSystem
         public int? ID { get; set; }                                 //ID
         public string EmailAddr { get; set; }                        //邮件地址
     }
+
+    class RepoSpareTool
+    {
+        public string SpareToolModel { get; set; }                  //备件型号
+        public int Num { get; set; }                                //备件数量
+        public DateTime Time { get; set; }                          //入库时间
+        public string SerialNum { get; set; }                       //工具序列号
+    }
 }

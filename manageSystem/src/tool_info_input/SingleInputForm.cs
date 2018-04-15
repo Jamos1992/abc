@@ -47,6 +47,7 @@ namespace manageSystem
                     c.Text = "";
                 }               
             }
+            this.setDateTimePickerEmpty();
             return;
         }
 
@@ -70,8 +71,24 @@ namespace manageSystem
 
         private void SingleInputForm_Load(object sender, EventArgs e)
         {
+            this.setDateTimePickerEmpty();
+        }
+
+        private void setDateTimePickerEmpty()
+        {
             this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
             this.dateTimePicker1.CustomFormat = " ";
+        }
+
+        private void setDateTimePickerNormal()
+        {
+            this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+        }
+
+        private void dateTimePicker1_DropDown(object sender, EventArgs e)
+        {
+            this.setDateTimePickerNormal();
         }
     }
 }

@@ -66,7 +66,7 @@ namespace manageSystem
                 this.textBox6.Text = reader.GetString(reader.GetOrdinal("QualityAssureDate"));
                 this.textBox7.Text = reader.GetString(reader.GetOrdinal("RepoSpareTool"));
                 this.textBox8.Text = reader.GetString(reader.GetOrdinal("MaintainContractStyle"));
-                this.textBox9.Text = reader.GetString(reader.GetOrdinal("MaintainContractData"));
+                this.textBox9.Text = reader.GetString(reader.GetOrdinal("MaintainContractDate"));
                 this.textBox10.Text = reader.GetString(reader.GetOrdinal("Remark"));
                 this.textBox11.Text = reader.GetString(reader.GetOrdinal("MaintainInfo"));
                 this.textBox12.Text = reader.GetString(reader.GetOrdinal("RepairList"));

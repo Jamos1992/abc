@@ -101,22 +101,24 @@ namespace manageSystem
             toolsInfo.Model = txtBox.Text;
             toolsInfo.SerialNum = comboBox.Text;
             SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum", "Model" }, new string[] { "=", "=" }, new string[] { "'"+ toolsInfo.SerialNum + "'","'"+toolsInfo.Model+"'" });
+            SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { toolsInfo.SerialNum });
             if(!reader.HasRows)
             {
                 MessageBox.Show("序列号:" + comboBox1.Text + ", " + "型号:" + textBox1.Text + ", " + "记录不存在!");
                 return null;
-            }
-            MessageBox.Show("running");
-            toolsInfo.Workstation = reader.GetString(reader.GetOrdinal("Workstation"));
-            toolsInfo.Torque = reader.GetString(reader.GetOrdinal("Torque"));
-            toolsInfo.Status = reader.GetString(reader.GetOrdinal("Status"));
-            toolsInfo.QualityAssureDate = reader.GetString(reader.GetOrdinal("QualityAssureDate"));
-            toolsInfo.MaintainContractStyle = reader.GetString(reader.GetOrdinal("MaintainContractStyle"));
-            toolsInfo.MaintainContractDate = reader.GetString(reader.GetOrdinal("MaintainContractDate"));
-            toolsInfo.Remark = reader.GetString(reader.GetOrdinal("Remark"));
-            toolsInfo.RepairList = reader.GetString(reader.GetOrdinal("RepairList"));
-            Console.WriteLine("toolsInfo is ", toolsInfo);        
+            } 
+            while (reader.Read())
+            {
+                toolsInfo.Workstation = reader.GetValues().Get("Workstation");
+                toolsInfo.Torque = reader.GetString(reader.GetOrdinal("Torque"));
+                toolsInfo.Status = reader.GetString(reader.GetOrdinal("Status"));
+                toolsInfo.QualityAssureDate = reader.GetString(reader.GetOrdinal("QualityAssureDate"));
+                toolsInfo.MaintainContractStyle = reader.GetString(reader.GetOrdinal("MaintainContractStyle"));
+                toolsInfo.MaintainContractDate = reader.GetString(reader.GetOrdinal("MaintainContractDate"));
+                toolsInfo.Remark = reader.GetString(reader.GetOrdinal("Remark"));
+                toolsInfo.RepairList = reader.GetString(reader.GetOrdinal("RepairList"));
+            }           
+            Console.WriteLine("toolsInfo is {0}", toolsInfo);        
             return toolsInfo;
         }
 
@@ -155,11 +157,13 @@ namespace manageSystem
             {
                 if (c.GetType() == typeof(ComboBox))
                 {
+                    string a = inputList.Find(s => s == c.Text);
+                    Console.WriteLine("a is ", a);
                     if (inputList.Find(s=> s==c.Text) != null)
                     {
                         return true;
                     }
-                    inputList.Add(c.Text);
+                    if (c.Text != "")inputList.Add(c.Text);
                 }
             }
             return false;
@@ -208,7 +212,6 @@ namespace manageSystem
                     {
                         if (excel.SaveDataTableToExcel(toolsInfo, saveFileDialog1.FileName))
                         {
-                            i++;
                             MessageBox.Show("导出Excel成功！");
                         }
                         else

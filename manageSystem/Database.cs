@@ -348,9 +348,9 @@ namespace manageSystem
                 queryString += ", " + items[i];
             }
             queryString += " FROM " + tableName + " WHERE " + colNames[0] + " " + operations[0] + " " + colValues[0];
-            for (int i = 0; i < colNames.Length; i++)
+            for (int i = 1; i < colNames.Length; i++)
             {
-                queryString += " AND " + colNames[i] + " " + operations[i] + " " + colValues[0] + " ";
+                queryString += " AND " + colNames[i] + " " + operations[i] + " " + colValues[i] + " ";
             }
             Console.WriteLine("querystring is ", queryString);
             return ExecuteQuery(queryString);
@@ -369,11 +369,12 @@ namespace manageSystem
         {
             this.CreateToolsInfoDb();
             this.CreateEmailAddrDb();
+            this.CreateRepoSpareToolDb();
         }
 
         public void CreateToolsInfoDb()
         {
-            string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Workstation", "Torque", "Status", "QualityAssureDate", "RepoSpareTool", "MaintainContractStyle", "MaintainContractData", "Remark", "MaintainInfo", "RepairList" };
+            string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Workstation", "Torque", "Status", "QualityAssureDate", "RepoSpareTool", "MaintainContractStyle", "MaintainContractDate", "Remark", "MaintainInfo", "RepairList" };
             string[] toolsInfoFeildType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
             this.CreateTable("ToolsInfo", toolsInfoFeildName, toolsInfoFeildType);
         }
@@ -383,6 +384,13 @@ namespace manageSystem
             string[] emailAddrName = new string[] { "ID","EmailAddr" };
             string[] emailAddrType = new string[] { "INTEGER PRIMARY KEY AUTOINCREMENT", "VARCHAR(255) UNIQUE" };
             this.CreateTable("EmailAddress", emailAddrName, emailAddrType);
+        }
+
+        public void CreateRepoSpareToolDb()
+        {
+            string[] repoSpareToolName = new string[] { "SpareToolModel", "Num","Time", "SerialNum" };
+            string[] repoSpareToolType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER","TEXT", "VARCHAR(255)" };
+            this.CreateTable("RepoSpareTool", repoSpareToolName, repoSpareToolType);
         }
         
     }

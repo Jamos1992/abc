@@ -48,12 +48,18 @@
             this.label12 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.domainUpDown6 = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDown5 = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDown4 = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDown3 = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDown2 = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -214,6 +220,7 @@
             this.button1.TabIndex = 24;
             this.button1.Text = "录入";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
@@ -224,59 +231,59 @@
             this.button2.Text = "备件消耗";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // domainUpDown6
+            // numericUpDown1
             // 
-            this.domainUpDown6.Location = new System.Drawing.Point(366, 275);
-            this.domainUpDown6.Name = "domainUpDown6";
-            this.domainUpDown6.Size = new System.Drawing.Size(83, 21);
-            this.domainUpDown6.TabIndex = 72;
+            this.numericUpDown1.Location = new System.Drawing.Point(366, 66);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(83, 21);
+            this.numericUpDown1.TabIndex = 73;
             // 
-            // domainUpDown5
+            // numericUpDown2
             // 
-            this.domainUpDown5.Location = new System.Drawing.Point(366, 234);
-            this.domainUpDown5.Name = "domainUpDown5";
-            this.domainUpDown5.Size = new System.Drawing.Size(83, 21);
-            this.domainUpDown5.TabIndex = 71;
+            this.numericUpDown2.Location = new System.Drawing.Point(366, 112);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(83, 21);
+            this.numericUpDown2.TabIndex = 74;
             // 
-            // domainUpDown4
+            // numericUpDown3
             // 
-            this.domainUpDown4.Location = new System.Drawing.Point(366, 190);
-            this.domainUpDown4.Name = "domainUpDown4";
-            this.domainUpDown4.Size = new System.Drawing.Size(83, 21);
-            this.domainUpDown4.TabIndex = 70;
+            this.numericUpDown3.Location = new System.Drawing.Point(366, 153);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(83, 21);
+            this.numericUpDown3.TabIndex = 75;
             // 
-            // domainUpDown3
+            // numericUpDown4
             // 
-            this.domainUpDown3.Location = new System.Drawing.Point(366, 151);
-            this.domainUpDown3.Name = "domainUpDown3";
-            this.domainUpDown3.Size = new System.Drawing.Size(83, 21);
-            this.domainUpDown3.TabIndex = 69;
+            this.numericUpDown4.Location = new System.Drawing.Point(366, 192);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(83, 21);
+            this.numericUpDown4.TabIndex = 76;
             // 
-            // domainUpDown2
+            // numericUpDown5
             // 
-            this.domainUpDown2.Location = new System.Drawing.Point(366, 110);
-            this.domainUpDown2.Name = "domainUpDown2";
-            this.domainUpDown2.Size = new System.Drawing.Size(83, 21);
-            this.domainUpDown2.TabIndex = 68;
+            this.numericUpDown5.Location = new System.Drawing.Point(366, 238);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(83, 21);
+            this.numericUpDown5.TabIndex = 77;
             // 
-            // domainUpDown1
+            // numericUpDown6
             // 
-            this.domainUpDown1.Location = new System.Drawing.Point(366, 64);
-            this.domainUpDown1.Name = "domainUpDown1";
-            this.domainUpDown1.Size = new System.Drawing.Size(83, 21);
-            this.domainUpDown1.TabIndex = 67;
+            this.numericUpDown6.Location = new System.Drawing.Point(366, 278);
+            this.numericUpDown6.Name = "numericUpDown6";
+            this.numericUpDown6.Size = new System.Drawing.Size(83, 21);
+            this.numericUpDown6.TabIndex = 78;
             // 
             // SpareInfoInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 374);
-            this.Controls.Add(this.domainUpDown6);
-            this.Controls.Add(this.domainUpDown5);
-            this.Controls.Add(this.domainUpDown4);
-            this.Controls.Add(this.domainUpDown3);
-            this.Controls.Add(this.domainUpDown2);
-            this.Controls.Add(this.domainUpDown1);
+            this.Controls.Add(this.numericUpDown6);
+            this.Controls.Add(this.numericUpDown5);
+            this.Controls.Add(this.numericUpDown4);
+            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
@@ -301,6 +308,12 @@
             this.Name = "SpareInfoInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "备件信息录入";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,11 +341,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DomainUpDown domainUpDown6;
-        private System.Windows.Forms.DomainUpDown domainUpDown5;
-        private System.Windows.Forms.DomainUpDown domainUpDown4;
-        private System.Windows.Forms.DomainUpDown domainUpDown3;
-        private System.Windows.Forms.DomainUpDown domainUpDown2;
-        private System.Windows.Forms.DomainUpDown domainUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown numericUpDown6;
     }
 }

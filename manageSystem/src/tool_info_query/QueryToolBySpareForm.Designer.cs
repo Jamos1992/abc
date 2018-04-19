@@ -40,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -139,11 +140,21 @@
             this.label6.Size = new System.Drawing.Size(0, 12);
             this.label6.TabIndex = 11;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(207, 298);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(341, 24);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "根据工具查询备件信息\r\n(这里只能查询易损件与备件信息，而不是所有的维修件的信息)";
+            // 
             // QueryToolBySpareForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 348);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox5);
@@ -178,5 +189,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

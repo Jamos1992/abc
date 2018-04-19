@@ -65,6 +65,7 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label7
@@ -219,12 +220,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(264, 335);
+            this.button1.Location = new System.Drawing.Point(162, 336);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 48;
             this.button1.Text = "查询";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label13
             // 
@@ -282,93 +284,104 @@
             // 
             // textBox13
             // 
-            this.textBox13.Location = new System.Drawing.Point(437, 288);
+            this.textBox13.Location = new System.Drawing.Point(437, 76);
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 21);
+            this.textBox13.Size = new System.Drawing.Size(123, 21);
             this.textBox13.TabIndex = 60;
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(437, 246);
+            this.textBox14.Location = new System.Drawing.Point(437, 121);
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 21);
+            this.textBox14.Size = new System.Drawing.Size(123, 21);
             this.textBox14.TabIndex = 58;
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(437, 203);
+            this.textBox15.Location = new System.Drawing.Point(437, 164);
             this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(100, 21);
+            this.textBox15.Size = new System.Drawing.Size(123, 21);
             this.textBox15.TabIndex = 56;
             // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(437, 164);
+            this.textBox16.Location = new System.Drawing.Point(437, 203);
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(100, 21);
+            this.textBox16.Size = new System.Drawing.Size(123, 21);
             this.textBox16.TabIndex = 54;
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(437, 122);
+            this.textBox17.Location = new System.Drawing.Point(437, 246);
             this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(100, 21);
+            this.textBox17.Size = new System.Drawing.Size(123, 21);
             this.textBox17.TabIndex = 52;
             // 
             // textBox18
             // 
-            this.textBox18.Location = new System.Drawing.Point(437, 77);
+            this.textBox18.Location = new System.Drawing.Point(437, 288);
             this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(100, 21);
+            this.textBox18.Size = new System.Drawing.Size(123, 21);
             this.textBox18.TabIndex = 50;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(291, 287);
+            this.textBox7.Location = new System.Drawing.Point(291, 77);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(60, 21);
             this.textBox7.TabIndex = 47;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(291, 245);
+            this.textBox8.Location = new System.Drawing.Point(291, 121);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(60, 21);
             this.textBox8.TabIndex = 45;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(291, 202);
+            this.textBox9.Location = new System.Drawing.Point(291, 163);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(60, 21);
             this.textBox9.TabIndex = 43;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(291, 163);
+            this.textBox10.Location = new System.Drawing.Point(291, 202);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(60, 21);
             this.textBox10.TabIndex = 41;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(291, 121);
+            this.textBox11.Location = new System.Drawing.Point(291, 245);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(60, 21);
             this.textBox11.TabIndex = 39;
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(291, 76);
+            this.textBox12.Enabled = false;
+            this.textBox12.Location = new System.Drawing.Point(291, 287);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(60, 21);
             this.textBox12.TabIndex = 37;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(291, 336);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(165, 23);
+            this.button2.TabIndex = 61;
+            this.button2.Text = "仓库所有零件导出excel";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // QueryRepoSpareForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 381);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox13);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.textBox14);
@@ -453,5 +466,6 @@
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Button button2;
     }
 }

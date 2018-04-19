@@ -63,6 +63,11 @@ namespace manageSystem
 
         private void insertValue2Db(RepoSpareTool[] repoSpareTools)
         {
+            if (repoSpareTools.Length == 0)
+            {
+                MessageBox.Show("录入失败，输入的记录个数为0");
+                return;
+            }
             SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             foreach (RepoSpareTool repoSpareTool in repoSpareTools)
             {
@@ -75,6 +80,7 @@ namespace manageSystem
                         return;
                     }
                     db.InsertValuesByStruct("RepoSpareTool", repoSpareTool);
+                    MessageBox.Show("数据录入成功");
                 }
                 catch
                 {

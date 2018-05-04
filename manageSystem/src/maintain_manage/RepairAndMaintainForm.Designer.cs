@@ -34,7 +34,7 @@
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("维修管理", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("保养管理");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("保养管理", 1, -2);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepairAndMaintainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -71,8 +71,9 @@
             treeNode3.ImageIndex = 0;
             treeNode3.Name = "节点0";
             treeNode3.Text = "维修管理";
+            treeNode4.ImageIndex = 1;
             treeNode4.Name = "节点4";
-            treeNode4.SelectedImageIndex = 1;
+            treeNode4.SelectedImageIndex = -2;
             treeNode4.Text = "保养管理";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,

@@ -51,6 +51,12 @@ namespace manageSystem.src.maintain_manage
         private void RepairAndMaintainForm_Load(object sender, EventArgs e)
         {
             this.treeView1.ExpandAll();
+            this.treeView1.Nodes[0].ImageIndex = 0;
+            this.treeView1.Nodes[0].SelectedImageIndex = 0;
+            this.treeView1.Nodes[1].ImageIndex = 1;
+            this.treeView1.Nodes[1].ImageIndex = 1;
+            //Console.Write("node is {0}",treeView1.Nodes.)
+            //treeView1.GetNodeCount();  
         }
     }
 }

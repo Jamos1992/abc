@@ -57,7 +57,8 @@ namespace manageSystem
             toolsInfo.Status = "";
             toolsInfo.QualityAssureDate = "";
             toolsInfo.MaintainContractStyle = "";
-            toolsInfo.MaintainContractDate = "";
+            toolsInfo.MaintainContractDateStart = "";
+            toolsInfo.MaintainContractDateEnd = "";
             toolsInfo.Remark = "";
             toolsInfo.RepairList = "";
             return toolsInfo;

@@ -15,7 +15,8 @@ namespace manageSystem
         public string QualityAssureDate { get; set; }                //质保期
         public string RepoSpareTool { get; set; }                    //仓库中备件
         public string MaintainContractStyle { get; set; }            //保养合同类型
-        public string MaintainContractDate { get; set; }             //保养合同起止
+        public string MaintainContractDateStart { get; set; }        //保养合同起始
+        public string MaintainContractDateEnd { get; set; }          //保养合同终止
         public string Remark { get; set; }                           //备注信息
         public string MaintainInfo { get; set; }                     //保养信息
         public string RepairList { get; set; }                       //维修记录

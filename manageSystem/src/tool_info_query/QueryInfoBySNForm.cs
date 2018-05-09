@@ -66,10 +66,11 @@ namespace manageSystem
                 this.textBox6.Text = reader.GetString(reader.GetOrdinal("QualityAssureDate"));
                 this.textBox7.Text = reader.GetString(reader.GetOrdinal("RepoSpareTool"));
                 this.textBox8.Text = reader.GetString(reader.GetOrdinal("MaintainContractStyle"));
-                this.textBox9.Text = reader.GetString(reader.GetOrdinal("MaintainContractDate"));
-                this.textBox10.Text = reader.GetString(reader.GetOrdinal("Remark"));
-                this.textBox11.Text = reader.GetString(reader.GetOrdinal("MaintainInfo"));
-                this.textBox12.Text = reader.GetString(reader.GetOrdinal("RepairList"));
+                this.textBox9.Text = reader.GetString(reader.GetOrdinal("MaintainContractDateStart"));
+                this.textBox10.Text = reader.GetString(reader.GetOrdinal("MaintainContractDateEnd"));
+                this.textBox11.Text = reader.GetString(reader.GetOrdinal("Remark"));
+                this.textBox12.Text = reader.GetString(reader.GetOrdinal("MaintainInfo"));
+                this.textBox13.Text = reader.GetString(reader.GetOrdinal("RepairList"));
             }
         }
 
@@ -82,10 +83,13 @@ namespace manageSystem
             toolsInfo.Torque = this.textBox4.Text;
             toolsInfo.Status = this.textBox5.Text;
             toolsInfo.QualityAssureDate = this.textBox6.Text;
-            toolsInfo.MaintainContractStyle = this.textBox7.Text;
-            toolsInfo.MaintainContractDate = this.textBox8.Text;
-            toolsInfo.Remark = this.textBox9.Text;
-            toolsInfo.RepairList = this.textBox10.Text;
+            toolsInfo.RepoSpareTool = this.textBox7.Text;
+            toolsInfo.MaintainContractStyle = this.textBox8.Text;
+            toolsInfo.MaintainContractDateStart = this.textBox9.Text;
+            toolsInfo.MaintainContractDateEnd = this.textBox10.Text;
+            toolsInfo.Remark = this.textBox11.Text;
+            toolsInfo.RepairList = this.textBox12.Text;
+            toolsInfo.MaintainInfo = this.textBox13.Text;
             return toolsInfo;
         }
 

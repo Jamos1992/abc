@@ -14,7 +14,6 @@ namespace manageSystem
         public SingleInputForm()
         {
             InitializeComponent();
-           // this.dateTimePicker1.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -22,10 +21,15 @@ namespace manageSystem
             ToolsInfo toolsInfo = this.getAllInput();
             if (toolsInfo.SerialNum == "" || toolsInfo.Model == "")
             {
-                this.label11.ForeColor = Color.Red;
-                this.label11.Text = "录入失败，请输入工具序列号和型号";
+                //                this.label11.ForeColor = Color.Red;
+                //                this.label11.Text = "录入失败，请输入工具序列号和型号";
+                MessageBox.Show("录入失败，请输入工具序列号和型号！");
                 return;
-
+            }
+            if (string.Compare(toolsInfo.MaintainContractDateStart, toolsInfo.MaintainContractDateEnd) > 0)
+            {
+                MessageBox.Show("参数输入有误，保养起始日期应小于保养终止日期");
+                return;
             }
             try
             {
@@ -34,12 +38,12 @@ namespace manageSystem
             }
             catch
             {
-                this.label11.ForeColor = Color.Red;
-                this.label11.Text = "录入失败，数据库操作失败";
+//                this.label11.ForeColor = Color.Red;
+//                this.label11.Text = "录入失败，数据库操作失败";
                 return;
             }
             MessageBox.Show("数据录入成功！");
-            this.label11.Text = "录入成功!";
+//            this.label11.Text = "录入成功!";
             foreach(Control c in this.Controls)
             {
                 if (c.GetType() == typeof(TextBox) || c.GetType() == typeof(ComboBox) || c.GetType() == typeof(DateTimePicker))
@@ -61,7 +65,8 @@ namespace manageSystem
             toolsInfo.Status = this.comboBox2.Text;
             toolsInfo.QualityAssureDate = this.dateTimePicker1.Text;
             toolsInfo.MaintainContractStyle = this.textBox7.Text;
-            toolsInfo.MaintainContractDate = this.textBox8.Text;
+            toolsInfo.MaintainContractDateStart = this.dateTimePicker2.Text;
+            toolsInfo.MaintainContractDateEnd = this.dateTimePicker3.Text;
             toolsInfo.Remark = this.textBox9.Text;
             toolsInfo.RepairList = "";
             toolsInfo.MaintainInfo = "";
@@ -76,19 +81,36 @@ namespace manageSystem
 
         private void setDateTimePickerEmpty()
         {
-            this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            this.dateTimePicker1.CustomFormat = " ";
+            foreach(Control c in this.Controls)
+            {
+                if (c.GetType() == typeof(DateTimePicker))
+                {
+                    (c as DateTimePicker).Format = DateTimePickerFormat.Custom;
+                    (c as DateTimePicker).CustomFormat = " ";
+                }
+                
+            }            
         }
 
-        private void setDateTimePickerNormal()
+        private void setDateTimePickerNormal(DateTimePicker dateTimePicker)
         {
-            this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "yyyy-MM-dd";
         }
 
         private void dateTimePicker1_DropDown(object sender, EventArgs e)
         {
-            this.setDateTimePickerNormal();
+            this.setDateTimePickerNormal(dateTimePicker1);
+        }
+
+        private void dateTimePicker2_DropDown(object sender, EventArgs e)
+        {
+            this.setDateTimePickerNormal(dateTimePicker2);
+        }
+
+        private void dateTimePicker3_DropDown(object sender, EventArgs e)
+        {
+            this.setDateTimePickerNormal(dateTimePicker3);
         }
     }
 }

@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label11 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -49,19 +46,15 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(403, 322);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(0, 12);
-            this.label11.TabIndex = 41;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(398, 280);
+            this.button1.Location = new System.Drawing.Point(382, 319);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 40;
@@ -69,28 +62,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(462, 133);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(109, 21);
-            this.textBox7.TabIndex = 39;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(404, 234);
+            this.label8.Location = new System.Drawing.Point(404, 280);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 38;
             this.label8.Text = "备注信息";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(462, 183);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(109, 21);
-            this.textBox8.TabIndex = 37;
             // 
             // label9
             // 
@@ -99,11 +78,11 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(77, 12);
             this.label9.TabIndex = 36;
-            this.label9.Text = "保养合同起止";
+            this.label9.Text = "保养合同起始";
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(462, 230);
+            this.textBox9.Location = new System.Drawing.Point(463, 277);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(109, 21);
             this.textBox9.TabIndex = 35;
@@ -231,20 +210,53 @@
             this.dateTimePicker1.TabIndex = 44;
             this.dateTimePicker1.DropDown += new System.EventHandler(this.dateTimePicker1_DropDown);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(379, 233);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "保养合同终止";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(462, 181);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(109, 21);
+            this.dateTimePicker2.TabIndex = 47;
+            this.dateTimePicker2.DropDown += new System.EventHandler(this.dateTimePicker2_DropDown);
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Location = new System.Drawing.Point(463, 227);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(109, 21);
+            this.dateTimePicker3.TabIndex = 48;
+            this.dateTimePicker3.DropDown += new System.EventHandler(this.dateTimePicker3_DropDown);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(462, 133);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(109, 21);
+            this.textBox7.TabIndex = 39;
+            // 
             // SingleInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(683, 379);
+            this.Controls.Add(this.dateTimePicker3);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label10);
@@ -269,12 +281,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label10;
@@ -291,5 +299,9 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }

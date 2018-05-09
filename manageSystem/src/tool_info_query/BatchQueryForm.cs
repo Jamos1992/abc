@@ -114,7 +114,8 @@ namespace manageSystem
                 toolsInfo.Status = reader.GetString(reader.GetOrdinal("Status"));
                 toolsInfo.QualityAssureDate = reader.GetString(reader.GetOrdinal("QualityAssureDate"));
                 toolsInfo.MaintainContractStyle = reader.GetString(reader.GetOrdinal("MaintainContractStyle"));
-                toolsInfo.MaintainContractDate = reader.GetString(reader.GetOrdinal("MaintainContractDate"));
+                toolsInfo.MaintainContractDateStart = reader.GetString(reader.GetOrdinal("MaintainContractDateStart"));
+                toolsInfo.MaintainContractDateEnd = reader.GetString(reader.GetOrdinal("MaintainContractDateEnd"));
                 toolsInfo.Remark = reader.GetString(reader.GetOrdinal("Remark"));
                 toolsInfo.RepairList = reader.GetString(reader.GetOrdinal("RepairList"));
             }           

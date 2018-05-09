@@ -50,26 +50,28 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(384, 358);
+            this.label11.Location = new System.Drawing.Point(384, 391);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 12);
             this.label11.TabIndex = 89;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(386, 323);
+            this.button2.Location = new System.Drawing.Point(386, 356);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(181, 23);
             this.button2.TabIndex = 91;
@@ -87,7 +89,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(384, 217);
+            this.label13.Location = new System.Drawing.Point(384, 265);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(77, 12);
             this.label13.TabIndex = 90;
@@ -95,7 +97,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(386, 282);
+            this.button1.Location = new System.Drawing.Point(386, 315);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 87;
@@ -113,7 +115,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(408, 182);
+            this.label12.Location = new System.Drawing.Point(408, 230);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 12);
             this.label12.TabIndex = 86;
@@ -163,7 +165,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(408, 140);
+            this.label8.Location = new System.Drawing.Point(408, 188);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 84;
@@ -197,7 +199,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(77, 12);
             this.label9.TabIndex = 81;
-            this.label9.Text = "保养合同起止";
+            this.label9.Text = "保养合同起始";
             // 
             // label5
             // 
@@ -240,13 +242,6 @@
             this.label10.TabIndex = 78;
             this.label10.Text = "保养合同类型";
             // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(467, 94);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 21);
-            this.textBox9.TabIndex = 79;
-            // 
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(163, 272);
@@ -281,7 +276,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(492, 282);
+            this.button3.Location = new System.Drawing.Point(492, 315);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 93;
@@ -289,11 +284,36 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(384, 140);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 12);
+            this.label14.TabIndex = 95;
+            this.label14.Text = "保养合同终止";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(467, 262);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 21);
+            this.textBox13.TabIndex = 94;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(467, 94);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 21);
+            this.textBox9.TabIndex = 79;
+            // 
             // QueryInfoBySNForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 420);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.textBox13);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button2);
@@ -357,12 +377,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox9;
     }
 }

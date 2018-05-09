@@ -9,55 +9,6 @@ using System.Reflection;
 
 namespace manageSystem
 {
-    class Database
-    {
-        OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=d:\workspace\manageSystem\database\Database1.mdb");
-        public Database()
-        {
-            conn.Open();
-            Console.WriteLine("连接数据库成功");
-        }
-
-        public DataRowCollection QueryBySql(string sql)
-        {
-            //获取表1的内容
-            OleDbDataAdapter dbDataAdapter = new OleDbDataAdapter(sql, conn); //创建适配对象
-            DataTable dt = new DataTable(); //新建表对象
-            dbDataAdapter.Fill(dt); //用适配对象填充表对象
-            //foreach (DataRow item in dt.Rows)
-            //{
-            //    Console.WriteLine(item[0] + " | " + item[1] + " | "+item[2]);
-            //}
-            return dt.Rows;
-        }
-
-        public bool InsertBySql(string sql)
-        {
-            //往表1添加一条记录，昵称是LanQ，账号是2545493686
-            OleDbCommand oleDbCommand = new OleDbCommand(sql, conn);
-            int i = oleDbCommand.ExecuteNonQuery(); //返回被修改的数目
-            return i > 0;
-        }
-
-        public bool DeleteBySql(string sql)
-        {
-            //删除昵称为LanQ的记录
-            OleDbCommand oleDbCommand = new OleDbCommand(sql, conn);
-            int i = oleDbCommand.ExecuteNonQuery();
-            return i > 0;
-        }
-
-        public bool UpdateBySql(string sql)
-        {
-            //将表1中昵称为东熊的账号修改成233333
-            OleDbCommand oleDbCommand = new OleDbCommand(sql, conn);
-            int i = oleDbCommand.ExecuteNonQuery();
-            return i > 0;
-        }
-    }
-
-
-
     class SqLiteHelper
     {
 
@@ -374,8 +325,8 @@ namespace manageSystem
 
         public void CreateToolsInfoDb()
         {
-            string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Workstation", "Torque", "Status", "QualityAssureDate", "RepoSpareTool", "MaintainContractStyle", "MaintainContractDate", "Remark", "MaintainInfo", "RepairList" };
-            string[] toolsInfoFeildType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
+            string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Workstation", "Torque", "Status", "QualityAssureDate", "RepoSpareTool", "MaintainContractStyle", "MaintainContractDateStart", "MaintainContractDateEnd", "Remark", "MaintainInfo", "RepairList" };
+            string[] toolsInfoFeildType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "TEXT", "VARCHAR(255)", "VARCHAR(255)", "TEXT","TEXT", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
             this.CreateTable("ToolsInfo", toolsInfoFeildName, toolsInfoFeildType);
         }
 

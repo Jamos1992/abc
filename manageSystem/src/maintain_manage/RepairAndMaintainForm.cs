@@ -54,9 +54,7 @@ namespace manageSystem.src.maintain_manage
             this.treeView1.Nodes[0].ImageIndex = 0;
             this.treeView1.Nodes[0].SelectedImageIndex = 0;
             this.treeView1.Nodes[1].ImageIndex = 1;
-            this.treeView1.Nodes[1].ImageIndex = 1;
-            //Console.Write("node is {0}",treeView1.Nodes.)
-            //treeView1.GetNodeCount();  
+            this.treeView1.Nodes[1].SelectedImageIndex = 1; 
         }
     }
 }

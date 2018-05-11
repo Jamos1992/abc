@@ -20,7 +20,12 @@ namespace manageSystem
         {
 
             this.treeViewQuery.ExpandAll();
-            // this.tabPage2.Width = this.tabControl1.Size.Width / 2;
+            this.treeViewQuery.Nodes[0].ImageIndex = 0;
+            this.treeViewQuery.Nodes[0].SelectedImageIndex = 0;
+            this.treeViewQuery.Nodes[1].ImageIndex = 1;
+            this.treeViewQuery.Nodes[1].SelectedImageIndex = 1;
+            this.treeViewQuery.Nodes[2].ImageIndex = 2;
+            this.treeViewQuery.Nodes[2].SelectedImageIndex = 2;
         }
 
         private void treeViewQuery_AfterSelect(object sender, TreeViewEventArgs e)

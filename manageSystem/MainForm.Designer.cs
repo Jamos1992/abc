@@ -39,6 +39,7 @@
             this.菜单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.驻场人员登记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看驻场人员信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具信息录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,13 +52,14 @@
             this.RecieveManBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.sendMailbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.数据管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.工具数据导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.仓库零件导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具零件信息导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.工具数据导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.仓库零件导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -86,7 +88,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(185, 63);
             this.button5.TabIndex = 12;
-            this.button5.Text = "工具KPI";
+            this.button5.Text = "服务报告管理";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -115,7 +117,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(185, 63);
             this.button2.TabIndex = 9;
-            this.button2.Text = "工具信息查询、导出";
+            this.button2.Text = "巡线On Call记录";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -125,7 +127,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(185, 63);
             this.button1.TabIndex = 8;
-            this.button1.Text = "工具信息录入";
+            this.button1.Text = "工具信息录入、查询";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -157,19 +159,24 @@
             // 驻场人员登记ToolStripMenuItem
             // 
             this.驻场人员登记ToolStripMenuItem.Name = "驻场人员登记ToolStripMenuItem";
-            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.驻场人员登记ToolStripMenuItem.Text = "驻场人员登记";
             // 
             // 查看驻场人员信息ToolStripMenuItem
             // 
             this.查看驻场人员信息ToolStripMenuItem.Name = "查看驻场人员信息ToolStripMenuItem";
-            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.查看驻场人员信息ToolStripMenuItem.Text = "查看驻场人员信息";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(169, 6);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             // 
             // 功能ToolStripMenuItem
@@ -233,14 +240,14 @@
             // RecieveManBtn
             // 
             this.RecieveManBtn.Name = "RecieveManBtn";
-            this.RecieveManBtn.Size = new System.Drawing.Size(180, 22);
+            this.RecieveManBtn.Size = new System.Drawing.Size(136, 22);
             this.RecieveManBtn.Text = "收件人管理";
             this.RecieveManBtn.Click += new System.EventHandler(this.RecieveManBtn_Click);
             // 
             // sendMailbtn
             // 
             this.sendMailbtn.Name = "sendMailbtn";
-            this.sendMailbtn.Size = new System.Drawing.Size(180, 22);
+            this.sendMailbtn.Size = new System.Drawing.Size(136, 22);
             this.sendMailbtn.Text = "发送邮件";
             this.sendMailbtn.Click += new System.EventHandler(this.sendMailbtn_Click);
             // 
@@ -255,12 +262,29 @@
             this.数据管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.数据管理ToolStripMenuItem.Text = "数据管理";
             // 
+            // 工具零件信息导入ToolStripMenuItem
+            // 
+            this.工具零件信息导入ToolStripMenuItem.Name = "工具零件信息导入ToolStripMenuItem";
+            this.工具零件信息导入ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.工具零件信息导入ToolStripMenuItem.Text = "工具零件信息导入";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+            // 
             // 工具数据导出ToolStripMenuItem
             // 
             this.工具数据导出ToolStripMenuItem.Name = "工具数据导出ToolStripMenuItem";
-            this.工具数据导出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.工具数据导出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.工具数据导出ToolStripMenuItem.Text = "工具数据导出";
             this.工具数据导出ToolStripMenuItem.Click += new System.EventHandler(this.工具数据导出ToolStripMenuItem_Click);
+            // 
+            // 仓库零件导出ToolStripMenuItem
+            // 
+            this.仓库零件导出ToolStripMenuItem.Name = "仓库零件导出ToolStripMenuItem";
+            this.仓库零件导出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.仓库零件导出ToolStripMenuItem.Text = "仓库零件导出";
             // 
             // statusStrip1
             // 
@@ -270,27 +294,13 @@
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // 仓库零件导出ToolStripMenuItem
+            // pictureBox1
             // 
-            this.仓库零件导出ToolStripMenuItem.Name = "仓库零件导出ToolStripMenuItem";
-            this.仓库零件导出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.仓库零件导出ToolStripMenuItem.Text = "仓库零件导出";
-            // 
-            // 工具零件信息导入ToolStripMenuItem
-            // 
-            this.工具零件信息导入ToolStripMenuItem.Name = "工具零件信息导入ToolStripMenuItem";
-            this.工具零件信息导入ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.工具零件信息导入ToolStripMenuItem.Text = "工具零件信息导入";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(157, 44);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(363, 50);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -306,6 +316,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -314,6 +325,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,5 +362,6 @@
         private System.Windows.Forms.ToolStripMenuItem 工具零件信息导入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

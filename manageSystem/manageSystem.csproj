@@ -135,10 +135,10 @@
     <Compile Include="src\tool_info_input\BatchInputForm.Designer.cs">
       <DependentUpon>BatchInputForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\tool_info_query\BatchQueryForm.cs">
+    <Compile Include="src\tool_info_input\BatchQueryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\tool_info_query\BatchQueryForm.Designer.cs">
+    <Compile Include="src\tool_info_input\BatchQueryForm.Designer.cs">
       <DependentUpon>BatchQueryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
@@ -169,11 +169,11 @@
     <Compile Include="src\tool_info_query\QueryInfoByModelForm.Designer.cs">
       <DependentUpon>QueryInfoByModelForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\tool_info_query\QueryInfoBySNForm.cs">
+    <Compile Include="src\tool_info_input\SingleQueryInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\tool_info_query\QueryInfoBySNForm.Designer.cs">
-      <DependentUpon>QueryInfoBySNForm.cs</DependentUpon>
+    <Compile Include="src\tool_info_input\SingleQueryInfoForm.Designer.cs">
+      <DependentUpon>SingleQueryInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\tool_info_query\QueryInfoForm.cs">
       <SubType>Form</SubType>
@@ -247,7 +247,7 @@
     <EmbeddedResource Include="src\tool_info_input\BatchInputForm.resx">
       <DependentUpon>BatchInputForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\tool_info_query\BatchQueryForm.resx">
+    <EmbeddedResource Include="src\tool_info_input\BatchQueryForm.resx">
       <DependentUpon>BatchQueryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\tool_info_input\InfoInputForm.resx">
@@ -267,12 +267,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="src\tool_info_query\QueryInfoByModelForm.resx">
       <DependentUpon>QueryInfoByModelForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\tool_info_query\QueryInfoBySNForm.resx">
-      <DependentUpon>QueryInfoBySNForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\tool_info_input\SingleQueryInfoForm.resx">
+      <DependentUpon>SingleQueryInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\tool_info_query\QueryInfoForm.resx">
       <DependentUpon>QueryInfoForm.cs</DependentUpon>
@@ -315,6 +316,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\demarcate_manage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pic\logo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\System.Data.SQLite.Core.1.0.108.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('packages\System.Data.SQLite.Core.1.0.108.0\build\net40\System.Data.SQLite.Core.targets')" />

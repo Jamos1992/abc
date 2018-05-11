@@ -16,14 +16,12 @@ namespace manageSystem
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void inputAllData()
         {
             ToolsInfo toolsInfo = this.getAllInput();
-            if (toolsInfo.SerialNum == "" || toolsInfo.Model == "")
+            if (toolsInfo.SerialNum == "" || toolsInfo.Model == "" || toolsInfo.Workstation == "")
             {
-                //                this.label11.ForeColor = Color.Red;
-                //                this.label11.Text = "录入失败，请输入工具序列号和型号";
-                MessageBox.Show("录入失败，请输入工具序列号和型号！");
+                MessageBox.Show("录入失败，请输入工具序列号、型号及工位信息！");
                 return;
             }
             if (string.Compare(toolsInfo.MaintainContractDateStart, toolsInfo.MaintainContractDateEnd) > 0)
@@ -38,21 +36,22 @@ namespace manageSystem
             }
             catch
             {
-//                this.label11.ForeColor = Color.Red;
-//                this.label11.Text = "录入失败，数据库操作失败";
                 return;
             }
-            MessageBox.Show("数据录入成功！");
-//            this.label11.Text = "录入成功!";
-            foreach(Control c in this.Controls)
+            MessageBox.Show("数据录入成功！");            
+            return;
+        }
+
+        private void clearAllInputText()
+        {
+            foreach (Control c in this.Controls)
             {
                 if (c.GetType() == typeof(TextBox) || c.GetType() == typeof(ComboBox) || c.GetType() == typeof(DateTimePicker))
                 {
                     c.Text = "";
-                }               
+                }
             }
             this.setDateTimePickerEmpty();
-            return;
         }
 
         private ToolsInfo getAllInput()
@@ -111,6 +110,16 @@ namespace manageSystem
         private void dateTimePicker3_DropDown(object sender, EventArgs e)
         {
             this.setDateTimePickerNormal(dateTimePicker3);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.inputAllData();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.clearAllInputText();
         }
     }
 }

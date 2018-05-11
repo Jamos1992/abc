@@ -19,24 +19,6 @@ namespace manageSystem
         public MainForm()
         {
             InitializeComponent();
-            
-            //db.CreateTable("table1", new string[] { "ID", "Name", "Age", "Email" }, new string[] { "INTEGER", "TEXT", "INTEGER", "TEXT" });
-            ////插入两条数据
-            //db.InsertValues("table1", new string[] { "1", "张三", "22", "Zhang@163.com" });
-            //db.InsertValues("table1", new string[] { "2", "李四", "25", "Li4@163.com" });
-            //SQLiteDataReader reader = db.ReadFullTable("table1");
-            //while (reader.Read())
-            //{
-            //    //读取ID
-            //    Log("" + reader.GetInt32(reader.GetOrdinal("ID")));
-            //    //读取Name
-            //    Log("" + reader.GetString(reader.GetOrdinal("Name")));
-            //    //读取Age
-            //    Log("" + reader.GetInt32(reader.GetOrdinal("Age")));
-            //    //读取Email
-            //    Log(reader.GetString(reader.GetOrdinal("Email")));
-            //}
-
         }
 
         static void Log(string s)
@@ -51,14 +33,12 @@ namespace manageSystem
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //this.DialogResult = DialogResult.OK;
             Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             InfoInputForm iif = new InfoInputForm();
-            //this.Hide();
             if (iif.ShowDialog() == DialogResult.OK)
             {
                 this.Show();
@@ -77,25 +57,37 @@ namespace manageSystem
         private void button4_Click(object sender, EventArgs e)
         {
             SpareManageForm smf = new SpareManageForm();
-            smf.Show();
+            if (smf.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             ToolKPIManageForm tkmf = new ToolKPIManageForm();
-            tkmf.Show();
+            if (tkmf.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             RepairAndMaintainForm rmf = new RepairAndMaintainForm();
-            rmf.Show();
+            if (rmf.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
 
         private void RecieveManBtn_Click(object sender, EventArgs e)
         {
             EmailAddressManageForm eamf = new EmailAddressManageForm();
-            eamf.Show(); 
+            if (eamf.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+            } 
         }
 
         private void sendMailbtn_Click(object sender, EventArgs e)
@@ -107,7 +99,10 @@ namespace manageSystem
         private void 工具数据导出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolDataExportForm tdef = new ToolDataExportForm();
-            tdef.Show();
+            if (tdef.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
     }
 }

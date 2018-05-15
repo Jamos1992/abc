@@ -11,6 +11,7 @@ using manageSystem.src.tool_KPI_manage;
 using manageSystem.src.maintain_manage;
 using manageSystem.src;
 using System.Data.SQLite;
+using manageSystem.src.on_call_record;
 
 namespace manageSystem
 {
@@ -47,8 +48,13 @@ namespace manageSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            QueryInfoForm qif = new QueryInfoForm();
-            if (qif.ShowDialog() == DialogResult.OK)
+            //QueryInfoForm qif = new QueryInfoForm();
+            //if (qif.ShowDialog() == DialogResult.OK)
+            //{
+            //    this.Show();
+            //}
+            OnCallForm onCallFrom = new OnCallForm();
+            if (onCallFrom.ShowDialog() == DialogResult.OK)
             {
                 this.Show();
             }

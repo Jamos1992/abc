@@ -62,3 +62,5 @@ D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.xml
 D:\workspace\manageSystem\bin\x86\Debug\System.Data.SQLite.dll.config
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.EmailAddressManageForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.ToolDataExportForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.AddRecordForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.OnCallForm.resources

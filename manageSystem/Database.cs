@@ -307,6 +307,11 @@ namespace manageSystem
             return ExecuteQuery(queryString);
         }
 
+        public SQLiteDataReader ReadTableBySql(string sql)
+        {
+            return ExecuteQuery(sql);
+        }
+
         /// <summary>
         /// 本类log
         /// </summary>
@@ -321,6 +326,7 @@ namespace manageSystem
             this.CreateToolsInfoDb();
             this.CreateEmailAddrDb();
             this.CreateRepoSpareToolDb();
+            this.CreateOnCallRecord();
         }
 
         public void CreateToolsInfoDb()
@@ -342,6 +348,13 @@ namespace manageSystem
             string[] repoSpareToolName = new string[] { "SpareToolModel", "Num","Time", "SerialNum" };
             string[] repoSpareToolType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER","TEXT", "VARCHAR(255)" };
             this.CreateTable("RepoSpareTool", repoSpareToolName, repoSpareToolType);
+        }
+
+        public void CreateOnCallRecord()
+        {
+            string[] onCallRecordName = new string[] { "CallTime", "ArriveTime", "FaultReason", "Detail" };
+            string[] onCallRecordType = new string[] { "TEXT", "TEXT", "VARCHAR(255)", "VARCHAR(255)" };
+            this.CreateTable("OnCallRecord", onCallRecordName, onCallRecordType);
         }
         
     }

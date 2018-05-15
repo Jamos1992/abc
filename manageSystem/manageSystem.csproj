@@ -123,6 +123,18 @@
     <Compile Include="src\maintain_manage\RepairRegisterForm.Designer.cs">
       <DependentUpon>RepairRegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\on-call_record\AddRecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\on-call_record\AddRecordForm.Designer.cs">
+      <DependentUpon>AddRecordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\on-call_record\OnCallForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\on-call_record\OnCallForm.Designer.cs">
+      <DependentUpon>OnCallForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\ToolDataExportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +252,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\maintain_manage\RepairRegisterForm.resx">
       <DependentUpon>RepairRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\on-call_record\AddRecordForm.resx">
+      <DependentUpon>AddRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\on-call_record\OnCallForm.resx">
+      <DependentUpon>OnCallForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ToolDataExportForm.resx">
       <DependentUpon>ToolDataExportForm.cs</DependentUpon>

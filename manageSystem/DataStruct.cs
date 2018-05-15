@@ -35,4 +35,12 @@ namespace manageSystem
         public DateTime Time { get; set; }                          //入库时间
         public string SerialNum { get; set; }                       //工具序列号
     }
+
+    class OnCallRecord
+    {
+        public string CallTime { get; set; }                        //呼叫时间
+        public string ArriveTime { get; set; }                      //到达时间
+        public string FaultReason { get; set; }                     //故障原因
+        public string Detail { get; set; }                          //详细原因
+    }
 }

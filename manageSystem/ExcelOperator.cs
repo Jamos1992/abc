@@ -112,5 +112,81 @@ namespace manageSystem
                 return false;
             }
         }
+
+        public bool CreateAndSaveOnCallRecordToExcel(object obj, string filePath)
+        {
+            try
+            {
+                String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
+                //实例化一个Oledbconnection类(实现了IDisposable,要using)
+                OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+                ole_conn.Open();
+                OleDbCommand ole_cmd = ole_conn.CreateCommand();
+                ole_cmd.CommandText = Declare.CreateOnCallRecordExcelString;
+                ole_cmd.ExecuteNonQuery();
+                PropertyInfo[] propertys = obj.GetType().GetProperties();
+                int i = 0;
+                foreach (PropertyInfo pinfo in propertys)
+                {
+                    if (i == 0)
+                    {
+                        ole_cmd.CommandText = "insert into 巡线记录(客户呼叫时间,达到现场时间,故障工具,故障原因,备注) values(" + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    else
+                    {
+                        ole_cmd.CommandText += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    i++;
+                }
+                ole_cmd.CommandText += ")";
+                ole_cmd.ExecuteNonQuery();
+                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                return true;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+        }
+
+        public bool CreateAndSaveRepoSpareToolToExcel(object obj, string filePath)
+        {
+            try
+            {
+                String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
+                //实例化一个Oledbconnection类(实现了IDisposable,要using)
+                OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+                ole_conn.Open();
+                OleDbCommand ole_cmd = ole_conn.CreateCommand();
+                ole_cmd.CommandText = Declare.CreatRepoSpareToolExcelString;
+                ole_cmd.ExecuteNonQuery();
+                PropertyInfo[] propertys = obj.GetType().GetProperties();
+                int i = 0;
+                foreach (PropertyInfo pinfo in propertys)
+                {
+                    if (i == 0)
+                    {
+                        ole_cmd.CommandText = "insert into 仓库备件(备件型号,个数,入库时间,备件序列号) values(" + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    else
+                    {
+                        ole_cmd.CommandText += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    i++;
+                }
+                ole_cmd.CommandText += ")";
+                ole_cmd.ExecuteNonQuery();
+                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                return true;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+        }
     }
 }

@@ -64,3 +64,4 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.EmailAddressManageForm.
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.ToolDataExportForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.AddRecordForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.OnCallForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.spare_manage.RepoSpareListForm.resources

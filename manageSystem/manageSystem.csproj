@@ -135,6 +135,12 @@
     <Compile Include="src\on-call_record\OnCallForm.Designer.cs">
       <DependentUpon>OnCallForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\spare_manage\RepoSpareListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\spare_manage\RepoSpareListForm.Designer.cs">
+      <DependentUpon>RepoSpareListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\ToolDataExportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\on-call_record\OnCallForm.resx">
       <DependentUpon>OnCallForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\spare_manage\RepoSpareListForm.resx">
+      <DependentUpon>RepoSpareListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ToolDataExportForm.resx">
       <DependentUpon>ToolDataExportForm.cs</DependentUpon>

@@ -346,14 +346,14 @@ namespace manageSystem
         public void CreateRepoSpareToolDb()
         {
             string[] repoSpareToolName = new string[] { "SpareToolModel", "Num","Time", "SerialNum" };
-            string[] repoSpareToolType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER","TEXT", "VARCHAR(255)" };
+            string[] repoSpareToolType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER", "DATETIME", "VARCHAR(255)" };
             this.CreateTable("RepoSpareTool", repoSpareToolName, repoSpareToolType);
         }
 
         public void CreateOnCallRecord()
         {
-            string[] onCallRecordName = new string[] { "CallTime", "ArriveTime", "FaultReason", "Detail" };
-            string[] onCallRecordType = new string[] { "TEXT", "TEXT", "VARCHAR(255)", "VARCHAR(255)" };
+            string[] onCallRecordName = new string[] { "CallTime", "ArriveTime", "FaultToolName","FaultReason", "Detail" };
+            string[] onCallRecordType = new string[] { "DATETIME", "DATETIME", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
             this.CreateTable("OnCallRecord", onCallRecordName, onCallRecordType);
         }
         

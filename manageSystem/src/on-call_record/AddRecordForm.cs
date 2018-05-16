@@ -18,19 +18,13 @@ namespace manageSystem.src.on_call_record
 
         private void AddRecordForm_Load(object sender, EventArgs e)
         {
-            setDateTimePickerEmpty();
+            setDateTimePickerEmpty(dateTimePicker1);
+            setDateTimePickerEmpty(dateTimePicker2);
         }
-        private void setDateTimePickerEmpty()
+        private void setDateTimePickerEmpty(Control c)
         {
-            foreach (Control c in this.Controls)
-            {
-                if (c.GetType() == typeof(DateTimePicker))
-                {
-                    (c as DateTimePicker).Format = DateTimePickerFormat.Custom;
-                    (c as DateTimePicker).CustomFormat = " ";
-                }
-
-            }
+            (c as DateTimePicker).Format = DateTimePickerFormat.Custom;
+            (c as DateTimePicker).CustomFormat = " ";
         }
         private void setDateTimePickerNormal(DateTimePicker dateTimePicker)
         {
@@ -77,6 +71,7 @@ namespace manageSystem.src.on_call_record
             OnCallRecord onCallRecord = new OnCallRecord();
             onCallRecord.CallTime = dateTimePicker1.Text;
             onCallRecord.ArriveTime = dateTimePicker2.Text;
+            onCallRecord.FaultToolName = textBox1.Text;
             onCallRecord.FaultReason = comboBox1.Text;
             onCallRecord.Detail = richTextBox1.Text;
             return onCallRecord;

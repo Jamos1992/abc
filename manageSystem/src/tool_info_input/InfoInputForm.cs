@@ -28,7 +28,7 @@ namespace manageSystem
         {
             InitializeComponent();
             MaximizeBox = false;
-            MinimizeBox = false; 
+            MinimizeBox = false;
         }
 
         private void InfoInputForm_Load(object sender, EventArgs e)

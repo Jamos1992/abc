@@ -323,39 +323,48 @@ namespace manageSystem
 
         public void CeateAllTable()
         {
-            this.CreateToolsInfoDb();
-            this.CreateEmailAddrDb();
-            this.CreateRepoSpareToolDb();
-            this.CreateOnCallRecord();
+            CreateToolsInfoDb();
+            CreateEmailAddrDb();
+            CreateRepoSpareToolDb();
+            CreateOnCallRecord();
+            CreateMaintainManageInfo();
         }
 
         public void CreateToolsInfoDb()
         {
             string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Workstation", "Torque", "Status", "QualityAssureDate", "RepoSpareTool", "MaintainContractStyle", "MaintainContractDateStart", "MaintainContractDateEnd", "Remark", "MaintainInfo", "RepairList" };
             string[] toolsInfoFeildType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "TEXT", "VARCHAR(255)", "VARCHAR(255)", "TEXT","TEXT", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
-            this.CreateTable("ToolsInfo", toolsInfoFeildName, toolsInfoFeildType);
+            CreateTable("ToolsInfo", toolsInfoFeildName, toolsInfoFeildType);
         }
 
         public void CreateEmailAddrDb()
         {
             string[] emailAddrName = new string[] { "ID","EmailAddr" };
             string[] emailAddrType = new string[] { "INTEGER PRIMARY KEY AUTOINCREMENT", "VARCHAR(255) UNIQUE" };
-            this.CreateTable("EmailAddress", emailAddrName, emailAddrType);
+            CreateTable("EmailAddress", emailAddrName, emailAddrType);
         }
 
         public void CreateRepoSpareToolDb()
         {
             string[] repoSpareToolName = new string[] { "SpareToolModel", "Num","Time", "SerialNum" };
             string[] repoSpareToolType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER", "DATETIME", "VARCHAR(255)" };
-            this.CreateTable("RepoSpareTool", repoSpareToolName, repoSpareToolType);
+            CreateTable("RepoSpareTool", repoSpareToolName, repoSpareToolType);
         }
 
         public void CreateOnCallRecord()
         {
             string[] onCallRecordName = new string[] { "CallTime", "ArriveTime", "FaultToolName","FaultReason", "Detail" };
             string[] onCallRecordType = new string[] { "DATETIME", "DATETIME", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
-            this.CreateTable("OnCallRecord", onCallRecordName, onCallRecordType);
+            CreateTable("OnCallRecord", onCallRecordName, onCallRecordType);
         }
-        
+
+        public void CreateMaintainManageInfo()
+        {
+            string[] MaintainManageInfoName = new string[] { "ToolModeName", "ToolSerialName", "SendFixTime", "Detail", "Status" };
+            string[] MaintainManageInfoType = new string[] { "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "DATETIME", "VARCHAR(255)" };
+            CreateTable("MaintainManageInfo", MaintainManageInfoName, MaintainManageInfoType);
+        }
+
+
     }
 }

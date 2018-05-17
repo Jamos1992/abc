@@ -13,5 +13,10 @@ namespace manageSystem
         public static string CreatRepoSpareToolExcelString = "CREATE TABLE 仓库备件 ([备件型号] VarChar,[个数] Integer,[入库时间] VarChar,[备件序列号] VarChar)";
         public static string EmailAddrFrom = "fsr_123@163.com";
         public static string EmailAddrPasswd = "fsr18942523093";
+
+        //工具维修状态
+        public static string Repairing = "repairing";
+        public static string RepairFinished = "repairFinished";
+        public static string Suspend = "suspend";
     }
 }

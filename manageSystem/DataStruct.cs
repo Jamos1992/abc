@@ -44,4 +44,13 @@ namespace manageSystem
         public string FaultReason { get; set; }                     //故障原因
         public string Detail { get; set; }                          //详细原因
     }
+
+    class MaintainManageInfo
+    {
+        public string ToolModeName { get; set; }                    //工具型号
+        public string ToolSerialName { get; set; }                  //工具序列号
+        public string SendFixTime { get; set; }                     //送修时间
+        public string Detail { get; set; }                          //送修描述
+        public string Status { get; set; }                          //工具维修状态
+    }
 }

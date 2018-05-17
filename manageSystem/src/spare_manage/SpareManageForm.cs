@@ -29,6 +29,8 @@ namespace manageSystem
         public SpareManageForm()
         {
             InitializeComponent();
+            MaximizeBox = false;
+            MinimizeBox = false;
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)

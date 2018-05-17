@@ -90,7 +90,6 @@ namespace manageSystem
                 
             }            
         }
-
         private void setDateTimePickerNormal(DateTimePicker dateTimePicker)
         {
             dateTimePicker.Format = DateTimePickerFormat.Custom;

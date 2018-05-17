@@ -65,3 +65,4 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.ToolDataExportForm.reso
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.AddRecordForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.OnCallForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.spare_manage.RepoSpareListForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.RepairManageForm.resources

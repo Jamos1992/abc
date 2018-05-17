@@ -15,7 +15,7 @@ namespace manageSystem.src.spare_manage
         public RepoSpareListForm()
         {
             InitializeComponent();
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             setDateTimePickerEmpty(dateTimePicker1);
             setDateTimePickerEmpty(dateTimePicker2);

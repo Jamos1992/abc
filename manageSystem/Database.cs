@@ -361,7 +361,7 @@ namespace manageSystem
         public void CreateMaintainManageInfo()
         {
             string[] MaintainManageInfoName = new string[] { "ToolModeName", "ToolSerialName", "SendFixTime", "Detail", "Status" };
-            string[] MaintainManageInfoType = new string[] { "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "DATETIME", "VARCHAR(255)" };
+            string[] MaintainManageInfoType = new string[] { "VARCHAR(255)", "VARCHAR(255)", "DATETIME", "VARCHAR(255)", "VARCHAR(255)" };
             CreateTable("MaintainManageInfo", MaintainManageInfoName, MaintainManageInfoType);
         }
 

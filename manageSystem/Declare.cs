@@ -15,8 +15,8 @@ namespace manageSystem
         public static string EmailAddrPasswd = "fsr18942523093";
 
         //工具维修状态
-        public static string Repairing = "repairing";
-        public static string RepairFinished = "repairFinished";
-        public static string Suspend = "suspend";
+        public static string Repairing = "待维修";
+        public static string RepairFinished = "已完成";
+        public static string Suspend = "挂起";
     }
 }

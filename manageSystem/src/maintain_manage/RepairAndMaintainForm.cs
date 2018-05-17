@@ -57,7 +57,8 @@ namespace manageSystem.src.maintain_manage
                     break;
 
                 case "工具维修":
-                    addForm2Panel(new RepairOperatorForm(), tableLayoutPanel1, ref e, singleInputHint);
+                    addForm2Panel(new RepairManageForm(), tableLayoutPanel1, ref e, singleInputHint);
+                    //addForm2Panel(new RepairOperatorForm(), tableLayoutPanel1, ref e, singleInputHint);
                     //RepairOperatorForm rof = new RepairOperatorForm();
                     //rof.Text = e.Node.Text;
                     //rof.TopLevel = false;

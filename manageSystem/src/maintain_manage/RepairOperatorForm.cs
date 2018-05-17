@@ -15,6 +15,7 @@ namespace manageSystem.src.maintain_manage
         public RepairOperatorForm()
         {
             InitializeComponent();
+            comboBox1.Text = RepairManageForm.ToolSerialName;
         }
 
         private string[] getHintFromDb()

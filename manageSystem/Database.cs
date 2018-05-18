@@ -312,6 +312,11 @@ namespace manageSystem
             return ExecuteQuery(sql);
         }
 
+        public SQLiteDataReader UpdateTableBySql(string sql)
+        {
+            return ExecuteQuery(sql);
+        }
+
         /// <summary>
         /// 本类log
         /// </summary>
@@ -346,8 +351,8 @@ namespace manageSystem
 
         public void CreateRepoSpareToolDb()
         {
-            string[] repoSpareToolName = new string[] { "SpareToolModel", "Num","Time", "SerialNum" };
-            string[] repoSpareToolType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER", "DATETIME", "VARCHAR(255)" };
+            string[] repoSpareToolName = new string[] { "SpareToolModel", "Num","Time" };
+            string[] repoSpareToolType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER", "DATETIME" };
             CreateTable("RepoSpareTool", repoSpareToolName, repoSpareToolType);
         }
 

@@ -91,12 +91,12 @@ namespace manageSystem.src.spare_manage
             dataGridView1.Columns["SpareToolModel"].HeaderText = "仓库备件型号";
             dataGridView1.Columns["Num"].HeaderText = "个数";
             dataGridView1.Columns["Time"].HeaderText = "入库时间";
-            dataGridView1.Columns["SerialNum"].HeaderText = "备件序列号";
+//            dataGridView1.Columns["SerialNum"].HeaderText = "备件序列号";
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns[0].FillWeight = 25;
-            dataGridView1.Columns[1].FillWeight = 25;
-            dataGridView1.Columns[2].FillWeight = 25;
-            dataGridView1.Columns[3].FillWeight = 25;
+            dataGridView1.Columns[0].FillWeight = 30;
+            dataGridView1.Columns[1].FillWeight = 30;
+            dataGridView1.Columns[2].FillWeight = 40;
+//            dataGridView1.Columns[3].FillWeight = 25;
             //dataGridView1.Columns[2].ReadOnly = false;
             //dataGridView1.Columns[3].ReadOnly = false;
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
@@ -175,7 +175,7 @@ namespace manageSystem.src.spare_manage
                     SpareToolModel = dataGridView1.Rows[i].Cells[0].Value.ToString(),
                     Num = int.Parse(dataGridView1.Rows[i].Cells[1].Value.ToString()),
                     Time = dataGridView1.Rows[i].Cells[2].Value.ToString(),
-                    SerialNum = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+//                    SerialNum = dataGridView1.Rows[i].Cells[3].Value.ToString(),
                 });
             }
             return ktls.ToArray();

@@ -29,7 +29,7 @@ namespace manageSystem
             repoSpareTool.SpareToolModel = txtBox.Text;
             repoSpareTool.Num = (int)upDown.Value;
             repoSpareTool.Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            repoSpareTool.SerialNum = "";
+           // repoSpareTool.SerialNum = "";
             return repoSpareTool;
         }
 

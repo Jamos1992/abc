@@ -146,12 +146,12 @@ namespace manageSystem.src.maintain_manage
 
         private void gotoRepair_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ToolSerialName = getSerialNumFromGrid();
             RepairOperatorForm repairOperatorForm = new RepairOperatorForm();
             if (repairOperatorForm.ShowDialog() == DialogResult.OK)
             {
                 Show();
             }
-            ToolSerialName = getSerialNumFromGrid();
         }
 
         private string getSerialNumFromGrid()

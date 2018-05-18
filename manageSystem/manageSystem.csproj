@@ -129,6 +129,7 @@
     <Compile Include="src\maintain_manage\RepairRegisterForm.Designer.cs">
       <DependentUpon>RepairRegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\maintain_manage\SpareToolConsume.cs" />
     <Compile Include="src\on-call_record\AddRecordForm.cs">
       <SubType>Form</SubType>
     </Compile>

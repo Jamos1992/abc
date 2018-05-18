@@ -30,8 +30,7 @@
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("备件信息录入");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("仓库备件清单");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("工具零备件查询");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("建议采购备件查询");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("建议采购备件查询");
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -106,15 +105,12 @@
             treeNode1.Text = "备件信息录入";
             treeNode2.Name = "节点1";
             treeNode2.Text = "仓库备件清单";
-            treeNode3.Name = "节点2";
-            treeNode3.Text = "工具零备件查询";
-            treeNode4.Name = "节点3";
-            treeNode4.Text = "建议采购备件查询";
+            treeNode3.Name = "节点3";
+            treeNode3.Text = "建议采购备件查询";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
-            treeNode3,
-            treeNode4});
+            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(172, 404);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);

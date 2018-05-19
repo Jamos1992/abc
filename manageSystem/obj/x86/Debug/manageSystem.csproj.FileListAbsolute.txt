@@ -67,3 +67,5 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.OnCallFo
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.spare_manage.RepoSpareListForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.RepairManageForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.AddSpareToolForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.AddDemarcateForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateManageForm.resources

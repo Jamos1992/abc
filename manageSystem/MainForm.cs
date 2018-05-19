@@ -12,6 +12,7 @@ using manageSystem.src.maintain_manage;
 using manageSystem.src;
 using System.Data.SQLite;
 using manageSystem.src.on_call_record;
+using manageSystem.src.demarcate_manage;
 
 namespace manageSystem
 {
@@ -108,6 +109,15 @@ namespace manageSystem
             if (tdef.ShowDialog() == DialogResult.OK)
             {
                 this.Show();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DemarcateManageForm demarcateManageForm = new DemarcateManageForm();
+            if (demarcateManageForm.ShowDialog() == DialogResult.OK)
+            {
+                Show();
             }
         }
     }

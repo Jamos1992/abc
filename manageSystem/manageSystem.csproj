@@ -99,6 +99,18 @@
     <Compile Include="Declare.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="ExcelOperator.cs" />
+    <Compile Include="src\demarcate_manage\AddDemarcateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\AddDemarcateForm.Designer.cs">
+      <DependentUpon>AddDemarcateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateManageForm.Designer.cs">
+      <DependentUpon>DemarcateManageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\EmailAddressManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,6 +272,12 @@
     <Compile Include="src\tool_KPI_manage\ToolKPIManageForm.Designer.cs">
       <DependentUpon>ToolKPIManageForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="src\demarcate_manage\AddDemarcateForm.resx">
+      <DependentUpon>AddDemarcateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\DemarcateManageForm.resx">
+      <DependentUpon>DemarcateManageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\EmailAddressManageForm.resx">
       <DependentUpon>EmailAddressManageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -360,9 +378,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\demarcate_manage\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="pic\logo.jpg" />
   </ItemGroup>

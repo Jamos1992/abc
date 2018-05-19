@@ -188,5 +188,82 @@ namespace manageSystem
                 return false;
             }
         }
+
+        public bool CreateAndSaveMaintainManageInfoToExcel(object obj, string filePath)
+        {
+            try
+            {
+                String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
+                //实例化一个Oledbconnection类(实现了IDisposable,要using)
+                OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+                ole_conn.Open();
+                OleDbCommand ole_cmd = ole_conn.CreateCommand();
+                ole_cmd.CommandText = Declare.CreatMaintainManageInfoExcelString;
+                ole_cmd.ExecuteNonQuery();
+                PropertyInfo[] propertys = obj.GetType().GetProperties();
+                int i = 0;
+                foreach (PropertyInfo pinfo in propertys)
+                {
+                    if (i == 0)
+                    {
+                        ole_cmd.CommandText = "insert into 工具维修信息(工具型号,工具序列号,送修时间,工具维修状态,送修描述) values(" + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    else
+                    {
+                        ole_cmd.CommandText += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    i++;
+                }
+                ole_cmd.CommandText += ")";
+                ole_cmd.ExecuteNonQuery();
+                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                return true;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+        }
+
+        public bool SaveDataMaintainManageInfoToExcel(object obj, string filePath)
+        {
+            try
+            {
+                String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;IMEX=2'";
+                //实例化一个Oledbconnection类(实现了IDisposable,要using)
+                OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+                ole_conn.Open();
+                OleDbCommand ole_cmd = ole_conn.CreateCommand();
+                PropertyInfo[] propertys = obj.GetType().GetProperties();
+                int i = 0;
+                foreach (PropertyInfo pinfo in propertys)
+                {
+                    if (i == 0)
+                    {
+                        ole_cmd.CommandText = "insert into 工具维修信息(工具型号,工具序列号,送修时间,工具维修状态,送修描述) values(" + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    else
+                    {
+                        ole_cmd.CommandText += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                    }
+                    i++;
+                }
+                ole_cmd.CommandText += ")";
+                ole_cmd.ExecuteNonQuery();
+                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                return true;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            finally
+            {
+            }
+        }
     }
 }

@@ -37,9 +37,9 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gotoRepair_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -153,12 +153,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gotoRepair_ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // gotoRepair_ToolStripMenuItem
             // 
             this.gotoRepair_ToolStripMenuItem.Name = "gotoRepair_ToolStripMenuItem";
-            this.gotoRepair_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gotoRepair_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.gotoRepair_ToolStripMenuItem.Text = "进入维修";
             this.gotoRepair_ToolStripMenuItem.Click += new System.EventHandler(this.gotoRepair_ToolStripMenuItem_Click);
             // 

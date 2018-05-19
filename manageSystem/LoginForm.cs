@@ -17,16 +17,6 @@ namespace manageSystem
             InitializeComponent();
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (this.textBox2.Text == "")
@@ -36,12 +26,11 @@ namespace manageSystem
                 return;
             }
 
-            MainForm mf = new MainForm();
-            this.Hide();
-            //mf.Show();
-            if (mf.ShowDialog() == DialogResult.OK)
+            MainForm mainForm = new MainForm();
+            Hide();
+            if (mainForm.ShowDialog() == DialogResult.OK)
             {
-                this.Show();
+                Show();
             }
         }
     }

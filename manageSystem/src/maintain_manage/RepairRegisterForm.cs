@@ -55,6 +55,8 @@ namespace manageSystem.src.maintain_manage
             maintainManageInfo.SendFixTime = dateTimePicker1.Text;
             maintainManageInfo.Detail = richTextBox1.Text;
             maintainManageInfo.Status = Declare.Repairing;
+            maintainManageInfo.UsedOtherSpareToolInfo = null;
+            maintainManageInfo.UsedRepoSpareToolInfo = null;
             return maintainManageInfo;
         }
         private void inputAllData()
@@ -68,19 +70,29 @@ namespace manageSystem.src.maintain_manage
             try
             {
                 SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-                SQLiteDataReader reader = db.ReadTable("MaintainManageInfo", new string[] { "*" }, new string[] { "ToolSerialName", "Status" }, new string[] { "=", "!=" }, new string[] { "'" + maintainManageInfo.ToolSerialName + "'", "'" + Declare.RepairFinished + "'" });
-                if(reader != null && reader.HasRows)
+                SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName from MaintainManageInfo where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and Status='" + maintainManageInfo.Status + "'");
+                //SQLiteDataReader reader = db.ReadTable("MaintainManageInfo", new string[] { "*" }, new string[] { "ToolSerialName", "Status" }, new string[] { "=", "=" }, new string[] { "'" + maintainManageInfo.ToolSerialName + "'", "'" + Declare.Repairing + "'" });
+                if (reader == null) MessageBox.Show("111");
+                if (reader.Read())
+                {
+                    Console.WriteLine(reader["ToolSerialName"].ToString());
+                }
+                
+                if (reader != null) MessageBox.Show("222"+reader.HasRows.ToString());
+                if (reader != null && reader.HasRows)
                 {
                     MessageBox.Show("登记失败，该工具已经在维修中！");
                     return;
                 }
                 db.InsertValuesByStruct("MaintainManageInfo", maintainManageInfo);
+                reader.Close();
+                db.CloseConnection();
             }
             catch
             {
                 return;
             }
-            MessageBox.Show("数据录入成功！");
+            MessageBox.Show("数据录入成功！");            
             return;
         }
 

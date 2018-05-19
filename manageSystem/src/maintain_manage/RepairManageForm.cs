@@ -60,12 +60,13 @@ namespace manageSystem.src.maintain_manage
             dataGridView1.Columns[4].FillWeight = 20;
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
+            if (dataGridView1.Rows.Count > 0) dataGridView1.Rows[0].Selected = false;
         }
 
         private void RepairManageForm_Load(object sender, EventArgs e)
         {
             SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo");
+            SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
             if (reader == null || !reader.HasRows) return;
             BindData2Grid(reader);
         }
@@ -77,7 +78,7 @@ namespace manageSystem.src.maintain_manage
             string sql = "select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo where";
             if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
             {
-                reader = db.ReadFullTable("MaintainManageInfo");
+                reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
                 if (reader == null) return;
             }
             else
@@ -85,6 +86,7 @@ namespace manageSystem.src.maintain_manage
                 if (radioButton1.Checked) sql += " Status='" + Declare.Repairing + "'";
                 if (radioButton2.Checked) sql += " Status='" + Declare.Suspend + "'";
                 if (radioButton3.Checked) sql += " Status='" + Declare.RepairFinished + "'";
+                sql += " order by SendFixTime desc";
                 reader = db.ReadTableBySql(sql);
             }
             if (reader == null || !reader.HasRows)
@@ -107,15 +109,21 @@ namespace manageSystem.src.maintain_manage
             {
                 ExcelOperator excel = new ExcelOperator();
                 int i = 0;
+                OutputStruct outputStruct = new OutputStruct();
                 foreach (MaintainManageInfo maintainManageInfo in GetMaintainManageInfoFromGrid())
                 {
                     if (maintainManageInfo == null)
                     {
                         continue;
                     }
+                    outputStruct.ToolModeName = maintainManageInfo.ToolModeName;
+                    outputStruct.ToolSerialName = maintainManageInfo.ToolSerialName;
+                    outputStruct.SendFixTime = maintainManageInfo.SendFixTime;
+                    outputStruct.Status = maintainManageInfo.Status;
+                    outputStruct.Detail = maintainManageInfo.Detail;
                     if (i == 0)
                     {
-                        if (excel.CreateAndSaveRepoSpareToolToExcel(maintainManageInfo, saveFileDialog1.FileName))
+                        if (excel.CreateAndSaveMaintainManageInfoToExcel(outputStruct, saveFileDialog1.FileName))
                         {
                             i++;
                             MessageBox.Show("导出Excel成功！");
@@ -128,7 +136,7 @@ namespace manageSystem.src.maintain_manage
                     }
                     else
                     {
-                        if (excel.SaveDataTableToExcel(maintainManageInfo, saveFileDialog1.FileName))
+                        if (excel.SaveDataMaintainManageInfoToExcel(outputStruct, saveFileDialog1.FileName))
                         {
                             MessageBox.Show("导出Excel成功！");
                         }
@@ -145,19 +153,12 @@ namespace manageSystem.src.maintain_manage
 
         private void gotoRepair_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
-            {
-                if (radioButton3.Checked)
-                {
-                    contextMenuStrip1.Enabled = false;
-                    return;
-                }
-            }
             ToolSerialName = getSerialNumFromGrid();
             Status = getStatusFromGrid();
             RepairOperatorForm repairOperatorForm = new RepairOperatorForm();
             if (repairOperatorForm.ShowDialog() == DialogResult.OK)
             {
+                button1_Click(sender, e);
                 Show();
             }
         }
@@ -173,5 +174,26 @@ namespace manageSystem.src.maintain_manage
             if (dataGridView1.SelectedRows.Count == 0) return null;
             return dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (getStatusFromGrid() == Declare.RepairFinished)
+            {
+                contextMenuStrip1.Enabled = false;
+            }
+            else
+            {
+                contextMenuStrip1.Enabled = true;
+            }
+        }
+    }
+
+    class OutputStruct
+    {
+        public string ToolModeName { get; set; }                    //工具型号
+        public string ToolSerialName { get; set; }                  //工具序列号
+        public string SendFixTime { get; set; }                     //送修时间
+        public string Detail { get; set; }                          //送修描述
+        public string Status { get; set; }                          //工具维修状态
     }
 }

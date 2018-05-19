@@ -26,15 +26,26 @@ namespace manageSystem.src.maintain_manage
         {
             //确保所有的备件信息都是正确的！
             if (maintainManageInfo.UsedRepoSpareToolInfo == null) return null;
-            foreach (var item in maintainManageInfo.UsedRepoSpareToolInfo)
+            Error error = CheckSpareToolName(maintainManageInfo);
+            if(error != null)
             {
-                Error error = caculateSpareToolNum(item.Key, item.Value);
-                if (error.msg != null) return error;
-            }
+                return error;
+            }          
             //在上一步确认后，再进行更新数据库操作，因为这个操作应该是原子的
             foreach(var item in maintainManageInfo.UsedRepoSpareToolInfo)
             {
-                Error error = updateRepoSpareToolDb(item.Key,item.Value, caculateSpareToolNum(item.Key, item.Value).num);
+                error = updateRepoSpareToolDb(item.Key,item.Value, caculateSpareToolNum(item.Key, item.Value).num);
+                if (error.msg != null) return error;
+            }
+            return null;
+        }
+
+        public Error CheckSpareToolName(MaintainManageInfo maintainManageInfo)
+        {
+            if (maintainManageInfo.UsedRepoSpareToolInfo == null) return null;
+            foreach (var item in maintainManageInfo.UsedRepoSpareToolInfo)
+            {
+                Error error = caculateSpareToolNum(item.Key, item.Value);
                 if (error.msg != null) return error;
             }
             return null;

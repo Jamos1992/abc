@@ -66,12 +66,19 @@ namespace manageSystem.src.maintain_manage
             if (maintainManageInfo == null) return;
             maintainManageInfo.SuspendTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             maintainManageInfo.Status = Declare.Suspend;
-            Error error = spareToolConsume.UpdateMaintainManageInfo(maintainManageInfo);
+            Error error = spareToolConsume.CheckSpareToolName(maintainManageInfo);
+            if(error != null)
+            {
+                MessageBox.Show(error.msg);
+                return;
+            }
+            error = spareToolConsume.UpdateMaintainManageInfo(maintainManageInfo);
             if (error == null)
             {
                 error = spareToolConsume.UpdateRepoSpareToolDb(maintainManageInfo);
                 if (error == null)
                 {
+                    DialogResult = DialogResult.OK;
                     Close();
                 }
                 else
@@ -114,14 +121,26 @@ namespace manageSystem.src.maintain_manage
         {
             MaintainManageInfo maintainManageInfo = getAllInput();
             if (maintainManageInfo == null) return;
+            if(textBox1.Text == "" && textBox2.Text == "")
+            {
+                MessageBox.Show("未使用任何零件，无法完成维修！");
+                return;
+            }
             maintainManageInfo.SuspendTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             maintainManageInfo.Status = Declare.RepairFinished;
-            Error error = spareToolConsume.UpdateMaintainManageInfo(maintainManageInfo);
+            Error error = spareToolConsume.CheckSpareToolName(maintainManageInfo);
+            if (error != null)
+            {
+                MessageBox.Show(error.msg);
+                return;
+            }
+            error = spareToolConsume.UpdateMaintainManageInfo(maintainManageInfo);
             if (error == null)
             {
                 error = spareToolConsume.UpdateRepoSpareToolDb(maintainManageInfo);
                 if (error == null)
                 {
+                    DialogResult = DialogResult.OK;
                     Close();
                 }
                 else
@@ -157,6 +176,58 @@ namespace manageSystem.src.maintain_manage
             textBox1.Enabled = false;
             textBox2.Enabled = false;
             setAllInputWhenSuspendBefore();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddSpareToolForm addSpareToolForm = new AddSpareToolForm();
+            addSpareToolForm.setFormTextValue += new setTextValue(textBox1_setFormTextValue);
+            addSpareToolForm.ShowDialog();
+        }
+
+        void textBox1_setFormTextValue(string value,int num)
+        {
+            if(textBox1.Text == "")
+            {
+                textBox1.Text += value + ":" + num.ToString();
+                return;
+            }
+            textBox1.Text += ", "+ value + ":" + num.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "") return;
+            string[] kvList = textBox1.Text.Split(',');
+            List<string> list = kvList.ToList<string>();
+            list.RemoveAt(list.Count - 1);
+            textBox1.Text = string.Join(",", list.ToArray());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AddSpareToolForm addSpareToolForm = new AddSpareToolForm();
+            addSpareToolForm.setFormTextValue += new setTextValue(textBox2_setFormTextValue);
+            addSpareToolForm.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "") return;
+            string[] kvList = textBox2.Text.Split(',');
+            List<string> list = kvList.ToList<string>();
+            list.RemoveAt(list.Count - 1);
+            textBox2.Text = string.Join(",", list.ToArray());
+        }
+
+        void textBox2_setFormTextValue(string value, int num)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.Text += value + ":" + num.ToString();
+                return;
+            }
+            textBox2.Text += ", " + value + ":" + num.ToString();
         }
     }
 }

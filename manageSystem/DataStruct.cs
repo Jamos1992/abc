@@ -56,5 +56,11 @@ namespace manageSystem
         public string Status { get; set; }                          //工具维修状态
         public Dictionary<string, int> UsedRepoSpareToolInfo { get; set; }        //消耗仓库备件的信息
         public Dictionary<string, int> UsedOtherSpareToolInfo { get; set; }       //消耗其他备件的信息
+
+        public MaintainManageInfo(){
+            UsedRepoSpareToolInfo = new Dictionary<string, int>();
+            UsedOtherSpareToolInfo = new Dictionary<string, int>();
+        }
+            
     }
 }

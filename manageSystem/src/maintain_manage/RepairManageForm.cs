@@ -13,6 +13,7 @@ namespace manageSystem.src.maintain_manage
     public partial class RepairManageForm : Form
     {
         public static string ToolSerialName;
+        public static string Status;
         public RepairManageForm()
         {
             InitializeComponent();
@@ -46,8 +47,8 @@ namespace manageSystem.src.maintain_manage
             BindingSource Bs = new BindingSource();
             Bs.DataSource = reader;
             dataGridView1.DataSource = Bs;
-            dataGridView1.Columns["ToolModeName"].HeaderText = "工具型号";
             dataGridView1.Columns["ToolSerialName"].HeaderText = "工具序列号";
+            dataGridView1.Columns["ToolModeName"].HeaderText = "工具型号";
             dataGridView1.Columns["SendFixTime"].HeaderText = "工具送修时间";
             dataGridView1.Columns["Status"].HeaderText = "维修状态";
             dataGridView1.Columns["Detail"].HeaderText = "备注";
@@ -57,8 +58,6 @@ namespace manageSystem.src.maintain_manage
             dataGridView1.Columns[2].FillWeight = 20;
             dataGridView1.Columns[3].FillWeight = 20;
             dataGridView1.Columns[4].FillWeight = 20;
-            //dataGridView1.Columns[2].ReadOnly = false;
-            //dataGridView1.Columns[3].ReadOnly = false;
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }
@@ -66,7 +65,7 @@ namespace manageSystem.src.maintain_manage
         private void RepairManageForm_Load(object sender, EventArgs e)
         {
             SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadFullTable("MaintainManageInfo");
+            SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo");
             if (reader == null || !reader.HasRows) return;
             BindData2Grid(reader);
         }
@@ -75,7 +74,7 @@ namespace manageSystem.src.maintain_manage
         {
             SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             SQLiteDataReader reader = null;
-            string sql = "select * from MaintainManageInfo where";
+            string sql = "select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo where";
             if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
             {
                 reader = db.ReadFullTable("MaintainManageInfo");
@@ -146,7 +145,16 @@ namespace manageSystem.src.maintain_manage
 
         private void gotoRepair_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
+            {
+                if (radioButton3.Checked)
+                {
+                    contextMenuStrip1.Enabled = false;
+                    return;
+                }
+            }
             ToolSerialName = getSerialNumFromGrid();
+            Status = getStatusFromGrid();
             RepairOperatorForm repairOperatorForm = new RepairOperatorForm();
             if (repairOperatorForm.ShowDialog() == DialogResult.OK)
             {
@@ -158,6 +166,12 @@ namespace manageSystem.src.maintain_manage
         {
             if (dataGridView1.SelectedRows.Count == 0) return null;
             return dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+        }
+
+        private string getStatusFromGrid()
+        {
+            if (dataGridView1.SelectedRows.Count == 0) return null;
+            return dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
         }
     }
 }

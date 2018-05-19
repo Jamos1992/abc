@@ -6,9 +6,14 @@ using System.Data.SQLite;
 
 namespace manageSystem.src.maintain_manage
 {
+    class Error
+    {
+        public string msg;
+        public int num;
+    }
+
     class SpareToolConsume
     {
-        //public MaintainManageInfo maintainManageInfo;
         private SqLiteHelper db;
 
         public SpareToolConsume()
@@ -16,9 +21,11 @@ namespace manageSystem.src.maintain_manage
             db = new SqLiteHelper(Declare.DbConnectionString);
         }
 
+        #region 更新备件数据库
         public Error UpdateRepoSpareToolDb(MaintainManageInfo maintainManageInfo)
         {
             //确保所有的备件信息都是正确的！
+            if (maintainManageInfo.UsedRepoSpareToolInfo == null) return null;
             foreach (var item in maintainManageInfo.UsedRepoSpareToolInfo)
             {
                 Error error = caculateSpareToolNum(item.Key, item.Value);
@@ -32,6 +39,46 @@ namespace manageSystem.src.maintain_manage
             }
             return null;
         }
+        #endregion
+
+        #region 更新维修数据库
+        public Error UpdateMaintainManageInfo(MaintainManageInfo maintainManageInfo)
+        {
+            string usedRepoSpareToolInfo = ConvertDic2Str(maintainManageInfo.UsedRepoSpareToolInfo);
+            string usedOtherSpareToolInfo = ConvertDic2Str(maintainManageInfo.UsedOtherSpareToolInfo);
+            string sql = "update MaintainManageInfo set UsedRepoSpareToolInfo='" + usedRepoSpareToolInfo + "', UsedOtherSpareToolInfo='" + usedOtherSpareToolInfo + "', Status='" + maintainManageInfo.Status +"' where ToolSerialName='" + maintainManageInfo.ToolSerialName + "'";
+            SQLiteDataReader reader = db.UpdateTableBySql(sql);
+//            if (reader == null || !reader.HasRows) return new Error { msg = "更新失败" };
+            return null;
+        }
+        #endregion
+
+        #region 数据库中获取挂起信息
+        public MaintainManageInfo GetSuspendInfoFromDb(string serialNum)
+        {
+            string sql = "select * from MaintainManageInfo where ToolSerialName='" + serialNum + "'";
+            SQLiteDataReader reader = db.ReadTableBySql(sql);
+            if (reader == null || !reader.HasRows) return null;
+            MaintainManageInfo maintainManageInfo = new MaintainManageInfo();
+            try
+            {
+                if (reader.Read())
+                {
+                    maintainManageInfo.ToolModeName = reader["ToolModeName"].ToString();
+                    maintainManageInfo.ToolSerialName = reader["ToolSerialName"].ToString();
+                    maintainManageInfo.UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString());
+                    maintainManageInfo.UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString());
+                }                
+            }
+            catch
+            {
+                Console.WriteLine("GetSuspendInfoFromDb fail");
+                return null;
+            }
+            return maintainManageInfo;
+        }
+        //把string类型的字符串（以逗号分隔），转化为dic。
+        #endregion
 
         private Error caculateSpareToolNum(string key,int value)
         {
@@ -53,32 +100,7 @@ namespace manageSystem.src.maintain_manage
 
         }
 
-        private Error updateMaintainManageInfo(MaintainManageInfo maintainManageInfo)
-        {
-            string sql = "update MaintainManageInfo set UsedRepoSpareToolInfo="
-        }
-
-        public MaintainManageInfo getSuspendInfoFromDb(string serialNum)
-        {
-            string sql = "select * from RepoSpareTool where ToolSerialName='" + serialNum + "'";
-            SQLiteDataReader reader = db.ReadTableBySql(sql);
-            if (reader == null || !reader.HasRows) return null;
-            MaintainManageInfo maintainManageInfo = new MaintainManageInfo();
-            try
-            {
-                maintainManageInfo.ToolModeName = reader.GetString(reader.GetOrdinal("ToolModeName"));
-                maintainManageInfo.ToolSerialName = reader.GetString(reader.GetOrdinal("ToolSerialName"));
-                maintainManageInfo.UsedRepoSpareToolInfo = convertStr2Dic(reader.GetString(reader.GetOrdinal("UsedRepoSpareToolInfo")));
-                maintainManageInfo.UsedOtherSpareToolInfo = convertStr2Dic(reader.GetString(reader.GetOrdinal("UsedOtherSpareToolInfo")));
-            }
-            catch
-            {
-                return null;
-            }
-            return maintainManageInfo;
-        }
-        //把string类型的字符串（以逗号分隔），转化为dic。
-        private Dictionary<string,int> convertStr2Dic(string str)
+        public Dictionary<string,int> ConvertStr2Dic(string str)
         {
             Dictionary<string, int> dic = new Dictionary<string, int>();
             string[] kvList = str.Split(',');
@@ -94,8 +116,9 @@ namespace manageSystem.src.maintain_manage
             return dic;
         }
 
-        private string convertDic2Str(Dictionary<string, int> dic)
+        public string ConvertDic2Str(Dictionary<string, int> dic)
         {
+            if (dic == null) return "";
             List<string> kvList = new List<string>();
             foreach (var item in dic)
             {
@@ -103,12 +126,6 @@ namespace manageSystem.src.maintain_manage
                 kvList.Add(kvPair);
             }
             return string.Join(",", kvList.ToArray());
-        }
-    }
-
-    class Error
-    {
-        public string msg;
-        public int num;
+        }   
     }
 }

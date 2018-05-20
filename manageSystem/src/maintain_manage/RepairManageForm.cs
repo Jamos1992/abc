@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DAL;
+using Model;
 
 namespace manageSystem.src.maintain_manage
 {
@@ -20,6 +22,7 @@ namespace manageSystem.src.maintain_manage
             FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AutoGenerateColumns = false;
         }
 
         private MaintainManageInfo[] GetMaintainManageInfoFromGrid()
@@ -42,11 +45,9 @@ namespace manageSystem.src.maintain_manage
             }
             return ktls.ToArray();
         }
-        private void BindData2Grid(SQLiteDataReader reader)
+        private void BindData2Grid(List<MaintainManageInfo> list)
         {
-            BindingSource Bs = new BindingSource();
-            Bs.DataSource = reader;
-            dataGridView1.DataSource = Bs;
+            dataGridView1.DataSource = list;
             dataGridView1.Columns["ToolSerialName"].HeaderText = "工具序列号";
             dataGridView1.Columns["ToolModeName"].HeaderText = "工具型号";
             dataGridView1.Columns["SendFixTime"].HeaderText = "工具送修时间";
@@ -65,37 +66,36 @@ namespace manageSystem.src.maintain_manage
 
         private void RepairManageForm_Load(object sender, EventArgs e)
         {
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
-            if (reader == null || !reader.HasRows) return;
-            BindData2Grid(reader);
+            List<MaintainManageInfo> list = new MaintainManageInfoService().getAllBreakTools();
+            //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            //SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
+            if (list == null) return;
+            BindData2Grid(list);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = null;
-            string sql = "select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo where";
+            List<MaintainManageInfo> list = new List<MaintainManageInfo>();           
             if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
             {
-                reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
-                if (reader == null) return;
+                list = new MaintainManageInfoService().getBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
             }
             else
             {
+                string sql = "select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo where";
                 if (radioButton1.Checked) sql += " Status='" + Declare.Repairing + "'";
                 if (radioButton2.Checked) sql += " Status='" + Declare.Suspend + "'";
                 if (radioButton3.Checked) sql += " Status='" + Declare.RepairFinished + "'";
                 sql += " order by SendFixTime desc";
-                reader = db.ReadTableBySql(sql);
+                list = new MaintainManageInfoService().getBreakToolsBySql(sql);
             }
-            if (reader == null || !reader.HasRows)
+            if (list == null)
             {
                 dataGridView1.DataSource = null;
                 MessageBox.Show("记录不存在！");
                 return;
             }
-            BindData2Grid(reader);
+            BindData2Grid(list);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -186,14 +186,5 @@ namespace manageSystem.src.maintain_manage
                 contextMenuStrip1.Enabled = true;
             }
         }
-    }
-
-    class OutputStruct
-    {
-        public string ToolModeName { get; set; }                    //工具型号
-        public string ToolSerialName { get; set; }                  //工具序列号
-        public string SendFixTime { get; set; }                     //送修时间
-        public string Detail { get; set; }                          //送修描述
-        public string Status { get; set; }                          //工具维修状态
     }
 }

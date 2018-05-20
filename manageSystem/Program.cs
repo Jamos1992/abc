@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DAL;
 
 namespace manageSystem
 {
@@ -15,9 +16,9 @@ namespace manageSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            db.CeateAllTable();
-            db.CloseConnection();
+ //           SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            new DAL.DBUtil().CeateAllTable();
+//            db.CloseConnection();
             Application.Run(new LoginForm());
         }
     }

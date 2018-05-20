@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SQLite;
+using DAL;
+using Model;
+using System.Configuration;
 
 namespace manageSystem.src.maintain_manage
 {
     public partial class RepairOperatorForm : Form
     {
-        private SpareToolConsume spareToolConsume = new SpareToolConsume();
+        private static string _suspendStatus = "挂起";
+        private static string _finishStatus = "已完成";
         private string status;
         public RepairOperatorForm()
         {
@@ -23,20 +22,19 @@ namespace manageSystem.src.maintain_manage
         private string[] getHintFromDb()
         {
             string[] records = new string[] { };
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            List<MaintainManageInfo> list = new List<MaintainManageInfo>();
             try
             {
-                SQLiteDataReader reader = db.ReadTable("MaintainManageInfo", new string[] { "ToolSerialName" }, new string[] { "ToolSerialName" }, new string[] { "like" }, new string[] { "'%%'" });
-                if (!reader.HasRows)
+                list = new MaintainManageInfoService().getAllBreakTools();
+                if(list == null)
                 {
                     Console.Write("no such record");
                     return null;
                 }
                 List<string> recordList = records.ToList();
-                while (reader.Read())
+                foreach(MaintainManageInfo item in list)
                 {
-                    recordList.Add(reader.GetString(reader.GetOrdinal("ToolSerialName")));
-
+                    recordList.Add(item.ToolSerialName);
                 }
                 records = recordList.ToArray();
             }
@@ -51,7 +49,7 @@ namespace manageSystem.src.maintain_manage
 
         private void InitTextBoxHint()
         {
-            string[] str = this.getHintFromDb();
+            string[] str = getHintFromDb();
             if (str == null)
             {
                 return;
@@ -59,36 +57,72 @@ namespace manageSystem.src.maintain_manage
             Console.WriteLine(str);
             comboBox1.Items.AddRange(str);
         }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "" && textBox2.Text == "")
+            {
+                MessageBox.Show("未使用任何零件，无法完成维修！");
+                return;
+            }
+            string finishTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string finishStatus = _finishStatus;
+            updateAllData(finishTime, finishStatus);
+        }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            string suspendTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string suspendStatus = _suspendStatus;
+            updateAllData(suspendTime, suspendStatus);
+        }
+
+        private void updateAllData(string time,string nextStatus)
+        {
             MaintainManageInfo maintainManageInfo = getAllInput();
             if (maintainManageInfo == null) return;
-            maintainManageInfo.SuspendTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            maintainManageInfo.Status = Declare.Suspend;
-            Error error = spareToolConsume.CheckSpareToolName(maintainManageInfo);
-            if(error != null)
+            maintainManageInfo.SuspendTime = time;
+            maintainManageInfo.Status = nextStatus;
+            if (!new MaintainManageInfoService().IsNotFinishBreakToolExist(maintainManageInfo))
             {
-                MessageBox.Show(error.msg);
                 return;
             }
-            error = spareToolConsume.UpdateMaintainManageInfo(maintainManageInfo);
-            if (error == null)
+            foreach (var item in maintainManageInfo.UsedRepoSpareToolInfo)
             {
-                error = spareToolConsume.UpdateRepoSpareToolDb(maintainManageInfo);
-                if (error == null)
+                RepoSpareTool repoSpareTool = new RepoSpareToolService().getOneRepoSpareToolFromDb(item.Key);
+                if (repoSpareTool == null)
                 {
-                    DialogResult = DialogResult.OK;
-                    Close();
+                    MessageBox.Show("数据库中不包含型号为：" + item.Key + "的备件信息");
+                    return;
                 }
-                else
+                if (repoSpareTool.Num < item.Value)
                 {
-                    MessageBox.Show(error.msg);
+                    MessageBox.Show("数据库中型号为：" + item.Key + "的备件个数不足" + item.Value.ToString() + "个");
+                    return;
                 }
             }
-            else
+            try
             {
-                MessageBox.Show(error.msg);
+                new MaintainManageInfoService().UpdateMaintainManageInfo(maintainManageInfo);
+                if(nextStatus != _suspendStatus)
+                {
+                    foreach (var item in maintainManageInfo.UsedRepoSpareToolInfo)
+                    {
+                        RepoSpareTool repoSpareTool = new RepoSpareToolService().getOneRepoSpareToolFromDb(item.Key);
+                        int num = repoSpareTool.Num - item.Value;
+                        int affectedRow = new RepoSpareToolService().updateRepoSpareToolNum(num, item.Key);
+                        if (affectedRow < 1)
+                        {
+                            MessageBox.Show("更新数据库失败！");
+                            return;
+                        }
+                    }
+                } 
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch
+            {
+                return;
             }
         }
 
@@ -97,8 +131,8 @@ namespace manageSystem.src.maintain_manage
             if (!checkInput()) return null;
             MaintainManageInfo maintainManageInfo = new MaintainManageInfo();
             maintainManageInfo.ToolSerialName = comboBox1.Text;
-            maintainManageInfo.UsedRepoSpareToolInfo = spareToolConsume.ConvertStr2Dic(textBox1.Text);
-            maintainManageInfo.UsedOtherSpareToolInfo = spareToolConsume.ConvertStr2Dic(textBox2.Text);
+            maintainManageInfo.UsedRepoSpareToolInfo = new MaintainManageInfoService().ConvertStr2Dic(textBox1.Text);
+            maintainManageInfo.UsedOtherSpareToolInfo = new MaintainManageInfoService().ConvertStr2Dic(textBox2.Text);
             return maintainManageInfo;
         }
 
@@ -117,55 +151,18 @@ namespace manageSystem.src.maintain_manage
             return true;
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            MaintainManageInfo maintainManageInfo = getAllInput();
-            if (maintainManageInfo == null) return;
-            if(textBox1.Text == "" && textBox2.Text == "")
-            {
-                MessageBox.Show("未使用任何零件，无法完成维修！");
-                return;
-            }
-            maintainManageInfo.SuspendTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            maintainManageInfo.Status = Declare.RepairFinished;
-            Error error = spareToolConsume.CheckSpareToolName(maintainManageInfo);
-            if (error != null)
-            {
-                MessageBox.Show(error.msg);
-                return;
-            }
-            error = spareToolConsume.UpdateMaintainManageInfo(maintainManageInfo);
-            if (error == null)
-            {
-                error = spareToolConsume.UpdateRepoSpareToolDb(maintainManageInfo);
-                if (error == null)
-                {
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show(error.msg);
-                }
-            }
-            else
-            {
-                MessageBox.Show(error.msg);
-            }
-        }
-
         private void setAllInputWhenSuspendBefore()
         {
-            if (string.Compare(status,Declare.Suspend) == 0)
+            if (string.Compare(status, _suspendStatus) == 0)
             {
-                MaintainManageInfo maintainManageInfo = spareToolConsume.GetSuspendInfoFromDb(RepairManageForm.ToolSerialName);
+                MaintainManageInfo maintainManageInfo = new MaintainManageInfoService().getOneBreakToolFromDb(RepairManageForm.ToolSerialName);
                 if (maintainManageInfo == null)
                 {
                     Console.WriteLine("maintainManageInfo is nil");
                     return;
                 }
-                textBox1.Text = spareToolConsume.ConvertDic2Str(maintainManageInfo.UsedRepoSpareToolInfo);
-                textBox2.Text = spareToolConsume.ConvertDic2Str(maintainManageInfo.UsedOtherSpareToolInfo);
+                textBox1.Text = new MaintainManageInfoService().ConvertDic2Str(maintainManageInfo.UsedRepoSpareToolInfo);
+                textBox2.Text = new MaintainManageInfoService().ConvertDic2Str(maintainManageInfo.UsedOtherSpareToolInfo);
             }
         }
 

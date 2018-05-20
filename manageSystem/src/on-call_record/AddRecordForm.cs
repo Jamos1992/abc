@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DAL;
+using Model;
 
 namespace manageSystem.src.on_call_record
 {
@@ -54,16 +56,13 @@ namespace manageSystem.src.on_call_record
                 MessageBox.Show("输入的时间有误，请检查后提交！");
                 return;
             }
-            try
+            int affectedRow = new OnCallRecordService().AddOnCallRecord(getAllInput());
+            if(affectedRow < 1)
             {
-                SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-                db.InsertValuesByStruct("OnCallRecord", getAllInput());
-            }
-            catch
-            {
+                MessageBox.Show("添加失败，数据库操作失败！");
                 return;
             }
-            MessageBox.Show("数据录入成功！");
+            MessageBox.Show("添加成功！");
         }
 
         private OnCallRecord getAllInput()

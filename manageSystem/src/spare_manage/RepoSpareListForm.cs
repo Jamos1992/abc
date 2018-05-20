@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SQLite;
+using DAL;
+using Model;
 
 namespace manageSystem.src.spare_manage
 {
@@ -29,7 +26,6 @@ namespace manageSystem.src.spare_manage
         {
             dateTimePicker.Format = DateTimePickerFormat.Custom;
             dateTimePicker.CustomFormat = "yyyy-MM-dd";
-            //dateTimePicker.ShowUpDown = true;
         }
 
         private void dateTimePicker1_DropDown(object sender, EventArgs e)
@@ -44,16 +40,16 @@ namespace manageSystem.src.spare_manage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = null;
-            string sql = "select * from RepoSpareTool where 1=1";
+            //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            //SQLiteDataReader reader = null;
+            List<RepoSpareTool> list = new List<RepoSpareTool>();            
             if (!checkBox1.Checked && !checkBox2.Checked)
             {
-                reader = db.ReadFullTable("RepoSpareTool");
-                if (reader == null) return;
+                list = new RepoSpareToolService().getAllRepoSpareTools();
             }
             else
             {
+                string sql = "select * from RepoSpareTool where 1=1";
                 if (checkBox1.Checked)
                 {
                     if (dateTimePicker1.Text != "" && dateTimePicker2.Text != "") sql += " and Time>'" + dateTimePicker1.Text + "' and Time<'" + dateTimePicker2.Text + "'";
@@ -64,34 +60,30 @@ namespace manageSystem.src.spare_manage
                     if (comboBox1.Text != "") sql += " and SpareToolModel='" + comboBox1.Text + "'";
                     else MessageBox.Show("故障原因未选择");
                 }
-                reader = db.ReadTableBySql(sql);
+                list = new RepoSpareToolService().getRepoSpareToolBySql(sql);
             }
-            if (reader == null || !reader.HasRows)
+            if (list == null)
             {
                 dataGridView1.DataSource = null;
                 MessageBox.Show("记录不存在！");
                 return;
             }
-            BindData2Grid(reader);
+            BindData2Grid(list);
         }
 
         private void RepoSpareListForm_Load(object sender, EventArgs e)
         {
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadFullTable("RepoSpareTool");
-            if (reader == null || !reader.HasRows) return;
-            BindData2Grid(reader);
+            List<RepoSpareTool> list = new RepoSpareToolService().getAllRepoSpareTools();
+            if (list == null) return;
+            BindData2Grid(list);
         }
 
-        private void BindData2Grid(SQLiteDataReader reader)
+        private void BindData2Grid(List<RepoSpareTool> list)
         {
-            BindingSource Bs = new BindingSource();
-            Bs.DataSource = reader;
-            dataGridView1.DataSource = Bs;
+            dataGridView1.DataSource = list;
             dataGridView1.Columns["SpareToolModel"].HeaderText = "仓库备件型号";
             dataGridView1.Columns["Num"].HeaderText = "个数";
             dataGridView1.Columns["Time"].HeaderText = "入库时间";
-//            dataGridView1.Columns["SerialNum"].HeaderText = "备件序列号";
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns[0].FillWeight = 30;
             dataGridView1.Columns[1].FillWeight = 30;
@@ -175,7 +167,6 @@ namespace manageSystem.src.spare_manage
                     SpareToolModel = dataGridView1.Rows[i].Cells[0].Value.ToString(),
                     Num = int.Parse(dataGridView1.Rows[i].Cells[1].Value.ToString()),
                     Time = dataGridView1.Rows[i].Cells[2].Value.ToString(),
-//                    SerialNum = dataGridView1.Rows[i].Cells[3].Value.ToString(),
                 });
             }
             return ktls.ToArray();

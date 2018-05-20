@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DAL;
+using Model;
 
 namespace manageSystem
 {
@@ -15,12 +17,6 @@ namespace manageSystem
         public SpareInfoInputForm()
         {
             InitializeComponent();
-            Init();
-        }
-
-        private void Init()
-        {
-            //domainUpDown1.Text = "1";
         }
 
         private RepoSpareTool getOneInput(TextBox txtBox, NumericUpDown upDown)
@@ -29,7 +25,6 @@ namespace manageSystem
             repoSpareTool.SpareToolModel = txtBox.Text;
             repoSpareTool.Num = (int)upDown.Value;
             repoSpareTool.Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-           // repoSpareTool.SerialNum = "";
             return repoSpareTool;
         }
 
@@ -40,23 +35,27 @@ namespace manageSystem
                 MessageBox.Show("录入失败，输入的记录个数为0");
                 return;
             }
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             foreach (RepoSpareTool repoSpareTool in repoSpareTools)
             {
                 try
                 {
-                    SQLiteDataReader reader = db.ReadTable("RepoSpareTool", new string[] { "*" }, new string[] { "SpareToolModel" }, new string[] { "=" }, new string[] { repoSpareTool.SpareToolModel });
-                    if (reader.HasRows)
+                    if (new RepoSpareToolService().IsRepoSpareToolExist(repoSpareTool.SpareToolModel))
                     {
                         MessageBox.Show("序列号(" + repoSpareTool.SpareToolModel + ") 插入失败, 已存在序列号相同的记录！");
                         return;
                     }
-                    db.InsertValuesByStruct("RepoSpareTool", repoSpareTool);
+                    int affectedRow = new RepoSpareToolService().AddRepoSpareTool(repoSpareTool);
+                    if(affectedRow < 1)
+                    {
+                        MessageBox.Show("录入失败，操作数据库失败！");
+                        return;
+                    }
                     MessageBox.Show("数据录入成功");
+                    return;
                 }
                 catch
                 {
-                    MessageBox.Show("插入数据失败！");
+                    MessageBox.Show("数据录入失败，操作数据库失败！");
                 }
             }
         }

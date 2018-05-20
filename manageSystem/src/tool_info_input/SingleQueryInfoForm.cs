@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using Model;
+using DAL;
 
 namespace manageSystem
 {
@@ -40,42 +42,39 @@ namespace manageSystem
                 this.button3.Enabled = false;
                 return;
             }
-            toolsInfo.SerialNum = this.textBox1.Text;
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { toolsInfo.SerialNum });
-            Console.WriteLine(reader);
-            if (!reader.HasRows)
+            toolsInfo = new ToolsInfoService().getOneToolsInfo(textBox1.Text);
+            if (toolsInfo == null)
             {
                 MessageBox.Show("查询失败，该记录不存在！");
                 this.button3.Enabled = false;
                 clearTextBox4Query();
                 return;
             }
-            this.setTextBox(reader);
+            //toolsInfo.SerialNum = this.textBox1.Text;
+            //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            //SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { toolsInfo.SerialNum });
+            //Console.WriteLine(reader);
+            this.setTextBox(toolsInfo);
             MessageBox.Show("查询成功！");
             changeTextBoxReadOnly();
             this.button3.Enabled = true;
-            db.CloseConnection();
         }
 
-        private void setTextBox(SQLiteDataReader reader)
+        private void setTextBox(ToolsInfo toolsInfo)
         {
-            if (reader.Read())
-            {
-                this.textBox1.Text = reader.GetString(reader.GetOrdinal("SerialNum"));
-                this.textBox2.Text = reader.GetString(reader.GetOrdinal("Model"));
-                this.textBox3.Text = reader.GetString(reader.GetOrdinal("Workstation"));
-                this.textBox4.Text = reader.GetString(reader.GetOrdinal("Torque"));
-                this.textBox5.Text = reader.GetString(reader.GetOrdinal("Status"));
-                this.textBox6.Text = reader.GetString(reader.GetOrdinal("QualityAssureDate"));
-                this.textBox7.Text = reader.GetString(reader.GetOrdinal("RepoSpareTool"));
-                this.textBox8.Text = reader.GetString(reader.GetOrdinal("MaintainContractStyle"));
-                this.textBox9.Text = reader.GetString(reader.GetOrdinal("MaintainContractDateStart"));
-                this.textBox10.Text = reader.GetString(reader.GetOrdinal("MaintainContractDateEnd"));
-                this.textBox11.Text = reader.GetString(reader.GetOrdinal("Remark"));
-                this.textBox12.Text = reader.GetString(reader.GetOrdinal("MaintainInfo"));
-                this.textBox13.Text = reader.GetString(reader.GetOrdinal("RepairList"));
-            }
+            this.textBox1.Text = toolsInfo.SerialNum;
+            this.textBox2.Text = toolsInfo.Model;
+            this.textBox3.Text = toolsInfo.Workstation;
+            this.textBox4.Text = toolsInfo.Torque;
+            this.textBox5.Text = toolsInfo.Status;
+            this.textBox6.Text = toolsInfo.QualityAssureDate;
+            this.textBox7.Text = toolsInfo.RepoSpareTool;
+            this.textBox8.Text = toolsInfo.MaintainContractStyle;
+            this.textBox9.Text = toolsInfo.MaintainContractDateStart;
+            this.textBox10.Text = toolsInfo.MaintainContractDateEnd;
+            this.textBox11.Text = toolsInfo.Remark;
+            this.textBox12.Text = toolsInfo.MaintainInfo;
+            this.textBox13.Text = toolsInfo.RepairList;
         }
 
         private ToolsInfo getTextBox()
@@ -102,11 +101,10 @@ namespace manageSystem
             changeTextBoxWrite();
             if (this.button3.Text == "保存")
             {
-                SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
                 try
                 {
-                    db.UpdateValuesByStruct("ToolsInfo", this.getTextBox(), new string[] { "SerialNum" }, new string[] { this.textBox1.Text });
-                }
+                    new ToolsInfoService().updateToolsInfo(getTextBox(), textBox1.Text.Trim());
+                }                                            
                 catch(Exception ex)
                 {
                     label11.ForeColor = Color.Red;
@@ -119,7 +117,6 @@ namespace manageSystem
                 this.label11.Text = "修改成功!";
                 clearTextBox();
                 this.button1.Enabled = true;
-                db.CloseConnection();
                 return;
             }
             this.button3.Text = "保存";

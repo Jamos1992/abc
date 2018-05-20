@@ -1,0 +1,12 @@
+D:\workspace\manageSystem\BLL\bin\Debug\BLL.dll
+D:\workspace\manageSystem\BLL\bin\Debug\BLL.pdb
+D:\workspace\manageSystem\BLL\bin\Debug\DAL.dll
+D:\workspace\manageSystem\BLL\bin\Debug\Model.dll
+D:\workspace\manageSystem\BLL\bin\Debug\Model.pdb
+D:\workspace\manageSystem\BLL\bin\Debug\DAL.pdb
+D:\workspace\manageSystem\BLL\bin\Debug\DAL.dll.config
+D:\workspace\manageSystem\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\workspace\manageSystem\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\workspace\manageSystem\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\workspace\manageSystem\BLL\obj\Debug\BLL.dll
+D:\workspace\manageSystem\BLL\obj\Debug\BLL.pdb

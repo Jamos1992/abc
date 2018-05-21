@@ -10,3 +10,6 @@ D:\workspace\manageSystem\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 D:\workspace\manageSystem\BLL\obj\Debug\BLL.csproj.CopyComplete
 D:\workspace\manageSystem\BLL\obj\Debug\BLL.dll
 D:\workspace\manageSystem\BLL\obj\Debug\BLL.pdb
+D:\workspace\manageSystem\BLL\bin\Debug\System.Data.SQLite.dll
+D:\workspace\manageSystem\BLL\bin\Debug\System.Data.SQLite.xml
+D:\workspace\manageSystem\BLL\bin\Debug\System.Data.SQLite.dll.config

@@ -23,7 +23,7 @@ namespace DAL
             }
             return false;
         }
-        public int AddRepoSpareTool(MaintainManageInfo maintainManageInfo)
+        public int AddMaintainManageInfol(MaintainManageInfo maintainManageInfo)
         {
             return SQLHelper.InsertValuesByStruct("MaintainManageInfo", maintainManageInfo);
         }

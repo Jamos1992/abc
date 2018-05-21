@@ -9,6 +9,11 @@ namespace DAL
 {
     public class ToolsInfoService
     {
+
+        public bool IsToolExist(ToolsInfo toolsInfo)
+        {
+            return getOneToolsInfo(toolsInfo.SerialNum) != null;
+        }
         public int AddTools(ToolsInfo toolsInfo)
         {
             return SQLHelper.InsertValuesByStruct("ToolsInfo", toolsInfo);
@@ -39,6 +44,56 @@ namespace DAL
         public int updateToolsInfo(ToolsInfo toolsInfo,string SerialNum)
         {
             return SQLHelper.UpdateValuesByStruct("ToolsInfo", toolsInfo, new string[] { "SerialNum" }, new string[] { SerialNum });
+        }
+
+        public List<ToolsInfo> getAllToolsInfo()
+        {
+            SQLiteDataReader reader = SQLHelper.ReadFullTable("ToolsInfo");
+            List<ToolsInfo> list = new List<ToolsInfo>();
+            while (reader.Read())
+            {
+                list.Add(new ToolsInfo
+                {
+                    SerialNum = reader["SerialNum"].ToString(),
+                    Model = reader["Model"].ToString(),
+                    Torque = reader["Torque"].ToString(),
+                    Status = reader["Status"].ToString(),
+                    QualityAssureDate = reader["QualityAssureDate"].ToString(),
+                    RepoSpareTool = reader["RepoSpareTool"].ToString(),
+                    MaintainContractDateStart = reader["MaintainContractDateStart"].ToString(),
+                    MaintainContractDateEnd = reader["MaintainContractDateEnd"].ToString(),
+                    Remark = reader["Reader"].ToString(),
+                    MaintainInfo = reader["MaintainInfo"].ToString(),
+                    RepairList = reader["RepairList"].ToString(),
+                });   
+            }
+            if (reader != null) reader.Close();
+            return list;
+        }
+
+        public List<ToolsInfo> getAllToolsInfoByModel(string model)
+        {
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql("select * from ToolsInfo where Model='" + model + "'");
+            List<ToolsInfo> list = new List<ToolsInfo>();
+            while (reader.Read())
+            {
+                list.Add(new ToolsInfo
+                {
+                    SerialNum = reader["SerialNum"].ToString(),
+                    Model = reader["Model"].ToString(),
+                    Torque = reader["Torque"].ToString(),
+                    Status = reader["Status"].ToString(),
+                    QualityAssureDate = reader["QualityAssureDate"].ToString(),
+                    RepoSpareTool = reader["RepoSpareTool"].ToString(),
+                    MaintainContractDateStart = reader["MaintainContractDateStart"].ToString(),
+                    MaintainContractDateEnd = reader["MaintainContractDateEnd"].ToString(),
+                    Remark = reader["Reader"].ToString(),
+                    MaintainInfo = reader["MaintainInfo"].ToString(),
+                    RepairList = reader["RepairList"].ToString(),
+                });
+            }
+            if (reader != null) reader.Close();
+            return list;
         }
 
     }

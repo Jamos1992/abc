@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using Model;
+using DAL;
 
 namespace manageSystem
 {
@@ -66,18 +68,22 @@ namespace manageSystem
 
         private void insertValue2Db(ToolsInfo[] toolsInfos)
         {
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+           
             foreach(ToolsInfo toolsInfo in toolsInfos)
             {
                 try
                 {
-                    SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { toolsInfo.SerialNum });
-                    if (reader != null)
+                    if(new ToolsInfoService().IsToolExist(toolsInfo))
                     {
-                        MessageBox.Show("序列号("+ toolsInfo.SerialNum+") 插入失败, 已存在序列号相同的记录！");
+                        MessageBox.Show("序列号(" + toolsInfo.SerialNum + ") 插入失败, 已存在序列号相同的记录！");
                         return;
                     }
-                    db.InsertValuesByStruct("ToolsInfo", toolsInfo);
+                    int affectedRow = new ToolsInfoService().AddTools(toolsInfo);
+                    if(affectedRow < 1)
+                    {
+                        MessageBox.Show("插入数据失败！");
+                        return;
+                    }
                 }
                 catch
                 {
@@ -89,20 +95,18 @@ namespace manageSystem
         private string[] getHintFromDb()
         {
             string[] records = new string[] { };
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             try
             {
-                SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "Model" }, new string[] { "Model" }, new string[] { "like" }, new string[] { "'%%'" });
-                if (!reader.HasRows)
+                List<ToolsInfo> list = new ToolsInfoService().getAllToolsInfo();
+                if (list == null)
                 {
                     Console.Write("no such record");
                     return null;
                 }
                 List<string> recordList = records.ToList();
-                while (reader.Read())
+                foreach(ToolsInfo tools in list)
                 {
-                    recordList.Add(reader.GetString(reader.GetOrdinal("Model")));
-                    
+                    recordList.Add(tools.Model);
                 }
                 records = recordList.ToArray();               
             }

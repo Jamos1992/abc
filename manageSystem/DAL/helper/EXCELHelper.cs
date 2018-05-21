@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.OleDb;
 using System.Data;
 using System.Reflection;
+using System.Configuration;
 
 namespace DAL
 {
@@ -29,6 +30,7 @@ namespace DAL
             }
             catch (Exception err)
             {
+                Console.Write(err);
                 //MessageBox.Show("数据绑定Excel失败!失败原因：" + err.Message, "提示信息",
                 //    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
@@ -65,6 +67,7 @@ namespace DAL
             }
             catch (Exception err)
             {
+                Console.Write(err);
                 //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
                 //    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
@@ -83,7 +86,7 @@ namespace DAL
                 OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
                 ole_conn.Open();
                 OleDbCommand ole_cmd = ole_conn.CreateCommand();
-                ole_cmd.CommandText = Declare.CreateExcelString;
+                ole_cmd.CommandText = ConfigurationManager.AppSettings["CreateExcelString"];
                 ole_cmd.ExecuteNonQuery();
                 PropertyInfo[] propertys = obj.GetType().GetProperties();
                 int i = 0;
@@ -101,13 +104,14 @@ namespace DAL
                 }
                 ole_cmd.CommandText += ")";
                 ole_cmd.ExecuteNonQuery();
-                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                //MessageBox.Show("生成Excel文件成功并写入一条数据......");
                 return true;
             }
             catch (Exception err)
             {
-                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.Write(err);
+                //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                //MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -121,7 +125,8 @@ namespace DAL
                 OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
                 ole_conn.Open();
                 OleDbCommand ole_cmd = ole_conn.CreateCommand();
-                ole_cmd.CommandText = Declare.CreateOnCallRecordExcelString;
+                ole_cmd.CommandText = ConfigurationManager.AppSettings["CreateOnCallRecordExcelString"];
+                //ole_cmd.CommandText = Declare.CreateOnCallRecordExcelString;
                 ole_cmd.ExecuteNonQuery();
                 PropertyInfo[] propertys = obj.GetType().GetProperties();
                 int i = 0;
@@ -139,13 +144,14 @@ namespace DAL
                 }
                 ole_cmd.CommandText += ")";
                 ole_cmd.ExecuteNonQuery();
-                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                //MessageBox.Show("生成Excel文件成功并写入一条数据......");
                 return true;
             }
             catch (Exception err)
             {
-                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.Write(err);
+                //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                //MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -159,7 +165,8 @@ namespace DAL
                 OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
                 ole_conn.Open();
                 OleDbCommand ole_cmd = ole_conn.CreateCommand();
-                ole_cmd.CommandText = Declare.CreatRepoSpareToolExcelString;
+                ole_cmd.CommandText = ConfigurationManager.AppSettings["CreatRepoSpareToolExcelString"];
+                //ole_cmd.CommandText = Declare.CreatRepoSpareToolExcelString;
                 ole_cmd.ExecuteNonQuery();
                 PropertyInfo[] propertys = obj.GetType().GetProperties();
                 int i = 0;
@@ -177,13 +184,14 @@ namespace DAL
                 }
                 ole_cmd.CommandText += ")";
                 ole_cmd.ExecuteNonQuery();
-                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                //MessageBox.Show("生成Excel文件成功并写入一条数据......");
                 return true;
             }
             catch (Exception err)
             {
-                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.Write(err);
+                //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                //MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -197,7 +205,8 @@ namespace DAL
                 OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
                 ole_conn.Open();
                 OleDbCommand ole_cmd = ole_conn.CreateCommand();
-                ole_cmd.CommandText = Declare.CreatMaintainManageInfoExcelString;
+                ole_cmd.CommandText = ConfigurationManager.AppSettings["CreatMaintainManageInfoExcelString"];
+                //ole_cmd.CommandText = Declare.CreatMaintainManageInfoExcelString;
                 ole_cmd.ExecuteNonQuery();
                 PropertyInfo[] propertys = obj.GetType().GetProperties();
                 int i = 0;
@@ -215,13 +224,14 @@ namespace DAL
                 }
                 ole_cmd.CommandText += ")";
                 ole_cmd.ExecuteNonQuery();
-                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                //MessageBox.Show("生成Excel文件成功并写入一条数据......");
                 return true;
             }
             catch (Exception err)
             {
-                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.Write(err);
+                //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                //MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -251,13 +261,14 @@ namespace DAL
                 }
                 ole_cmd.CommandText += ")";
                 ole_cmd.ExecuteNonQuery();
-                MessageBox.Show("生成Excel文件成功并写入一条数据......");
+                //MessageBox.Show("生成Excel文件成功并写入一条数据......");
                 return true;
             }
             catch (Exception err)
             {
-                MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.Write(err);
+                //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+                //MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             finally

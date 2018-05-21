@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using DAL;
+using Model;
 
 namespace manageSystem.src.maintain_manage
 {
     public partial class RepairRegisterForm : Form
     {
+        private static string Repairing = "维修中";
+
         public RepairRegisterForm()
         {
             InitializeComponent();
@@ -54,7 +58,7 @@ namespace manageSystem.src.maintain_manage
             maintainManageInfo.ToolSerialName = textBox2.Text;
             maintainManageInfo.SendFixTime = dateTimePicker1.Text;
             maintainManageInfo.Detail = richTextBox1.Text;
-            maintainManageInfo.Status = Declare.Repairing;
+            maintainManageInfo.Status = Repairing;
             maintainManageInfo.UsedOtherSpareToolInfo = null;
             maintainManageInfo.UsedRepoSpareToolInfo = null;
             return maintainManageInfo;
@@ -69,24 +73,17 @@ namespace manageSystem.src.maintain_manage
             }
             try
             {
-                SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-                SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName from MaintainManageInfo where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and Status='" + maintainManageInfo.Status + "'");
-                //SQLiteDataReader reader = db.ReadTable("MaintainManageInfo", new string[] { "*" }, new string[] { "ToolSerialName", "Status" }, new string[] { "=", "=" }, new string[] { "'" + maintainManageInfo.ToolSerialName + "'", "'" + Declare.Repairing + "'" });
-                if (reader == null) MessageBox.Show("111");
-                if (reader.Read())
-                {
-                    Console.WriteLine(reader["ToolSerialName"].ToString());
-                }
-                
-                if (reader != null) MessageBox.Show("222"+reader.HasRows.ToString());
-                if (reader != null && reader.HasRows)
+                if(new MaintainManageInfoService().IsNotFinishBreakToolExist(maintainManageInfo))
                 {
                     MessageBox.Show("登记失败，该工具已经在维修中！");
                     return;
                 }
-                db.InsertValuesByStruct("MaintainManageInfo", maintainManageInfo);
-                reader.Close();
-                db.CloseConnection();
+                int affected = new MaintainManageInfoService().AddMaintainManageInfol(maintainManageInfo);
+                if(affected < 1)
+                {
+                    MessageBox.Show("录入失败！");
+                    return;
+                }
             }
             catch
             {
@@ -121,20 +118,19 @@ namespace manageSystem.src.maintain_manage
         private string[] getHintFromDb()
         {
             string[] records = new string[] { };
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            List<MaintainManageInfo> list = new List<MaintainManageInfo>();
             try
             {
-                SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "Model" }, new string[] { "Model" }, new string[] { "like" }, new string[] { "'%%'" });
-                if (!reader.HasRows)
+                list = new MaintainManageInfoService().getAllBreakTools();
+                if (list == null)
                 {
                     Console.Write("no such record");
                     return null;
                 }
                 List<string> recordList = records.ToList();
-                while (reader.Read())
+                foreach (MaintainManageInfo item in list)
                 {
-                    recordList.Add(reader.GetString(reader.GetOrdinal("Model")));
-
+                    recordList.Add(item.ToolSerialName);
                 }
                 records = recordList.ToArray();
             }

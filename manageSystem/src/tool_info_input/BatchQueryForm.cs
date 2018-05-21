@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DAL;
+using Model;
 
 namespace manageSystem
 {
@@ -22,20 +24,19 @@ namespace manageSystem
         private string[] getHintFromDb()
         {
             string[] records = new string[] { };
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
+            //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             try
             {
-                SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "Model" }, new string[] { "Model" }, new string[] { "like" }, new string[] { "'%%'" });
-                if (!reader.HasRows)
+                List<ToolsInfo> list = new ToolsInfoService().getAllToolsInfo();
+                if(list == null)
                 {
                     Console.Write("no such record");
                     return null;
                 }
                 List<string> recordList = records.ToList();
-                while (reader.Read())
+                foreach(ToolsInfo toolsInfo in list)
                 {
-                    recordList.Add(reader.GetString(reader.GetOrdinal("Model")));
-
+                    recordList.Add(toolsInfo.Model);
                 }
                 records = recordList.ToArray();
             }
@@ -82,45 +83,27 @@ namespace manageSystem
 
         private void setComboBoxList(string str,ComboBox comboBox)
         {
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadTable("ToolsInfo",new string[] { "*"},new string[] { "Model"},new string[] { "="},new string[] { str});
-            if (reader == null)
+            List<ToolsInfo> list = new ToolsInfoService().getAllToolsInfoByModel(str);
+            if(list == null)
             {
                 return;
             }
-            while (reader.Read())
+            foreach(ToolsInfo toolsInfo in list)
             {
-                comboBox.Items.Add(reader.GetString(reader.GetOrdinal("SerialNum")));
+                comboBox.Items.Add(toolsInfo.SerialNum);
             }
             return;
         }
 
         private ToolsInfo getOneInput(TextBox txtBox, ComboBox comboBox)
         {
-            ToolsInfo toolsInfo = new ToolsInfo();
-            toolsInfo.Model = txtBox.Text;
-            toolsInfo.SerialNum = comboBox.Text;
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { toolsInfo.SerialNum });
-            if(!reader.HasRows)
+            ToolsInfo toolsInfo = new ToolsInfoService().getOneToolsInfo(comboBox.Text);
+            if(toolsInfo == null)
             {
                 MessageBox.Show("序列号:" + comboBox1.Text + ", " + "型号:" + textBox1.Text + ", " + "记录不存在!");
                 return null;
-            } 
-            while (reader.Read())
-            {
-                toolsInfo.Workstation = reader.GetValues().Get("Workstation");
-                toolsInfo.Torque = reader.GetString(reader.GetOrdinal("Torque"));
-                toolsInfo.Status = reader.GetString(reader.GetOrdinal("Status"));
-                toolsInfo.QualityAssureDate = reader.GetString(reader.GetOrdinal("QualityAssureDate"));
-                toolsInfo.MaintainContractStyle = reader.GetString(reader.GetOrdinal("MaintainContractStyle"));
-                toolsInfo.MaintainContractDateStart = reader.GetString(reader.GetOrdinal("MaintainContractDateStart"));
-                toolsInfo.MaintainContractDateEnd = reader.GetString(reader.GetOrdinal("MaintainContractDateEnd"));
-                toolsInfo.Remark = reader.GetString(reader.GetOrdinal("Remark"));
-                toolsInfo.RepairList = reader.GetString(reader.GetOrdinal("RepairList"));
-            }           
-            Console.WriteLine("toolsInfo is {0}", toolsInfo);        
-            return toolsInfo;
+            }
+            return toolsInfo;  
         }
 
         private ToolsInfo[] getTextBox()

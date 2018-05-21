@@ -77,23 +77,7 @@ namespace manageSystem
         private void button1_Click(object sender, EventArgs e)
         {
             ToolsInfo toolsInfo = getAllInput();
-            if (toolsInfo.SerialNum == "" || toolsInfo.Model == "" || toolsInfo.Workstation == "")
-            {
-                MessageBox.Show("录入失败，请输入工具序列号、型号及工位信息！");
-                return;
-            }
-            if (string.Compare(toolsInfo.MaintainContractDateStart, toolsInfo.MaintainContractDateEnd) > 0)
-            {
-                MessageBox.Show("参数输入有误，保养起始日期应小于保养终止日期");
-                return;
-            }
-            int affectedRow = new ToolsInfoService().AddTools(toolsInfo);
-            if (affectedRow < 1)
-            {
-                MessageBox.Show("录入失败，数据库操作失败！");
-                return;
-            }
-            MessageBox.Show("数据录入成功！");
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

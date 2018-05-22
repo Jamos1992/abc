@@ -11,29 +11,92 @@ namespace DAL
 {
     public class EXCELHelper
     {
-        public DataSet LoadDataFromExcel(string filePath)
+        private static OleDbDataReader dataReader;
+        public static int CreateExcelTable(string filePath,string sql)
         {
+            String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
+            //实例化一个Oledbconnection类(实现了IDisposable,要using)
+            OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
             try
+            {   
+                ole_conn.Open();
+                OleDbCommand ole_cmd = ole_conn.CreateCommand();
+                ole_cmd.CommandText = sql;               
+                return ole_cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
             {
-                String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;IMEX=2'";
-                //实例化一个Oledbconnection类(实现了IDisposable,要using)
-                OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+                throw e;
+            }
+            finally
+            {
+                ole_conn.Close();
+            }
+        }
+
+        public static OleDbDataReader LoadDataFromExcel(string filePath,string sql)
+        {
+            String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;IMEX=2'";
+            //实例化一个Oledbconnection类(实现了IDisposable,要using)
+            OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+            try
+            {  
                 ole_conn.Open();
                 OleDbCommand ole_cmd = ole_conn.CreateCommand();
                 //类似SQL的查询语句这个[Sheet1$对应Excel文件中的一个工作表]
-                ole_cmd.CommandText = "select * from [Sheet1$]";
-                OleDbDataAdapter adapter = new OleDbDataAdapter(ole_cmd);
-                DataSet ds = new DataSet();
-                adapter.Fill(ds, "Sheet1");
-                ole_conn.Close();
-                return ds;
+                ole_cmd.CommandText = sql;
+                dataReader = ole_cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
-            catch (Exception err)
+            catch (Exception e)
             {
-                Console.Write(err);
+                throw e;
                 //MessageBox.Show("数据绑定Excel失败!失败原因：" + err.Message, "提示信息",
                 //    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return null;
+            }
+            return dataReader;
+        }
+
+        public static int InsertExcelTable(string filePath, object obj,string sql)
+        {
+            String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
+            //实例化一个Oledbconnection类(实现了IDisposable,要using)
+            OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+            try
+            {
+                ole_conn.Open();
+                OleDbCommand ole_cmd = ole_conn.CreateCommand();
+                ole_cmd.CommandText = sql;
+                return ole_cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                ole_conn.Close();
+            }
+        }
+
+        public static int UpdateExcelTable(string filePath, object obj, string sql)
+        {
+            String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
+            //实例化一个Oledbconnection类(实现了IDisposable,要using)
+            OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+            try
+            {
+                ole_conn.Open();
+                OleDbCommand ole_cmd = ole_conn.CreateCommand();
+                ole_cmd.CommandText = sql;
+                return ole_cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                ole_conn.Close();
             }
         }
 

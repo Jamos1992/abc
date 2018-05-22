@@ -12,16 +12,38 @@ namespace DAL
 
         public bool IsToolExist(ToolsInfo toolsInfo)
         {
-            return getOneToolsInfo(toolsInfo.SerialNum) != null;
+            return getOneToolsInfoBySerial(toolsInfo.SerialNum) != null;
         }
         public int AddTools(ToolsInfo toolsInfo)
         {
             return SQLHelper.InsertValuesByStruct("ToolsInfo", toolsInfo);
         }
 
-        public ToolsInfo getOneToolsInfo(string SerialNum)
+        public ToolsInfo getOneToolsInfoBySerial(string SerialNum)
         {
             SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { SerialNum });
+            ToolsInfo toolsInfo = new ToolsInfo();
+            while (reader.Read())
+            {
+                toolsInfo.SerialNum = reader["SerialNum"].ToString();
+                toolsInfo.Model = reader["Model"].ToString();
+                toolsInfo.Torque = reader["Torque"].ToString();
+                toolsInfo.Status = reader["Status"].ToString();
+                toolsInfo.QualityAssureDate = reader["QualityAssureDate"].ToString();
+                toolsInfo.RepoSpareTool = reader["RepoSpareTool"].ToString();
+                toolsInfo.MaintainContractDateStart = reader["MaintainContractDateStart"].ToString();
+                toolsInfo.MaintainContractDateEnd = reader["MaintainContractDateEnd"].ToString();
+                toolsInfo.Remark = reader["Reader"].ToString();
+                toolsInfo.MaintainInfo = reader["MaintainInfo"].ToString();
+                toolsInfo.RepairList = reader["RepairList"].ToString();
+            }
+            if (reader != null) reader.Close();
+            return toolsInfo;
+        }
+
+        public ToolsInfo getOneToolsInfoBySerialAndModel(string SerialNum,string Model)
+        {
+            SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum", "Model" }, new string[] { "=","=" }, new string[] { SerialNum,Model });
             ToolsInfo toolsInfo = new ToolsInfo();
             while (reader.Read())
             {

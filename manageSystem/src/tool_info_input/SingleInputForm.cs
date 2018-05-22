@@ -6,13 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DAL;
 using Model;
+using BLL;
 
 namespace manageSystem
 {
     public partial class SingleInputForm : Form
     {
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
         public SingleInputForm()
         {
             InitializeComponent();
@@ -24,21 +25,23 @@ namespace manageSystem
 
         private ToolsInfo getAllInput()
         {
-            ToolsInfo toolsInfo = new ToolsInfo();
-            toolsInfo.Model = comboBox1.Text.Trim();
-            toolsInfo.SerialNum = textBox2.Text.Trim();
-            toolsInfo.Workstation = textBox3.Text.Trim();
-            toolsInfo.Torque = textBox4.Text.Trim();
-            toolsInfo.Status = comboBox2.Text.Trim();
-            toolsInfo.QualityAssureDate = dateTimePicker1.Text.Trim();
-            toolsInfo.MaintainContractStyle = textBox7.Text.Trim();
-            toolsInfo.MaintainContractDateStart = dateTimePicker2.Text.Trim();
-            toolsInfo.MaintainContractDateEnd = dateTimePicker3.Text.Trim();
-            toolsInfo.Remark = textBox9.Text.Trim();
-            toolsInfo.RepairList = "";
-            toolsInfo.MaintainInfo = "";
-            toolsInfo.RepoSpareTool = "";
-            return toolsInfo;
+            return new ToolsInfo()
+            {
+                Model = comboBox1.Text.Trim(),
+                SerialNum = textBox2.Text.Trim(),
+                Workstation = textBox3.Text.Trim(),
+                Torque = textBox4.Text.Trim(),
+                Status = comboBox2.Text.Trim(),
+                QualityAssureDate = dateTimePicker1.Text.Trim(),
+                MaintainContractStyle = textBox7.Text.Trim(),
+                MaintainContractDateStart = dateTimePicker2.Text.Trim(),
+                MaintainContractDateEnd = dateTimePicker3.Text.Trim(),
+                Remark = textBox9.Text.Trim(),
+                RepairList = "",
+                MaintainInfo = "",
+                RepoSpareTool = ""
+            };
+
         }
 
         private void setDateTimePickerEmpty()
@@ -76,8 +79,8 @@ namespace manageSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ToolsInfo toolsInfo = getAllInput();
-            
+            string msg = toolsInfoManage.InputOneToolsInfo(getAllInput());
+            MessageBox.Show(msg);
         }
 
         private void button2_Click(object sender, EventArgs e)

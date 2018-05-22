@@ -10,10 +10,12 @@ namespace DAL
 {
     public class MaintainManageInfoService
     {
-        private static string status = ConfigurationManager.AppSettings["RepairFinished"];
+        public static string Repairing = ConfigurationManager.AppSettings["Repairing"];
+        public static string RepairFinished = ConfigurationManager.AppSettings["RepairFinished"];
+        public static string Suspend = ConfigurationManager.AppSettings["Suspend"];
         public bool IsNotFinishBreakToolExist(MaintainManageInfo maintainManageInfo)
         {
-            string sql = "select * from MaintainManageInfo where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and Status!='" + status + "'";
+            string sql = "select * from MaintainManageInfo where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and Status!='" + RepairFinished + "'";
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             if (reader != null && reader.HasRows)
             {

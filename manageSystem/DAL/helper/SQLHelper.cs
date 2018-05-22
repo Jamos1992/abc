@@ -309,5 +309,10 @@ namespace DAL
         {
             return ExecuteNonQuery(sql);
         }
+
+        public static int InsertTableBySql(string sql)
+        {
+            return ExecuteNonQuery(sql);
+        }
     }
 }

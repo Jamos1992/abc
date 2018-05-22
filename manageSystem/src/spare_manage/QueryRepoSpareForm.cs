@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SQLite;
+using BLL;
+using Model;
 
 namespace manageSystem
 {
     public partial class QueryRepoSpareForm : Form
     {
+        private RepoSpareToolManage repoSpareToolManage = new RepoSpareToolManage();
         public QueryRepoSpareForm()
         {
             InitializeComponent();
@@ -35,16 +31,15 @@ namespace manageSystem
                 txtBox3.Text = "";
                 return;
             }
-            SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            SQLiteDataReader reader = db.ReadTable("RepoSpareTool", new string[] { "*" }, new string[] { "SpareToolModel" }, new string[] { "=" }, new string[] { txtBox1.Text });
-            if (!reader.HasRows)
+            RepoSpareTool repoSpareTool = repoSpareToolManage.QueryOneRepoSpare(textBox1.Text.Trim());
+            if (repoSpareTool == null)
             {
                 txtBox2.Text = "0";
                 txtBox3.Text = "null";
                 return;
             }
-            txtBox2.Text = reader.GetValues().Get("Num").ToString();
-            txtBox3.Text = reader.GetValues().Get("Time").ToString();
+            txtBox2.Text = repoSpareTool.Num.ToString();
+            txtBox3.Text = repoSpareTool.Time;
         }
     }
 }

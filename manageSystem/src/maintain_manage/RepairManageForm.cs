@@ -14,6 +14,10 @@ namespace manageSystem.src.maintain_manage
 {
     public partial class RepairManageForm : Form
     {
+        public static string Repairing = MaintainManageInfoService.Repairing;
+        public static string RepairFinished = MaintainManageInfoService.RepairFinished;
+        public static string Suspend = MaintainManageInfoService.Suspend;
+
         public static string ToolSerialName;
         public static string Status;
         public RepairManageForm()
@@ -83,9 +87,9 @@ namespace manageSystem.src.maintain_manage
             else
             {
                 string sql = "select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo where";
-                if (radioButton1.Checked) sql += " Status='" + Declare.Repairing + "'";
-                if (radioButton2.Checked) sql += " Status='" + Declare.Suspend + "'";
-                if (radioButton3.Checked) sql += " Status='" + Declare.RepairFinished + "'";
+                if (radioButton1.Checked) sql += " Status='" + Repairing + "'";
+                if (radioButton2.Checked) sql += " Status='" + Suspend + "'";
+                if (radioButton3.Checked) sql += " Status='" + RepairFinished + "'";
                 sql += " order by SendFixTime desc";
                 list = new MaintainManageInfoService().getBreakToolsBySql(sql);
             }
@@ -177,7 +181,7 @@ namespace manageSystem.src.maintain_manage
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            if (getStatusFromGrid() == Declare.RepairFinished)
+            if (getStatusFromGrid() == RepairFinished)
             {
                 contextMenuStrip1.Enabled = false;
             }

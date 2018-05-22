@@ -96,7 +96,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelOperator.cs" />
     <Compile Include="src\demarcate_manage\AddDemarcateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,10 +373,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{ed5cd6b5-4814-4601-9de9-46878be2b948}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
     <ProjectReference Include="BLL\BLL.csproj">
       <Project>{222f6af7-37f3-4ff9-b193-2bee9d4aba8d}</Project>
       <Name>BLL</Name>
@@ -385,6 +380,10 @@
     <ProjectReference Include="DAL\DAL.csproj">
       <Project>{b4934277-0f8e-4da0-9847-8fa41437965b}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="Model\Model.csproj">
+      <Project>{ed5cd6b5-4814-4601-9de9-46878be2b948}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

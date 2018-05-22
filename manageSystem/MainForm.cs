@@ -13,11 +13,14 @@ using manageSystem.src;
 using System.Data.SQLite;
 using manageSystem.src.on_call_record;
 using manageSystem.src.demarcate_manage;
+using BLL;
+using Model;
 
 namespace manageSystem
 {
     public partial class MainForm : Form
     {
+        private EmailManage emailManage = new EmailManage();
         public MainForm()
         {
             InitializeComponent();
@@ -99,8 +102,7 @@ namespace manageSystem
 
         private void sendMailbtn_Click(object sender, EventArgs e)
         {
-            Email email = new Email();
-            email.SendEmail();
+            emailManage.SendEmail();
         }
 
         private void 工具数据导出ToolStripMenuItem_Click(object sender, EventArgs e)

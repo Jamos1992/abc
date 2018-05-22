@@ -39,17 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailManage.cs" />
+    <Compile Include="RepoSpareToolManage.cs" />
     <Compile Include="ToolsInfoManage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Model\Model.csproj">
-      <Project>{ed5cd6b5-4814-4601-9de9-46878be2b948}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{b4934277-0f8e-4da0-9847-8fa41437965b}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{ed5cd6b5-4814-4601-9de9-46878be2b948}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

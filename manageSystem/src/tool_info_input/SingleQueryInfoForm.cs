@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using BLL;
 using Model;
-using DAL;
 
 namespace manageSystem
 {
     public partial class QueryInfoBySNForm : Form
     {
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
         public QueryInfoBySNForm()
         {
             InitializeComponent();
@@ -33,31 +34,26 @@ namespace manageSystem
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
-            ToolsInfo toolsInfo = new ToolsInfo();
-            if (this.textBox1.Text == "")
+        {              
+            if (textBox1.Text == "")
             {
                 MessageBox.Show("查询失败，请输入查询序列号！");
                 clearTextBox4Query();
-                this.button3.Enabled = false;
+                button3.Enabled = false;
                 return;
             }
-            toolsInfo = new ToolsInfoService().getOneToolsInfo(textBox1.Text);
+            ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfo(textBox1.Text.Trim());
             if (toolsInfo == null)
             {
                 MessageBox.Show("查询失败，该记录不存在！");
-                this.button3.Enabled = false;
                 clearTextBox4Query();
+                button3.Enabled = false;
                 return;
             }
-            //toolsInfo.SerialNum = this.textBox1.Text;
-            //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            //SQLiteDataReader reader = db.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { toolsInfo.SerialNum });
-            //Console.WriteLine(reader);
-            this.setTextBox(toolsInfo);
-            MessageBox.Show("查询成功！");
+            setTextBox(toolsInfo);
+            //MessageBox.Show("查询成功！");
             changeTextBoxReadOnly();
-            this.button3.Enabled = true;
+            button3.Enabled = true;
         }
 
         private void setTextBox(ToolsInfo toolsInfo)
@@ -103,24 +99,24 @@ namespace manageSystem
             {
                 try
                 {
-                    new ToolsInfoService().updateToolsInfo(getTextBox(), textBox1.Text.Trim());
+                    toolsInfoManage.UpdateOneToolsInfo(getTextBox(), textBox1.Text.Trim());
                 }                                            
                 catch(Exception ex)
                 {
                     label11.ForeColor = Color.Red;
-                    this.label11.Text = "修改失败";
+                    label11.Text = "修改失败";
                     MessageBox.Show("修改失败,原因：{0}",ex.Message);
                     return;
                 }
-                this.button3.Text = "修改";
+                button3.Text = "修改";
                 label11.ForeColor = Color.Green;
-                this.label11.Text = "修改成功!";
+                label11.Text = "修改成功!";
                 clearTextBox();
-                this.button1.Enabled = true;
+                button1.Enabled = true;
                 return;
             }
-            this.button3.Text = "保存";
-            this.button1.Enabled = false;
+            button3.Text = "保存";
+            button1.Enabled = false;
         }
 
         private bool isTextBoxNull()

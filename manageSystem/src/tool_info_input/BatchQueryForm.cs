@@ -1,67 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using DAL;
 using Model;
+using BLL;
 
 namespace manageSystem
 {
     public partial class BatchQueryForm : Form
     {
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
         public BatchQueryForm()
         {
             InitializeComponent();
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             InitTextBoxHint();
         }
-
-        private string[] getHintFromDb()
-        {
-            string[] records = new string[] { };
-            //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            try
-            {
-                List<ToolsInfo> list = new ToolsInfoService().getAllToolsInfo();
-                if(list == null)
-                {
-                    Console.Write("no such record");
-                    return null;
-                }
-                List<string> recordList = records.ToList();
-                foreach(ToolsInfo toolsInfo in list)
-                {
-                    recordList.Add(toolsInfo.Model);
-                }
-                records = recordList.ToArray();
-            }
-            catch
-            {
-                Console.WriteLine("query db fail");
-                return null;
-            }
-
-            return records;
-        }
-
         private void InitTextBoxHint()
         {
-            string[] str = this.getHintFromDb();
-            if (str == null)
-            {
-                return;
-            }
-            Console.WriteLine(str);
-            this.textBox1.AutoCompleteCustomSource.AddRange(str);
-            this.textBox2.AutoCompleteCustomSource.AddRange(str);
-            this.textBox3.AutoCompleteCustomSource.AddRange(str);
-            this.textBox4.AutoCompleteCustomSource.AddRange(str);
-            this.textBox5.AutoCompleteCustomSource.AddRange(str);
+            List<string> list = toolsInfoManage.GetModelHintFromDb();
+            textBox1.AutoCompleteCustomSource.AddRange(list.ToArray());
+            textBox2.AutoCompleteCustomSource.AddRange(list.ToArray());
+            textBox3.AutoCompleteCustomSource.AddRange(list.ToArray());
+            textBox4.AutoCompleteCustomSource.AddRange(list.ToArray());
+            textBox5.AutoCompleteCustomSource.AddRange(list.ToArray());
         }
 
         private bool isTextBoxNull()
@@ -78,32 +40,20 @@ namespace manageSystem
             }
             return true;
         }
-
-
-
         private void setComboBoxList(string str,ComboBox comboBox)
         {
-            List<ToolsInfo> list = new ToolsInfoService().getAllToolsInfoByModel(str);
-            if(list == null)
-            {
-                return;
-            }
-            foreach(ToolsInfo toolsInfo in list)
-            {
-                comboBox.Items.Add(toolsInfo.SerialNum);
-            }
-            return;
+            comboBox.Items.AddRange(toolsInfoManage.GetSerialNumHintFromDb(comboBox1.Text.Trim()).ToArray());
         }
 
         private ToolsInfo getOneInput(TextBox txtBox, ComboBox comboBox)
         {
-            ToolsInfo toolsInfo = new ToolsInfoService().getOneToolsInfo(comboBox.Text);
+            ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfoBySerialAndModel(comboBox.Text.Trim(),txtBox.Text.Trim());
             if(toolsInfo == null)
             {
                 MessageBox.Show("序列号:" + comboBox1.Text + ", " + "型号:" + textBox1.Text + ", " + "记录不存在!");
                 return null;
             }
-            return toolsInfo;  
+            return toolsInfo;
         }
 
         private ToolsInfo[] getTextBox()

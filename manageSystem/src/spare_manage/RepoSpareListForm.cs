@@ -4,18 +4,18 @@ using System.Linq;
 using System.Windows.Forms;
 using DAL;
 using Model;
+using BLL;
 
 namespace manageSystem.src.spare_manage
 {
     public partial class RepoSpareListForm : Form
     {
+        private RepoSpareToolManage repoSpareToolManage = new RepoSpareToolManage();
         public RepoSpareListForm()
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
-            setDateTimePickerEmpty(dateTimePicker1);
-            setDateTimePickerEmpty(dateTimePicker2);
         }
         private void setDateTimePickerEmpty(Control c)
         {
@@ -40,8 +40,6 @@ namespace manageSystem.src.spare_manage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            //SQLiteDataReader reader = null;
             List<RepoSpareTool> list = new List<RepoSpareTool>();            
             if (!checkBox1.Checked && !checkBox2.Checked)
             {
@@ -73,6 +71,8 @@ namespace manageSystem.src.spare_manage
 
         private void RepoSpareListForm_Load(object sender, EventArgs e)
         {
+            setDateTimePickerEmpty(dateTimePicker1);
+            setDateTimePickerEmpty(dateTimePicker2);
             List<RepoSpareTool> list = new RepoSpareToolService().getAllRepoSpareTools();
             if (list == null) return;
             BindData2Grid(list);
@@ -88,9 +88,6 @@ namespace manageSystem.src.spare_manage
             dataGridView1.Columns[0].FillWeight = 30;
             dataGridView1.Columns[1].FillWeight = 30;
             dataGridView1.Columns[2].FillWeight = 40;
-//            dataGridView1.Columns[3].FillWeight = 25;
-            //dataGridView1.Columns[2].ReadOnly = false;
-            //dataGridView1.Columns[3].ReadOnly = false;
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }
@@ -115,41 +112,8 @@ namespace manageSystem.src.spare_manage
             }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ExcelOperator excel = new ExcelOperator();
-                int i = 0;
-                foreach (RepoSpareTool repoSpareTool in GetRepoSpareToolFromGrid())
-                {
-                    if (repoSpareTool == null)
-                    {
-                        continue;
-                    }
-                    if (i == 0)
-                    {
-                        if (excel.CreateAndSaveRepoSpareToolToExcel(repoSpareTool, saveFileDialog1.FileName))
-                        {
-                            i++;
-                            MessageBox.Show("导出Excel成功！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("导出Excel失败！");
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (excel.SaveDataTableToExcel(repoSpareTool, saveFileDialog1.FileName))
-                        {
-                            MessageBox.Show("导出Excel成功！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("导出Excel失败！");
-                            break;
-                        }
-                    }
-
-                }
+                string msg = repoSpareToolManage.ExportBatchData2Excel(saveFileDialog1.FileName, GetRepoSpareToolFromGrid());
+                MessageBox.Show(msg);
             }
         }
 

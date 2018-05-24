@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net.Mail;
+﻿using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Net;
 using System.Configuration;
 using Model;
-using System.Text.RegularExpressions;
 
 namespace DAL
 {

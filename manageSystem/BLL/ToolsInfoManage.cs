@@ -34,7 +34,7 @@ namespace BLL
             return toolsInfoService.getOneToolsInfoBySerial(serialNum);
         }
 
-        public int UpdateOneToolsInfo(ToolsInfo toolsInfo,string serialNum)
+        public int UpdateOneToolsInfo(ToolsInfo toolsInfo, string serialNum)
         {
             return toolsInfoService.updateToolsInfo(toolsInfo, serialNum);
         }
@@ -61,7 +61,7 @@ namespace BLL
             return recordList;
         }
 
-        public ToolsInfo QueryOneToolsInfoBySerialAndModel(string serial,string model)
+        public ToolsInfo QueryOneToolsInfoBySerialAndModel(string serial, string model)
         {
             if (string.IsNullOrEmpty(serial))
             {
@@ -74,6 +74,39 @@ namespace BLL
             return toolsInfoService.getOneToolsInfoBySerialAndModel(serial, model);
         }
 
+        public string ExportSingleData2Excel(string filePath, ToolsInfo toolsInfo)
+        {
+            int affected = toolsInfoService.CreateToolsInfoExcelTable(filePath);
+            if (affected < 1) return "创建导出文件失败";
+            affected = toolsInfoService.InsertToolsInfo2ExcelTable(filePath, toolsInfo);
+            if (affected < 1) return "导出数据失败";
+            return "导出数据成功";
+        }
 
+        public string ExportBatchData2Excel(string filePath, ToolsInfo[] toolsInfos)
+        {
+            int i = 0;
+            foreach (ToolsInfo toolsInfo in toolsInfos)
+            {
+                if (toolsInfo == null)
+                {
+                    continue;
+                }
+                if (i == 0)
+                {
+                    string result = ExportSingleData2Excel(filePath, toolsInfo);
+                    if (result.Contains("失败"))
+                    {
+                        return result;
+                    }
+                }
+                else
+                {
+                    int affected = toolsInfoService.InsertToolsInfo2ExcelTable(filePath, toolsInfo);
+                    if (affected < 1) return "导出数据失败";
+                }
+            }
+            return "导出数据成功";
+        }
     }
 }

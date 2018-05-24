@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Model;
 using System.Data.SQLite;
+using System.Configuration;
 
 namespace DAL
 {
@@ -80,6 +78,18 @@ namespace DAL
             }
             if (reader != null) reader.Close();
             return list;
+        }
+
+        //excel operation
+        public int CreatRepoSpareToolExcelTable(string filePath)
+        {
+            return EXCELHelper.CreateExcelTable(filePath, ConfigurationManager.AppSettings["CreatRepoSpareToolExcelString"]);
+        }
+
+        public int InsertRepoSpareTool2ExcelTable(string filePath, object obj)
+        {
+            string sql = "insert into 仓库备件(备件型号,个数,入库时间,备件序列号)";
+            return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }
 }

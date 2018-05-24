@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Data.SQLite;
 using Model;
 using System.Configuration;
@@ -132,6 +129,18 @@ namespace DAL
                 kvList.Add(kvPair);
             }
             return string.Join(",", kvList.ToArray());
+        }
+
+        //excel operation
+        public int CreateMaintainManageInfoExcelTable(string filePath)
+        {
+            return EXCELHelper.CreateExcelTable(filePath, ConfigurationManager.AppSettings["CreatMaintainManageInfoExcelString"]);
+        }
+
+        public int InsertMaintainManageInfo2ExcelTable(string filePath, object obj)
+        {
+            string sql = "insert into 工具维修信息(工具型号,工具序列号,送修时间,工具维修状态,送修描述)";
+            return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }
 }

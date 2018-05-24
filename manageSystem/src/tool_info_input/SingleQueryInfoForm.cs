@@ -189,26 +189,15 @@ namespace manageSystem
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if (this.isTextBoxNull())
+            if (isTextBoxNull())
             {
                 MessageBox.Show("没有记录可以导出,请先查询！");
                 return;
             }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ExcelOperator excel = new ExcelOperator();
-                if (excel.CreateAndSaveDateToExcel(this.getTextBox(), saveFileDialog1.FileName))
-                {
-                    label11.ForeColor = Color.Green;
-                    label11.Text = "导出Excel成功！";
-                    MessageBox.Show("导出Excel成功！");
-                }
-                else
-                {
-                    label11.ForeColor = Color.Red;
-                    label11.Text = "导出Excel失败！";
-                    MessageBox.Show("导出Excel失败！");
-                }
+                string msg = toolsInfoManage.ExportSingleData2Excel(saveFileDialog1.FileName, getTextBox());
+                MessageBox.Show(msg);
             }
         }
     }

@@ -101,18 +101,16 @@ namespace manageSystem
                 }
             }
             return false;
-
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.isTextBoxNull())
+            if (isTextBoxNull())
             {
                 MessageBox.Show("没有记录可以导出,请先查询！");
                 return;
             }
-            if (this.isInputConflict())
+            if (isInputConflict())
             {
                 if (DialogResult.No == MessageBox.Show("至少有两个序列号是相同的，确定导出？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)){
                     return;
@@ -121,72 +119,39 @@ namespace manageSystem
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ExcelOperator excel = new ExcelOperator();
-                int i = 0;
-                foreach(ToolsInfo toolsInfo in this.getTextBox())
-                {
-                    if (toolsInfo == null)
-                    {                       
-                        continue;
-                    }
-                    if (i == 0)
-                    {
-                        if (excel.CreateAndSaveDateToExcel(toolsInfo, saveFileDialog1.FileName))
-                        {
-                            i++;
-                            MessageBox.Show("导出Excel成功！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("导出Excel失败！");
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (excel.SaveDataTableToExcel(toolsInfo, saveFileDialog1.FileName))
-                        {
-                            MessageBox.Show("导出Excel成功！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("导出Excel失败！");
-                            break;
-                        }
-                    }
-                    
-                }               
+                string msg = toolsInfoManage.ExportBatchData2Excel(saveFileDialog1.FileName, getTextBox());
+                MessageBox.Show(msg);
             }
         }
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {
             this.comboBox1.Items.Clear();
-            setComboBoxList(this.textBox1.Text, comboBox1);
+            setComboBoxList(textBox1.Text, comboBox1);
         }
 
         private void comboBox2_DropDown(object sender, EventArgs e)
         {
             this.comboBox2.Items.Clear();
-            setComboBoxList(this.textBox2.Text, comboBox2);
+            setComboBoxList(textBox2.Text, comboBox2);
         }
 
         private void comboBox3_DropDown(object sender, EventArgs e)
         {
             this.comboBox3.Items.Clear();
-            setComboBoxList(this.textBox3.Text, comboBox3);
+            setComboBoxList(textBox3.Text, comboBox3);
         }
 
         private void comboBox4_DropDown(object sender, EventArgs e)
         {
             this.comboBox4.Items.Clear();
-            setComboBoxList(this.textBox4.Text, comboBox4);
+            setComboBoxList(textBox4.Text, comboBox4);
         }
 
         private void comboBox5_DropDown(object sender, EventArgs e)
         {
             this.comboBox5.Items.Clear();
-            setComboBoxList(this.textBox5.Text, comboBox5);
+            setComboBoxList(textBox5.Text, comboBox5);
         }
     }
 }

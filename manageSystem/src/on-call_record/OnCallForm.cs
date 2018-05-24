@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
-using DAL;
+using BLL;
 using Model;
 
 namespace manageSystem.src.on_call_record
 {
     public partial class OnCallForm : Form
     {
+        private OnCallRecordManage onCallRecordManage = new OnCallRecordManage();
         public OnCallForm()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace manageSystem.src.on_call_record
             List<OnCallRecord> list = new List<OnCallRecord>();           
             if (!checkBox1.Checked && !checkBox2.Checked)
             {
-                list = new OnCallRecordService().getAllOnCallRecord();
+                list = onCallRecordManage.GetAllOnCallRecords();
             }
             else
             {
@@ -50,7 +51,7 @@ namespace manageSystem.src.on_call_record
                     if (comboBox1.Text != "") sql += " and FaultReason='" + comboBox1.Text + "'";
                     else MessageBox.Show("故障原因未选择");
                 }
-                list = new OnCallRecordService().getOnCallRecordBySql(sql);
+                list = onCallRecordManage.GetOnCallRecordBySql(sql);
             }
             if (list == null)
             {
@@ -75,8 +76,6 @@ namespace manageSystem.src.on_call_record
             dataGridView1.Columns[2].FillWeight = 20;
             dataGridView1.Columns[3].FillWeight = 20;
             dataGridView1.Columns[4].FillWeight = 20;
-            //dataGridView1.Columns[2].ReadOnly = false;
-            //dataGridView1.Columns[3].ReadOnly = false;
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }
@@ -84,7 +83,6 @@ namespace manageSystem.src.on_call_record
         {
             dateTimePicker.Format = DateTimePickerFormat.Custom;
             dateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            //dateTimePicker.ShowUpDown = true;
         }
 
         private void dateTimePicker1_DropDown(object sender, EventArgs e)
@@ -129,41 +127,8 @@ namespace manageSystem.src.on_call_record
             }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ExcelOperator excel = new ExcelOperator();
-                int i = 0;
-                foreach (OnCallRecord onCallRecord in GetOnCallRecordsFromGrid())
-                {
-                    if (onCallRecord == null)
-                    {
-                        continue;
-                    }
-                    if (i == 0)
-                    {
-                        if (excel.CreateAndSaveOnCallRecordToExcel(onCallRecord, saveFileDialog1.FileName))
-                        {
-                            i++;
-                            MessageBox.Show("导出Excel成功！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("导出Excel失败！");
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (excel.SaveDataTableToExcel(onCallRecord, saveFileDialog1.FileName))
-                        {
-                            MessageBox.Show("导出Excel成功！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("导出Excel失败！");
-                            break;
-                        }
-                    }
-
-                }
+                string msg = onCallRecordManage.ExportBatchData2Excel(saveFileDialog1.FileName, GetOnCallRecordsFromGrid());
+                MessageBox.Show(msg);
             }
 
         }

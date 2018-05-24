@@ -15,5 +15,40 @@ namespace BLL
         {
             return repoSpareToolService.getOneRepoSpareToolFromDb(repoModel);
         }
+
+        public string ExportSingleData2Excel(string filePath, RepoSpareTool repoSpareTool)
+        {
+            int affected = repoSpareToolService.CreatRepoSpareToolExcelTable(filePath);
+            if (affected < 1) return "创建导出文件失败";
+            affected = repoSpareToolService.InsertRepoSpareTool2ExcelTable(filePath, repoSpareTool);
+            if (affected < 1) return "导出数据失败";
+            return "导出数据成功";
+        }
+
+        public string ExportBatchData2Excel(string filePath, RepoSpareTool[] repoSpareTools)
+        {
+            int i = 0;
+            foreach (RepoSpareTool repoSpareTool in repoSpareTools)
+            {
+                if (repoSpareTool == null)
+                {
+                    continue;
+                }
+                if (i == 0)
+                {
+                    string result = ExportSingleData2Excel(filePath, repoSpareTool);
+                    if (result.Contains("失败"))
+                    {
+                        return result;
+                    }
+                }
+                else
+                {
+                    int affected = repoSpareToolService.InsertRepoSpareTool2ExcelTable(filePath, repoSpareTool);
+                    if (affected < 1) return "导出数据失败";
+                }
+            }
+            return "导出数据成功";
+        }
     }
 }

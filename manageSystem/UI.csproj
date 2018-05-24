@@ -200,41 +200,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\tool_info_query\QueryInfoByModelForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\tool_info_query\QueryInfoByModelForm.Designer.cs">
-      <DependentUpon>QueryInfoByModelForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\tool_info_input\SingleQueryInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\tool_info_input\SingleQueryInfoForm.Designer.cs">
       <DependentUpon>SingleQueryInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\tool_info_query\QueryInfoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\tool_info_query\QueryInfoForm.Designer.cs">
-      <DependentUpon>QueryInfoForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\spare_manage\QueryRepoSpareForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\spare_manage\QueryRepoSpareForm.Designer.cs">
       <DependentUpon>QueryRepoSpareForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\tool_info_query\QuerySpareByToolForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\tool_info_query\QuerySpareByToolForm.Designer.cs">
-      <DependentUpon>QuerySpareByToolForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\tool_info_query\QueryToolBySpareForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\tool_info_query\QueryToolBySpareForm.Designer.cs">
-      <DependentUpon>QueryToolBySpareForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\spare_manage\QueryToolSpareForm.cs">
       <SubType>Form</SubType>
@@ -327,23 +303,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\tool_info_query\QueryInfoByModelForm.resx">
-      <DependentUpon>QueryInfoByModelForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\tool_info_input\SingleQueryInfoForm.resx">
       <DependentUpon>SingleQueryInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\tool_info_query\QueryInfoForm.resx">
-      <DependentUpon>QueryInfoForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\spare_manage\QueryRepoSpareForm.resx">
       <DependentUpon>QueryRepoSpareForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\tool_info_query\QuerySpareByToolForm.resx">
-      <DependentUpon>QuerySpareByToolForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\tool_info_query\QueryToolBySpareForm.resx">
-      <DependentUpon>QueryToolBySpareForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\spare_manage\QueryToolSpareForm.resx">
       <DependentUpon>QueryToolSpareForm.cs</DependentUpon>

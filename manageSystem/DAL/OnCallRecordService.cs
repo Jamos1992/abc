@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Data.SQLite;
 using Model;
+using System.Configuration;
 
 namespace DAL
 {
@@ -68,6 +66,18 @@ namespace DAL
             }
             if (reader != null) reader.Close();
             return list;
+        }
+
+        //excel operation
+        public int CreateOnCallRecordExcelTable(string filePath)
+        {
+            return EXCELHelper.CreateExcelTable(filePath, ConfigurationManager.AppSettings["CreateOnCallRecordExcelString"]);
+        }
+
+        public int InsertOnCallRecord2ExcelTable(string filePath, object obj)
+        {
+            string sql = "insert into 巡线记录(客户呼叫时间,达到现场时间,故障工具,故障原因,备注)";
+            return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }
 }

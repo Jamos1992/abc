@@ -131,56 +131,52 @@ namespace DAL
         public int InsertToolsInfo2ExcelTable(string filePath, object obj)
         {
             string sql = "insert into 工具信息(序列号,型号,工位信息,扭矩信息,工具当前状态,质保期,仓库中备件,保养合同类型,保养合同起止,备注信息,保养信息,维修记录)";
-            return EXCELHelper.InsertExcelTable(filePath,obj,sql)
+            return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
 
 
-        public bool CreateAndSaveDateToExcel(object obj, string filePath)
-        {
-            int affected = 
-            if(affected < 1)
-            {
+        //public bool CreateAndSaveDateToExcel(object obj, string filePath)
+        //{
+        //    int affected = 
+        //    if(affected < 1)
+        //    {
 
-            }
-
-
-
-            try
-            {
-                String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
-                //实例化一个Oledbconnection类(实现了IDisposable,要using)
-                OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
-                ole_conn.Open();
-                OleDbCommand ole_cmd = ole_conn.CreateCommand();
-                ole_cmd.CommandText = ConfigurationManager.AppSettings["CreateExcelString"];
-                ole_cmd.ExecuteNonQuery();
-                PropertyInfo[] propertys = obj.GetType().GetProperties();
-                int i = 0;
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    if (i == 0)
-                    {
-                        ole_cmd.CommandText = "insert into 工具信息(序列号,型号,工位信息,扭矩信息,工具当前状态,质保期,仓库中备件,保养合同类型,保养合同起止,备注信息,保养信息,维修记录) values(" + "'" + pinfo.GetValue(obj, null) + "'";
-                    }
-                    else
-                    {
-                        ole_cmd.CommandText += ", " + "'" + pinfo.GetValue(obj, null) + "'";
-                    }
-                    i++;
-                }
-                ole_cmd.CommandText += ")";
-                ole_cmd.ExecuteNonQuery();
-                //MessageBox.Show("生成Excel文件成功并写入一条数据......");
-                return true;
-            }
-            catch (Exception err)
-            {
-                Console.Write(err);
-                //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
-                //MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
-            }
-
-        }
+        //    }
+        //    try
+        //    {
+        //        String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
+        //        //实例化一个Oledbconnection类(实现了IDisposable,要using)
+        //        OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
+        //        ole_conn.Open();
+        //        OleDbCommand ole_cmd = ole_conn.CreateCommand();
+        //        ole_cmd.CommandText = ConfigurationManager.AppSettings["CreateExcelString"];
+        //        ole_cmd.ExecuteNonQuery();
+        //        PropertyInfo[] propertys = obj.GetType().GetProperties();
+        //        int i = 0;
+        //        foreach (PropertyInfo pinfo in propertys)
+        //        {
+        //            if (i == 0)
+        //            {
+        //                ole_cmd.CommandText = "insert into 工具信息(序列号,型号,工位信息,扭矩信息,工具当前状态,质保期,仓库中备件,保养合同类型,保养合同起止,备注信息,保养信息,维修记录) values(" + "'" + pinfo.GetValue(obj, null) + "'";
+        //            }
+        //            else
+        //            {
+        //                ole_cmd.CommandText += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+        //            }
+        //            i++;
+        //        }
+        //        ole_cmd.CommandText += ")";
+        //        ole_cmd.ExecuteNonQuery();
+        //        //MessageBox.Show("生成Excel文件成功并写入一条数据......");
+        //        return true;
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        Console.Write(err);
+        //        //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
+        //        //MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return false;
+        //    }
+        //}
     }
 }

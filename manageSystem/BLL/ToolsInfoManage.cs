@@ -102,6 +102,7 @@ namespace BLL
                     int affected = toolsInfoService.InsertToolsInfo2ExcelTable(filePath, toolsInfo);
                     if (affected < 1) return "导出数据失败";
                 }
+                i++;
             }
             return "导出数据成功";
         }

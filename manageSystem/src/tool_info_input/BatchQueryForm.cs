@@ -64,25 +64,25 @@ namespace manageSystem
         {
             ToolsInfo[] toolsInfos = new ToolsInfo[] { };
             List<ToolsInfo> ktls = toolsInfos.ToList();
-            int i = 1;
-            foreach (Control txtBox in panel1.Controls)
+            for(int i =1; i <= addTimes; i++)
             {
-                MessageBox.Show(txtBox.Name);
-                //foreach (Control comboBox in panel1.Controls)
-                //{
-                    
-                //    if (txtBox is TextBox && txtBox.Name.Contains(i.ToString()) && comboBox is ComboBox && comboBox.Name.Contains(i.ToString()))
-                //    {
-                //        MessageBox.Show(txtBox.Name + comboBox.Name);
-                //        if (txtBox.Text != "" && comboBox.Text != "")
-                //        {
-                //            ktls.Add(getOneInput(txtBox as TextBox, comboBox as ComboBox));
-                //        }
-                //        MessageBox.Show("this is " + i.ToString());
-                //        i++;
-                //    }
-                //}
+                foreach (Control txtBox in panel1.Controls)
+                {
+                    foreach (Control comboBox in panel1.Controls)
+                    {
+                        if (txtBox is TextBox && txtBox.Name.Contains(i.ToString()) && comboBox is ComboBox && comboBox.Name.Contains(i.ToString()))
+                        {
+                            MessageBox.Show(txtBox.Name + comboBox.Name);
+                            if (txtBox.Text != "" && comboBox.Text != "")
+                            {
+                                ktls.Add(getOneInput(txtBox as TextBox, comboBox as ComboBox));
+                            }
+                            MessageBox.Show("this is " + i.ToString());
+                        }
+                    }
+                }
             }
+            
             //if (textBox1.Text != "" && comboBox1.Text != "")
             //{
             //    ktls.Add(this.getOneInput(textBox1, comboBox1));

@@ -206,18 +206,6 @@
     <Compile Include="src\tool_info_input\SingleQueryInfoForm.Designer.cs">
       <DependentUpon>SingleQueryInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\spare_manage\QueryRepoSpareForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\spare_manage\QueryRepoSpareForm.Designer.cs">
-      <DependentUpon>QueryRepoSpareForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\spare_manage\QueryToolSpareForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\spare_manage\QueryToolSpareForm.Designer.cs">
-      <DependentUpon>QueryToolSpareForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\tool_info_input\SingleInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,12 +293,6 @@
     </Compile>
     <EmbeddedResource Include="src\tool_info_input\SingleQueryInfoForm.resx">
       <DependentUpon>SingleQueryInfoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\spare_manage\QueryRepoSpareForm.resx">
-      <DependentUpon>QueryRepoSpareForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\spare_manage\QueryToolSpareForm.resx">
-      <DependentUpon>QueryToolSpareForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\tool_info_input\SingleInputForm.resx">
       <DependentUpon>SingleInputForm.cs</DependentUpon>

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Data.SQLite;
-using BLL;
+﻿using BLL;
 using Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace manageSystem.src.on_call_record
 {
@@ -76,6 +71,11 @@ namespace manageSystem.src.on_call_record
             dataGridView1.Columns[2].FillWeight = 20;
             dataGridView1.Columns[3].FillWeight = 20;
             dataGridView1.Columns[4].FillWeight = 20;
+            dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[2].ReadOnly = true;
+            dataGridView1.Columns[3].ReadOnly = false;
+            dataGridView1.Columns[4].ReadOnly = false;
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }

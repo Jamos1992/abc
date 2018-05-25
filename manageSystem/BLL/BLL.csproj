@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Common.cs" />
     <Compile Include="EmailManage.cs" />
+    <Compile Include="MaintainInfoManage.cs" />
     <Compile Include="OnCallRecordManage.cs" />
     <Compile Include="RepoSpareToolManage.cs" />
     <Compile Include="ToolsInfoManage.cs" />

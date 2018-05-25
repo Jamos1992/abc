@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using manageSystem.src.spare_manage;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using manageSystem.src.spare_manage;
 
 namespace manageSystem
 {
@@ -66,14 +60,14 @@ namespace manageSystem
                     //this.splitContainer1.Panel2.Controls.Add(qrsf);
                     //qrsf.Show();
                     break;
-                case "工具零备件查询":
-                    addForm2Panel(new QueryToolSpareForm(), tableLayoutPanel1, ref e, singleInputHint);
-                    //QueryToolSpareForm qtsf = new QueryToolSpareForm();
-                    //qtsf.Text = e.Node.Text;
-                    //qtsf.TopLevel = false;
-                    //this.splitContainer1.Panel2.Controls.Add(qtsf);
-                    //qtsf.Show();
-                    break;
+                //case "工具零备件查询":
+                //    addForm2Panel(new QueryToolSpareForm(), tableLayoutPanel1, ref e, singleInputHint);
+                //    //QueryToolSpareForm qtsf = new QueryToolSpareForm();
+                //    //qtsf.Text = e.Node.Text;
+                //    //qtsf.TopLevel = false;
+                //    //this.splitContainer1.Panel2.Controls.Add(qtsf);
+                //    //qtsf.Show();
+                //    break;
                 case "建议采购备件查询":
                     break;
                 default:

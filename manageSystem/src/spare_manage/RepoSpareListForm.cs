@@ -88,6 +88,7 @@ namespace manageSystem.src.spare_manage
             dataGridView1.Columns[0].FillWeight = 30;
             dataGridView1.Columns[1].FillWeight = 30;
             dataGridView1.Columns[2].FillWeight = 40;
+            dataGridView1.ReadOnly = true;
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }

@@ -13,7 +13,8 @@ namespace DAL
         private static SQLiteConnection dbConnection;
         private static SQLiteCommand dbCommand;
         private static SQLiteDataReader dataReader;
-        private static string connectionString = ConfigurationManager.AppSettings["connectionString"];
+        //private static ConnectionStringSettings connectionString = ConfigurationManager.ConnectionStrings["sqlite"];
+        private static string connectionString = @"data source=d:\workspace\manageSystem\database\storehouse.db";
         /// <summary>
         /// 执行SQL命令
         /// </summary>
@@ -271,7 +272,8 @@ namespace DAL
             {
                 queryString += ", " + colNames[i] + " " + colTypes[i];
             }
-            queryString += "  ) ";
+            queryString += " ) ";
+            Console.WriteLine(queryString);
             return ExecuteNonQuery(queryString);
         }
 

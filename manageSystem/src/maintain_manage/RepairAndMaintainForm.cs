@@ -65,14 +65,14 @@ namespace manageSystem.src.maintain_manage
                     //this.splitContainer1.Panel2.Controls.Add(rof);
                     //rof.Show();
                     break;
-                case "根据型号查询":
-                    addForm2Panel(new QueryByModelForm(), tableLayoutPanel1, ref e, singleInputHint);
-                    //QueryByModelForm qbmf = new QueryByModelForm();
-                    //qbmf.Text = e.Node.Text;
-                    //qbmf.TopLevel = false;
-                    //this.splitContainer1.Panel2.Controls.Add(qbmf);
-                    //qbmf.Show();
-                    break;
+                //case "根据型号查询":
+                //    addForm2Panel(new QueryByModelForm(), tableLayoutPanel1, ref e, singleInputHint);
+                //    //QueryByModelForm qbmf = new QueryByModelForm();
+                //    //qbmf.Text = e.Node.Text;
+                //    //qbmf.TopLevel = false;
+                //    //this.splitContainer1.Panel2.Controls.Add(qbmf);
+                //    //qbmf.Show();
+                //    break;
                 default:
                     break;
             }

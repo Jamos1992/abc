@@ -54,7 +54,7 @@ namespace DAL
                 list.Add(new RepoSpareTool
                 {
                     SpareToolModel = reader["SpareToolModel"].ToString(),
-                    Num = (int)reader["Num"],
+                    Num = int.Parse(reader["Num"].ToString()),
                     Time = reader["Time"].ToString()
                 });
             }

@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using DAL;
+using BLL;
 using Model;
 
 namespace manageSystem.src.maintain_manage
 {
     public partial class RepairManageForm : Form
     {
-        public static string Repairing = MaintainManageInfoService.Repairing;
-        public static string RepairFinished = MaintainManageInfoService.RepairFinished;
-        public static string Suspend = MaintainManageInfoService.Suspend;
-
+        private MaintainInfoManage maintainInfoManage = new MaintainInfoManage();
+        public static string Repairing = MaintainInfoManage.Repairing;
+        public static string RepairFinished = MaintainInfoManage.RepairFinished;
+        public static string Suspend = MaintainInfoManage.Suspend;
         public static string ToolSerialName;
         public static string Status;
         public RepairManageForm()
@@ -70,7 +66,7 @@ namespace manageSystem.src.maintain_manage
 
         private void RepairManageForm_Load(object sender, EventArgs e)
         {
-            List<MaintainManageInfo> list = new MaintainManageInfoService().getAllBreakTools();
+            List<MaintainManageInfo> list = maintainInfoManage.GetAllBreakTools();
             //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             //SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
             if (list == null) return;
@@ -82,7 +78,7 @@ namespace manageSystem.src.maintain_manage
             List<MaintainManageInfo> list = new List<MaintainManageInfo>();           
             if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
             {
-                list = new MaintainManageInfoService().getBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
+                list = maintainInfoManage.GetAllBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
             }
             else
             {
@@ -91,7 +87,7 @@ namespace manageSystem.src.maintain_manage
                 if (radioButton2.Checked) sql += " Status='" + Suspend + "'";
                 if (radioButton3.Checked) sql += " Status='" + RepairFinished + "'";
                 sql += " order by SendFixTime desc";
-                list = new MaintainManageInfoService().getBreakToolsBySql(sql);
+                list = maintainInfoManage.GetAllBreakToolsBySql(sql);
             }
             if (list == null)
             {
@@ -111,47 +107,8 @@ namespace manageSystem.src.maintain_manage
             }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ExcelOperator excel = new ExcelOperator();
-                int i = 0;
-                OutputStruct outputStruct = new OutputStruct();
-                foreach (MaintainManageInfo maintainManageInfo in GetMaintainManageInfoFromGrid())
-                {
-                    if (maintainManageInfo == null)
-                    {
-                        continue;
-                    }
-                    outputStruct.ToolModeName = maintainManageInfo.ToolModeName;
-                    outputStruct.ToolSerialName = maintainManageInfo.ToolSerialName;
-                    outputStruct.SendFixTime = maintainManageInfo.SendFixTime;
-                    outputStruct.Status = maintainManageInfo.Status;
-                    outputStruct.Detail = maintainManageInfo.Detail;
-                    if (i == 0)
-                    {
-                        if (excel.CreateAndSaveMaintainManageInfoToExcel(outputStruct, saveFileDialog1.FileName))
-                        {
-                            i++;
-                            MessageBox.Show("导出Excel成功！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("导出Excel失败！");
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (excel.SaveDataMaintainManageInfoToExcel(outputStruct, saveFileDialog1.FileName))
-                        {
-                            MessageBox.Show("导出Excel成功！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("导出Excel失败！");
-                            break;
-                        }
-                    }
-
-                }
+                string msg = maintainInfoManage.ExportBatchData2Excel(saveFileDialog1.FileName, GetMaintainManageInfoFromGrid());
+                MessageBox.Show(msg);
             }
         }
 
@@ -166,7 +123,6 @@ namespace manageSystem.src.maintain_manage
                 Show();
             }
         }
-
         private string getSerialNumFromGrid()
         {
             if (dataGridView1.SelectedRows.Count == 0) return null;

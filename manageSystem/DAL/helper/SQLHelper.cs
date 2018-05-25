@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.SQLite;
 using System.Reflection;
-using System.Configuration;
 
 namespace DAL
 {
@@ -13,7 +9,6 @@ namespace DAL
         private static SQLiteConnection dbConnection;
         private static SQLiteCommand dbCommand;
         private static SQLiteDataReader dataReader;
-        //private static ConnectionStringSettings connectionString = ConfigurationManager.ConnectionStrings["sqlite"];
         private static string connectionString = @"data source=d:\workspace\manageSystem\database\storehouse.db";
         /// <summary>
         /// 执行SQL命令
@@ -56,32 +51,6 @@ namespace DAL
                 dbConnection.Close();
             }
         }
-
-        /// <summary>
-        /// 关闭数据库连接
-        /// </summary>
-        //public static void CloseConnection()
-        //{
-        //    //销毁Commend
-        //    if (dbCommand != null)
-        //    {
-        //        dbCommand.Cancel();
-        //    }
-        //    dbCommand = null;
-        //    //销毁Reader
-        //    if (dataReader != null)
-        //    {
-        //        dataReader.Close();
-        //    }
-        //    dataReader = null;
-        //    //销毁Connection
-        //    if (dbConnection != null)
-        //    {
-        //        dbConnection.Close();
-        //    }
-        //    dbConnection = null;
-        //}
-
         /// <summary>
         /// 读取整张数据表
         /// </summary>
@@ -93,7 +62,6 @@ namespace DAL
             return ExecuteQuery(queryString);
         }
 
-
         /// <summary>
         /// 向指定数据表中插入数据
         /// </summary>
@@ -103,13 +71,13 @@ namespace DAL
         public static int InsertValues(string tableName, string[] values)
         {
             //获取数据表中字段数目
-            int fieldCount = ReadFullTable(tableName).FieldCount;
+            SQLiteDataReader reader = ReadFullTable(tableName);
             //当插入的数据长度不等于字段数目时引发异常
-            if (values.Length != fieldCount)
+            if (values.Length != reader.FieldCount)
             {
                 throw new SQLiteException("values.Length!=fieldCount");
             }
-
+            reader.Close();
             string queryString = "INSERT INTO " + tableName + " VALUES (" + "'" + values[0] + "'";
             for (int i = 1; i < values.Length; i++)
             {
@@ -122,12 +90,13 @@ namespace DAL
         public static int InsertValuesByStruct(string tableName, object obj)
         {
             PropertyInfo[] propertys = obj.GetType().GetProperties();
-            int fieldCount = ReadFullTable(tableName).FieldCount;
+            SQLiteDataReader reader = ReadFullTable(tableName);
             //当插入的数据长度不等于字段数目时引发异常
-            if (propertys.Length != fieldCount)
+            if (propertys.Length != reader.FieldCount)
             {
                 throw new SQLiteException("propertys.Length!=fieldCount");
             }
+            reader.Close();
             int i = 0;
             string queryString = "";
             foreach (PropertyInfo pinfo in propertys)
@@ -178,11 +147,12 @@ namespace DAL
         {
             PropertyInfo[] propertys = obj.GetType().GetProperties();
             //当字段名称和字段数值不对应时引发异常
-            int fieldCount = ReadFullTable(tableName).FieldCount;
-            if (propertys.Length != fieldCount || colNames.Length != values.Length)
+            SQLiteDataReader reader = ReadFullTable(tableName);
+            if (propertys.Length != reader.FieldCount || colNames.Length != values.Length)
             {
                 throw new SQLiteException("propertys.Length!=fieldCount");
             }
+            reader.Close();
             int i = 0;
             string queryString = "";
             foreach (PropertyInfo pinfo in propertys)

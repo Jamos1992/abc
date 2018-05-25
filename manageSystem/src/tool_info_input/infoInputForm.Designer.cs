@@ -83,7 +83,7 @@
             treeNode3,
             treeNode6});
             this.treeviewInput.SelectedImageIndex = 0;
-            this.treeviewInput.Size = new System.Drawing.Size(169, 404);
+            this.treeviewInput.Size = new System.Drawing.Size(175, 512);
             this.treeviewInput.TabIndex = 0;
             this.treeviewInput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeviewInput_AfterSelect);
             // 
@@ -112,8 +112,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.skinAnimator1.SetDecoration(this.splitContainer1.Panel2, CCWin.SkinControl.DecorationType.None);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 404);
-            this.splitContainer1.SplitterDistance = 169;
+            this.splitContainer1.Size = new System.Drawing.Size(832, 512);
+            this.splitContainer1.SplitterDistance = 175;
             this.splitContainer1.TabIndex = 1;
             // 
             // panel1
@@ -123,9 +123,9 @@
             this.panel1.Controls.Add(this.label1);
             this.skinAnimator1.SetDecoration(this.panel1, CCWin.SkinControl.DecorationType.None);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 191);
+            this.panel1.Location = new System.Drawing.Point(0, 299);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(169, 213);
+            this.panel1.Size = new System.Drawing.Size(175, 213);
             this.panel1.TabIndex = 1;
             // 
             // richTextBox1
@@ -136,7 +136,7 @@
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(167, 211);
+            this.richTextBox1.Size = new System.Drawing.Size(173, 211);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "\n操作说明：\n1、在表格内填入工具所有信息\n2、点击\"录入\"存盘\n3、点击\"清空\"删除所有表格内容";
             // 
@@ -163,7 +163,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 404);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(653, 512);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -204,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 404);
+            this.ClientSize = new System.Drawing.Size(832, 512);
             this.Controls.Add(this.splitContainer1);
             this.skinAnimator1.SetDecoration(this, CCWin.SkinControl.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

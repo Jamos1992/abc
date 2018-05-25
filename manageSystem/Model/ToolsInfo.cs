@@ -9,16 +9,21 @@ namespace Model
     {
         public string SerialNum { get; set; }                        //序列号
         public string Model { get; set; }                            //型号
-        public string Workstation { get; set; }                      //工位信息
-        public string Torque { get; set; }                           //扭矩信息
-        public string Status { get; set; }                           //工具当前状态
-        public string QualityAssureDate { get; set; }                //质保期
-        public string RepoSpareTool { get; set; }                    //仓库中备件
+        public string Category { get; set; }                         //类别
+        public string Name { get; set; }                             //名称
+        public int TorqueMin { get; set; }                           //扭矩下限
+        public int TorqueMax { get; set; }                           //扭矩上限
+        public int Accuracy { get; set; }                            //精度
+        public string Section { get; set; }                          //工段
+        public string Workstation { get; set; }                      //工位
+        public int DemarcateCycle { get; set; }                      //标定周期
+        public string Status { get; set; }                           //工具状态
+        public string QualityAssureDate { get; set; }                //质保期至
         public string MaintainContractStyle { get; set; }            //保养合同类型
-        public string MaintainContractDateStart { get; set; }        //保养合同起始
-        public string MaintainContractDateEnd { get; set; }          //保养合同终止
+        public string MaintainContractDate { get; set; }             //保养合同至
+        public int RepairTimes { get; set; }                         //累计维修次数
+        public string ChangeRecord { get; set; }                     //更改记录
         public string Remark { get; set; }                           //备注信息
-        public string MaintainInfo { get; set; }                     //保养信息
-        public string RepairList { get; set; }                       //维修记录
+
     }
 }

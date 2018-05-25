@@ -1,13 +1,9 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data.SQLite;
-using Model;
-using System.Data.OleDb;
-using System.Data;
-using System.Reflection;
 using System.Configuration;
+using System.Data.SQLite;
+using System.Reflection;
 
 namespace DAL
 {
@@ -31,15 +27,21 @@ namespace DAL
             {
                 toolsInfo.SerialNum = reader["SerialNum"].ToString();
                 toolsInfo.Model = reader["Model"].ToString();
-                toolsInfo.Torque = reader["Torque"].ToString();
+                toolsInfo.Category = reader["Category"].ToString();
+                toolsInfo.Name = reader["Name"].ToString();
+                toolsInfo.TorqueMin = int.Parse(reader["TorqueMin"].ToString());
+                toolsInfo.TorqueMax = int.Parse(reader["TorqueMax"].ToString());
+                toolsInfo.Accuracy = int.Parse(reader["Accuracy"].ToString());
+                toolsInfo.Section = reader["Section"].ToString();
+                toolsInfo.DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString());
+                toolsInfo.Workstation = reader["Workstation"].ToString();
                 toolsInfo.Status = reader["Status"].ToString();
                 toolsInfo.QualityAssureDate = reader["QualityAssureDate"].ToString();
-                toolsInfo.RepoSpareTool = reader["RepoSpareTool"].ToString();
-                toolsInfo.MaintainContractDateStart = reader["MaintainContractDateStart"].ToString();
-                toolsInfo.MaintainContractDateEnd = reader["MaintainContractDateEnd"].ToString();
-                toolsInfo.Remark = reader["Reader"].ToString();
-                toolsInfo.MaintainInfo = reader["MaintainInfo"].ToString();
-                toolsInfo.RepairList = reader["RepairList"].ToString();
+                toolsInfo.MaintainContractStyle = reader["MaintainContractStyle"].ToString();
+                toolsInfo.MaintainContractDate = reader["MaintainContractDate"].ToString();
+                toolsInfo.RepairTimes = int.Parse(reader["RepairTimes"].ToString());
+                toolsInfo.ChangeRecord = reader["ChangeRecord"].ToString();
+                toolsInfo.Remark = reader["Remark"].ToString();
             }
             if (reader != null) reader.Close();
             return toolsInfo;
@@ -53,15 +55,21 @@ namespace DAL
             {
                 toolsInfo.SerialNum = reader["SerialNum"].ToString();
                 toolsInfo.Model = reader["Model"].ToString();
-                toolsInfo.Torque = reader["Torque"].ToString();
+                toolsInfo.Category = reader["Category"].ToString();
+                toolsInfo.Name = reader["Name"].ToString();
+                toolsInfo.TorqueMin = int.Parse(reader["TorqueMin"].ToString());
+                toolsInfo.TorqueMax = int.Parse(reader["TorqueMax"].ToString());
+                toolsInfo.Accuracy = int.Parse(reader["Accuracy"].ToString());
+                toolsInfo.Section = reader["Section"].ToString();
+                toolsInfo.DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString());
+                toolsInfo.Workstation = reader["Workstation"].ToString();
                 toolsInfo.Status = reader["Status"].ToString();
                 toolsInfo.QualityAssureDate = reader["QualityAssureDate"].ToString();
-                toolsInfo.RepoSpareTool = reader["RepoSpareTool"].ToString();
-                toolsInfo.MaintainContractDateStart = reader["MaintainContractDateStart"].ToString();
-                toolsInfo.MaintainContractDateEnd = reader["MaintainContractDateEnd"].ToString();
-                toolsInfo.Remark = reader["Reader"].ToString();
-                toolsInfo.MaintainInfo = reader["MaintainInfo"].ToString();
-                toolsInfo.RepairList = reader["RepairList"].ToString();
+                toolsInfo.MaintainContractStyle = reader["MaintainContractStyle"].ToString();
+                toolsInfo.MaintainContractDate = reader["MaintainContractDate"].ToString();
+                toolsInfo.RepairTimes = int.Parse(reader["RepairTimes"].ToString());
+                toolsInfo.ChangeRecord = reader["ChangeRecord"].ToString();
+                toolsInfo.Remark = reader["Remark"].ToString();
             }
             if (reader != null) reader.Close();
             return toolsInfo;
@@ -82,15 +90,21 @@ namespace DAL
                 {
                     SerialNum = reader["SerialNum"].ToString(),
                     Model = reader["Model"].ToString(),
-                    Torque = reader["Torque"].ToString(),
+                    Category = reader["Category"].ToString(),
+                    Name = reader["Name"].ToString(),
+                    TorqueMin = int.Parse(reader["TorqueMin"].ToString()),
+                    TorqueMax = int.Parse(reader["TorqueMax"].ToString()),
+                    Accuracy = int.Parse(reader["Accuracy"].ToString()),
+                    Section = reader["Section"].ToString(),
+                    DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
+                    Workstation = reader["Workstation"].ToString(),
                     Status = reader["Status"].ToString(),
                     QualityAssureDate = reader["QualityAssureDate"].ToString(),
-                    RepoSpareTool = reader["RepoSpareTool"].ToString(),
-                    MaintainContractDateStart = reader["MaintainContractDateStart"].ToString(),
-                    MaintainContractDateEnd = reader["MaintainContractDateEnd"].ToString(),
-                    Remark = reader["Reader"].ToString(),
-                    MaintainInfo = reader["MaintainInfo"].ToString(),
-                    RepairList = reader["RepairList"].ToString(),
+                    MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
+                    MaintainContractDate = reader["MaintainContractDate"].ToString(),
+                    RepairTimes = int.Parse(reader["RepairTimes"].ToString()),
+                    ChangeRecord = reader["ChangeRecord"].ToString(),
+                    Remark = reader["Remark"].ToString()
                 });
             }
             if (reader != null) reader.Close();
@@ -107,15 +121,21 @@ namespace DAL
                 {
                     SerialNum = reader["SerialNum"].ToString(),
                     Model = reader["Model"].ToString(),
-                    Torque = reader["Torque"].ToString(),
+                    Category = reader["Category"].ToString(),
+                    Name = reader["Name"].ToString(),
+                    TorqueMin = int.Parse(reader["TorqueMin"].ToString()),
+                    TorqueMax = int.Parse(reader["TorqueMax"].ToString()),
+                    Accuracy = int.Parse(reader["Accuracy"].ToString()),
+                    Section = reader["Section"].ToString(),
+                    DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
+                    Workstation = reader["Workstation"].ToString(),
                     Status = reader["Status"].ToString(),
                     QualityAssureDate = reader["QualityAssureDate"].ToString(),
-                    RepoSpareTool = reader["RepoSpareTool"].ToString(),
-                    MaintainContractDateStart = reader["MaintainContractDateStart"].ToString(),
-                    MaintainContractDateEnd = reader["MaintainContractDateEnd"].ToString(),
-                    Remark = reader["Reader"].ToString(),
-                    MaintainInfo = reader["MaintainInfo"].ToString(),
-                    RepairList = reader["RepairList"].ToString(),
+                    MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
+                    MaintainContractDate = reader["MaintainContractDate"].ToString(),
+                    RepairTimes = int.Parse(reader["RepairTimes"].ToString()),
+                    ChangeRecord = reader["ChangeRecord"].ToString(),
+                    Remark = reader["Remark"].ToString()
                 });
             }
             if (reader != null) reader.Close();
@@ -123,60 +143,39 @@ namespace DAL
         }
 
         //excel operation
+        //public bool IsToolsInfoTableExist(string filePath)
+        //{
+        //    string sql = "select * from "
+        //    EXCELHelper.LoadDataFromExcel(filePath,)
+        //}
+        
         public int CreateToolsInfoExcelTable(string filePath)
         {
-            return EXCELHelper.CreateExcelTable(filePath, ConfigurationManager.AppSettings["CreateExcelString"]);
+            string sql = ConfigurationManager.AppSettings["CreateExcelString"];
+            Console.WriteLine("sql is {0}", sql);
+            return EXCELHelper.CreateExcelTable(filePath, sql);
         }
 
         public int InsertToolsInfo2ExcelTable(string filePath, object obj)
         {
-            string sql = "insert into 工具信息(序列号,型号,工位信息,扭矩信息,工具当前状态,质保期,仓库中备件,保养合同类型,保养合同起止,备注信息,保养信息,维修记录)";
+            string sql = "insert into 工具信息 (工具序列号,工具型号,工具类别,工具名称,标定扭矩下限,标定扭矩上限,精度,工段,工位,标定周期,工具状态,质保期至,保养合同类型,保养合同至,累计维修次数,更改记录,备注信息)";
+            PropertyInfo[] propertys = obj.GetType().GetProperties();
+            Console.WriteLine("len of obj is {0}", propertys.Length);
+            int i = 0;
+            foreach (PropertyInfo pinfo in propertys)
+            {
+                if (i == 0)
+                {
+                    sql += " values(" + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                else
+                {
+                    sql += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                i++;
+            }
+            sql += ")";
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
-
-
-        //public bool CreateAndSaveDateToExcel(object obj, string filePath)
-        //{
-        //    int affected = 
-        //    if(affected < 1)
-        //    {
-
-        //    }
-        //    try
-        //    {
-        //        String sConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + "Extended Properties='Excel 8.0;HDR=Yes;'";
-        //        //实例化一个Oledbconnection类(实现了IDisposable,要using)
-        //        OleDbConnection ole_conn = new OleDbConnection(sConnectionString);
-        //        ole_conn.Open();
-        //        OleDbCommand ole_cmd = ole_conn.CreateCommand();
-        //        ole_cmd.CommandText = ConfigurationManager.AppSettings["CreateExcelString"];
-        //        ole_cmd.ExecuteNonQuery();
-        //        PropertyInfo[] propertys = obj.GetType().GetProperties();
-        //        int i = 0;
-        //        foreach (PropertyInfo pinfo in propertys)
-        //        {
-        //            if (i == 0)
-        //            {
-        //                ole_cmd.CommandText = "insert into 工具信息(序列号,型号,工位信息,扭矩信息,工具当前状态,质保期,仓库中备件,保养合同类型,保养合同起止,备注信息,保养信息,维修记录) values(" + "'" + pinfo.GetValue(obj, null) + "'";
-        //            }
-        //            else
-        //            {
-        //                ole_cmd.CommandText += ", " + "'" + pinfo.GetValue(obj, null) + "'";
-        //            }
-        //            i++;
-        //        }
-        //        ole_cmd.CommandText += ")";
-        //        ole_cmd.ExecuteNonQuery();
-        //        //MessageBox.Show("生成Excel文件成功并写入一条数据......");
-        //        return true;
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        Console.Write(err);
-        //        //MessageBox.Show("导出Excel出错！错误原因：" + err.Message, "提示信息",
-        //        //MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        return false;
-        //    }
-        //}
     }
 }

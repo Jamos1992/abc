@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace manageSystem
@@ -63,7 +58,8 @@ namespace manageSystem
             {
                 if(c is Form)
                 {
-                    tableLayoutPanel1.Controls.Remove(c);
+                    (c as Form).Close();
+                    //tableLayoutPanel1.Controls.Remove(c);
                 }
             }
 
@@ -96,8 +92,9 @@ namespace manageSystem
 
         private void setFormSize(Form form, Panel panel)
         {
-            form.Width = panel.Width;
-            form.Height = panel.Height-30;
+            //form.Width = panel.Width;
+            //form.Height = panel.Height-30;
+            form.Dock = DockStyle.Fill;
         }
 
         private void addForm2Panel(Form form, Panel panel,ref TreeViewEventArgs e,string hint)

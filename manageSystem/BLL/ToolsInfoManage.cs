@@ -17,10 +17,6 @@ namespace BLL
             {
                 return "录入失败，请输入工具序列号、型号及工位信息！";
             }
-            if (string.Compare(toolsInfo.MaintainContractDateStart, toolsInfo.MaintainContractDateEnd) > 0)
-            {
-                return "参数输入有误，保养起始日期应小于保养终止日期";
-            }
             int affectedRow = toolsInfoService.AddTools(toolsInfo);
             if (affectedRow < 1)
             {
@@ -56,7 +52,7 @@ namespace BLL
             List<ToolsInfo> list = toolsInfoService.getAllToolsInfoByModel(model);
             foreach (ToolsInfo toolsInfo in list)
             {
-                recordList.Add(toolsInfo.Model);
+                recordList.Add(toolsInfo.SerialNum);
             }
             return recordList;
         }
@@ -77,7 +73,8 @@ namespace BLL
         public string ExportSingleData2Excel(string filePath, ToolsInfo toolsInfo)
         {
             int affected = toolsInfoService.CreateToolsInfoExcelTable(filePath);
-            if (affected < 1) return "创建导出文件失败";
+            Console.WriteLine("affected is {0}", affected);
+            //if (affected < 1) return "创建导出文件失败";
             affected = toolsInfoService.InsertToolsInfo2ExcelTable(filePath, toolsInfo);
             if (affected < 1) return "导出数据失败";
             return "导出数据成功";

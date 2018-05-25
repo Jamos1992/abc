@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Data.SQLite;
+﻿using DAL;
 using Model;
-using DAL;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace manageSystem
 {
@@ -51,18 +46,28 @@ namespace manageSystem
 
         private ToolsInfo getOneInput(TextBox txtBox1,TextBox txtBox2)
         {
-            ToolsInfo toolsInfo = new ToolsInfo();
-            toolsInfo.Model = txtBox1.Text;
-            toolsInfo.SerialNum = txtBox2.Text;            
-            toolsInfo.Workstation = "";
-            toolsInfo.Torque = "";
-            toolsInfo.Status = "";
-            toolsInfo.QualityAssureDate = "";
-            toolsInfo.MaintainContractStyle = "";
-            toolsInfo.MaintainContractDateStart = "";
-            toolsInfo.MaintainContractDateEnd = "";
-            toolsInfo.Remark = "";
-            toolsInfo.RepairList = "";
+
+
+            ToolsInfo toolsInfo = new ToolsInfo()
+            {
+                SerialNum = txtBox1.Text.Trim(),
+                Model = txtBox2.Text.Trim(),
+                //Category = "",
+                //Name = "",
+                //TorqueMin = "",
+                //TorqueMax = "",
+                //Accuracy = int.Parse(accuracyBox.Text.Trim()),
+                //Section = sectionBox.Text.Trim(),
+                //DemarcateCycle = (int)cycleBox.Value,
+                //Workstation = workstationBox.Text.Trim(),
+                //Status = statusBox.Text.Trim(),
+                //QualityAssureDate = qualityBox.Text.Trim(),
+                //MaintainContractStyle = contractBox.Text.Trim(),
+                //MaintainContractDate = maintainBox.Text.Trim(),
+                //RepairTimes = (int)repairTimeBox.Value,
+                //ChangeRecord = repairBox.Text.Trim(),
+                //Remark = remarkBox.Text.Trim()
+            };
             return toolsInfo;
         }
 
@@ -132,27 +137,6 @@ namespace manageSystem
             this.textBox5.AutoCompleteCustomSource.AddRange(str);
             this.textBox7.AutoCompleteCustomSource.AddRange(str);
             this.textBox9.AutoCompleteCustomSource.AddRange(str);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //Button btn = (Button)sender;
-            ////lb.Parent.BackColor = Color.Red;
-
-            ////ControlHelper是一个控件复制类，clone是类中的复制方法
-            //Control gb = ControlHelper.Clone(btn.Parent, true) as Control;
-            ////Control cp_lb_First_Menu = cp_pn_MenuBlock.Controls.Find(lb_First_Menu.Name, true)[0];
-
-            //Control lb2 = gb.Controls.Find(button4.Name, true)[0];
-
-            //Control lb1 = gb.Controls.Find(button2.Name, true)[0];
-            ////lb1.Visible = false;
-            //lb2.Visible = true;
-
-            //lb1.BackColor = Color.Red;
-            //this.Controls.Add(gb);
-            ////保证复制后的控件都在原控件下方显示
-            //gb.BringToFront();
         }
     }
 }

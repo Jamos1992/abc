@@ -23,8 +23,8 @@ namespace DAL
 
         private void CreateToolsInfoDb()
         {
-            string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Workstation", "Torque", "Status", "QualityAssureDate", "RepoSpareTool", "MaintainContractStyle", "MaintainContractDateStart", "MaintainContractDateEnd", "Remark", "MaintainInfo", "RepairList" };
-            string[] toolsInfoFeildType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "TEXT", "VARCHAR(255)", "VARCHAR(255)", "TEXT", "TEXT", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
+            string[] toolsInfoFeildName = new string[] { "SerialNum", "Model", "Category", "Name", "TorqueMin", "TorqueMax", "Accuracy", "Section", "Workstation", "DemarcateCycle", "Status", "QualityAssureDate", "MaintainContractStyle", "MaintainContractDate", "RepairTimes", "ChangeRecord", "Remark" };
+            string[] toolsInfoFeildType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "Integer", "Integer", "Integer", "VARCHAR(255)", "VARCHAR(255)", "Integer", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" , "VARCHAR(255)", "Integer", "VARCHAR(255)", "VARCHAR(255)" };
             SQLHelper.CreateTable("ToolsInfo", toolsInfoFeildName, toolsInfoFeildType);
         }
 

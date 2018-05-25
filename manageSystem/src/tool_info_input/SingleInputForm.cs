@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using BLL;
 using Model;
-using BLL;
+using System;
+using System.Windows.Forms;
 
 namespace manageSystem
 {
@@ -17,31 +11,35 @@ namespace manageSystem
         public SingleInputForm()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
         }
         private void SingleInputForm_Load(object sender, EventArgs e)
         {
-            this.setDateTimePickerEmpty();
+            setDateTimePickerEmpty();
         }
 
         private ToolsInfo getAllInput()
         {
             return new ToolsInfo()
             {
-                Model = comboBox1.Text.Trim(),
-                SerialNum = textBox2.Text.Trim(),
-                Workstation = textBox3.Text.Trim(),
-                Torque = textBox4.Text.Trim(),
-                Status = comboBox2.Text.Trim(),
-                QualityAssureDate = dateTimePicker1.Text.Trim(),
-                MaintainContractStyle = textBox7.Text.Trim(),
-                MaintainContractDateStart = dateTimePicker2.Text.Trim(),
-                MaintainContractDateEnd = dateTimePicker3.Text.Trim(),
-                Remark = textBox9.Text.Trim(),
-                RepairList = "",
-                MaintainInfo = "",
-                RepoSpareTool = ""
+                SerialNum = serialNumBox.Text.Trim(),
+                Model = modelBox.Text.Trim(),
+                Category = categoryBox.Text.Trim(),
+                Name = nameBox.Text.Trim(),
+                TorqueMin = torqueMinBox.Text == "" ? 0 : int.Parse(torqueMinBox.Text.Trim()),
+                TorqueMax = torqueMaxBox.Text == "" ? 0 : int.Parse(torqueMaxBox.Text.Trim()),
+                Accuracy = accuracyBox.Text == "" ? 0 : int.Parse(accuracyBox.Text.Trim()),
+                Section = sectionBox.Text.Trim(),
+                DemarcateCycle = int.Parse(cycleBox.Value.ToString()),
+                Workstation = workstationBox.Text.Trim(),
+                Status = statusBox.Text.Trim(),
+                QualityAssureDate = qualityBox.Text.Trim(),
+                MaintainContractStyle = contractBox.Text.Trim(),
+                MaintainContractDate = maintainBox.Text.Trim(),
+                RepairTimes = int.Parse(repairTimeBox.Value.ToString()),
+                ChangeRecord = repairBox.Text.Trim(),
+                Remark = remarkBox.Text.Trim()
             };
-
         }
 
         private void setDateTimePickerEmpty()
@@ -64,17 +62,11 @@ namespace manageSystem
 
         private void dateTimePicker1_DropDown(object sender, EventArgs e)
         {
-            this.setDateTimePickerNormal(dateTimePicker1);
+            setDateTimePickerNormal(qualityBox);
         }
-
-        private void dateTimePicker2_DropDown(object sender, EventArgs e)
-        {
-            this.setDateTimePickerNormal(dateTimePicker2);
-        }
-
         private void dateTimePicker3_DropDown(object sender, EventArgs e)
         {
-            this.setDateTimePickerNormal(dateTimePicker3);
+            this.setDateTimePickerNormal(maintainBox);
         }
 
         private void button1_Click(object sender, EventArgs e)

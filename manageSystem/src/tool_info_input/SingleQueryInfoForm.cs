@@ -58,37 +58,37 @@ namespace manageSystem
 
         private void setTextBox(ToolsInfo toolsInfo)
         {
-            this.textBox1.Text = toolsInfo.SerialNum;
-            this.textBox2.Text = toolsInfo.Model;
-            this.textBox3.Text = toolsInfo.Workstation;
-            this.textBox4.Text = toolsInfo.Torque;
-            this.textBox5.Text = toolsInfo.Status;
-            this.textBox6.Text = toolsInfo.QualityAssureDate;
-            this.textBox7.Text = toolsInfo.RepoSpareTool;
-            this.textBox8.Text = toolsInfo.MaintainContractStyle;
-            this.textBox9.Text = toolsInfo.MaintainContractDateStart;
-            this.textBox10.Text = toolsInfo.MaintainContractDateEnd;
-            this.textBox11.Text = toolsInfo.Remark;
-            this.textBox12.Text = toolsInfo.MaintainInfo;
-            this.textBox13.Text = toolsInfo.RepairList;
+            //this.textBox1.Text = toolsInfo.SerialNum;
+            //this.textBox2.Text = toolsInfo.Model;
+            //this.textBox3.Text = toolsInfo.Workstation;
+            //this.textBox4.Text = toolsInfo.Torque;
+            //this.textBox5.Text = toolsInfo.Status;
+            //this.textBox6.Text = toolsInfo.QualityAssureDate;
+            //this.textBox7.Text = toolsInfo.RepoSpareTool;
+            //this.textBox8.Text = toolsInfo.MaintainContractStyle;
+            //this.textBox9.Text = toolsInfo.MaintainContractDateStart;
+            //this.textBox10.Text = toolsInfo.MaintainContractDateEnd;
+            //this.textBox11.Text = toolsInfo.Remark;
+            //this.textBox12.Text = toolsInfo.MaintainInfo;
+            //this.textBox13.Text = toolsInfo.RepairList;
         }
 
         private ToolsInfo getTextBox()
         {
             ToolsInfo toolsInfo = new ToolsInfo();
-            toolsInfo.SerialNum = this.textBox1.Text;
-            toolsInfo.Model = this.textBox2.Text;
-            toolsInfo.Workstation = this.textBox3.Text;
-            toolsInfo.Torque = this.textBox4.Text;
-            toolsInfo.Status = this.textBox5.Text;
-            toolsInfo.QualityAssureDate = this.textBox6.Text;
-            toolsInfo.RepoSpareTool = this.textBox7.Text;
-            toolsInfo.MaintainContractStyle = this.textBox8.Text;
-            toolsInfo.MaintainContractDateStart = this.textBox9.Text;
-            toolsInfo.MaintainContractDateEnd = this.textBox10.Text;
-            toolsInfo.Remark = this.textBox11.Text;
-            toolsInfo.RepairList = this.textBox12.Text;
-            toolsInfo.MaintainInfo = this.textBox13.Text;
+            //toolsInfo.SerialNum = this.textBox1.Text;
+            //toolsInfo.Model = this.textBox2.Text;
+            //toolsInfo.Workstation = this.textBox3.Text;
+            //toolsInfo.Torque = this.textBox4.Text;
+            //toolsInfo.Status = this.textBox5.Text;
+            //toolsInfo.QualityAssureDate = this.textBox6.Text;
+            //toolsInfo.RepoSpareTool = this.textBox7.Text;
+            //toolsInfo.MaintainContractStyle = this.textBox8.Text;
+            //toolsInfo.MaintainContractDateStart = this.textBox9.Text;
+            //toolsInfo.MaintainContractDateEnd = this.textBox10.Text;
+            //toolsInfo.Remark = this.textBox11.Text;
+            //toolsInfo.RepairList = this.textBox12.Text;
+            //toolsInfo.MaintainInfo = this.textBox13.Text;
             return toolsInfo;
         }
 

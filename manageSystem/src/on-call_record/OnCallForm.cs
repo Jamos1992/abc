@@ -135,8 +135,7 @@ namespace manageSystem.src.on_call_record
 
         private OnCallRecord[] GetOnCallRecordsFromGrid()
         {
-            OnCallRecord[] onCallRecords = new OnCallRecord[] { };
-            List<OnCallRecord> ktls = onCallRecords.ToList();
+            List<OnCallRecord> ktls = new List<OnCallRecord>();
             //遍历 DataGridView 所有行
             int row = dataGridView1.Rows.Count;//得到总行数    
             int cell = dataGridView1.Rows[0].Cells.Count;//得到总列数

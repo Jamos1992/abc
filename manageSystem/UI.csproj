@@ -224,6 +224,12 @@
     <Compile Include="src\spare_manage\SpareManageForm.Designer.cs">
       <DependentUpon>SpareManageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\tool_info_input\ToolsDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\tool_info_input\ToolsDetailForm.Designer.cs">
+      <DependentUpon>ToolsDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\tool_KPI_manage\ToolKPIManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\spare_manage\SpareManageForm.resx">
       <DependentUpon>SpareManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\tool_info_input\ToolsDetailForm.resx">
+      <DependentUpon>ToolsDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\tool_KPI_manage\ToolKPIManageForm.resx">
       <DependentUpon>ToolKPIManageForm.cs</DependentUpon>

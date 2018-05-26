@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Model;
 using BLL;
 using System.Drawing;
+using manageSystem.src.tool_info_input;
 
 namespace manageSystem
 {
@@ -18,6 +19,7 @@ namespace manageSystem
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             InitTextBoxHint();
         }
         private void InitTextBoxHint()
@@ -34,7 +36,7 @@ namespace manageSystem
         {
             foreach (Control c in panel1.Controls)
             {
-                if (c.GetType() == typeof(TextBox))
+                if (c.GetType() == typeof(ComboBox))
                 {
                     if (c.Text != "")
                     {
@@ -216,6 +218,132 @@ namespace manageSystem
                     }
                 }
             });
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (isTextBoxNull())
+            {
+                MessageBox.Show("请输入工具序列号, 再进行查询！"); 
+                return;
+            }
+            if (isInputConflict())
+            {
+                if (DialogResult.No == MessageBox.Show("至少有两个序列号是相同的，确定查询？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information))
+                {
+                    return;
+                }
+            }
+            List<ToolsInfo> list = new List<ToolsInfo>();
+            foreach(ToolsInfo toolsInfo in getTextBox())
+            {
+                list.Add(toolsInfo);
+            }
+            dataGridView1.DataSource = list;
+            dataGridView1.Columns["SerialNum"].HeaderText = "工具序列号";
+            dataGridView1.Columns["Model"].HeaderText = "工具型号";
+            dataGridView1.Columns["Category"].HeaderText = "工具类别";
+            dataGridView1.Columns["Name"].HeaderText = "工具名称";
+            dataGridView1.Columns["TorqueMin"].HeaderText = "标定扭矩下限";
+            dataGridView1.Columns["TorqueMax"].HeaderText = "标定扭矩上限";
+            dataGridView1.Columns["Accuracy"].HeaderText = "精度";
+            dataGridView1.Columns["Section"].HeaderText = "工段";
+            dataGridView1.Columns["Workstation"].HeaderText = "工位";
+            dataGridView1.Columns["DemarcateCycle"].HeaderText = "标定周期";
+            dataGridView1.Columns["Status"].HeaderText = "工具状态";
+            dataGridView1.Columns["QualityAssureDate"].HeaderText = "质保期至";
+            dataGridView1.Columns["MaintainContractStyle"].HeaderText = "保养合同类型";
+            dataGridView1.Columns["MaintainContractDate"].HeaderText = "保养合同至";
+            dataGridView1.Columns["RepairTimes"].HeaderText = "累计维修次数";
+            dataGridView1.Columns["ChangeRecord"].HeaderText = "更改记录";
+            dataGridView1.Columns["Remark"].HeaderText = "备注信息";
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridView1.Columns[0].FillWeight = 6;
+            dataGridView1.Columns[1].FillWeight = 6;
+            dataGridView1.Columns[2].FillWeight = 6;
+            dataGridView1.Columns[3].FillWeight = 6;
+            dataGridView1.Columns[4].FillWeight = 6;
+            dataGridView1.Columns[5].FillWeight = 6;
+            dataGridView1.Columns[6].FillWeight = 6;
+            dataGridView1.Columns[7].FillWeight = 6;
+            dataGridView1.Columns[8].FillWeight = 6;
+            dataGridView1.Columns[9].FillWeight = 6;
+            dataGridView1.Columns[10].FillWeight = 6;
+            dataGridView1.Columns[11].FillWeight = 6;
+            dataGridView1.Columns[12].FillWeight = 6;
+            dataGridView1.Columns[13].FillWeight = 6;
+            dataGridView1.Columns[14].FillWeight = 6;
+            dataGridView1.Columns[15].FillWeight = 6;
+            dataGridView1.Columns[16].FillWeight = 6;
+            dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[2].ReadOnly = true;
+            dataGridView1.Columns[3].ReadOnly = false;
+            dataGridView1.Columns[4].ReadOnly = false;
+            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+            dataGridView1.ClearSelection();
+        }
+
+        private void ChangeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolsDetailForm toolsDetailForm = new ToolsDetailForm(GetOneToolsInfoFromGrid());
+            toolsDetailForm.ShowDialog();
+        }
+
+        private ToolsInfo[] GetToolsInfoFromGrid()
+        {
+            List<ToolsInfo> ktls = new List<ToolsInfo>();
+            //遍历 DataGridView 所有行
+            int row = dataGridView1.Rows.Count;//得到总行数    
+            int cell = dataGridView1.Rows[0].Cells.Count;//得到总列数
+            for (int i = 0; i < row; i++)//得到总行数并在之内循环
+            {
+                ktls.Add(new ToolsInfo
+                {
+                    SerialNum = dataGridView1.Rows[i].Cells[0].Value.ToString(),
+                    Model = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    Category = dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                    Name = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                    TorqueMin = int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
+                    TorqueMax = int.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
+                    Accuracy = int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
+                    Section = dataGridView1.Rows[i].Cells[7].Value.ToString(),
+                    Workstation = dataGridView1.Rows[i].Cells[8].Value.ToString(),
+                    DemarcateCycle = int.Parse(dataGridView1.Rows[i].Cells[9].Value.ToString()),
+                    Status = dataGridView1.Rows[i].Cells[10].Value.ToString(),
+                    QualityAssureDate = dataGridView1.Rows[i].Cells[11].Value.ToString(),
+                    MaintainContractStyle = dataGridView1.Rows[i].Cells[12].Value.ToString(),
+                    MaintainContractDate = dataGridView1.Rows[i].Cells[13].Value.ToString(),
+                    RepairTimes = int.Parse(dataGridView1.Rows[i].Cells[14].Value.ToString()),
+                    ChangeRecord = dataGridView1.Rows[i].Cells[15].Value.ToString(),
+                    Remark = dataGridView1.Rows[i].Cells[16].Value.ToString()
+                });
+            }
+            return ktls.ToArray();
+        }
+
+        private ToolsInfo GetOneToolsInfoFromGrid()
+        {
+            if (dataGridView1.SelectedRows.Count == 0) return null;
+            return new ToolsInfo
+            {
+                SerialNum = dataGridView1.SelectedRows[0].Cells[0].Value.ToString(),
+                Model = dataGridView1.SelectedRows[0].Cells[1].Value.ToString(),
+                Category = dataGridView1.SelectedRows[0].Cells[2].Value.ToString(),
+                Name = dataGridView1.SelectedRows[0].Cells[3].Value.ToString(),
+                TorqueMin = int.Parse(dataGridView1.SelectedRows[0].Cells[4].Value.ToString()),
+                TorqueMax = int.Parse(dataGridView1.SelectedRows[0].Cells[5].Value.ToString()),
+                Accuracy = int.Parse(dataGridView1.SelectedRows[0].Cells[6].Value.ToString()),
+                Section = dataGridView1.SelectedRows[0].Cells[7].Value.ToString(),
+                Workstation = dataGridView1.SelectedRows[0].Cells[8].Value.ToString(),
+                DemarcateCycle = int.Parse(dataGridView1.SelectedRows[0].Cells[9].Value.ToString()),
+                Status = dataGridView1.SelectedRows[0].Cells[10].Value.ToString(),
+                QualityAssureDate = dataGridView1.SelectedRows[0].Cells[11].Value.ToString(),
+                MaintainContractStyle = dataGridView1.SelectedRows[0].Cells[12].Value.ToString(),
+                MaintainContractDate = dataGridView1.SelectedRows[0].Cells[13].Value.ToString(),
+                RepairTimes = int.Parse(dataGridView1.SelectedRows[0].Cells[14].Value.ToString()),
+                ChangeRecord = dataGridView1.SelectedRows[0].Cells[15].Value.ToString(),
+                Remark = dataGridView1.SelectedRows[0].Cells[16].Value.ToString()
+            };
         }
     }
 }

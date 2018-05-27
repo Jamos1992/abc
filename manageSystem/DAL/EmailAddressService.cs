@@ -14,6 +14,11 @@ namespace DAL
         {
             SQLiteDataReader reader = SQLHelper.ReadFullTable("EmailAddress");
             List<EmailAddress> list = new List<EmailAddress>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 list.Add(new EmailAddress
@@ -36,6 +41,11 @@ namespace DAL
         {
             List<EmailAddress> list = new List<EmailAddress>();
             SQLiteDataReader reader = SQLHelper.ReadTable("EmailAddress", new string[] { "*" }, new string[] { "EmailAddr" }, new string[] { "like" }, new string[] { "'%" + addr + "%'" });
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 list.Add(new EmailAddress

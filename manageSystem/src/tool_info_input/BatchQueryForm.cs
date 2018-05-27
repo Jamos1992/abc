@@ -74,12 +74,10 @@ namespace manageSystem
                     {
                         if (txtBox is TextBox && txtBox.Name.Contains(i.ToString()) && comboBox is ComboBox && comboBox.Name.Contains(i.ToString()))
                         {
-                            MessageBox.Show(txtBox.Name + comboBox.Name);
                             if (txtBox.Text != "" && comboBox.Text != "")
                             {
                                 ktls.Add(getOneInput(txtBox as TextBox, comboBox as ComboBox));
                             }
-                            MessageBox.Show("this is " + i.ToString());
                         }
                     }
                 }
@@ -286,7 +284,11 @@ namespace manageSystem
         private void ChangeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolsDetailForm toolsDetailForm = new ToolsDetailForm(GetOneToolsInfoFromGrid());
-            toolsDetailForm.ShowDialog();
+            if(toolsDetailForm.ShowDialog() == DialogResult.OK)
+            {
+                Show(); 
+            }
+            //toolsDetailForm.ShowDialog();
         }
 
         private ToolsInfo[] GetToolsInfoFromGrid()

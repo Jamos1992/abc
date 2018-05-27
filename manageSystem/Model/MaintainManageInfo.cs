@@ -13,9 +13,10 @@ namespace Model
         public string SuspendTime { get; set; }                     //挂起时间
         public string FinishFixTime { get; set; }                   //维修完成时间
         public string Detail { get; set; }                          //送修描述
-        public string Status { get; set; }                          //工具维修状态
+        public string Status { get; set; }                          //工具维修状态 
         public Dictionary<string, int> UsedRepoSpareToolInfo { get; set; }        //消耗仓库备件的信息
         public Dictionary<string, int> UsedOtherSpareToolInfo { get; set; }       //消耗其他备件的信息
+        public string State { get; set; }                              //维修标识
     }
     public class OutputStruct
     {

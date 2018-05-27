@@ -23,6 +23,11 @@ namespace DAL
         {
             SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { SerialNum });
             ToolsInfo toolsInfo = new ToolsInfo();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }            
             while (reader.Read())
             {
                 toolsInfo.SerialNum = reader["SerialNum"].ToString();
@@ -51,6 +56,11 @@ namespace DAL
         {
             SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum", "Model" }, new string[] { "=", "=" }, new string[] { SerialNum, Model });
             ToolsInfo toolsInfo = new ToolsInfo();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 toolsInfo.SerialNum = reader["SerialNum"].ToString();
@@ -75,15 +85,20 @@ namespace DAL
             return toolsInfo;
         }
 
-        public int updateToolsInfo(ToolsInfo toolsInfo, string SerialNum)
+        public int updateToolsInfo(ToolsInfo toolsInfo)
         {
-            return SQLHelper.UpdateValuesByStruct("ToolsInfo", toolsInfo, new string[] { "SerialNum" }, new string[] { SerialNum });
+            return SQLHelper.UpdateValuesByStruct("ToolsInfo", toolsInfo, new string[] { "SerialNum" }, new string[] { toolsInfo.SerialNum });
         }
 
         public List<ToolsInfo> getAllToolsInfo()
         {
             SQLiteDataReader reader = SQLHelper.ReadFullTable("ToolsInfo");
             List<ToolsInfo> list = new List<ToolsInfo>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 list.Add(new ToolsInfo
@@ -115,6 +130,11 @@ namespace DAL
         {
             SQLiteDataReader reader = SQLHelper.ReadTableBySql("select * from ToolsInfo where Model='" + model + "'");
             List<ToolsInfo> list = new List<ToolsInfo>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 list.Add(new ToolsInfo

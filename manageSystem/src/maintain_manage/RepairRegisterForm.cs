@@ -1,37 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Data.SQLite;
-using DAL;
+﻿using BLL;
 using Model;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace manageSystem.src.maintain_manage
 {
     public partial class RepairRegisterForm : Form
     {
-        private static string Repairing = "维修中";
+        private MaintainInfoManage maintainInfoManage = new MaintainInfoManage();
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
 
         public RepairRegisterForm()
         {
             InitializeComponent();
-            controlLocation();
             setDateTimePickerEmpty(dateTimePicker1);
-            InitTextBoxHint();
+            setComboBoxItems();
         }
-
-        private void controlLocation()
+        private void setComboBoxItems()
         {
-            //TableLayoutPanelCellPosition pos = tableLayoutPanel2.GetCellPosition(textBox1);
-            //int width = tableLayoutPanel2.GetColumnWidths()[pos.Column];
-            //int height = tableLayoutPanel2.GetRowHeights()[pos.Row];
-
-            //textBox1.Margin = new Padding(0, (int)tableLayoutPanel2.RowStyles[0].Height/2,0,0);
-            //textBox1.Top = height / 2;
+            List<string> list = toolsInfoManage.GetModelHintFromDb();
+            if (list == null) return;
+            textBox1.AutoCompleteCustomSource.AddRange(list.ToArray());
         }
 
         private void setDateTimePickerNormal(DateTimePicker dateTimePicker)
@@ -54,51 +44,25 @@ namespace manageSystem.src.maintain_manage
         private MaintainManageInfo getAllInput()
         {
             MaintainManageInfo maintainManageInfo = new MaintainManageInfo();
-            maintainManageInfo.ToolModeName = comboBox1.Text;
-            maintainManageInfo.ToolSerialName = textBox2.Text;
+            maintainManageInfo.ToolModeName = textBox1.Text;
+            maintainManageInfo.ToolSerialName =  comboBox1.Text;
             maintainManageInfo.SendFixTime = dateTimePicker1.Text;
             maintainManageInfo.Detail = richTextBox1.Text;
-            maintainManageInfo.Status = Repairing;
+            maintainManageInfo.Status = "待维修";
             maintainManageInfo.UsedOtherSpareToolInfo = null;
             maintainManageInfo.UsedRepoSpareToolInfo = null;
+            maintainManageInfo.State = "0";
             return maintainManageInfo;
-        }
-        private void inputAllData()
-        {
-            MaintainManageInfo maintainManageInfo = getAllInput();
-            if (maintainManageInfo.ToolModeName == "" || maintainManageInfo.ToolSerialName == "" || maintainManageInfo.SendFixTime == "" ||maintainManageInfo.Detail == "")
-            {
-                MessageBox.Show("录入失败，请补全所有信息！");
-                return;
-            }
-            try
-            {
-                if(new MaintainManageInfoService().IsNotFinishBreakToolExist(maintainManageInfo))
-                {
-                    MessageBox.Show("登记失败，该工具已经在维修中！");
-                    return;
-                }
-                int affected = new MaintainManageInfoService().AddMaintainManageInfol(maintainManageInfo);
-                if(affected < 1)
-                {
-                    MessageBox.Show("录入失败！");
-                    return;
-                }
-            }
-            catch
-            {
-                return;
-            }
-            MessageBox.Show("数据录入成功！");            
-            return;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            inputAllData();
+            MaintainManageInfo maintainManageInfo = getAllInput();
+            string msg = maintainInfoManage.RegisterBreakTool(maintainManageInfo);
+            MessageBox.Show(msg);
         }
 
-        private void clearAllInputData()
+        private void button2_Click(object sender, EventArgs e)
         {
             foreach (Control c in tableLayoutPanel2.Controls)
             {
@@ -110,48 +74,14 @@ namespace manageSystem.src.maintain_manage
             setDateTimePickerEmpty(dateTimePicker1);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            clearAllInputData();
+        private void comboBox1_DropDown(object sender, EventArgs e)
+        {          
+            comboBox1.Items.Clear();
+            setComboBoxList(textBox1.Text, comboBox1);
         }
-
-        private string[] getHintFromDb()
+        private void setComboBoxList(string str, ComboBox comboBox)
         {
-            string[] records = new string[] { };
-            List<MaintainManageInfo> list = new List<MaintainManageInfo>();
-            try
-            {
-                list = new MaintainManageInfoService().getAllBreakTools();
-                if (list == null)
-                {
-                    Console.Write("no such record");
-                    return null;
-                }
-                List<string> recordList = records.ToList();
-                foreach (MaintainManageInfo item in list)
-                {
-                    recordList.Add(item.ToolSerialName);
-                }
-                records = recordList.ToArray();
-            }
-            catch
-            {
-                Console.WriteLine("query db fail");
-                return null;
-            }
-
-            return records;
-        }
-
-        private void InitTextBoxHint()
-        {
-            string[] str = this.getHintFromDb();
-            if (str == null)
-            {
-                return;
-            }
-            Console.WriteLine(str);
-            comboBox1.Items.AddRange(str);
+            comboBox.Items.AddRange(toolsInfoManage.GetSerialNumHintFromDb(str).ToArray());
         }
     }
 }

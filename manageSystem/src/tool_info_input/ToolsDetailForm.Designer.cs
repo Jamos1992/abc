@@ -83,28 +83,29 @@
             this.repairTimeBox.Location = new System.Drawing.Point(161, 352);
             this.repairTimeBox.Name = "repairTimeBox";
             this.repairTimeBox.Size = new System.Drawing.Size(123, 21);
-            this.repairTimeBox.TabIndex = 129;
+            this.repairTimeBox.TabIndex = 14;
             // 
             // cycleBox
             // 
             this.cycleBox.Location = new System.Drawing.Point(416, 216);
             this.cycleBox.Name = "cycleBox";
             this.cycleBox.Size = new System.Drawing.Size(123, 21);
-            this.cycleBox.TabIndex = 128;
+            this.cycleBox.TabIndex = 8;
             // 
             // accuracyBox
             // 
             this.accuracyBox.Location = new System.Drawing.Point(416, 126);
             this.accuracyBox.Name = "accuracyBox";
             this.accuracyBox.Size = new System.Drawing.Size(123, 21);
-            this.accuracyBox.TabIndex = 127;
+            this.accuracyBox.TabIndex = 5;
             // 
             // serialNumBox
             // 
+            this.serialNumBox.Enabled = false;
             this.serialNumBox.Location = new System.Drawing.Point(160, 40);
             this.serialNumBox.Name = "serialNumBox";
             this.serialNumBox.Size = new System.Drawing.Size(123, 21);
-            this.serialNumBox.TabIndex = 126;
+            this.serialNumBox.TabIndex = 0;
             // 
             // label25
             // 
@@ -191,7 +192,7 @@
             this.statusBox.Location = new System.Drawing.Point(160, 289);
             this.statusBox.Name = "statusBox";
             this.statusBox.Size = new System.Drawing.Size(123, 20);
-            this.statusBox.TabIndex = 117;
+            this.statusBox.TabIndex = 10;
             // 
             // workstationBox
             // 
@@ -202,7 +203,7 @@
             this.workstationBox.Location = new System.Drawing.Point(160, 243);
             this.workstationBox.Name = "workstationBox";
             this.workstationBox.Size = new System.Drawing.Size(123, 20);
-            this.workstationBox.TabIndex = 116;
+            this.workstationBox.TabIndex = 9;
             // 
             // sectionBox
             // 
@@ -213,7 +214,7 @@
             this.sectionBox.Location = new System.Drawing.Point(160, 217);
             this.sectionBox.Name = "sectionBox";
             this.sectionBox.Size = new System.Drawing.Size(123, 20);
-            this.sectionBox.TabIndex = 115;
+            this.sectionBox.TabIndex = 7;
             // 
             // label19
             // 
@@ -256,7 +257,7 @@
             this.repairBox.Location = new System.Drawing.Point(416, 352);
             this.repairBox.Name = "repairBox";
             this.repairBox.Size = new System.Drawing.Size(123, 21);
-            this.repairBox.TabIndex = 110;
+            this.repairBox.TabIndex = 15;
             // 
             // label15
             // 
@@ -272,7 +273,7 @@
             this.contractBox.Location = new System.Drawing.Point(161, 321);
             this.contractBox.Name = "contractBox";
             this.contractBox.Size = new System.Drawing.Size(123, 21);
-            this.contractBox.TabIndex = 108;
+            this.contractBox.TabIndex = 12;
             // 
             // label14
             // 
@@ -310,7 +311,7 @@
             this.nameBox.Location = new System.Drawing.Point(416, 67);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(123, 20);
-            this.nameBox.TabIndex = 105;
+            this.nameBox.TabIndex = 3;
             // 
             // label12
             // 
@@ -332,7 +333,7 @@
             this.categoryBox.Location = new System.Drawing.Point(160, 68);
             this.categoryBox.Name = "categoryBox";
             this.categoryBox.Size = new System.Drawing.Size(123, 20);
-            this.categoryBox.TabIndex = 103;
+            this.categoryBox.TabIndex = 2;
             // 
             // label11
             // 
@@ -348,7 +349,7 @@
             this.torqueMinBox.Location = new System.Drawing.Point(160, 126);
             this.torqueMinBox.Name = "torqueMinBox";
             this.torqueMinBox.Size = new System.Drawing.Size(123, 21);
-            this.torqueMinBox.TabIndex = 101;
+            this.torqueMinBox.TabIndex = 4;
             // 
             // label3
             // 
@@ -364,11 +365,11 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 406);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 421);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.tableLayoutPanel1.RowCount = 1;
@@ -379,29 +380,31 @@
             // button3
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button3.Location = new System.Drawing.Point(329, 3);
+            this.button3.Location = new System.Drawing.Point(328, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 28);
-            this.button3.TabIndex = 52;
+            this.button3.TabIndex = 1;
             this.button3.Text = "取消";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Location = new System.Drawing.Point(234, 3);
+            this.button1.Location = new System.Drawing.Point(233, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 28);
-            this.button1.TabIndex = 40;
+            this.button1.TabIndex = 0;
             this.button1.Text = "保存";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // maintainBox
             // 
             this.maintainBox.Location = new System.Drawing.Point(416, 320);
             this.maintainBox.Name = "maintainBox";
             this.maintainBox.Size = new System.Drawing.Size(123, 21);
-            this.maintainBox.TabIndex = 98;
+            this.maintainBox.TabIndex = 13;
             // 
             // label1
             // 
@@ -418,7 +421,7 @@
             this.qualityBox.Location = new System.Drawing.Point(416, 289);
             this.qualityBox.Name = "qualityBox";
             this.qualityBox.Size = new System.Drawing.Size(123, 21);
-            this.qualityBox.TabIndex = 96;
+            this.qualityBox.TabIndex = 11;
             // 
             // modelBox
             // 
@@ -426,14 +429,14 @@
             this.modelBox.Location = new System.Drawing.Point(416, 40);
             this.modelBox.Name = "modelBox";
             this.modelBox.Size = new System.Drawing.Size(123, 20);
-            this.modelBox.TabIndex = 95;
+            this.modelBox.TabIndex = 1;
             // 
             // remarkBox
             // 
             this.remarkBox.Location = new System.Drawing.Point(160, 383);
             this.remarkBox.Name = "remarkBox";
             this.remarkBox.Size = new System.Drawing.Size(123, 21);
-            this.remarkBox.TabIndex = 94;
+            this.remarkBox.TabIndex = 16;
             // 
             // label8
             // 
@@ -476,7 +479,7 @@
             this.torqueMaxBox.Location = new System.Drawing.Point(160, 154);
             this.torqueMaxBox.Name = "torqueMaxBox";
             this.torqueMaxBox.Size = new System.Drawing.Size(123, 21);
-            this.torqueMaxBox.TabIndex = 89;
+            this.torqueMaxBox.TabIndex = 6;
             // 
             // label5
             // 
@@ -500,7 +503,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 450);
+            this.ClientSize = new System.Drawing.Size(646, 465);
             this.Controls.Add(this.repairTimeBox);
             this.Controls.Add(this.cycleBox);
             this.Controls.Add(this.accuracyBox);

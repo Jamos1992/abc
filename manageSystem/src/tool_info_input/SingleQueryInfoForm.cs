@@ -99,7 +99,7 @@ namespace manageSystem
             {
                 try
                 {
-                    toolsInfoManage.UpdateOneToolsInfo(getTextBox(), textBox1.Text.Trim());
+                    toolsInfoManage.UpdateOneToolsInfo(getTextBox());
                 }                                            
                 catch(Exception ex)
                 {

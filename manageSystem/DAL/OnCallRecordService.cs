@@ -16,6 +16,11 @@ namespace DAL
         {
             SQLiteDataReader reader = SQLHelper.ReadFullTable("OnCallRecord");
             OnCallRecord onCallRecord = new OnCallRecord();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 onCallRecord.CallTime = reader["CallTime"].ToString();
@@ -32,6 +37,11 @@ namespace DAL
         {
             SQLiteDataReader reader = SQLHelper.ReadFullTable("OnCallRecord");
             List<OnCallRecord> list = new List<OnCallRecord>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 list.Add(new OnCallRecord
@@ -52,6 +62,11 @@ namespace DAL
         {
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             List<OnCallRecord> list = new List<OnCallRecord>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 list.Add(new OnCallRecord

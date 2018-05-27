@@ -58,7 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common.cs" />
+    <Compile Include="CommonService.cs" />
     <Compile Include="DBUtil.cs" />
     <Compile Include="EmailAddressService.cs" />
     <Compile Include="helper\EXCELHelper.cs" />

@@ -22,7 +22,8 @@ namespace manageSystem.src.maintain_manage
             FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoGenerateColumns = true;
         }
 
         private MaintainManageInfo[] GetMaintainManageInfoFromGrid()
@@ -45,37 +46,35 @@ namespace manageSystem.src.maintain_manage
             }
             return ktls.ToArray();
         }
-        private void BindData2Grid(List<MaintainManageInfo> list)
+        private void BindData2Grid(List<OutputStruct> list)
         {
             dataGridView1.DataSource = list;
-            dataGridView1.Columns["ToolSerialName"].HeaderText = "工具序列号";
-            dataGridView1.Columns["ToolModeName"].HeaderText = "工具型号";
-            dataGridView1.Columns["SendFixTime"].HeaderText = "工具送修时间";
-            dataGridView1.Columns["Status"].HeaderText = "维修状态";
-            dataGridView1.Columns["Detail"].HeaderText = "备注";
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns[0].FillWeight = 20;
-            dataGridView1.Columns[1].FillWeight = 20;
-            dataGridView1.Columns[2].FillWeight = 20;
-            dataGridView1.Columns[3].FillWeight = 20;
-            dataGridView1.Columns[4].FillWeight = 20;
-            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
-            dataGridView1.ClearSelection();
-            if (dataGridView1.Rows.Count > 0) dataGridView1.Rows[0].Selected = false;
+            //dataGridView1.Columns["ToolSerialName"].HeaderText = "工具序列号";
+            //dataGridView1.Columns["ToolModeName"].HeaderText = "工具型号";
+            //dataGridView1.Columns["SendFixTime"].HeaderText = "工具送修时间";
+            //dataGridView1.Columns["Status"].HeaderText = "维修状态";
+            //dataGridView1.Columns["Detail"].HeaderText = "备注";
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dataGridView1.Columns[0].FillWeight = 20;
+            //dataGridView1.Columns[1].FillWeight = 20;
+            //dataGridView1.Columns[2].FillWeight = 20;
+            //dataGridView1.Columns[3].FillWeight = 20;
+            //dataGridView1.Columns[4].FillWeight = 20;
+            //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+            //dataGridView1.ClearSelection();
+            //if (dataGridView1.Rows.Count > 0) dataGridView1.Rows[0].Selected = false;
         }
 
         private void RepairManageForm_Load(object sender, EventArgs e)
         {
-            List<MaintainManageInfo> list = maintainInfoManage.GetAllBreakTools();
-            //SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            //SQLiteDataReader reader = db.ReadTableBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
+            List<OutputStruct> list = maintainInfoManage.GetAllBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
             if (list == null) return;
             BindData2Grid(list);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<MaintainManageInfo> list = new List<MaintainManageInfo>();           
+            List<OutputStruct> list = new List<OutputStruct>();           
             if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
             {
                 list = maintainInfoManage.GetAllBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
@@ -126,13 +125,13 @@ namespace manageSystem.src.maintain_manage
         private string getSerialNumFromGrid()
         {
             if (dataGridView1.SelectedRows.Count == 0) return null;
-            return dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            return dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
         }
 
         private string getStatusFromGrid()
         {
             if (dataGridView1.SelectedRows.Count == 0) return null;
-            return dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+            return dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)

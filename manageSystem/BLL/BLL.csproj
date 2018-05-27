@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common.cs" />
+    <Compile Include="CommonManage.cs" />
     <Compile Include="EmailManage.cs" />
     <Compile Include="MaintainInfoManage.cs" />
     <Compile Include="OnCallRecordManage.cs" />

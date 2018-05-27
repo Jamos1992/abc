@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace DAL
 {
-    public class SQLHelper
+    public static class SQLHelper
     {
         private static SQLiteConnection dbConnection;
         private static SQLiteCommand dbCommand;
@@ -34,22 +34,25 @@ namespace DAL
 
         public static int ExecuteNonQuery(string queryString)
         {
-            dbConnection = new SQLiteConnection(connectionString);
-            try
-            {               
-                dbConnection.Open();
-                dbCommand = dbConnection.CreateCommand();
-                dbCommand.CommandText = queryString;
-                return dbCommand.ExecuteNonQuery();
-            }
-            catch (Exception e)
+            using (SQLiteConnection dbConnection = new SQLiteConnection(connectionString))
             {
-                throw e;
-            }
-            finally
-            {
-                dbConnection.Close();
-            }
+                try
+                {
+                    using (SQLiteCommand cmd = new SQLiteCommand(queryString, dbConnection))
+                    {
+                        cmd.Connection.Open();
+                        return cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+                finally
+                {
+                    if (dbConnection != null) dbConnection.Close();
+                }              
+            };
         }
         /// <summary>
         /// 读取整张数据表
@@ -163,7 +166,7 @@ namespace DAL
                 }
                 else
                 {
-                    queryString += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                    queryString += ", " + pinfo.Name + "=" + "'" + pinfo.GetValue(obj, null) + "'";
                 }
                 i++;
             }

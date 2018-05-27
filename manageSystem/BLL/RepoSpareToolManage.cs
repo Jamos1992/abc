@@ -15,6 +15,16 @@ namespace BLL
         {
             return repoSpareToolService.getOneRepoSpareToolFromDb(repoModel);
         }
+        public List<string> GetSpareModelHintFromDb()
+        {
+            List<string> recordList = new List<string>();
+            List<RepoSpareTool> list = repoSpareToolService.getAllRepoSpareTools();
+            foreach (RepoSpareTool repoSpareTool in list)
+            {
+                recordList.Add(repoSpareTool.SpareToolModel);
+            }
+            return recordList;
+        }
 
         public string ExportSingleData2Excel(string filePath, RepoSpareTool repoSpareTool)
         {

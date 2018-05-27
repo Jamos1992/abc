@@ -25,14 +25,23 @@ namespace BLL
             return "数据录入成功！";
         }
 
+        public string UpdateOneToolsInfo(ToolsInfo toolsInfo)
+        {
+            if (toolsInfo.SerialNum == "" || toolsInfo.Model == "")
+            {
+                return "保存失败，请输入工具序列号、型号！";
+            }
+            int affectedRow = toolsInfoService.updateToolsInfo(toolsInfo);
+            if(affectedRow < 1)
+            {
+                return "保存失败！";
+            }
+            return "保存成功";
+        }
+
         public ToolsInfo QueryOneToolsInfo(string serialNum)
         {
             return toolsInfoService.getOneToolsInfoBySerial(serialNum);
-        }
-
-        public int UpdateOneToolsInfo(ToolsInfo toolsInfo, string serialNum)
-        {
-            return toolsInfoService.updateToolsInfo(toolsInfo, serialNum);
         }
 
         public List<string> GetModelHintFromDb()

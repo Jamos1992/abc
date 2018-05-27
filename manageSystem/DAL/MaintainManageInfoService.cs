@@ -7,6 +7,7 @@ namespace DAL
 {
     public class MaintainManageInfoService
     {
+        private CommonService commonService = new CommonService();
         public static string Repairing = ConfigurationManager.AppSettings["Repairing"];
         public static string RepairFinished = ConfigurationManager.AppSettings["RepairFinished"];
         public static string Suspend = ConfigurationManager.AppSettings["Suspend"];
@@ -22,16 +23,31 @@ namespace DAL
             }
             return false;
         }
-        public int AddMaintainManageInfol(MaintainManageInfo maintainManageInfo)
+        public int AddMaintainManageInfo(MaintainManageInfo maintainManageInfo)
         {
             return SQLHelper.InsertValuesByStruct("MaintainManageInfo", maintainManageInfo);
         }
 
         public int UpdateMaintainManageInfo(MaintainManageInfo maintainManageInfo)
         {
-            string usedRepoSpareToolInfo = ConvertDic2Str(maintainManageInfo.UsedRepoSpareToolInfo);
-            string usedOtherSpareToolInfo = ConvertDic2Str(maintainManageInfo.UsedOtherSpareToolInfo);
-            string sql = "update MaintainManageInfo set UsedRepoSpareToolInfo='" + usedRepoSpareToolInfo + "', UsedOtherSpareToolInfo='" + usedOtherSpareToolInfo + "', Status='" + maintainManageInfo.Status + "' where ToolSerialName='" + maintainManageInfo.ToolSerialName + "'";
+            string usedRepoSpareToolInfo = commonService.ConvertDic2Str(maintainManageInfo.UsedRepoSpareToolInfo);
+            string usedOtherSpareToolInfo = commonService.ConvertDic2Str(maintainManageInfo.UsedOtherSpareToolInfo);
+            string sql;
+            if (maintainManageInfo.State == "0")
+            {
+                sql = "update MaintainManageInfo set UsedRepoSpareToolInfo='" + usedRepoSpareToolInfo + "', UsedOtherSpareToolInfo='" + usedOtherSpareToolInfo + "', Status='" + maintainManageInfo.Status + "' where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and State='0'";
+            }
+            else
+            {
+                sql = "update MaintainManageInfo set UsedRepoSpareToolInfo='" + usedRepoSpareToolInfo + "', UsedOtherSpareToolInfo='" + usedOtherSpareToolInfo + "', Status='" + maintainManageInfo.Status + "', State='" + maintainManageInfo.State + "' where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and State='0'";
+            }
+            
+            return SQLHelper.UpdateTableBySql(sql);
+        }
+
+        public int UpdateMaintainStatus(MaintainManageInfo maintainManageInfo)
+        {
+            string sql = "update MaintainManageInfo set Status='" + maintainManageInfo.Status + "' where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and State='0'";
             return SQLHelper.UpdateTableBySql(sql);
         }
 
@@ -40,6 +56,11 @@ namespace DAL
             string sql = "select * from MaintainManageInfo where ToolSerialName='" + toolSerialName + "'";
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             MaintainManageInfo maintainManage = new MaintainManageInfo();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
                 maintainManage.ToolSerialName = reader["ToolSerialName"].ToString();
@@ -49,88 +70,69 @@ namespace DAL
                 maintainManage.FinishFixTime = reader["FinishFixTime"].ToString();
                 maintainManage.Status = reader["Status"].ToString();
                 maintainManage.Detail = reader["Detail"].ToString();
-                maintainManage.UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString());
-                maintainManage.UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString());
+                maintainManage.UsedRepoSpareToolInfo = commonService.ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString());
+                maintainManage.UsedOtherSpareToolInfo = commonService.ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString());
             }
             if (reader != null) reader.Close();
             return maintainManage;
         }
 
-        public List<MaintainManageInfo> getAllBreakTools()
+        public List<OutputStruct> getAllBreakTools()
         {
             SQLiteDataReader reader = SQLHelper.ReadFullTable("MaintainManageInfo");
-            List<MaintainManageInfo> list = new List<MaintainManageInfo>();
+            List<OutputStruct> list = new List<OutputStruct>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
-                list.Add(new MaintainManageInfo
+                list.Add(new OutputStruct
                 {
                     ToolSerialName = reader["ToolSerialName"].ToString(),
                     ToolModeName = reader["ToolModeName"].ToString(),
                     SendFixTime = reader["SendFixTime"].ToString(),
-                    SuspendTime = reader["SuspendTime"].ToString(),
-                    FinishFixTime = reader["FinishFixTime"].ToString(),
+                    //SuspendTime = reader["SuspendTime"].ToString(),
+                    //FinishFixTime = reader["FinishFixTime"].ToString(),
                     Status = reader["Status"].ToString(),
                     Detail = reader["Detail"].ToString(),
-                    UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
-                    UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
+                    //UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
+                    //UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
                 });
             }
             if (reader != null) reader.Close();
             return list;
         }
 
-        public List<MaintainManageInfo> getBreakToolsBySql(string sql)
+        public List<OutputStruct> getBreakToolsBySql(string sql)
         {
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
-            List<MaintainManageInfo> list = new List<MaintainManageInfo>();
+            List<OutputStruct> list = new List<OutputStruct>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
             while (reader.Read())
             {
-                list.Add(new MaintainManageInfo
+                list.Add(new OutputStruct
                 {
                     ToolSerialName = reader["ToolSerialName"].ToString(),
                     ToolModeName = reader["ToolModeName"].ToString(),
                     SendFixTime = reader["SendFixTime"].ToString(),
-                    SuspendTime = reader["SuspendTime"].ToString(),
-                    FinishFixTime = reader["FinishFixTime"].ToString(),
+                    //SuspendTime = reader["SuspendTime"].ToString(),
+                    //FinishFixTime = reader["FinishFixTime"].ToString(),
                     Status = reader["Status"].ToString(),
                     Detail = reader["Detail"].ToString(),
-                    UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
-                    UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
+                    //UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
+                    //UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
                 });
 
             }
             if (reader != null) reader.Close();
             return list;
         }
-
-        public Dictionary<string, int> ConvertStr2Dic(string str)
-        {
-            Dictionary<string, int> dic = new Dictionary<string, int>();
-            string[] kvList = str.Split(',');
-            foreach (string kv in kvList)
-            {
-                string[] kvPair = kv.Split(':');
-                if (kvPair.Length < 2)
-                {
-                    return null;
-                }
-                dic.Add(kvPair[0], int.Parse(kvPair[1]));
-            }
-            return dic;
-        }
-
-        public string ConvertDic2Str(Dictionary<string, int> dic)
-        {
-            if (dic == null) return "";
-            List<string> kvList = new List<string>();
-            foreach (var item in dic)
-            {
-                string kvPair = string.Join(":", new string[] { item.Key, item.Value.ToString() });
-                kvList.Add(kvPair);
-            }
-            return string.Join(",", kvList.ToArray());
-        }
-
         //excel operation
         public int CreateMaintainManageInfoExcelTable(string filePath)
         {

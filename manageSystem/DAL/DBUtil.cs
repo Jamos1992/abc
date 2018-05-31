@@ -19,6 +19,7 @@ namespace DAL
             CreateRepoSpareToolDb();
             CreateOnCallRecord();
             CreateMaintainManageInfo();
+            CreateDemarcateTools();
         }
 
         private void CreateToolsInfoDb()
@@ -54,6 +55,13 @@ namespace DAL
             string[] MaintainManageInfoName = new string[] { "ToolSerialName", "ToolModeName", "SendFixTime", "SuspendTime", "FinishFixTime", "Detail", "Status", "UsedRepoSpareToolInfo", "UsedOtherSpareToolInfo","State" };
             string[] MaintainManageInfoType = new string[] { "VARCHAR(255)", "VARCHAR(255)", "DATETIME", "DATETIME", "DATETIME", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
             SQLHelper.CreateTable("MaintainManageInfo", MaintainManageInfoName, MaintainManageInfoType);
+        }
+
+        private void CreateDemarcateTools()
+        {
+            string[] DemarcateToolsName = new string[] { "SerialNum", "Cycle", "LastTime", "NextTime", "Status"};
+            string[] DemarcateToolsType = new string[] { "VARCHAR(255)", "Integer", "DATETIME", "DATETIME", "VARCHAR(255)" };
+            SQLHelper.CreateTable("DemarcateTools", DemarcateToolsName, DemarcateToolsType);
         }
     }
 }

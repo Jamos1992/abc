@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using DAL;
+using manageSystem.src.demarcate_manage;
 
 namespace manageSystem
 {
@@ -17,9 +18,12 @@ namespace manageSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
  //           SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
-            new DAL.DBUtil().CeateAllTable();
-//            db.CloseConnection();
-            Application.Run(new LoginForm());
+            new DBUtil().CeateAllTable();
+            //            db.CloseConnection();
+            //Application.Run(new LoginForm());
+            //Application.Run(new QRCodePrintForm());
+            //Application.Run(new AddDemarcateForm());
+            Application.Run(new DemarcateOperatorForm());
         }
     }
 }

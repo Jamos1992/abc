@@ -19,7 +19,7 @@ namespace DAL
         {
             dbConnection = new SQLiteConnection(connectionString);
             try
-            {                
+            {
                 dbConnection.Open();
                 dbCommand = dbConnection.CreateCommand();
                 dbCommand.CommandText = queryString;

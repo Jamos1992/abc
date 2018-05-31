@@ -17,3 +17,4 @@ D:\workspace\manageSystem\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\workspace\manageSystem\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\workspace\manageSystem\DAL\obj\Debug\DAL.dll
 D:\workspace\manageSystem\DAL\obj\Debug\DAL.pdb
+D:\workspace\manageSystem\DAL\bin\Debug\ThoughtWorks.QRCode.dll

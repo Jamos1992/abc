@@ -102,11 +102,29 @@
     <Compile Include="src\demarcate_manage\AddDemarcateForm.Designer.cs">
       <DependentUpon>AddDemarcateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\demarcate_manage\ComSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\ComSettingForm.Designer.cs">
+      <DependentUpon>ComSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\demarcate_manage\DemarcateManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\demarcate_manage\DemarcateManageForm.Designer.cs">
       <DependentUpon>DemarcateManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateOperatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateOperatorForm.Designer.cs">
+      <DependentUpon>DemarcateOperatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\demarcate_manage\QRCodePrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\QRCodePrintForm.Designer.cs">
+      <DependentUpon>QRCodePrintForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\EmailAddressManageForm.cs">
       <SubType>Form</SubType>
@@ -239,8 +257,17 @@
     <EmbeddedResource Include="src\demarcate_manage\AddDemarcateForm.resx">
       <DependentUpon>AddDemarcateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\ComSettingForm.resx">
+      <DependentUpon>ComSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\demarcate_manage\DemarcateManageForm.resx">
       <DependentUpon>DemarcateManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\DemarcateOperatorForm.resx">
+      <DependentUpon>DemarcateOperatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\QRCodePrintForm.resx">
+      <DependentUpon>QRCodePrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\EmailAddressManageForm.resx">
       <DependentUpon>EmailAddressManageForm.cs</DependentUpon>

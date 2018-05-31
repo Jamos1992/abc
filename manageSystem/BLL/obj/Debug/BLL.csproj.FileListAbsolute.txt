@@ -13,3 +13,4 @@ D:\workspace\manageSystem\BLL\obj\Debug\BLL.pdb
 D:\workspace\manageSystem\BLL\bin\Debug\System.Data.SQLite.dll
 D:\workspace\manageSystem\BLL\bin\Debug\System.Data.SQLite.xml
 D:\workspace\manageSystem\BLL\bin\Debug\System.Data.SQLite.dll.config
+D:\workspace\manageSystem\BLL\bin\Debug\ThoughtWorks.QRCode.dll

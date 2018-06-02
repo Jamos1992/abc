@@ -29,17 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("单条录入");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("批量录入");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("信息录入", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("单条查询");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("批量查询");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("信息查询", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
-            CCWin.SkinControl.Animation animation1 = new CCWin.SkinControl.Animation();
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("工具录入");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("现场工具信息查询");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Service Link查询工具信息");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("信息查询", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7});
+            CCWin.SkinControl.Animation animation2 = new CCWin.SkinControl.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoInputForm));
             this.treeviewInput = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -67,23 +63,19 @@
             this.treeviewInput.LabelEdit = true;
             this.treeviewInput.Location = new System.Drawing.Point(0, 0);
             this.treeviewInput.Name = "treeviewInput";
-            treeNode1.Name = "节点1";
-            treeNode1.Text = "单条录入";
-            treeNode2.Name = "节点2";
-            treeNode2.Text = "批量录入";
-            treeNode3.Name = "节点0";
-            treeNode3.Text = "信息录入";
-            treeNode4.Name = "节点4";
-            treeNode4.Text = "单条查询";
-            treeNode5.Name = "节点5";
-            treeNode5.Text = "批量查询";
-            treeNode6.Name = "节点3";
-            treeNode6.Text = "信息查询";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "工具录入";
+            treeNode6.Name = "节点4";
+            treeNode6.Text = "现场工具信息查询";
+            treeNode7.Name = "节点5";
+            treeNode7.Text = "Service Link查询工具信息";
+            treeNode8.Name = "节点3";
+            treeNode8.Text = "信息查询";
             this.treeviewInput.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode6});
+            treeNode5,
+            treeNode8});
             this.treeviewInput.SelectedImageIndex = 0;
-            this.treeviewInput.Size = new System.Drawing.Size(175, 512);
+            this.treeviewInput.Size = new System.Drawing.Size(228, 512);
             this.treeviewInput.TabIndex = 0;
             this.treeviewInput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeviewInput_AfterSelect);
             // 
@@ -112,8 +104,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.skinAnimator1.SetDecoration(this.splitContainer1.Panel2, CCWin.SkinControl.DecorationType.None);
-            this.splitContainer1.Size = new System.Drawing.Size(832, 512);
-            this.splitContainer1.SplitterDistance = 175;
+            this.splitContainer1.Size = new System.Drawing.Size(883, 512);
+            this.splitContainer1.SplitterDistance = 228;
             this.splitContainer1.TabIndex = 1;
             // 
             // panel1
@@ -125,7 +117,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 299);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(175, 213);
+            this.panel1.Size = new System.Drawing.Size(228, 213);
             this.panel1.TabIndex = 1;
             // 
             // richTextBox1
@@ -136,7 +128,7 @@
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(173, 211);
+            this.richTextBox1.Size = new System.Drawing.Size(226, 211);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "\n操作说明：\n1、在表格内填入工具所有信息\n2、点击\"录入\"存盘\n3、点击\"清空\"删除所有表格内容";
             // 
@@ -163,7 +155,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(653, 512);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(651, 512);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -183,28 +175,28 @@
             // 
             this.skinAnimator1.AnimationType = CCWin.SkinControl.AnimationType.Custom;
             this.skinAnimator1.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.skinAnimator1.DefaultAnimation = animation1;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.skinAnimator1.DefaultAnimation = animation2;
             // 
             // InfoInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 512);
+            this.ClientSize = new System.Drawing.Size(883, 512);
             this.Controls.Add(this.splitContainer1);
             this.skinAnimator1.SetDecoration(this, CCWin.SkinControl.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

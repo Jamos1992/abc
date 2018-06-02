@@ -20,10 +20,10 @@ namespace manageSystem
  //           SqLiteHelper db = new SqLiteHelper(Declare.DbConnectionString);
             new DBUtil().CeateAllTable();
             //            db.CloseConnection();
-            //Application.Run(new LoginForm());
+            Application.Run(new LoginForm());
             //Application.Run(new QRCodePrintForm());
             //Application.Run(new AddDemarcateForm());
-            Application.Run(new DemarcateOperatorForm());
+            //Application.Run(new DemarcateOperatorForm());
         }
     }
 }

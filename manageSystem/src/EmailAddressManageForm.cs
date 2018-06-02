@@ -57,7 +57,7 @@ namespace manageSystem.src
                             break;
                         }
                     }       
-                    //删除任意行数据后，应该刷新dataGridView表格，使索引值从上至下按大小顺序排序  
+                    //删除任意行数据后，应该刷新dataGridView表格，使索引值从上至下按大小顺序排序
                     for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                     {
                         dataGridView1.Rows[i].Cells[0].Value = i + 1;

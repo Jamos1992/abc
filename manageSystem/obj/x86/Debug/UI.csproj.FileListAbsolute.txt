@@ -31,13 +31,11 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.AddRecor
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.OnCallForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.spare_manage.RepoSpareListForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.ToolDataExportForm.resources
-D:\workspace\manageSystem\obj\x86\Debug\manageSystem.BatchInputForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.BatchQueryForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.InfoInputForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.LoginForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.MainForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.Properties.Resources.resources
-D:\workspace\manageSystem\obj\x86\Debug\manageSystem.QueryInfoBySNForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.SingleInputForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.SpareInfoInputForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.SpareManageForm.resources

@@ -31,10 +31,10 @@ namespace manageSystem
             treeviewInput.ExpandAll();
             treeviewInput.Nodes[0].ImageIndex = 0;
             treeviewInput.Nodes[0].SelectedImageIndex = 0;
-            treeviewInput.Nodes[0].Nodes[0].ImageIndex = 0;
-            treeviewInput.Nodes[0].Nodes[0].SelectedImageIndex = 0;
-            treeviewInput.Nodes[0].Nodes[1].ImageIndex = 0;
-            treeviewInput.Nodes[0].Nodes[1].SelectedImageIndex = 0;
+            //treeviewInput.Nodes[0].Nodes[0].ImageIndex = 0;
+            //treeviewInput.Nodes[0].Nodes[0].SelectedImageIndex = 0;
+            //treeviewInput.Nodes[0].Nodes[1].ImageIndex = 0;
+            //treeviewInput.Nodes[0].Nodes[1].SelectedImageIndex = 0;
             treeviewInput.Nodes[1].ImageIndex = 1;
             treeviewInput.Nodes[1].SelectedImageIndex = 1;
             treeviewInput.Nodes[1].Nodes[0].ImageIndex = 1;
@@ -65,6 +65,7 @@ namespace manageSystem
 
             foreach (TreeNode treeNode in treeviewInput.Nodes)
             {
+                treeNode.ForeColor = Color.Black;
                 foreach (TreeNode subTreeNode in treeNode.Nodes)
                 {
                     subTreeNode.ForeColor = Color.Black;
@@ -72,17 +73,19 @@ namespace manageSystem
             }
             switch (e.Node.Text)
             {
-                case "单条录入":                   
+                case "工具录入":                   
                     addForm2Panel(new SingleInputForm(), tableLayoutPanel1, ref e, singleInputHint);
                     break;
-                case "批量录入":
-                    addForm2Panel(new BatchInputForm(), tableLayoutPanel1,ref e, singleInputHint);
+                //case "批量录入":
+                //    addForm2Panel(new BatchInputForm(), tableLayoutPanel1,ref e, singleInputHint);
+                //    break;
+                case "现场工具信息查询":
+                    addForm2Panel(new BatchQueryForm(), tableLayoutPanel1, ref e, singleQueryHint);
+                    //addForm2Panel(new QueryInfoBySNForm(), tableLayoutPanel1, ref e, singleQueryHint);
                     break;
-                case "单条查询":
-                    addForm2Panel(new QueryInfoBySNForm(), tableLayoutPanel1, ref e, singleQueryHint);
-                    break;
-                case "批量查询":
-                    addForm2Panel(new BatchQueryForm(), tableLayoutPanel1,ref e, singleQueryHint);                   
+                case "Service Link查询工具信息":
+                    System.Diagnostics.Process.Start("https://www.desouttertools.com.cn/fu-wu/service-link");
+                    //addForm2Panel(new BatchQueryForm(), tableLayoutPanel1,ref e, singleQueryHint);                   
                     break;
                 default:
                     label2.Text = "";

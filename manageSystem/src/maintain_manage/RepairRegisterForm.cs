@@ -27,7 +27,7 @@ namespace manageSystem.src.maintain_manage
         private void setDateTimePickerNormal(DateTimePicker dateTimePicker)
         {
             dateTimePicker.Format = DateTimePickerFormat.Custom;
-            dateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dateTimePicker.CustomFormat = "yyyy-MM-dd";
         }
 
         private void setDateTimePickerEmpty(Control c)

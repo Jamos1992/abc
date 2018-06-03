@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using BLL;
 using Model;
-using BLL;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace manageSystem.src.demarcate_manage
 {
@@ -21,7 +16,7 @@ namespace manageSystem.src.demarcate_manage
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //dataGridView1.AutoGenerateColumns = false;
             dtDemarcateDate.Format = DateTimePickerFormat.Custom;
-            dtDemarcateDate.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dtDemarcateDate.CustomFormat = "yyyy-MM-dd";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,15 +56,6 @@ namespace manageSystem.src.demarcate_manage
                 return;
             }   
             dataGridView1.DataSource = list;
-            //dataGridView1.Columns["SerialNum"].HeaderText = "工具序列号";
-            //dataGridView1.Columns["Cycle"].HeaderText = "标定周期";
-            //dataGridView1.Columns["LastTime"].HeaderText = "起始/上次标定时间";
-            //dataGridView1.Columns["Status"].HeaderText = "标定状态";
-            //dataGridView1.Columns[0].FillWeight = 25;
-            //dataGridView1.Columns[1].FillWeight = 25;
-            //dataGridView1.Columns[2].FillWeight = 25;
-            //dataGridView1.Columns[3].FillWeight = 25;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ClearSelection();
         }
 

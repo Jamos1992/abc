@@ -163,7 +163,6 @@ namespace manageSystem
             serialBox.Location = new Point(comboBox1.Location.X, comboBox1.Location.Y + 30 * (addTimes - 1));
             panel1.Controls.Add(serialBox);
             serialBox.BringToFront();
-            //serialBox.DropDown += new EventHandler(serialBox_DropDown);
             serialBox.DropDown += new EventHandler((object obj, EventArgs ex) =>
             {
                 foreach (Control txtBox in panel1.Controls)

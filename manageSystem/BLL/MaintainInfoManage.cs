@@ -95,7 +95,7 @@ namespace BLL
 
         public string RegisterBreakTool(MaintainManageInfo maintainManageInfo)
         {
-            if (maintainManageInfo.ToolModeName == "" || maintainManageInfo.ToolSerialName == "" || maintainManageInfo.SendFixTime == "" || maintainManageInfo.Detail == "")
+            if (maintainManageInfo.ToolSerialName == "" || maintainManageInfo.SendFixTime == "" || maintainManageInfo.Detail == "")
             {
                 return "录入失败，请补全所有信息！";
             }

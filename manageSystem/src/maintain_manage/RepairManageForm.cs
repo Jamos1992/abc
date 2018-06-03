@@ -22,7 +22,7 @@ namespace manageSystem.src.maintain_manage
             FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoGenerateColumns = true;
         }
 
@@ -37,11 +37,11 @@ namespace manageSystem.src.maintain_manage
             {
                 ktls.Add(new MaintainManageInfo
                 {
-                    ToolModeName = dataGridView1.Rows[i].Cells[0].Value.ToString(),
-                    ToolSerialName = dataGridView1.Rows[i].Cells[1].Value.ToString(),
-                    SendFixTime = dataGridView1.Rows[i].Cells[2].Value.ToString(),
-                    Status = dataGridView1.Rows[i].Cells[3].Value.ToString(),
-                    Detail = dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                    ToolModeName = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    ToolSerialName = dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                    SendFixTime = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                    Status = dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                    Detail = dataGridView1.Rows[i].Cells[5].Value.ToString(),
                 });
             }
             return ktls.ToArray();

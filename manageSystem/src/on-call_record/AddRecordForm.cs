@@ -31,7 +31,7 @@ namespace manageSystem.src.on_call_record
         private void setDateTimePickerNormal(DateTimePicker dateTimePicker)
         {
             dateTimePicker.Format = DateTimePickerFormat.Custom;
-            dateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm";
         }
 
         private void dateTimePicker1_DropDown(object sender, EventArgs e)

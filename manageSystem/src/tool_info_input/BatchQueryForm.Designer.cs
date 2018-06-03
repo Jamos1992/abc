@@ -111,9 +111,10 @@
             // 
             this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.Font = new System.Drawing.Font("宋体", 10F);
             this.textBox1.Location = new System.Drawing.Point(77, 11);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 15;
             // 
             // label2
@@ -136,10 +137,11 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("宋体", 10F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(251, 11);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 27;
             this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             // 
@@ -224,7 +226,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(633, 110);
+            this.panel1.Size = new System.Drawing.Size(633, 45);
             this.panel1.TabIndex = 36;
             // 
             // button2
@@ -359,10 +361,9 @@
             this.ActionCol});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 110);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 45);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
@@ -373,7 +374,7 @@
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(633, 389);
+            this.dataGridView1.Size = new System.Drawing.Size(633, 454);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -397,7 +398,6 @@
             this.CheckCol.FalseValue = "0";
             this.CheckCol.HeaderText = "全选";
             this.CheckCol.Name = "CheckCol";
-            this.CheckCol.ReadOnly = true;
             this.CheckCol.TrueValue = "1";
             this.CheckCol.Width = 40;
             // 
@@ -408,7 +408,6 @@
             this.SerialNumCol.DefaultCellStyle = dataGridViewCellStyle2;
             this.SerialNumCol.HeaderText = "工具序列号";
             this.SerialNumCol.Name = "SerialNumCol";
-            this.SerialNumCol.ReadOnly = true;
             this.SerialNumCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ModelCol
@@ -418,7 +417,6 @@
             this.ModelCol.DefaultCellStyle = dataGridViewCellStyle3;
             this.ModelCol.HeaderText = "工具型号";
             this.ModelCol.Name = "ModelCol";
-            this.ModelCol.ReadOnly = true;
             this.ModelCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // CategoryCol
@@ -428,7 +426,6 @@
             this.CategoryCol.DefaultCellStyle = dataGridViewCellStyle4;
             this.CategoryCol.HeaderText = "工具类别";
             this.CategoryCol.Name = "CategoryCol";
-            this.CategoryCol.ReadOnly = true;
             this.CategoryCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.CategoryCol.Width = 80;
             // 
@@ -439,7 +436,6 @@
             this.NameCol.DefaultCellStyle = dataGridViewCellStyle5;
             this.NameCol.HeaderText = "工具名称";
             this.NameCol.Name = "NameCol";
-            this.NameCol.ReadOnly = true;
             this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.NameCol.Width = 80;
             // 
@@ -450,7 +446,6 @@
             this.TorqueMinCol.DefaultCellStyle = dataGridViewCellStyle6;
             this.TorqueMinCol.HeaderText = "标定扭矩下限";
             this.TorqueMinCol.Name = "TorqueMinCol";
-            this.TorqueMinCol.ReadOnly = true;
             this.TorqueMinCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TorqueMaxCol
@@ -460,7 +455,6 @@
             this.TorqueMaxCol.DefaultCellStyle = dataGridViewCellStyle7;
             this.TorqueMaxCol.HeaderText = "标定扭矩上限";
             this.TorqueMaxCol.Name = "TorqueMaxCol";
-            this.TorqueMaxCol.ReadOnly = true;
             this.TorqueMaxCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // AccuracyCol
@@ -470,7 +464,6 @@
             this.AccuracyCol.DefaultCellStyle = dataGridViewCellStyle8;
             this.AccuracyCol.HeaderText = "精度";
             this.AccuracyCol.Name = "AccuracyCol";
-            this.AccuracyCol.ReadOnly = true;
             this.AccuracyCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.AccuracyCol.Width = 50;
             // 
@@ -481,7 +474,6 @@
             this.SectionCol.DefaultCellStyle = dataGridViewCellStyle9;
             this.SectionCol.HeaderText = "工段";
             this.SectionCol.Name = "SectionCol";
-            this.SectionCol.ReadOnly = true;
             this.SectionCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.SectionCol.Width = 50;
             // 
@@ -492,7 +484,6 @@
             this.WorkstationCol.DefaultCellStyle = dataGridViewCellStyle10;
             this.WorkstationCol.HeaderText = "工位";
             this.WorkstationCol.Name = "WorkstationCol";
-            this.WorkstationCol.ReadOnly = true;
             this.WorkstationCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // DemarcateCycleCol
@@ -502,9 +493,8 @@
             this.DemarcateCycleCol.DefaultCellStyle = dataGridViewCellStyle11;
             this.DemarcateCycleCol.HeaderText = "标定周期";
             this.DemarcateCycleCol.Name = "DemarcateCycleCol";
-            this.DemarcateCycleCol.ReadOnly = true;
             this.DemarcateCycleCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DemarcateCycleCol.Width = 50;
+            this.DemarcateCycleCol.Width = 60;
             // 
             // StatusCol
             // 
@@ -513,7 +503,6 @@
             this.StatusCol.DefaultCellStyle = dataGridViewCellStyle12;
             this.StatusCol.HeaderText = "工具状态";
             this.StatusCol.Name = "StatusCol";
-            this.StatusCol.ReadOnly = true;
             this.StatusCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.StatusCol.Width = 80;
             // 
@@ -524,7 +513,6 @@
             this.QualityAssureDateCol.DefaultCellStyle = dataGridViewCellStyle13;
             this.QualityAssureDateCol.HeaderText = "质保期至";
             this.QualityAssureDateCol.Name = "QualityAssureDateCol";
-            this.QualityAssureDateCol.ReadOnly = true;
             this.QualityAssureDateCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MaintainContractStyleCol
@@ -534,7 +522,6 @@
             this.MaintainContractStyleCol.DefaultCellStyle = dataGridViewCellStyle14;
             this.MaintainContractStyleCol.HeaderText = "保养合同类型";
             this.MaintainContractStyleCol.Name = "MaintainContractStyleCol";
-            this.MaintainContractStyleCol.ReadOnly = true;
             this.MaintainContractStyleCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MaintainContractDateCol
@@ -544,7 +531,6 @@
             this.MaintainContractDateCol.DefaultCellStyle = dataGridViewCellStyle15;
             this.MaintainContractDateCol.HeaderText = "保养合同至";
             this.MaintainContractDateCol.Name = "MaintainContractDateCol";
-            this.MaintainContractDateCol.ReadOnly = true;
             this.MaintainContractDateCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // RepairTimesCol
@@ -554,7 +540,6 @@
             this.RepairTimesCol.DefaultCellStyle = dataGridViewCellStyle16;
             this.RepairTimesCol.HeaderText = "累计维修次数";
             this.RepairTimesCol.Name = "RepairTimesCol";
-            this.RepairTimesCol.ReadOnly = true;
             this.RepairTimesCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // RemarkCol
@@ -564,7 +549,6 @@
             this.RemarkCol.DefaultCellStyle = dataGridViewCellStyle17;
             this.RemarkCol.HeaderText = "备注信息";
             this.RemarkCol.Name = "RemarkCol";
-            this.RemarkCol.ReadOnly = true;
             this.RemarkCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ActionCol
@@ -572,7 +556,6 @@
             this.ActionCol.DataPropertyName = "SerialNum";
             this.ActionCol.HeaderText = "操作";
             this.ActionCol.Name = "ActionCol";
-            this.ActionCol.ReadOnly = true;
             this.ActionCol.Text = "修改";
             this.ActionCol.UseColumnTextForButtonValue = true;
             this.ActionCol.Width = 80;

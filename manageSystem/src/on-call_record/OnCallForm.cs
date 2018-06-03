@@ -21,7 +21,7 @@ namespace manageSystem.src.on_call_record
             AddRecordForm addRecordForm = new AddRecordForm();
             if (addRecordForm.ShowDialog() == DialogResult.OK)
             {
-                this.Show();
+                Show();
             }
         }
 
@@ -60,29 +60,13 @@ namespace manageSystem.src.on_call_record
         private void BindData2Grid(List<OnCallRecord> list)
         {
             dataGridView1.DataSource = list;
-            dataGridView1.Columns["CallTime"].HeaderText = "客户呼叫时间";
-            dataGridView1.Columns["ArriveTime"].HeaderText = "达到现场时间";
-            dataGridView1.Columns["FaultToolName"].HeaderText = "故障工具";
-            dataGridView1.Columns["FaultReason"].HeaderText = "故障原因";
-            dataGridView1.Columns["Detail"].HeaderText = "备注";
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns[0].FillWeight = 20;
-            dataGridView1.Columns[1].FillWeight = 20;
-            dataGridView1.Columns[2].FillWeight = 20;
-            dataGridView1.Columns[3].FillWeight = 20;
-            dataGridView1.Columns[4].FillWeight = 20;
-            dataGridView1.Columns[0].ReadOnly = true;
-            dataGridView1.Columns[1].ReadOnly = true;
-            dataGridView1.Columns[2].ReadOnly = true;
-            dataGridView1.Columns[3].ReadOnly = false;
-            dataGridView1.Columns[4].ReadOnly = false;
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }
         private void setDateTimePickerNormal(DateTimePicker dateTimePicker)
         {
             dateTimePicker.Format = DateTimePickerFormat.Custom;
-            dateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm";
         }
 
         private void dateTimePicker1_DropDown(object sender, EventArgs e)
@@ -142,11 +126,11 @@ namespace manageSystem.src.on_call_record
             for (int i = 0; i < row; i++)//得到总行数并在之内循环    
             {
                 ktls.Add(new OnCallRecord {
-                    CallTime = dataGridView1.Rows[i].Cells[0].Value.ToString(),
-                    ArriveTime = dataGridView1.Rows[i].Cells[1].Value.ToString(),
-                    FaultToolName = dataGridView1.Rows[i].Cells[2].Value.ToString(),
-                    FaultReason = dataGridView1.Rows[i].Cells[3].Value.ToString(),
-                    Detail = dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                    CallTime = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    ArriveTime = dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                    FaultToolName = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                    FaultReason = dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                    Detail = dataGridView1.Rows[i].Cells[5].Value.ToString(),
                 });
             }
             return ktls.ToArray();

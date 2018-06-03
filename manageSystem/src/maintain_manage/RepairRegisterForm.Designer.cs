@@ -123,11 +123,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(161, 0);
+            this.label1.Location = new System.Drawing.Point(167, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 46);
+            this.label1.Size = new System.Drawing.Size(53, 46);
             this.label1.TabIndex = 1;
-            this.label1.Text = "*工具型号";
+            this.label1.Text = "工具型号";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -146,7 +146,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(226, 107);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(180, 21);
+            this.dateTimePicker1.Size = new System.Drawing.Size(129, 21);
             this.dateTimePicker1.TabIndex = 9;
             this.dateTimePicker1.DropDown += new System.EventHandler(this.dateTimePicker1_DropDown);
             // 
@@ -158,7 +158,7 @@
             this.textBox1.Location = new System.Drawing.Point(226, 15);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 21);
+            this.textBox1.Size = new System.Drawing.Size(129, 21);
             this.textBox1.TabIndex = 10;
             // 
             // comboBox1
@@ -168,7 +168,7 @@
             this.comboBox1.Location = new System.Drawing.Point(226, 61);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 20);
+            this.comboBox1.Size = new System.Drawing.Size(129, 20);
             this.comboBox1.TabIndex = 11;
             this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             // 

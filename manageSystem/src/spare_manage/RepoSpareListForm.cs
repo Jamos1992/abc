@@ -81,15 +81,15 @@ namespace manageSystem.src.spare_manage
         private void BindData2Grid(List<RepoSpareTool> list)
         {
             dataGridView1.DataSource = list;
-            dataGridView1.Columns["SpareToolModel"].HeaderText = "仓库备件型号";
-            dataGridView1.Columns["Num"].HeaderText = "个数";
-            dataGridView1.Columns["Time"].HeaderText = "入库时间";
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns[0].FillWeight = 30;
-            dataGridView1.Columns[1].FillWeight = 30;
-            dataGridView1.Columns[2].FillWeight = 40;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+            //dataGridView1.Columns["SpareToolModel"].HeaderText = "仓库备件型号";
+            //dataGridView1.Columns["Num"].HeaderText = "个数";
+            //dataGridView1.Columns["Time"].HeaderText = "入库时间";
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dataGridView1.Columns[0].FillWeight = 30;
+            //dataGridView1.Columns[1].FillWeight = 30;
+            //dataGridView1.Columns[2].FillWeight = 40;
+            //dataGridView1.ReadOnly = true;
+            //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }
 
@@ -129,9 +129,9 @@ namespace manageSystem.src.spare_manage
             {
                 ktls.Add(new RepoSpareTool
                 {
-                    SpareToolModel = dataGridView1.Rows[i].Cells[0].Value.ToString(),
-                    Num = int.Parse(dataGridView1.Rows[i].Cells[1].Value.ToString()),
-                    Time = dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                    SpareToolModel = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    Num = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
+                    Time = dataGridView1.Rows[i].Cells[3].Value.ToString(),
                 });
             }
             return ktls.ToArray();

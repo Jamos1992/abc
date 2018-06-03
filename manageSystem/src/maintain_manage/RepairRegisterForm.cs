@@ -81,7 +81,9 @@ namespace manageSystem.src.maintain_manage
         }
         private void setComboBoxList(string str, ComboBox comboBox)
         {
-            comboBox.Items.AddRange(toolsInfoManage.GetSerialNumHintFromDb(str).ToArray());
+            List<string> list = toolsInfoManage.GetSerialNumHintFromDb(str);
+            if (list == null) return;
+            comboBox.Items.AddRange(list.ToArray());
         }
     }
 }

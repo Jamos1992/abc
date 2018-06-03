@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data.OleDb;
-using System.Data;
-using System.Reflection;
 using System.Configuration;
+using System.Data;
+using System.Data.OleDb;
+using System.Reflection;
 
 namespace DAL
 {

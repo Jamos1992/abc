@@ -43,13 +43,10 @@
             this.statusBox = new System.Windows.Forms.ComboBox();
             this.workstationBox = new System.Windows.Forms.ComboBox();
             this.sectionBox = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.repairBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.contractBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.nameBox = new System.Windows.Forms.ComboBox();
@@ -73,6 +70,7 @@
             this.torqueMaxBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cbContractStyle = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.repairTimeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cycleBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -216,15 +214,6 @@
             this.sectionBox.Size = new System.Drawing.Size(123, 20);
             this.sectionBox.TabIndex = 7;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(357, 355);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 12);
-            this.label19.TabIndex = 114;
-            this.label19.Text = "更改记录";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -252,13 +241,6 @@
             this.label16.TabIndex = 111;
             this.label16.Text = "*工段";
             // 
-            // repairBox
-            // 
-            this.repairBox.Location = new System.Drawing.Point(416, 352);
-            this.repairBox.Name = "repairBox";
-            this.repairBox.Size = new System.Drawing.Size(123, 21);
-            this.repairBox.TabIndex = 15;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -267,13 +249,6 @@
             this.label15.Size = new System.Drawing.Size(53, 12);
             this.label15.TabIndex = 109;
             this.label15.Text = "*精度(%)";
-            // 
-            // contractBox
-            // 
-            this.contractBox.Location = new System.Drawing.Point(161, 321);
-            this.contractBox.Name = "contractBox";
-            this.contractBox.Size = new System.Drawing.Size(123, 21);
-            this.contractBox.TabIndex = 12;
             // 
             // label14
             // 
@@ -365,7 +340,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -433,7 +408,7 @@
             // 
             // remarkBox
             // 
-            this.remarkBox.Location = new System.Drawing.Point(160, 383);
+            this.remarkBox.Location = new System.Drawing.Point(416, 354);
             this.remarkBox.Name = "remarkBox";
             this.remarkBox.Size = new System.Drawing.Size(123, 21);
             this.remarkBox.TabIndex = 16;
@@ -441,7 +416,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(93, 386);
+            this.label8.Location = new System.Drawing.Point(349, 357);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 93;
@@ -499,11 +474,26 @@
             this.label2.TabIndex = 87;
             this.label2.Text = "*工具型号";
             // 
+            // cbContractStyle
+            // 
+            this.cbContractStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbContractStyle.FormattingEnabled = true;
+            this.cbContractStyle.Items.AddRange(new object[] {
+            "Basic Care",
+            "Smart Care",
+            "Peace of Mind",
+            "其它"});
+            this.cbContractStyle.Location = new System.Drawing.Point(160, 321);
+            this.cbContractStyle.Name = "cbContractStyle";
+            this.cbContractStyle.Size = new System.Drawing.Size(123, 20);
+            this.cbContractStyle.TabIndex = 126;
+            // 
             // ToolsDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 465);
+            this.Controls.Add(this.cbContractStyle);
             this.Controls.Add(this.repairTimeBox);
             this.Controls.Add(this.cycleBox);
             this.Controls.Add(this.accuracyBox);
@@ -519,13 +509,10 @@
             this.Controls.Add(this.statusBox);
             this.Controls.Add(this.workstationBox);
             this.Controls.Add(this.sectionBox);
-            this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.repairBox);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.contractBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.nameBox);
@@ -576,13 +563,10 @@
         private System.Windows.Forms.ComboBox statusBox;
         private System.Windows.Forms.ComboBox workstationBox;
         private System.Windows.Forms.ComboBox sectionBox;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox repairBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox contractBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox nameBox;
@@ -606,5 +590,6 @@
         private System.Windows.Forms.TextBox torqueMaxBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbContractStyle;
     }
 }

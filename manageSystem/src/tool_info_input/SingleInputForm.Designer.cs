@@ -42,6 +42,7 @@
             this.maintainBox = new System.Windows.Forms.DateTimePicker();
             this.remarkBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.torqueMinBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,14 +51,11 @@
             this.nameBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.contractBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.repairBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.sectionBox = new System.Windows.Forms.ComboBox();
             this.workstationBox = new System.Windows.Forms.ComboBox();
             this.statusBox = new System.Windows.Forms.ComboBox();
@@ -73,7 +71,8 @@
             this.accuracyBox = new System.Windows.Forms.TextBox();
             this.cycleBox = new System.Windows.Forms.NumericUpDown();
             this.repairTimeBox = new System.Windows.Forms.NumericUpDown();
-            this.button3 = new System.Windows.Forms.Button();
+            this.cbContractStyle = new System.Windows.Forms.ComboBox();
+            this.importExcelFile = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cycleBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repairTimeBox)).BeginInit();
@@ -82,7 +81,7 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Location = new System.Drawing.Point(237, 3);
+            this.button1.Location = new System.Drawing.Point(236, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 28);
             this.button1.TabIndex = 40;
@@ -93,7 +92,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(93, 396);
+            this.label8.Location = new System.Drawing.Point(349, 367);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 38;
@@ -187,7 +186,7 @@
             // 
             // remarkBox
             // 
-            this.remarkBox.Location = new System.Drawing.Point(160, 393);
+            this.remarkBox.Location = new System.Drawing.Point(416, 364);
             this.remarkBox.Name = "remarkBox";
             this.remarkBox.Size = new System.Drawing.Size(123, 21);
             this.remarkBox.TabIndex = 39;
@@ -197,7 +196,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
@@ -210,10 +209,20 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(649, 44);
             this.tableLayoutPanel1.TabIndex = 50;
             // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button3.Location = new System.Drawing.Point(331, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 28);
+            this.button3.TabIndex = 52;
+            this.button3.Text = "清空";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.Location = new System.Drawing.Point(551, 3);
+            this.button2.Location = new System.Drawing.Point(550, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 28);
             this.button2.TabIndex = 51;
@@ -297,13 +306,6 @@
             this.label13.TabIndex = 57;
             this.label13.Text = "*标定扭矩下限(Nm)";
             // 
-            // contractBox
-            // 
-            this.contractBox.Location = new System.Drawing.Point(161, 331);
-            this.contractBox.Name = "contractBox";
-            this.contractBox.Size = new System.Drawing.Size(123, 21);
-            this.contractBox.TabIndex = 60;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -312,13 +314,6 @@
             this.label14.Size = new System.Drawing.Size(107, 12);
             this.label14.TabIndex = 59;
             this.label14.Text = "*标定扭矩上限(Nm)";
-            // 
-            // repairBox
-            // 
-            this.repairBox.Location = new System.Drawing.Point(416, 362);
-            this.repairBox.Name = "repairBox";
-            this.repairBox.Size = new System.Drawing.Size(123, 21);
-            this.repairBox.TabIndex = 62;
             // 
             // label15
             // 
@@ -355,15 +350,6 @@
             this.label18.Size = new System.Drawing.Size(59, 12);
             this.label18.TabIndex = 67;
             this.label18.Text = "*工具状态";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(357, 365);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 12);
-            this.label19.TabIndex = 70;
-            this.label19.Text = "更改记录";
             // 
             // sectionBox
             // 
@@ -502,15 +488,23 @@
             this.repairTimeBox.Size = new System.Drawing.Size(123, 21);
             this.repairTimeBox.TabIndex = 86;
             // 
-            // button3
+            // cbContractStyle
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button3.Location = new System.Drawing.Point(332, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 28);
-            this.button3.TabIndex = 52;
-            this.button3.Text = "清空";
-            this.button3.UseVisualStyleBackColor = true;
+            this.cbContractStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbContractStyle.FormattingEnabled = true;
+            this.cbContractStyle.Items.AddRange(new object[] {
+            "Basic Care",
+            "Smart Care",
+            "Peace of Mind",
+            "其它"});
+            this.cbContractStyle.Location = new System.Drawing.Point(160, 331);
+            this.cbContractStyle.Name = "cbContractStyle";
+            this.cbContractStyle.Size = new System.Drawing.Size(123, 20);
+            this.cbContractStyle.TabIndex = 87;
+            // 
+            // importExcelFile
+            // 
+            this.importExcelFile.FileName = "openFileDialog1";
             // 
             // SingleInputForm
             // 
@@ -518,6 +512,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(649, 473);
+            this.Controls.Add(this.cbContractStyle);
             this.Controls.Add(this.repairTimeBox);
             this.Controls.Add(this.cycleBox);
             this.Controls.Add(this.accuracyBox);
@@ -533,13 +528,10 @@
             this.Controls.Add(this.statusBox);
             this.Controls.Add(this.workstationBox);
             this.Controls.Add(this.sectionBox);
-            this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.repairBox);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.contractBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.nameBox);
@@ -597,14 +589,11 @@
         private System.Windows.Forms.ComboBox nameBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox contractBox;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox repairBox;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox sectionBox;
         private System.Windows.Forms.ComboBox workstationBox;
         private System.Windows.Forms.ComboBox statusBox;
@@ -621,5 +610,7 @@
         private System.Windows.Forms.NumericUpDown cycleBox;
         private System.Windows.Forms.NumericUpDown repairTimeBox;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cbContractStyle;
+        private System.Windows.Forms.OpenFileDialog importExcelFile;
     }
 }

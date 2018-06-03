@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
 using System.Reflection;
+using System.Data.OleDb;
 
 namespace DAL
 {
@@ -27,7 +28,7 @@ namespace DAL
             {
                 reader.Close();
                 return null;
-            }            
+            }
             while (reader.Read())
             {
                 toolsInfo.SerialNum = reader["SerialNum"].ToString();
@@ -45,7 +46,6 @@ namespace DAL
                 toolsInfo.MaintainContractStyle = reader["MaintainContractStyle"].ToString();
                 toolsInfo.MaintainContractDate = reader["MaintainContractDate"].ToString();
                 toolsInfo.RepairTimes = int.Parse(reader["RepairTimes"].ToString());
-                toolsInfo.ChangeRecord = reader["ChangeRecord"].ToString();
                 toolsInfo.Remark = reader["Remark"].ToString();
             }
             if (reader != null) reader.Close();
@@ -54,7 +54,7 @@ namespace DAL
 
         public ToolsInfo getOneToolsInfoBySerialAndModel(string SerialNum, string Model)
         {
-            SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum", "Model" }, new string[] { "=", "=" }, new string[] { SerialNum, Model });
+            SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum", "Model" }, new string[] { "=", "=" }, new string[] { "'" + SerialNum + "'", "'" + Model + "'" });
             ToolsInfo toolsInfo = new ToolsInfo();
             if (!reader.HasRows)
             {
@@ -78,7 +78,6 @@ namespace DAL
                 toolsInfo.MaintainContractStyle = reader["MaintainContractStyle"].ToString();
                 toolsInfo.MaintainContractDate = reader["MaintainContractDate"].ToString();
                 toolsInfo.RepairTimes = int.Parse(reader["RepairTimes"].ToString());
-                toolsInfo.ChangeRecord = reader["ChangeRecord"].ToString();
                 toolsInfo.Remark = reader["Remark"].ToString();
             }
             if (reader != null) reader.Close();
@@ -118,7 +117,6 @@ namespace DAL
                     MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
                     MaintainContractDate = reader["MaintainContractDate"].ToString(),
                     RepairTimes = int.Parse(reader["RepairTimes"].ToString()),
-                    ChangeRecord = reader["ChangeRecord"].ToString(),
                     Remark = reader["Remark"].ToString()
                 });
             }
@@ -154,7 +152,6 @@ namespace DAL
                     MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
                     MaintainContractDate = reader["MaintainContractDate"].ToString(),
                     RepairTimes = int.Parse(reader["RepairTimes"].ToString()),
-                    ChangeRecord = reader["ChangeRecord"].ToString(),
                     Remark = reader["Remark"].ToString()
                 });
             }
@@ -163,12 +160,19 @@ namespace DAL
         }
 
         //excel operation
-        //public bool IsToolsInfoTableExist(string filePath)
-        //{
-        //    string sql = "select * from "
-        //    EXCELHelper.LoadDataFromExcel(filePath,)
-        //}
-        
+        public bool IsToolsInfoRecordExist(string filePath)
+        {
+            string sql = "select * from 工具信息";
+            OleDbDataReader reader = EXCELHelper.LoadDataFromExcel(filePath, sql);
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return false;
+            }
+            reader.Close();
+            return true;
+        }
+
         public int CreateToolsInfoExcelTable(string filePath)
         {
             string sql = ConfigurationManager.AppSettings["CreateExcelString"];
@@ -178,7 +182,7 @@ namespace DAL
 
         public int InsertToolsInfo2ExcelTable(string filePath, object obj)
         {
-            string sql = "insert into 工具信息 (工具序列号,工具型号,工具类别,工具名称,标定扭矩下限,标定扭矩上限,精度,工段,工位,标定周期,工具状态,质保期至,保养合同类型,保养合同至,累计维修次数,更改记录,备注信息)";
+            string sql = "insert into 工具信息 (工具序列号,工具型号,工具类别,工具名称,标定扭矩下限,标定扭矩上限,精度,工段,工位,标定周期,工具状态,质保期至,保养合同类型,保养合同至,累计维修次数,备注信息)";
             PropertyInfo[] propertys = obj.GetType().GetProperties();
             Console.WriteLine("len of obj is {0}", propertys.Length);
             int i = 0;
@@ -196,6 +200,41 @@ namespace DAL
             }
             sql += ")";
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
+        }
+        public List<ToolsInfo> getAllToolsFromExcel(string filePath)
+        {
+            string sql = "select * from 工具信息";
+            OleDbDataReader reader = EXCELHelper.LoadDataFromExcel(filePath, sql);
+            List<ToolsInfo> list = new List<ToolsInfo>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                list.Add(new ToolsInfo
+                {
+                    SerialNum = reader["工具序列号"].ToString(),
+                    Model = reader["工具型号"].ToString(),
+                    Category = reader["工具类别"].ToString(),
+                    Name = reader["工具名称"].ToString(),
+                    TorqueMin = int.Parse(reader["标定扭矩下限"].ToString()),
+                    TorqueMax = int.Parse(reader["标定扭矩上限"].ToString()),
+                    Accuracy = int.Parse(reader["精度"].ToString()),
+                    Section = reader["工段"].ToString(),
+                    DemarcateCycle = int.Parse(reader["标定周期"].ToString()),
+                    Workstation = reader["工位"].ToString(),
+                    Status = reader["工具状态"].ToString(),
+                    QualityAssureDate = reader["质保期至"].ToString(),
+                    MaintainContractStyle = reader["保养合同类型"].ToString(),
+                    MaintainContractDate = reader["保养合同至"].ToString(),
+                    RepairTimes = int.Parse(reader["累计维修次数"].ToString()),
+                    Remark = reader["备注信息"].ToString()
+                });
+            }
+            if (reader != null) reader.Close();
+            return list;
         }
     }
 }

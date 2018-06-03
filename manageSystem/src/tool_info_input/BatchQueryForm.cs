@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BLL;
+using manageSystem.src.tool_info_input;
+using Model;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Model;
-using BLL;
-using System.Drawing;
-using manageSystem.src.tool_info_input;
 
 namespace manageSystem
 {
@@ -25,11 +25,8 @@ namespace manageSystem
         private void InitTextBoxHint()
         {
             List<string> list = toolsInfoManage.GetModelHintFromDb();
+            if (list == null) return;
             textBox1.AutoCompleteCustomSource.AddRange(list.ToArray());
-            //textBox2.AutoCompleteCustomSource.AddRange(list.ToArray());
-            //textBox3.AutoCompleteCustomSource.AddRange(list.ToArray());
-            //textBox4.AutoCompleteCustomSource.AddRange(list.ToArray());
-            //textBox5.AutoCompleteCustomSource.AddRange(list.ToArray());
         }
 
         private bool isTextBoxNull()
@@ -48,7 +45,9 @@ namespace manageSystem
         }
         private void setComboBoxList(string str,ComboBox comboBox)
         {
-            comboBox.Items.AddRange(toolsInfoManage.GetSerialNumHintFromDb(str).ToArray());
+            List<string> list = toolsInfoManage.GetSerialNumHintFromDb(str);
+            if (list == null) return;
+            comboBox.Items.AddRange(list.ToArray());
         }
 
         private ToolsInfo getOneInput(TextBox txtBox, ComboBox comboBox)
@@ -82,27 +81,6 @@ namespace manageSystem
                     }
                 }
             }
-            
-            //if (textBox1.Text != "" && comboBox1.Text != "")
-            //{
-            //    ktls.Add(this.getOneInput(textBox1, comboBox1));
-            //}
-            //if (textBox2.Text != "" && comboBox2.Text != "")
-            //{
-            //    ktls.Add(this.getOneInput(textBox2, comboBox2));
-            //}
-            //if (textBox3.Text != "" && comboBox3.Text != "")
-            //{
-            //    ktls.Add(this.getOneInput(textBox3, comboBox3));
-            //}
-            //if (textBox4.Text != "" && comboBox4.Text != "")
-            //{
-            //    ktls.Add(this.getOneInput(textBox4, comboBox4));
-            //}
-            //if (textBox5.Text != "" && comboBox5.Text != "")
-            //{
-            //    ktls.Add(this.getOneInput(textBox5, comboBox5));
-            //}
             toolsInfos = ktls.ToArray();
             return toolsInfos;
         }
@@ -152,24 +130,6 @@ namespace manageSystem
             setComboBoxList(textBox1.Text, comboBox1);
         }
 
-        //private void comboBox2_DropDown(object sender, EventArgs e)
-        //{
-        //    this.comboBox2.Items.Clear();
-        //    setComboBoxList(textBox2.Text, comboBox2);
-        //}
-
-        //private void comboBox3_DropDown(object sender, EventArgs e)
-        //{
-        //    this.comboBox3.Items.Clear();
-        //    setComboBoxList(textBox3.Text, comboBox3);
-        //}
-
-        //private void comboBox4_DropDown(object sender, EventArgs e)
-        //{
-        //    this.comboBox4.Items.Clear();
-        //    setComboBoxList(textBox4.Text, comboBox4);
-        //}
-
         private void button4_Click(object sender, EventArgs e)
         {
             addTimes++;
@@ -187,7 +147,11 @@ namespace manageSystem
             modelBox.BringToFront();
             modelBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             modelBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            modelBox.AutoCompleteCustomSource.AddRange(toolsInfoManage.GetModelHintFromDb().ToArray());
+            List<string> list = toolsInfoManage.GetModelHintFromDb();
+            if(list != null)
+            {
+                modelBox.AutoCompleteCustomSource.AddRange(list.ToArray());
+            }
 
             Label serialLabel = new Label();
             serialLabel.Text = label2.Text;
@@ -237,47 +201,6 @@ namespace manageSystem
                 list.Add(toolsInfo);
             }
             dataGridView1.DataSource = list;
-            dataGridView1.Columns["SerialNum"].HeaderText = "工具序列号";
-            dataGridView1.Columns["Model"].HeaderText = "工具型号";
-            dataGridView1.Columns["Category"].HeaderText = "工具类别";
-            dataGridView1.Columns["Name"].HeaderText = "工具名称";
-            dataGridView1.Columns["TorqueMin"].HeaderText = "标定扭矩下限";
-            dataGridView1.Columns["TorqueMax"].HeaderText = "标定扭矩上限";
-            dataGridView1.Columns["Accuracy"].HeaderText = "精度";
-            dataGridView1.Columns["Section"].HeaderText = "工段";
-            dataGridView1.Columns["Workstation"].HeaderText = "工位";
-            dataGridView1.Columns["DemarcateCycle"].HeaderText = "标定周期";
-            dataGridView1.Columns["Status"].HeaderText = "工具状态";
-            dataGridView1.Columns["QualityAssureDate"].HeaderText = "质保期至";
-            dataGridView1.Columns["MaintainContractStyle"].HeaderText = "保养合同类型";
-            dataGridView1.Columns["MaintainContractDate"].HeaderText = "保养合同至";
-            dataGridView1.Columns["RepairTimes"].HeaderText = "累计维修次数";
-            dataGridView1.Columns["ChangeRecord"].HeaderText = "更改记录";
-            dataGridView1.Columns["Remark"].HeaderText = "备注信息";
-            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dataGridView1.Columns[0].FillWeight = 6;
-            dataGridView1.Columns[1].FillWeight = 6;
-            dataGridView1.Columns[2].FillWeight = 6;
-            dataGridView1.Columns[3].FillWeight = 6;
-            dataGridView1.Columns[4].FillWeight = 6;
-            dataGridView1.Columns[5].FillWeight = 6;
-            dataGridView1.Columns[6].FillWeight = 6;
-            dataGridView1.Columns[7].FillWeight = 6;
-            dataGridView1.Columns[8].FillWeight = 6;
-            dataGridView1.Columns[9].FillWeight = 6;
-            dataGridView1.Columns[10].FillWeight = 6;
-            dataGridView1.Columns[11].FillWeight = 6;
-            dataGridView1.Columns[12].FillWeight = 6;
-            dataGridView1.Columns[13].FillWeight = 6;
-            dataGridView1.Columns[14].FillWeight = 6;
-            dataGridView1.Columns[15].FillWeight = 6;
-            dataGridView1.Columns[16].FillWeight = 6;
-            dataGridView1.Columns[0].ReadOnly = true;
-            dataGridView1.Columns[1].ReadOnly = true;
-            dataGridView1.Columns[2].ReadOnly = true;
-            dataGridView1.Columns[3].ReadOnly = false;
-            dataGridView1.Columns[4].ReadOnly = false;
-            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }
 
@@ -301,22 +224,21 @@ namespace manageSystem
             {
                 ktls.Add(new ToolsInfo
                 {
-                    SerialNum = dataGridView1.Rows[i].Cells[0].Value.ToString(),
-                    Model = dataGridView1.Rows[i].Cells[1].Value.ToString(),
-                    Category = dataGridView1.Rows[i].Cells[2].Value.ToString(),
-                    Name = dataGridView1.Rows[i].Cells[3].Value.ToString(),
-                    TorqueMin = int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
-                    TorqueMax = int.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
-                    Accuracy = int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
-                    Section = dataGridView1.Rows[i].Cells[7].Value.ToString(),
-                    Workstation = dataGridView1.Rows[i].Cells[8].Value.ToString(),
-                    DemarcateCycle = int.Parse(dataGridView1.Rows[i].Cells[9].Value.ToString()),
-                    Status = dataGridView1.Rows[i].Cells[10].Value.ToString(),
-                    QualityAssureDate = dataGridView1.Rows[i].Cells[11].Value.ToString(),
-                    MaintainContractStyle = dataGridView1.Rows[i].Cells[12].Value.ToString(),
-                    MaintainContractDate = dataGridView1.Rows[i].Cells[13].Value.ToString(),
-                    RepairTimes = int.Parse(dataGridView1.Rows[i].Cells[14].Value.ToString()),
-                    ChangeRecord = dataGridView1.Rows[i].Cells[15].Value.ToString(),
+                    SerialNum = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    Model = dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                    Category = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                    Name = dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                    TorqueMin = int.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
+                    TorqueMax = int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
+                    Accuracy = int.Parse(dataGridView1.Rows[i].Cells[7].Value.ToString()),
+                    Section = dataGridView1.Rows[i].Cells[8].Value.ToString(),
+                    Workstation = dataGridView1.Rows[i].Cells[9].Value.ToString(),
+                    DemarcateCycle = int.Parse(dataGridView1.Rows[i].Cells[10].Value.ToString()),
+                    Status = dataGridView1.Rows[i].Cells[11].Value.ToString(),
+                    QualityAssureDate = dataGridView1.Rows[i].Cells[12].Value.ToString(),
+                    MaintainContractStyle = dataGridView1.Rows[i].Cells[13].Value.ToString(),
+                    MaintainContractDate = dataGridView1.Rows[i].Cells[14].Value.ToString(),
+                    RepairTimes = int.Parse(dataGridView1.Rows[i].Cells[15].Value.ToString()),
                     Remark = dataGridView1.Rows[i].Cells[16].Value.ToString()
                 });
             }
@@ -328,24 +250,39 @@ namespace manageSystem
             if (dataGridView1.SelectedRows.Count == 0) return null;
             return new ToolsInfo
             {
-                SerialNum = dataGridView1.SelectedRows[0].Cells[0].Value.ToString(),
-                Model = dataGridView1.SelectedRows[0].Cells[1].Value.ToString(),
-                Category = dataGridView1.SelectedRows[0].Cells[2].Value.ToString(),
-                Name = dataGridView1.SelectedRows[0].Cells[3].Value.ToString(),
-                TorqueMin = int.Parse(dataGridView1.SelectedRows[0].Cells[4].Value.ToString()),
-                TorqueMax = int.Parse(dataGridView1.SelectedRows[0].Cells[5].Value.ToString()),
-                Accuracy = int.Parse(dataGridView1.SelectedRows[0].Cells[6].Value.ToString()),
-                Section = dataGridView1.SelectedRows[0].Cells[7].Value.ToString(),
-                Workstation = dataGridView1.SelectedRows[0].Cells[8].Value.ToString(),
-                DemarcateCycle = int.Parse(dataGridView1.SelectedRows[0].Cells[9].Value.ToString()),
-                Status = dataGridView1.SelectedRows[0].Cells[10].Value.ToString(),
-                QualityAssureDate = dataGridView1.SelectedRows[0].Cells[11].Value.ToString(),
-                MaintainContractStyle = dataGridView1.SelectedRows[0].Cells[12].Value.ToString(),
-                MaintainContractDate = dataGridView1.SelectedRows[0].Cells[13].Value.ToString(),
-                RepairTimes = int.Parse(dataGridView1.SelectedRows[0].Cells[14].Value.ToString()),
-                ChangeRecord = dataGridView1.SelectedRows[0].Cells[15].Value.ToString(),
+                SerialNum = dataGridView1.SelectedRows[0].Cells[1].Value.ToString(),
+                Model = dataGridView1.SelectedRows[0].Cells[2].Value.ToString(),
+                Category = dataGridView1.SelectedRows[0].Cells[3].Value.ToString(),
+                Name = dataGridView1.SelectedRows[0].Cells[4].Value.ToString(),
+                TorqueMin = int.Parse(dataGridView1.SelectedRows[0].Cells[5].Value.ToString()),
+                TorqueMax = int.Parse(dataGridView1.SelectedRows[0].Cells[6].Value.ToString()),
+                Accuracy = int.Parse(dataGridView1.SelectedRows[0].Cells[7].Value.ToString()),
+                Section = dataGridView1.SelectedRows[0].Cells[8].Value.ToString(),
+                Workstation = dataGridView1.SelectedRows[0].Cells[9].Value.ToString(),
+                DemarcateCycle = int.Parse(dataGridView1.SelectedRows[0].Cells[10].Value.ToString()),
+                Status = dataGridView1.SelectedRows[0].Cells[11].Value.ToString(),
+                QualityAssureDate = dataGridView1.SelectedRows[0].Cells[12].Value.ToString(),
+                MaintainContractStyle = dataGridView1.SelectedRows[0].Cells[13].Value.ToString(),
+                MaintainContractDate = dataGridView1.SelectedRows[0].Cells[14].Value.ToString(),
+                RepairTimes = int.Parse(dataGridView1.SelectedRows[0].Cells[15].Value.ToString()),
                 Remark = dataGridView1.SelectedRows[0].Cells[16].Value.ToString()
             };
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex > -1)
+            {
+                DataGridViewButtonCell btnCell = dataGridView1.CurrentCell as DataGridViewButtonCell;
+                if (btnCell != null)
+                {
+                    ToolsDetailForm toolsDetailForm = new ToolsDetailForm(GetOneToolsInfoFromGrid());
+                    if (toolsDetailForm.ShowDialog() == DialogResult.OK)
+                    {
+                        Show();
+                    }
+                }
+            }
         }
     }
 }

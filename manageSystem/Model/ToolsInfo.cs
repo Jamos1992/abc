@@ -22,7 +22,6 @@ namespace Model
         public string MaintainContractStyle { get; set; }            //保养合同类型
         public string MaintainContractDate { get; set; }             //保养合同至
         public int RepairTimes { get; set; }                         //累计维修次数
-        public string ChangeRecord { get; set; }                     //更改记录
         public string Remark { get; set; }                           //备注信息
 
     }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using BLL;
 using Model;
-using BLL;
+using System;
+using System.Windows.Forms;
 
 namespace manageSystem.src.tool_info_input
 {
@@ -42,10 +36,10 @@ namespace manageSystem.src.tool_info_input
             workstationBox.Text = toolsInfo.Workstation;
             statusBox.Text = toolsInfo.Status;
             qualityBox.Text = toolsInfo.QualityAssureDate;
-            contractBox.Text = toolsInfo.MaintainContractStyle;
+            cbContractStyle.Text = toolsInfo.MaintainContractStyle;
             maintainBox.Text = toolsInfo.MaintainContractDate;
             repairTimeBox.Value = toolsInfo.RepairTimes;
-            repairBox.Text = toolsInfo.ChangeRecord;
+            //repairBox.Text = toolsInfo.ChangeRecord;
             remarkBox.Text = toolsInfo.Remark;
             //allBoxReadOnly();
         }
@@ -89,10 +83,10 @@ namespace manageSystem.src.tool_info_input
                 Workstation = workstationBox.Text.Trim(),
                 Status = statusBox.Text.Trim(),
                 QualityAssureDate = qualityBox.Text.Trim(),
-                MaintainContractStyle = contractBox.Text.Trim(),
+                MaintainContractStyle = cbContractStyle.Text.Trim(),
                 MaintainContractDate = maintainBox.Text.Trim(),
                 RepairTimes = int.Parse(repairTimeBox.Value.ToString()),
-                ChangeRecord = repairBox.Text.Trim(),
+                //ChangeRecord = repairBox.Text.Trim(),
                 Remark = remarkBox.Text.Trim()
             };
         }

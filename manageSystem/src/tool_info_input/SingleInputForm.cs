@@ -12,6 +12,8 @@ namespace manageSystem
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
+            importExcelFile.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
+            importExcelFile.FileName = "";
         }
         private void SingleInputForm_Load(object sender, EventArgs e)
         {
@@ -34,10 +36,9 @@ namespace manageSystem
                 Workstation = workstationBox.Text.Trim(),
                 Status = statusBox.Text.Trim(),
                 QualityAssureDate = qualityBox.Text.Trim(),
-                MaintainContractStyle = contractBox.Text.Trim(),
+                MaintainContractStyle = cbContractStyle.Text.Trim(),
                 MaintainContractDate = maintainBox.Text.Trim(),
                 RepairTimes = int.Parse(repairTimeBox.Value.ToString()),
-                ChangeRecord = repairBox.Text.Trim(),
                 Remark = remarkBox.Text.Trim()
             };
         }
@@ -85,6 +86,11 @@ namespace manageSystem
                 }
             }
             setDateTimePickerEmpty();
+            if(importExcelFile.ShowDialog() == DialogResult.OK)
+            {
+                string msg = toolsInfoManage.ImportBatchTools2Db(importExcelFile.FileName);
+                MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

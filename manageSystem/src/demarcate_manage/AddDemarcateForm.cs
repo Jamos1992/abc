@@ -17,7 +17,7 @@ namespace manageSystem.src.demarcate_manage
         public AddDemarcateForm()
         {
             InitializeComponent();
-            //FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //dataGridView1.AutoGenerateColumns = false;
             dtDemarcateDate.Format = DateTimePickerFormat.Custom;

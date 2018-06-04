@@ -50,7 +50,7 @@ namespace manageSystem.src.on_call_record
             }
             if (list == null)
             {
-                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = new List<OnCallRecord>();
                 MessageBox.Show("记录不存在！");
                 return;
             }

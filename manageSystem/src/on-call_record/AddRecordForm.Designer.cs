@@ -104,7 +104,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(175, 6);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 21);
+            this.dateTimePicker1.Size = new System.Drawing.Size(150, 21);
             this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.DropDown += new System.EventHandler(this.dateTimePicker1_DropDown);
             // 
@@ -114,7 +114,7 @@
             this.dateTimePicker2.Location = new System.Drawing.Point(175, 38);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 21);
+            this.dateTimePicker2.Size = new System.Drawing.Size(150, 21);
             this.dateTimePicker2.TabIndex = 3;
             this.dateTimePicker2.DropDown += new System.EventHandler(this.dateTimePicker2_DropDown);
             // 

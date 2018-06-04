@@ -50,7 +50,7 @@ namespace DAL
             {
                 list.Add(new EmailAddress
                 {
-                    ID = (int)reader["ID"],
+                    ID = int.Parse(reader["ID"].ToString()),
                     EmailAddr = reader["EmailAddr"].ToString()
                 });
             }

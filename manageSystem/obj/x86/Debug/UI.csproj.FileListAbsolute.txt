@@ -53,3 +53,4 @@ D:\workspace\manageSystem\bin\x86\Debug\ThoughtWorks.QRCode.dll
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.QRCodePrintForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.ComSettingForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperatorForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperationForm.resources

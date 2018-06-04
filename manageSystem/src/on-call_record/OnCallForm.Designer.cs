@@ -152,16 +152,16 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(304, 27);
+            this.dateTimePicker2.Location = new System.Drawing.Point(259, 27);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(173, 21);
+            this.dateTimePicker2.Size = new System.Drawing.Size(134, 21);
             this.dateTimePicker2.TabIndex = 4;
             this.dateTimePicker2.DropDown += new System.EventHandler(this.dateTimePicker2_DropDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(276, 31);
+            this.label1.Location = new System.Drawing.Point(236, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 3;
@@ -171,7 +171,7 @@
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(92, 27);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(173, 21);
+            this.dateTimePicker1.Size = new System.Drawing.Size(138, 21);
             this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.DropDown += new System.EventHandler(this.dateTimePicker1_DropDown);
             // 

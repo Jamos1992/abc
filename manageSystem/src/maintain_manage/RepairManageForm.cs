@@ -22,7 +22,6 @@ namespace manageSystem.src.maintain_manage
             FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoGenerateColumns = true;
         }
 
@@ -49,19 +48,8 @@ namespace manageSystem.src.maintain_manage
         private void BindData2Grid(List<OutputStruct> list)
         {
             dataGridView1.DataSource = list;
-            //dataGridView1.Columns["ToolSerialName"].HeaderText = "工具序列号";
-            //dataGridView1.Columns["ToolModeName"].HeaderText = "工具型号";
-            //dataGridView1.Columns["SendFixTime"].HeaderText = "工具送修时间";
-            //dataGridView1.Columns["Status"].HeaderText = "维修状态";
-            //dataGridView1.Columns["Detail"].HeaderText = "备注";
-            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //dataGridView1.Columns[0].FillWeight = 20;
-            //dataGridView1.Columns[1].FillWeight = 20;
-            //dataGridView1.Columns[2].FillWeight = 20;
-            //dataGridView1.Columns[3].FillWeight = 20;
-            //dataGridView1.Columns[4].FillWeight = 20;
-            //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
-            //dataGridView1.ClearSelection();
+            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+            dataGridView1.ClearSelection();
             //if (dataGridView1.Rows.Count > 0) dataGridView1.Rows[0].Selected = false;
         }
 
@@ -90,7 +78,7 @@ namespace manageSystem.src.maintain_manage
             }
             if (list == null)
             {
-                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = new List<OutputStruct>();
                 MessageBox.Show("记录不存在！");
                 return;
             }

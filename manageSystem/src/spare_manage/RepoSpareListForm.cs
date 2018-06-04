@@ -62,7 +62,7 @@ namespace manageSystem.src.spare_manage
             }
             if (list == null)
             {
-                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = new List<RepoSpareTool>();
                 MessageBox.Show("记录不存在！");
                 return;
             }
@@ -81,15 +81,6 @@ namespace manageSystem.src.spare_manage
         private void BindData2Grid(List<RepoSpareTool> list)
         {
             dataGridView1.DataSource = list;
-            //dataGridView1.Columns["SpareToolModel"].HeaderText = "仓库备件型号";
-            //dataGridView1.Columns["Num"].HeaderText = "个数";
-            //dataGridView1.Columns["Time"].HeaderText = "入库时间";
-            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //dataGridView1.Columns[0].FillWeight = 30;
-            //dataGridView1.Columns[1].FillWeight = 30;
-            //dataGridView1.Columns[2].FillWeight = 40;
-            //dataGridView1.ReadOnly = true;
-            //dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
         }
 

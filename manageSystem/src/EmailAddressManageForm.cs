@@ -15,6 +15,7 @@ namespace manageSystem.src
             InitializeComponent();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.RowHeadersVisible = false;
+            dataGridView1.AutoGenerateColumns = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,10 +25,6 @@ namespace manageSystem.src
         private void button2_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = emailManage.SearchEmailAddress(textBox1.Text.Trim());
-            dataGridView1.Columns["EmailAddr"].HeaderText = "邮箱地址";
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns[0].FillWeight = 20;
-            dataGridView1.Columns[1].FillWeight = 80;
             dataGridView1.ClearSelection();
         }
 

@@ -14,7 +14,6 @@ namespace manageSystem.src.demarcate_manage
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //dataGridView1.AutoGenerateColumns = false;
             dtDemarcateDate.Format = DateTimePickerFormat.Custom;
             dtDemarcateDate.CustomFormat = "yyyy-MM-dd";
         }
@@ -52,6 +51,8 @@ namespace manageSystem.src.demarcate_manage
             List<DemarcateTools> list = demarcateRecordManage.GetAllDemarcateTools();
             if (list == null)
             {
+                dataGridView1.DataSource = new List<DemarcateTools>();
+                dataGridView1.ClearSelection();
                 //MessageBox.Show("数据不存在", "提示信息");
                 return;
             }   

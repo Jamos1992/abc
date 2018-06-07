@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data.SQLite;
 using System.Reflection;
 using System.Data.OleDb;
+using Util;
 
 namespace DAL
 {
@@ -175,7 +176,7 @@ namespace DAL
 
         public int CreateToolsInfoExcelTable(string filePath)
         {
-            string sql = ConfigurationManager.AppSettings["CreateExcelString"];
+            string sql = ExcelDeclare.CreateToolsInfoExcelSql;
             Console.WriteLine("sql is {0}", sql);
             return EXCELHelper.CreateExcelTable(filePath, sql);
         }

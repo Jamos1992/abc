@@ -2,6 +2,7 @@
 using Model;
 using System.Data.SQLite;
 using System.Configuration;
+using Util;
 
 namespace DAL
 {
@@ -98,7 +99,7 @@ namespace DAL
         //excel operation
         public int CreatRepoSpareToolExcelTable(string filePath)
         {
-            return EXCELHelper.CreateExcelTable(filePath, ConfigurationManager.AppSettings["CreatRepoSpareToolExcelString"]);
+            return EXCELHelper.CreateExcelTable(filePath, ExcelDeclare.CreatRepoSpareToolExcelSql);
         }
 
         public int InsertRepoSpareTool2ExcelTable(string filePath, object obj)

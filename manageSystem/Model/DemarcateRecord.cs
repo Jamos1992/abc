@@ -8,7 +8,7 @@ namespace Model
     public class DemarcateTools
     {
         public string SerialNum { get; set; }               //待标定的序列号
-        public int Cycle { get; set; }                   //标定周期
+        public int Cycle { get; set; }                      //标定周期
         public string LastTime { get; set; }                //上次标定时间或起始时间
         public string NextTime { get; set; }                //下次标定时间
         public string Status { get; set; }                  //标定状态
@@ -22,5 +22,14 @@ namespace Model
         public string Validity { get; set; }                //有效期
         public string Examinant { get; set; }               //检查员
         public string CheckTime { get; set; }               //标定时间
+    }
+
+    public class DemarcateData
+    {
+        public string Order { get; set; }                   //标定组别
+        public string Date { get; set; }                    //标定日期
+        public string Time { get; set; }                    //标定时间
+        public string Torque { get; set; }                  //扭矩
+        public string Angle { get; set; }                   //角度
     }
 }

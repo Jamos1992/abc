@@ -5,15 +5,13 @@ using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using Model;
+using Util;
 
 namespace manageSystem.src.maintain_manage
 {
     public partial class RepairManageForm : Form
     {
         private MaintainInfoManage maintainInfoManage = new MaintainInfoManage();
-        public static string Repairing = MaintainInfoManage.Repairing;
-        public static string RepairFinished = MaintainInfoManage.RepairFinished;
-        public static string Suspend = MaintainInfoManage.Suspend;
         public static string ToolSerialName;
         public static string Status;
         public RepairManageForm()
@@ -22,7 +20,7 @@ namespace manageSystem.src.maintain_manage
             FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.AutoGenerateColumns = false;
         }
 
         private MaintainManageInfo[] GetMaintainManageInfoFromGrid()
@@ -70,9 +68,9 @@ namespace manageSystem.src.maintain_manage
             else
             {
                 string sql = "select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo where";
-                if (radioButton1.Checked) sql += " Status='" + Repairing + "'";
-                if (radioButton2.Checked) sql += " Status='" + Suspend + "'";
-                if (radioButton3.Checked) sql += " Status='" + RepairFinished + "'";
+                if (radioButton1.Checked) sql += " Status='" + MaintainDeclare.Repairing + "'";
+                if (radioButton2.Checked) sql += " Status='" + MaintainDeclare.Suspend + "'";
+                if (radioButton3.Checked) sql += " Status='" + MaintainDeclare.RepairFinished + "'";
                 sql += " order by SendFixTime desc";
                 list = maintainInfoManage.GetAllBreakToolsBySql(sql);
             }
@@ -124,7 +122,7 @@ namespace manageSystem.src.maintain_manage
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            if (getStatusFromGrid() == RepairFinished)
+            if (getStatusFromGrid() == MaintainDeclare.RepairFinished)
             {
                 contextMenuStrip1.Enabled = false;
             }

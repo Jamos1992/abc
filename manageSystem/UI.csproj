@@ -71,6 +71,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SQLite.Core.1.0.108.0\lib\net40\System.Data.SQLite.dll</HintPath>
@@ -131,6 +132,12 @@
     </Compile>
     <Compile Include="src\demarcate_manage\QRCodePrintForm.Designer.cs">
       <DependentUpon>QRCodePrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\demarcate_manage\ScanCodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\ScanCodeForm.Designer.cs">
+      <DependentUpon>ScanCodeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\EmailAddressManageForm.cs">
       <SubType>Form</SubType>
@@ -266,6 +273,9 @@
     <EmbeddedResource Include="src\demarcate_manage\QRCodePrintForm.resx">
       <DependentUpon>QRCodePrintForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\ScanCodeForm.resx">
+      <DependentUpon>ScanCodeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\EmailAddressManageForm.resx">
       <DependentUpon>EmailAddressManageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -357,6 +367,10 @@
     <ProjectReference Include="Model\Model.csproj">
       <Project>{ed5cd6b5-4814-4601-9de9-46878be2b948}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="Util\Util.csproj">
+      <Project>{ee3cbb4b-b04b-4719-ab4d-6ddeccd0b531}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

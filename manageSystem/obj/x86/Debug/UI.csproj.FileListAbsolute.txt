@@ -54,3 +54,6 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.QRCode
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.ComSettingForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperatorForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperationForm.resources
+D:\workspace\manageSystem\bin\x86\Debug\Util.dll
+D:\workspace\manageSystem\bin\x86\Debug\Util.pdb
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.ScanCodeForm.resources

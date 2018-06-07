@@ -2,6 +2,7 @@
 using System.Data.SQLite;
 using Model;
 using System.Configuration;
+using Util;
 
 namespace DAL
 {
@@ -86,7 +87,7 @@ namespace DAL
         //excel operation
         public int CreateOnCallRecordExcelTable(string filePath)
         {
-            return EXCELHelper.CreateExcelTable(filePath, ConfigurationManager.AppSettings["CreateOnCallRecordExcelString"]);
+            return EXCELHelper.CreateExcelTable(filePath, ExcelDeclare.CreateOnCallRecordExcelSql);
         }
 
         public int InsertOnCallRecord2ExcelTable(string filePath, object obj)

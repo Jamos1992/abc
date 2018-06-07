@@ -52,6 +52,7 @@
             this.CategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TorqueMinCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -168,7 +169,6 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -189,7 +189,8 @@
             this.ModelCol,
             this.CategoryCol,
             this.NameCol,
-            this.TorqueMinCol});
+            this.TorqueMinCol,
+            this.ActionCol});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
             this.dataGridView1.Location = new System.Drawing.Point(0, 63);
@@ -263,6 +264,14 @@
             this.TorqueMinCol.Name = "TorqueMinCol";
             this.TorqueMinCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // ActionCol
+            // 
+            this.ActionCol.HeaderText = "操作";
+            this.ActionCol.Name = "ActionCol";
+            this.ActionCol.Text = "维修";
+            this.ActionCol.UseColumnTextForButtonValue = true;
+            this.ActionCol.Width = 80;
+            // 
             // RepairManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -300,5 +309,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn TorqueMinCol;
+        private System.Windows.Forms.DataGridViewButtonColumn ActionCol;
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DAL;
 using Model;
+using Util;
 
 namespace BLL
 {
@@ -11,9 +12,6 @@ namespace BLL
     {
         private MaintainManageInfoService maintainManageInfoService = new MaintainManageInfoService();
         private RepoSpareToolService repoSpareToolService = new RepoSpareToolService();
-        public static string Repairing = MaintainManageInfoService.Repairing;
-        public static string RepairFinished = MaintainManageInfoService.RepairFinished;
-        public static string Suspend = MaintainManageInfoService.Suspend;
         public List<OutputStruct> GetAllBreakTools()
         {
             return maintainManageInfoService.getAllBreakTools();
@@ -71,7 +69,7 @@ namespace BLL
             try
             {
                 maintainManageInfoService.UpdateMaintainManageInfo(maintainManageInfo);
-                if (maintainManageInfo.Status != "挂起")
+                if (maintainManageInfo.Status != MaintainDeclare.Suspend)
                 {
                     foreach (var item in maintainManageInfo.UsedRepoSpareToolInfo)
                     {

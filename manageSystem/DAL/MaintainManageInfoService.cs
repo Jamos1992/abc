@@ -2,18 +2,16 @@
 using System.Data.SQLite;
 using Model;
 using System.Configuration;
+using Util;
 
 namespace DAL
 {
     public class MaintainManageInfoService
     {
         private CommonService commonService = new CommonService();
-        public static string Repairing = ConfigurationManager.AppSettings["Repairing"];
-        public static string RepairFinished = ConfigurationManager.AppSettings["RepairFinished"];
-        public static string Suspend = ConfigurationManager.AppSettings["Suspend"];
         public bool IsNotFinishBreakToolExist(MaintainManageInfo maintainManageInfo)
         {
-            string sql = "select * from MaintainManageInfo where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and Status!='" + RepairFinished + "'";
+            string sql = "select * from MaintainManageInfo where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and Status!='" + MaintainDeclare.RepairFinished + "'";
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             if (reader != null && reader.HasRows)
             {
@@ -136,7 +134,7 @@ namespace DAL
         //excel operation
         public int CreateMaintainManageInfoExcelTable(string filePath)
         {
-            return EXCELHelper.CreateExcelTable(filePath, ConfigurationManager.AppSettings["CreatMaintainManageInfoExcelString"]);
+            return EXCELHelper.CreateExcelTable(filePath, ExcelDeclare.CreatMaintainManageInfoExcelSql);
         }
 
         public int InsertMaintainManageInfo2ExcelTable(string filePath, object obj)

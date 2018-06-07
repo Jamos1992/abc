@@ -1,0 +1,6 @@
+D:\workspace\manageSystem\Util\bin\Debug\Util.dll
+D:\workspace\manageSystem\Util\bin\Debug\Util.pdb
+D:\workspace\manageSystem\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
+D:\workspace\manageSystem\Util\obj\Debug\Util.csproj.CoreCompileInputs.cache
+D:\workspace\manageSystem\Util\obj\Debug\Util.dll
+D:\workspace\manageSystem\Util\obj\Debug\Util.pdb

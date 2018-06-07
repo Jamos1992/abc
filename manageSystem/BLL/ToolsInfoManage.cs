@@ -10,7 +10,6 @@ namespace BLL
     public class ToolsInfoManage
     {
         private ToolsInfoService toolsInfoService = new ToolsInfoService();
-
         public string InputOneToolsInfo(ToolsInfo toolsInfo)
         {
             if (toolsInfo.SerialNum == "" || toolsInfo.Model == "" || toolsInfo.Workstation == "")

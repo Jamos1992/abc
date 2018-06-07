@@ -224,5 +224,11 @@ namespace manageSystem.src.demarcate_manage
                 Angle = dataGridView1.SelectedRows[0].Cells[5].Value.ToString(),
             };
         }
+
+        private void btnPrintTag_Click(object sender, EventArgs e)
+        {
+            QRCodePrintForm qRCodePrintForm = new QRCodePrintForm();
+            qRCodePrintForm.ShowDialog();
+        }
     }
 }

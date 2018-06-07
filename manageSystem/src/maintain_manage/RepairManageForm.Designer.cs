@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepairManageForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -65,7 +66,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(741, 63);
+            this.groupBox1.Size = new System.Drawing.Size(806, 63);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "筛选条件";
@@ -89,28 +90,36 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(735, 43);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 43);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(638, 10);
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(703, 10);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(70, 23);
             this.button3.TabIndex = 8;
-            this.button3.Text = "导出";
+            this.button3.Text = "  导出";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(538, 10);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(603, 10);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "查询";
+            this.button1.Text = "  查询";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -206,7 +215,7 @@
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(741, 335);
+            this.dataGridView1.Size = new System.Drawing.Size(806, 359);
             this.dataGridView1.TabIndex = 6;
             // 
             // CheckCol
@@ -224,6 +233,7 @@
             this.SerialNumCol.DefaultCellStyle = dataGridViewCellStyle2;
             this.SerialNumCol.HeaderText = "工具序列号";
             this.SerialNumCol.Name = "SerialNumCol";
+            this.SerialNumCol.ReadOnly = true;
             this.SerialNumCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ModelCol
@@ -233,6 +243,7 @@
             this.ModelCol.DefaultCellStyle = dataGridViewCellStyle3;
             this.ModelCol.HeaderText = "工具型号";
             this.ModelCol.Name = "ModelCol";
+            this.ModelCol.ReadOnly = true;
             this.ModelCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // CategoryCol
@@ -242,6 +253,7 @@
             this.CategoryCol.DefaultCellStyle = dataGridViewCellStyle4;
             this.CategoryCol.HeaderText = "工具送修时间";
             this.CategoryCol.Name = "CategoryCol";
+            this.CategoryCol.ReadOnly = true;
             this.CategoryCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.CategoryCol.Width = 150;
             // 
@@ -252,6 +264,7 @@
             this.NameCol.DefaultCellStyle = dataGridViewCellStyle5;
             this.NameCol.HeaderText = "维修状态";
             this.NameCol.Name = "NameCol";
+            this.NameCol.ReadOnly = true;
             this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TorqueMinCol
@@ -262,10 +275,12 @@
             this.TorqueMinCol.DefaultCellStyle = dataGridViewCellStyle6;
             this.TorqueMinCol.HeaderText = "备注";
             this.TorqueMinCol.Name = "TorqueMinCol";
+            this.TorqueMinCol.ReadOnly = true;
             this.TorqueMinCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ActionCol
             // 
+            this.ActionCol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ActionCol.HeaderText = "操作";
             this.ActionCol.Name = "ActionCol";
             this.ActionCol.Text = "维修";
@@ -276,7 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 398);
+            this.ClientSize = new System.Drawing.Size(806, 422);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "RepairManageForm";

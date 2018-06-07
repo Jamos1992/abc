@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemarcateOperationForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemarcateOperationForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,21 +38,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.btnScanInput = new System.Windows.Forms.Button();
             this.txtSerialNum = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnPrintTag = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnListenCom = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnScanInput = new System.Windows.Forms.Button();
+            this.btnListenCom = new System.Windows.Forms.Button();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.CheckCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.OrderCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,19 +94,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // btnScanInput
-            // 
-            this.btnScanInput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnScanInput.Image = ((System.Drawing.Image)(resources.GetObject("btnScanInput.Image")));
-            this.btnScanInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnScanInput.Location = new System.Drawing.Point(226, 23);
-            this.btnScanInput.Name = "btnScanInput";
-            this.btnScanInput.Size = new System.Drawing.Size(84, 23);
-            this.btnScanInput.TabIndex = 2;
-            this.btnScanInput.Text = "   扫码输入";
-            this.btnScanInput.UseVisualStyleBackColor = true;
-            this.btnScanInput.Click += new System.EventHandler(this.btnScanInput_Click);
-            // 
             // txtSerialNum
             // 
             this.txtSerialNum.Location = new System.Drawing.Point(88, 25);
@@ -124,24 +111,29 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "工具序列号：";
             // 
-            // button6
+            // btnPrintTag
             // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Location = new System.Drawing.Point(709, 70);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(84, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "打印标签";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnPrintTag.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrintTag.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintTag.Image")));
+            this.btnPrintTag.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintTag.Location = new System.Drawing.Point(709, 70);
+            this.btnPrintTag.Name = "btnPrintTag";
+            this.btnPrintTag.Size = new System.Drawing.Size(84, 23);
+            this.btnPrintTag.TabIndex = 5;
+            this.btnPrintTag.Text = "   打印标签";
+            this.btnPrintTag.UseVisualStyleBackColor = true;
+            this.btnPrintTag.Click += new System.EventHandler(this.btnPrintTag_Click);
             // 
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(592, 71);
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(581, 71);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 23);
+            this.button2.Size = new System.Drawing.Size(109, 23);
             this.button2.TabIndex = 3;
-            this.button2.Text = "计算标定结果";
+            this.button2.Text = "  计算标定结果";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // groupBox2
@@ -167,19 +159,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "（标定仪器上传的数据显示在下方表格中）";
             // 
-            // btnListenCom
-            // 
-            this.btnListenCom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListenCom.Image = ((System.Drawing.Image)(resources.GetObject("btnListenCom.Image")));
-            this.btnListenCom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListenCom.Location = new System.Drawing.Point(15, 23);
-            this.btnListenCom.Name = "btnListenCom";
-            this.btnListenCom.Size = new System.Drawing.Size(138, 23);
-            this.btnListenCom.TabIndex = 2;
-            this.btnListenCom.Text = "   监听标定仪器数据";
-            this.btnListenCom.UseVisualStyleBackColor = true;
-            this.btnListenCom.Click += new System.EventHandler(this.btnListenCom_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -190,24 +169,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(806, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(100, 22);
-            this.toolStripButton1.Text = "串口参数设置";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(76, 22);
-            this.toolStripButton2.Text = "重新标定";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // dataGridView1
             // 
@@ -272,7 +233,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.btnPrintTag);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.groupBox2);
@@ -281,6 +242,50 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 101);
             this.panel1.TabIndex = 0;
+            // 
+            // btnScanInput
+            // 
+            this.btnScanInput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnScanInput.Image = ((System.Drawing.Image)(resources.GetObject("btnScanInput.Image")));
+            this.btnScanInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnScanInput.Location = new System.Drawing.Point(226, 23);
+            this.btnScanInput.Name = "btnScanInput";
+            this.btnScanInput.Size = new System.Drawing.Size(84, 23);
+            this.btnScanInput.TabIndex = 2;
+            this.btnScanInput.Text = "   扫码输入";
+            this.btnScanInput.UseVisualStyleBackColor = true;
+            this.btnScanInput.Click += new System.EventHandler(this.btnScanInput_Click);
+            // 
+            // btnListenCom
+            // 
+            this.btnListenCom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnListenCom.Image = ((System.Drawing.Image)(resources.GetObject("btnListenCom.Image")));
+            this.btnListenCom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListenCom.Location = new System.Drawing.Point(15, 23);
+            this.btnListenCom.Name = "btnListenCom";
+            this.btnListenCom.Size = new System.Drawing.Size(138, 23);
+            this.btnListenCom.TabIndex = 2;
+            this.btnListenCom.Text = "   监听标定仪器数据";
+            this.btnListenCom.UseVisualStyleBackColor = true;
+            this.btnListenCom.Click += new System.EventHandler(this.btnListenCom_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(100, 22);
+            this.toolStripButton1.Text = "串口参数设置";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButton2.Text = "重新标定";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // CheckCol
             // 
@@ -342,6 +347,7 @@
             // 
             // ActionCol
             // 
+            this.ActionCol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ActionCol.HeaderText = "操作";
             this.ActionCol.Name = "ActionCol";
             this.ActionCol.Text = "删除";
@@ -378,7 +384,7 @@
         private System.Windows.Forms.Button btnScanInput;
         private System.Windows.Forms.TextBox txtSerialNum;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnPrintTag;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;

@@ -23,7 +23,7 @@ namespace DAL
 
         public ToolsInfo getOneToolsInfoBySerial(string SerialNum)
         {
-            SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { SerialNum });
+            SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { "'" + SerialNum + "'" });
             ToolsInfo toolsInfo = new ToolsInfo();
             if (!reader.HasRows)
             {
@@ -36,9 +36,9 @@ namespace DAL
                 toolsInfo.Model = reader["Model"].ToString();
                 toolsInfo.Category = reader["Category"].ToString();
                 toolsInfo.Name = reader["Name"].ToString();
-                toolsInfo.TorqueMin = int.Parse(reader["TorqueMin"].ToString());
-                toolsInfo.TorqueMax = int.Parse(reader["TorqueMax"].ToString());
-                toolsInfo.Accuracy = int.Parse(reader["Accuracy"].ToString());
+                toolsInfo.TorqueMin = double.Parse(reader["TorqueMin"].ToString());
+                toolsInfo.TorqueMax = double.Parse(reader["TorqueMax"].ToString());
+                toolsInfo.Accuracy = double.Parse(reader["Accuracy"].ToString());
                 toolsInfo.Section = reader["Section"].ToString();
                 toolsInfo.DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString());
                 toolsInfo.Workstation = reader["Workstation"].ToString();
@@ -68,9 +68,9 @@ namespace DAL
                 toolsInfo.Model = reader["Model"].ToString();
                 toolsInfo.Category = reader["Category"].ToString();
                 toolsInfo.Name = reader["Name"].ToString();
-                toolsInfo.TorqueMin = int.Parse(reader["TorqueMin"].ToString());
-                toolsInfo.TorqueMax = int.Parse(reader["TorqueMax"].ToString());
-                toolsInfo.Accuracy = int.Parse(reader["Accuracy"].ToString());
+                toolsInfo.TorqueMin = double.Parse(reader["TorqueMin"].ToString());
+                toolsInfo.TorqueMax = double.Parse(reader["TorqueMax"].ToString());
+                toolsInfo.Accuracy = double.Parse(reader["Accuracy"].ToString());
                 toolsInfo.Section = reader["Section"].ToString();
                 toolsInfo.DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString());
                 toolsInfo.Workstation = reader["Workstation"].ToString();
@@ -107,9 +107,9 @@ namespace DAL
                     Model = reader["Model"].ToString(),
                     Category = reader["Category"].ToString(),
                     Name = reader["Name"].ToString(),
-                    TorqueMin = int.Parse(reader["TorqueMin"].ToString()),
-                    TorqueMax = int.Parse(reader["TorqueMax"].ToString()),
-                    Accuracy = int.Parse(reader["Accuracy"].ToString()),
+                    TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
+                    TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
+                    Accuracy = double.Parse(reader["Accuracy"].ToString()),
                     Section = reader["Section"].ToString(),
                     DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
                     Workstation = reader["Workstation"].ToString(),
@@ -117,7 +117,7 @@ namespace DAL
                     QualityAssureDate = reader["QualityAssureDate"].ToString(),
                     MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
                     MaintainContractDate = reader["MaintainContractDate"].ToString(),
-                    RepairTimes = int.Parse(reader["RepairTimes"].ToString()),
+                    RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0": reader["RepairTimes"].ToString()),
                     Remark = reader["Remark"].ToString()
                 });
             }
@@ -142,9 +142,9 @@ namespace DAL
                     Model = reader["Model"].ToString(),
                     Category = reader["Category"].ToString(),
                     Name = reader["Name"].ToString(),
-                    TorqueMin = int.Parse(reader["TorqueMin"].ToString()),
-                    TorqueMax = int.Parse(reader["TorqueMax"].ToString()),
-                    Accuracy = int.Parse(reader["Accuracy"].ToString()),
+                    TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
+                    TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
+                    Accuracy = double.Parse(reader["Accuracy"].ToString()),
                     Section = reader["Section"].ToString(),
                     DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
                     Workstation = reader["Workstation"].ToString(),
@@ -152,7 +152,7 @@ namespace DAL
                     QualityAssureDate = reader["QualityAssureDate"].ToString(),
                     MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
                     MaintainContractDate = reader["MaintainContractDate"].ToString(),
-                    RepairTimes = int.Parse(reader["RepairTimes"].ToString()),
+                    RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0" : reader["RepairTimes"].ToString()),
                     Remark = reader["Remark"].ToString()
                 });
             }
@@ -220,9 +220,9 @@ namespace DAL
                     Model = reader["工具型号"].ToString(),
                     Category = reader["工具类别"].ToString(),
                     Name = reader["工具名称"].ToString(),
-                    TorqueMin = int.Parse(reader["标定扭矩下限"].ToString()),
-                    TorqueMax = int.Parse(reader["标定扭矩上限"].ToString()),
-                    Accuracy = int.Parse(reader["精度"].ToString()),
+                    TorqueMin = double.Parse(reader["标定扭矩下限"].ToString()),
+                    TorqueMax = double.Parse(reader["标定扭矩上限"].ToString()),
+                    Accuracy = double.Parse(reader["精度"].ToString()),
                     Section = reader["工段"].ToString(),
                     DemarcateCycle = int.Parse(reader["标定周期"].ToString()),
                     Workstation = reader["工位"].ToString(),
@@ -230,7 +230,7 @@ namespace DAL
                     QualityAssureDate = reader["质保期至"].ToString(),
                     MaintainContractStyle = reader["保养合同类型"].ToString(),
                     MaintainContractDate = reader["保养合同至"].ToString(),
-                    RepairTimes = int.Parse(reader["累计维修次数"].ToString()),
+                    RepairTimes = int.Parse(reader["累计维修次数"].ToString() == "" ? "0" : reader["累计维修次数"].ToString()),
                     Remark = reader["备注信息"].ToString()
                 });
             }

@@ -52,7 +52,7 @@ namespace manageSystem.src.demarcate_manage
                     addForm2Panel(new DemarcateOperationForm(), tableLayoutPanel1, ref e, singleInputHint);
                     break;
                 case "标定报告管理":
-                    //addForm2Panel(new QueryInfoBySNForm(), tableLayoutPanel1, ref e, singleQueryHint);
+                    addForm2Panel(new DemarcateHistoryForm(), tableLayoutPanel1, ref e, singleQueryHint);
                     break;
                 default:
                     label2.Text = "";

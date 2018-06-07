@@ -12,7 +12,7 @@ namespace BLL
         private ToolsInfoService toolsInfoService = new ToolsInfoService();
         public string InputOneToolsInfo(ToolsInfo toolsInfo)
         {
-            if (toolsInfo.SerialNum == "" || toolsInfo.Model == "" || toolsInfo.Workstation == "")
+            if (toolsInfo.SerialNum == "" || toolsInfo.Model == "" || toolsInfo.Workstation == "" || toolsInfo.Section == "")
             {
                 return "录入失败，请输入工具序列号、型号及工位信息！";
             }
@@ -65,6 +65,11 @@ namespace BLL
                 recordList.Add(toolsInfo.Model);
             }
             return recordList;
+        }
+
+        public List<ToolsInfo> GetAllToolsInfoFromDb()
+        {
+            return toolsInfoService.getAllToolsInfo();
         }
 
         public List<string> GetSerialNumHintFromDb(string model)

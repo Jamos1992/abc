@@ -190,6 +190,9 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(241, 15);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 10);
             this.button1.Name = "button1";
@@ -202,6 +205,9 @@
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(322, 15);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 15, 3, 10);
             this.button2.Name = "button2";

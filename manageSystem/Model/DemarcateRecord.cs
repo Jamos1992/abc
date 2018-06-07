@@ -31,5 +31,6 @@ namespace Model
         public string Time { get; set; }                    //标定时间
         public string Torque { get; set; }                  //扭矩
         public string Angle { get; set; }                   //角度
+
     }
 }

@@ -11,9 +11,9 @@ namespace Model
         public string Model { get; set; }                            //型号
         public string Category { get; set; }                         //类别
         public string Name { get; set; }                             //名称
-        public int TorqueMin { get; set; }                           //扭矩下限
-        public int TorqueMax { get; set; }                           //扭矩上限
-        public int Accuracy { get; set; }                            //精度
+        public double TorqueMin { get; set; }                           //扭矩下限
+        public double TorqueMax { get; set; }                           //扭矩上限
+        public double Accuracy { get; set; }                            //精度
         public string Section { get; set; }                          //工段
         public string Workstation { get; set; }                      //工位
         public int DemarcateCycle { get; set; }                      //标定周期

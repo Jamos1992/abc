@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SingleInputForm));
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -81,7 +82,9 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Location = new System.Drawing.Point(236, 3);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Location = new System.Drawing.Point(292, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 28);
             this.button1.TabIndex = 40;
@@ -92,7 +95,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(349, 367);
+            this.label8.Location = new System.Drawing.Point(412, 359);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 38;
@@ -101,7 +104,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(69, 334);
+            this.label10.Location = new System.Drawing.Point(132, 326);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 12);
             this.label10.TabIndex = 34;
@@ -110,7 +113,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(357, 303);
+            this.label6.Location = new System.Drawing.Point(420, 295);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 32;
@@ -119,7 +122,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(69, 364);
+            this.label4.Location = new System.Drawing.Point(132, 356);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 28;
@@ -127,7 +130,7 @@
             // 
             // torqueMaxBox
             // 
-            this.torqueMaxBox.Location = new System.Drawing.Point(160, 164);
+            this.torqueMaxBox.Location = new System.Drawing.Point(224, 156);
             this.torqueMaxBox.Name = "torqueMaxBox";
             this.torqueMaxBox.Size = new System.Drawing.Size(123, 21);
             this.torqueMaxBox.TabIndex = 27;
@@ -135,7 +138,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(112, 256);
+            this.label5.Location = new System.Drawing.Point(176, 248);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 12);
             this.label5.TabIndex = 26;
@@ -144,7 +147,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(344, 54);
+            this.label2.Location = new System.Drawing.Point(409, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 12);
             this.label2.TabIndex = 22;
@@ -153,7 +156,7 @@
             // modelBox
             // 
             this.modelBox.FormattingEnabled = true;
-            this.modelBox.Location = new System.Drawing.Point(416, 50);
+            this.modelBox.Location = new System.Drawing.Point(480, 42);
             this.modelBox.Name = "modelBox";
             this.modelBox.Size = new System.Drawing.Size(123, 20);
             this.modelBox.TabIndex = 42;
@@ -161,7 +164,7 @@
             // qualityBox
             // 
             this.qualityBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.qualityBox.Location = new System.Drawing.Point(416, 299);
+            this.qualityBox.Location = new System.Drawing.Point(479, 291);
             this.qualityBox.Name = "qualityBox";
             this.qualityBox.Size = new System.Drawing.Size(123, 21);
             this.qualityBox.TabIndex = 44;
@@ -170,7 +173,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(345, 334);
+            this.label1.Location = new System.Drawing.Point(408, 326);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 45;
@@ -178,7 +181,7 @@
             // 
             // maintainBox
             // 
-            this.maintainBox.Location = new System.Drawing.Point(416, 330);
+            this.maintainBox.Location = new System.Drawing.Point(479, 322);
             this.maintainBox.Name = "maintainBox";
             this.maintainBox.Size = new System.Drawing.Size(123, 21);
             this.maintainBox.TabIndex = 48;
@@ -186,7 +189,7 @@
             // 
             // remarkBox
             // 
-            this.remarkBox.Location = new System.Drawing.Point(416, 364);
+            this.remarkBox.Location = new System.Drawing.Point(479, 356);
             this.remarkBox.Name = "remarkBox";
             this.remarkBox.Size = new System.Drawing.Size(123, 21);
             this.remarkBox.TabIndex = 39;
@@ -194,25 +197,27 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 429);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 398);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(649, 44);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(806, 44);
             this.tableLayoutPanel1.TabIndex = 50;
             // 
             // button3
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button3.Location = new System.Drawing.Point(331, 3);
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button3.Location = new System.Drawing.Point(387, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 28);
             this.button3.TabIndex = 52;
@@ -222,17 +227,21 @@
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.Location = new System.Drawing.Point(550, 3);
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(688, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 28);
+            this.button2.Size = new System.Drawing.Size(106, 28);
             this.button2.TabIndex = 51;
-            this.button2.Text = "从excel导入";
+            this.button2.Text = "   从excel导入";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // torqueMinBox
             // 
-            this.torqueMinBox.Location = new System.Drawing.Point(160, 136);
+            this.torqueMinBox.Location = new System.Drawing.Point(224, 128);
             this.torqueMinBox.Name = "torqueMinBox";
             this.torqueMinBox.Size = new System.Drawing.Size(123, 21);
             this.torqueMinBox.TabIndex = 52;
@@ -240,7 +249,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 55);
+            this.label3.Location = new System.Drawing.Point(164, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 51;
@@ -254,7 +263,7 @@
             "动力工具",
             "手动工具",
             "其他工具"});
-            this.categoryBox.Location = new System.Drawing.Point(160, 78);
+            this.categoryBox.Location = new System.Drawing.Point(224, 70);
             this.categoryBox.Name = "categoryBox";
             this.categoryBox.Size = new System.Drawing.Size(123, 20);
             this.categoryBox.TabIndex = 54;
@@ -262,11 +271,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(88, 82);
+            this.label11.Location = new System.Drawing.Point(158, 74);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 12);
+            this.label11.Size = new System.Drawing.Size(53, 12);
             this.label11.TabIndex = 53;
-            this.label11.Text = "*工具类别";
+            this.label11.Text = "工具类别";
             // 
             // nameBox
             // 
@@ -283,7 +292,7 @@
             "四轴拧紧机",
             "半轴拔出力工装",
             "电池滚压枪"});
-            this.nameBox.Location = new System.Drawing.Point(416, 77);
+            this.nameBox.Location = new System.Drawing.Point(480, 69);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(123, 20);
             this.nameBox.TabIndex = 56;
@@ -291,43 +300,43 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(344, 81);
+            this.label12.Location = new System.Drawing.Point(415, 73);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 12);
+            this.label12.Size = new System.Drawing.Size(53, 12);
             this.label12.TabIndex = 55;
-            this.label12.Text = "*工具名称";
+            this.label12.Text = "工具名称";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(47, 139);
+            this.label13.Location = new System.Drawing.Point(114, 131);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 12);
+            this.label13.Size = new System.Drawing.Size(101, 12);
             this.label13.TabIndex = 57;
-            this.label13.Text = "*标定扭矩下限(Nm)";
+            this.label13.Text = "标定扭矩下限(Nm)";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(47, 167);
+            this.label14.Location = new System.Drawing.Point(114, 159);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(107, 12);
+            this.label14.Size = new System.Drawing.Size(101, 12);
             this.label14.TabIndex = 59;
-            this.label14.Text = "*标定扭矩上限(Nm)";
+            this.label14.Text = "标定扭矩上限(Nm)";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(356, 139);
+            this.label15.Location = new System.Drawing.Point(423, 131);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(53, 12);
+            this.label15.Size = new System.Drawing.Size(47, 12);
             this.label15.TabIndex = 61;
-            this.label15.Text = "*精度(%)";
+            this.label15.Text = "精度(%)";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(112, 231);
+            this.label16.Location = new System.Drawing.Point(176, 223);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 12);
             this.label16.TabIndex = 63;
@@ -336,20 +345,20 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(327, 230);
+            this.label17.Location = new System.Drawing.Point(394, 222);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(83, 12);
+            this.label17.Size = new System.Drawing.Size(77, 12);
             this.label17.TabIndex = 65;
-            this.label17.Text = "*标定周期(天)";
+            this.label17.Text = "标定周期(天)";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(87, 302);
+            this.label18.Location = new System.Drawing.Point(153, 294);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(59, 12);
+            this.label18.Size = new System.Drawing.Size(53, 12);
             this.label18.TabIndex = 67;
-            this.label18.Text = "*工具状态";
+            this.label18.Text = "工具状态";
             // 
             // sectionBox
             // 
@@ -357,7 +366,7 @@
             this.sectionBox.Items.AddRange(new object[] {
             "其它",
             "仓库备用选项"});
-            this.sectionBox.Location = new System.Drawing.Point(160, 227);
+            this.sectionBox.Location = new System.Drawing.Point(224, 219);
             this.sectionBox.Name = "sectionBox";
             this.sectionBox.Size = new System.Drawing.Size(123, 20);
             this.sectionBox.TabIndex = 71;
@@ -368,7 +377,7 @@
             this.workstationBox.Items.AddRange(new object[] {
             "其它",
             "仓库备用选项"});
-            this.workstationBox.Location = new System.Drawing.Point(160, 253);
+            this.workstationBox.Location = new System.Drawing.Point(224, 245);
             this.workstationBox.Name = "workstationBox";
             this.workstationBox.Size = new System.Drawing.Size(123, 20);
             this.workstationBox.TabIndex = 72;
@@ -383,7 +392,7 @@
             "在修工具",
             "在保养工具",
             "备注"});
-            this.statusBox.Location = new System.Drawing.Point(160, 299);
+            this.statusBox.Location = new System.Drawing.Point(223, 291);
             this.statusBox.Name = "statusBox";
             this.statusBox.Size = new System.Drawing.Size(123, 20);
             this.statusBox.TabIndex = 73;
@@ -391,16 +400,17 @@
             // label7
             // 
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Location = new System.Drawing.Point(0, 40);
+            this.label7.Location = new System.Drawing.Point(0, 32);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(643, 1);
+            this.label7.Size = new System.Drawing.Size(810, 1);
             this.label7.TabIndex = 74;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(0, 21);
+            this.label20.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label20.Location = new System.Drawing.Point(0, 13);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(80, 17);
             this.label20.TabIndex = 75;
@@ -410,7 +420,8 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(0, 101);
+            this.label21.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label21.Location = new System.Drawing.Point(0, 93);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(116, 17);
             this.label21.TabIndex = 77;
@@ -419,16 +430,17 @@
             // label22
             // 
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Location = new System.Drawing.Point(0, 120);
+            this.label22.Location = new System.Drawing.Point(0, 112);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(643, 1);
+            this.label22.Size = new System.Drawing.Size(810, 1);
             this.label22.TabIndex = 76;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(0, 194);
+            this.label23.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label23.Location = new System.Drawing.Point(0, 186);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(80, 17);
             this.label23.TabIndex = 79;
@@ -437,16 +449,17 @@
             // label24
             // 
             this.label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label24.Location = new System.Drawing.Point(0, 213);
+            this.label24.Location = new System.Drawing.Point(0, 205);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(643, 1);
+            this.label24.Size = new System.Drawing.Size(810, 1);
             this.label24.TabIndex = 78;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(0, 266);
+            this.label25.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label25.Location = new System.Drawing.Point(0, 258);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(56, 17);
             this.label25.TabIndex = 81;
@@ -455,35 +468,35 @@
             // label26
             // 
             this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label26.Location = new System.Drawing.Point(0, 285);
+            this.label26.Location = new System.Drawing.Point(0, 277);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(643, 1);
+            this.label26.Size = new System.Drawing.Size(810, 1);
             this.label26.TabIndex = 80;
             // 
             // serialNumBox
             // 
-            this.serialNumBox.Location = new System.Drawing.Point(160, 50);
+            this.serialNumBox.Location = new System.Drawing.Point(224, 42);
             this.serialNumBox.Name = "serialNumBox";
             this.serialNumBox.Size = new System.Drawing.Size(123, 21);
             this.serialNumBox.TabIndex = 82;
             // 
             // accuracyBox
             // 
-            this.accuracyBox.Location = new System.Drawing.Point(416, 136);
+            this.accuracyBox.Location = new System.Drawing.Point(480, 128);
             this.accuracyBox.Name = "accuracyBox";
             this.accuracyBox.Size = new System.Drawing.Size(123, 21);
             this.accuracyBox.TabIndex = 83;
             // 
             // cycleBox
             // 
-            this.cycleBox.Location = new System.Drawing.Point(416, 226);
+            this.cycleBox.Location = new System.Drawing.Point(480, 218);
             this.cycleBox.Name = "cycleBox";
             this.cycleBox.Size = new System.Drawing.Size(123, 21);
             this.cycleBox.TabIndex = 85;
             // 
             // repairTimeBox
             // 
-            this.repairTimeBox.Location = new System.Drawing.Point(161, 362);
+            this.repairTimeBox.Location = new System.Drawing.Point(224, 354);
             this.repairTimeBox.Name = "repairTimeBox";
             this.repairTimeBox.Size = new System.Drawing.Size(123, 21);
             this.repairTimeBox.TabIndex = 86;
@@ -497,7 +510,7 @@
             "Smart Care",
             "Peace of Mind",
             "其它"});
-            this.cbContractStyle.Location = new System.Drawing.Point(160, 331);
+            this.cbContractStyle.Location = new System.Drawing.Point(223, 323);
             this.cbContractStyle.Name = "cbContractStyle";
             this.cbContractStyle.Size = new System.Drawing.Size(123, 20);
             this.cbContractStyle.TabIndex = 87;
@@ -511,7 +524,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(649, 473);
+            this.ClientSize = new System.Drawing.Size(806, 442);
             this.Controls.Add(this.cbContractStyle);
             this.Controls.Add(this.repairTimeBox);
             this.Controls.Add(this.cycleBox);

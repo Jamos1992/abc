@@ -132,16 +132,20 @@ namespace manageSystem
 
         private void button4_Click(object sender, EventArgs e)
         {
+            groupBox1.Height += 30;
+            dataGridView1.Height -= 30;
             addTimes++;
             string txtName = "modelBox";
             string comboName = "serialBox";
             Label modelLabel = new Label();
             modelLabel.Text = label1.Text;
+            modelLabel.ForeColor = Color.Black;
             modelLabel.Location = new Point(label1.Location.X, label1.Location.Y + 30 * (addTimes - 1));
             panel1.Controls.Add(modelLabel);
 
             TextBox modelBox = new TextBox();
             modelBox.Name = txtName + addTimes;
+            modelBox.Font = textBox1.Font;
             modelBox.Location = new Point(textBox1.Location.X, textBox1.Location.Y + 30 * (addTimes - 1));
             panel1.Controls.Add(modelBox);
             modelBox.BringToFront();
@@ -155,11 +159,13 @@ namespace manageSystem
 
             Label serialLabel = new Label();
             serialLabel.Text = label2.Text;
+            serialLabel.ForeColor = Color.Black;
             serialLabel.Location = new Point(label2.Location.X, label2.Location.Y + 30 * (addTimes - 1));
             panel1.Controls.Add(serialLabel);
 
             ComboBox serialBox = new ComboBox();
             serialBox.Name = comboName + addTimes;
+            serialBox.Font = comboBox1.Font;
             serialBox.Location = new Point(comboBox1.Location.X, comboBox1.Location.Y + 30 * (addTimes - 1));
             panel1.Controls.Add(serialBox);
             serialBox.BringToFront();
@@ -227,9 +233,9 @@ namespace manageSystem
                     Model = dataGridView1.Rows[i].Cells[2].Value.ToString(),
                     Category = dataGridView1.Rows[i].Cells[3].Value.ToString(),
                     Name = dataGridView1.Rows[i].Cells[4].Value.ToString(),
-                    TorqueMin = int.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
-                    TorqueMax = int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
-                    Accuracy = int.Parse(dataGridView1.Rows[i].Cells[7].Value.ToString()),
+                    TorqueMin = double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
+                    TorqueMax = double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
+                    Accuracy = double.Parse(dataGridView1.Rows[i].Cells[7].Value.ToString()),
                     Section = dataGridView1.Rows[i].Cells[8].Value.ToString(),
                     Workstation = dataGridView1.Rows[i].Cells[9].Value.ToString(),
                     DemarcateCycle = int.Parse(dataGridView1.Rows[i].Cells[10].Value.ToString()),
@@ -253,9 +259,9 @@ namespace manageSystem
                 Model = dataGridView1.SelectedRows[0].Cells[2].Value.ToString(),
                 Category = dataGridView1.SelectedRows[0].Cells[3].Value.ToString(),
                 Name = dataGridView1.SelectedRows[0].Cells[4].Value.ToString(),
-                TorqueMin = int.Parse(dataGridView1.SelectedRows[0].Cells[5].Value.ToString()),
-                TorqueMax = int.Parse(dataGridView1.SelectedRows[0].Cells[6].Value.ToString()),
-                Accuracy = int.Parse(dataGridView1.SelectedRows[0].Cells[7].Value.ToString()),
+                TorqueMin = double.Parse(dataGridView1.SelectedRows[0].Cells[5].Value.ToString()),
+                TorqueMax = double.Parse(dataGridView1.SelectedRows[0].Cells[6].Value.ToString()),
+                Accuracy = double.Parse(dataGridView1.SelectedRows[0].Cells[7].Value.ToString()),
                 Section = dataGridView1.SelectedRows[0].Cells[8].Value.ToString(),
                 Workstation = dataGridView1.SelectedRows[0].Cells[9].Value.ToString(),
                 DemarcateCycle = int.Parse(dataGridView1.SelectedRows[0].Cells[10].Value.ToString()),

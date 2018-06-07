@@ -117,6 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACl0lEQVQ4T51TS08TURi9PoIU
+        o8a4QhB3RHdGNiZu1KgJ/AIDwUCMYeFGCCFYah/jlKHl1ReggJGqC0USMdLnUJSUl4+0QcQaKIs+sAgI
+        TYFaH+F4Z0rTBDbqSc58kzPfPfPdm3NJNutYPSi3QiKzIrNOoGWr7nwXeoReYU0ex5PjlEQQ/hXCmly1
+        M2kgkVmS6shFYOIy6vl5wFMIeIugcUXECk8R1E6qj18QW4VJclIGwmgCmJdzaOED2FvqQGa5CxnlQ5Qu
+        7Cl7jV2UpIRHozMo9m4zGBDF8C8gRuv+MguUliCkfT5Uax+gq02PuyY92vStePYi+TOJ3I5sNU9yuUG6
+        hS0Dg/0TzMOzyKIG1Q/fwahrhd83JX5LwTc1iW6jAUcZG/I5BzmhcaQn+C4+gYyrVnQ9eorpDx54Q3FU
+        9wdhGvmKSss8fEsJ+Ca9qNB246auh1TqzWmD+/w0nrhnQIqtaGpgqbKJmv4QwrGfcAXWofesQuZeFvVG
+        jRYmnZ60GQzUQJo0SKH/bQAqhQKbPzbQPraEocAGembWYJqNg5teB6jOqethbG4iHS1NhOzbZiBAJq1D
+        Yi2KKksEBm8UJn8cj1eBe/SkE7EoGhgVMlk3OVQ/nD7EFM52vkEFY8Ar3gHP3AJuj65A44ujM/wbnyPL
+        GHTyYHVd2M2MEYl6YmcSSe0A1leiaGZVGHJYsbwQxuJ8EItfwrDZ7KiRMvgW8uKj7jT87WcIyWZsMfEu
+        0EAdoPWIyo7DDI+cO1aUyHV0O1LU3qoTeUPVilFzFU3sFRoaJ94bz4NQnKIs+Fs+V5wDevOoSTHGjZcg
+        xnE7j9GE5XM2cp01EpZhiIphiZKykuugHqSgV1GIPmUhrhWdLBWE/8HWRCTrD8cdgJ52fqaXAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADImlUWHRYTUw6Y29tLmFkb2Jl
+        LnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQi
+        Pz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENv
+        cmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJE
+        RiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8
+        cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20v
+        eGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxu
+        czpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1w
+        OkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJ
+        RD0ieG1wLmlpZDpDNTBGQzM0NjEwOEQxMUUzOTQ1NkQ2QkJGQkREMkYwNiIgeG1wTU06RG9jdW1lbnRJ
+        RD0ieG1wLmRpZDpDNTBGQzM0NzEwOEQxMUUzOTQ1NkQ2QkJGQkREMkYwNiI+IDx4bXBNTTpEZXJpdmVk
+        RnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkM1MEZDMzQ0MTA4RDExRTM5NDU2RDZCQkZCREQy
+        RjA2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkM1MEZDMzQ1MTA4RDExRTM5NDU2RDZCQkZCREQy
+        RjA2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQg
+        ZW5kPSJyIj8+rlAHCQAAAmJJREFUOE+NkV1Ik1EYx18oyUFFN4Mtr1KQbipSmKtIxU2RlIk0b+pGyqgo
+        tEhjXzr34cKCyKBgZCVRIQwqZ/v+aGYfUFQQ6Gy0diFBMeZ0Qgui/p3n+I7B8qIf/Dn/c57n/3De8wpy
+        eyC7dcgLicmLciPJI65FTzXqoV6hFCr8L9QrxopITJ616gs18KoFQ55F4HULF/fsjNcY1CvGitA1CfNU
+        EnZPCqO+L3B4U1zk6YxqBPWKsSLlxqe8mPoJLP4Crvrj+MpWEnk6oxpB7yHGihQGfGONmd/AjUAc2T/g
+        Ir/E1jQ7JzaZIuu8gfgJN/1zcIbiuBP9hPFwHLeYbkcTTEk4g/NIL3+GbPjevwNK/4LreQLsMpwHsSTY
+        BXDkejv2m3ai2VqDVrsSzbY6qGwKtDoOPBGkFh/K9G6cfPSRh3ZdDkPof8y9a3aBhdu4v+BthyGohSHU
+        hQF/Bz/rHKuHUH3lGUbe5FGmm8L3XB4SgxvHglkIF91YyS2gTr8D5z2HeKD3bg/Tce4nPjjQea0Bgszq
+        w6W3eWgmE9hicmPboBsnghmciaxgoy6AuVQMOr8G6tHdPEiQ1we6oB1TQZDrJsON4++gf7mK05FldPsz
+        6AmkcTaSRV/sBzboZtmANhx2KsQ4oHUqiwMYlTREbvNBZvVCap7GqfASzsVy2DwYwnwqgr5pFQ8evb8P
+        3Q/ruZ94L36CSCVTLWk7G9Q7swqpJUjF2qbhah4oMODrQL9Pwz1/xFIqjK6ZipG1MO1Vxr3RRksNDpr3
+        oIGtapuSS8V+ZZNREaOeUqqYeFiksF9HQtVfQRdLu4i8Q4wAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

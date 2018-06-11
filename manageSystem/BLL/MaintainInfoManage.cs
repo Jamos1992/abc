@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DAL;
+﻿using DAL;
 using Model;
+using System;
+using System.Collections.Generic;
 using Util;
 
 namespace BLL
@@ -114,6 +112,11 @@ namespace BLL
             {
                 return "error";
             }
+        }
+
+        public int DeleteOneRegisterTools(string serialNum)
+        {
+            return maintainManageInfoService.DeleteOneRegisterTools(serialNum);
         }
 
         //excel operation

@@ -51,9 +51,8 @@
             this.SerialNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModelCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TorqueMinCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -197,9 +196,8 @@
             this.SerialNumCol,
             this.ModelCol,
             this.CategoryCol,
-            this.NameCol,
-            this.TorqueMinCol,
-            this.ActionCol});
+            this.StatusCol,
+            this.TorqueMinCol});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
@@ -259,15 +257,15 @@
             this.CategoryCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.CategoryCol.Width = 150;
             // 
-            // NameCol
+            // StatusCol
             // 
-            this.NameCol.DataPropertyName = "Status";
+            this.StatusCol.DataPropertyName = "Status";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NameCol.DefaultCellStyle = dataGridViewCellStyle5;
-            this.NameCol.HeaderText = "维修状态";
-            this.NameCol.Name = "NameCol";
-            this.NameCol.ReadOnly = true;
-            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.StatusCol.DefaultCellStyle = dataGridViewCellStyle5;
+            this.StatusCol.HeaderText = "维修状态";
+            this.StatusCol.Name = "StatusCol";
+            this.StatusCol.ReadOnly = true;
+            this.StatusCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TorqueMinCol
             // 
@@ -280,15 +278,6 @@
             this.TorqueMinCol.ReadOnly = true;
             this.TorqueMinCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // ActionCol
-            // 
-            this.ActionCol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ActionCol.HeaderText = "操作";
-            this.ActionCol.Name = "ActionCol";
-            this.ActionCol.Text = "维修";
-            this.ActionCol.UseColumnTextForButtonValue = true;
-            this.ActionCol.Width = 80;
-            // 
             // RepairManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -299,6 +288,7 @@
             this.Name = "RepairManageForm";
             this.Text = "RepairManageForm";
             this.Load += new System.EventHandler(this.RepairManageForm_Load);
+            this.Resize += new System.EventHandler(this.RepairManageForm_Resize);
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -324,8 +314,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SerialNumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModelCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn TorqueMinCol;
-        private System.Windows.Forms.DataGridViewButtonColumn ActionCol;
     }
 }

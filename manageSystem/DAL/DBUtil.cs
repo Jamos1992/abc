@@ -45,8 +45,8 @@ namespace DAL
 
         private void CreateOnCallRecord()
         {
-            string[] onCallRecordName = new string[] { "CallTime", "ArriveTime", "FaultToolName", "FaultReason", "Detail" };
-            string[] onCallRecordType = new string[] { "DATETIME", "DATETIME", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
+            string[] onCallRecordName = new string[] { "CallTime", "ArriveTime", "ToolSection", "ToolWorkStation", "FaultToolName", "FaultReason", "Detail" };
+            string[] onCallRecordType = new string[] { "DATETIME", "DATETIME", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
             SQLHelper.CreateTable("OnCallRecord", onCallRecordName, onCallRecordType);
         }
 

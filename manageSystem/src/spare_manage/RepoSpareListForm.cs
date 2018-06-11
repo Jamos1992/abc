@@ -51,19 +51,19 @@ namespace manageSystem.src.spare_manage
                 if (checkBox1.Checked)
                 {
                     if (dateTimePicker1.Text != "" && dateTimePicker2.Text != "") sql += " and Time>'" + dateTimePicker1.Text + "' and Time<'" + dateTimePicker2.Text + "'";
-                    else MessageBox.Show("时间选择不对，请重新选择");
+                    else MessageBox.Show("时间选择不对，请重新选择", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 if (checkBox2.Checked)
                 {
                     if (comboBox1.Text != "") sql += " and SpareToolModel='" + comboBox1.Text + "'";
-                    else MessageBox.Show("故障原因未选择");
+                    else MessageBox.Show("故障原因未选择", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 list = new RepoSpareToolService().getRepoSpareToolBySql(sql);
             }
             if (list == null)
             {
                 dataGridView1.DataSource = new List<RepoSpareTool>();
-                MessageBox.Show("记录不存在！");
+                MessageBox.Show("记录不存在！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             BindData2Grid(list);
@@ -97,14 +97,15 @@ namespace manageSystem.src.spare_manage
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
+            RepoSpareTool[] repoSpareTools = GetRepoSpareToolFromGrid();
+            if (dataGridView1.Rows.Count == 0 || repoSpareTools.Length == 0)
             {
-                MessageBox.Show("没有记录可以导出,请先查询！");
+                MessageBox.Show("没有记录可以导出,请先查询！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string msg = repoSpareToolManage.ExportBatchData2Excel(saveFileDialog1.FileName, GetRepoSpareToolFromGrid());
+                string msg = repoSpareToolManage.ExportBatchData2Excel(saveFileDialog1.FileName, repoSpareTools);
                 MessageBox.Show(msg);
             }
         }
@@ -118,12 +119,15 @@ namespace manageSystem.src.spare_manage
             int cell = dataGridView1.Rows[0].Cells.Count;//得到总列数
             for (int i = 0; i < row; i++)//得到总行数并在之内循环    
             {
-                ktls.Add(new RepoSpareTool
+                if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].EditedFormattedValue))
                 {
-                    SpareToolModel = dataGridView1.Rows[i].Cells[1].Value.ToString(),
-                    Num = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
-                    Time = dataGridView1.Rows[i].Cells[3].Value.ToString(),
-                });
+                    ktls.Add(new RepoSpareTool
+                    {
+                        SpareToolModel = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                        Num = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
+                        Time = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                    });
+                }
             }
             return ktls.ToArray();
         }

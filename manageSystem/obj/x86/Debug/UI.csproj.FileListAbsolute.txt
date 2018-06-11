@@ -52,9 +52,9 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.tool_info_input.ToolsDe
 D:\workspace\manageSystem\bin\x86\Debug\ThoughtWorks.QRCode.dll
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.QRCodePrintForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.ComSettingForm.resources
-D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperatorForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperationForm.resources
 D:\workspace\manageSystem\bin\x86\Debug\Util.dll
 D:\workspace\manageSystem\bin\x86\Debug\Util.pdb
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.ScanCodeForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateHistoryForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.MaintainRegisterForm.resources

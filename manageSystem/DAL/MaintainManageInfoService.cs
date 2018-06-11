@@ -131,6 +131,12 @@ namespace DAL
             if (reader != null) reader.Close();
             return list;
         }
+
+        public int DeleteOneRegisterTools(string serialNum)
+        {
+            return SQLHelper.DeleteValuesAND("MaintainManageInfo", new string[] { "ToolSerialName" }, new string[] { serialNum }, new string[] { "=" });
+        }
+
         //excel operation
         public int CreateMaintainManageInfoExcelTable(string filePath)
         {

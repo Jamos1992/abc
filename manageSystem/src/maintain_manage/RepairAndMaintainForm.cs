@@ -41,32 +41,19 @@ namespace manageSystem.src.maintain_manage
             }
             switch (e.Node.Text)
             {
-                case "维修登记":
+                case "维修工具登记":
                     addForm2Panel(new RepairRegisterForm(), tableLayoutPanel1, ref e, inputHint);
-                    //RepairRegisterForm rrf = new RepairRegisterForm();
-                    //rrf.Text = e.Node.Text;
-                    //rrf.TopLevel = false;
-                    //this.splitContainer1.Panel2.Controls.Add(rrf);
-                    //rrf.Show();
                     break;
 
-                case "工具维修":
+                case "工具维修操作":
                     addForm2Panel(new RepairManageForm(), tableLayoutPanel1, ref e, queryHint);
-                    //addForm2Panel(new RepairOperatorForm(), tableLayoutPanel1, ref e, singleInputHint);
-                    //RepairOperatorForm rof = new RepairOperatorForm();
-                    //rof.Text = e.Node.Text;
-                    //rof.TopLevel = false;
-                    //this.splitContainer1.Panel2.Controls.Add(rof);
-                    //rof.Show();
                     break;
-                //case "根据型号查询":
-                //    addForm2Panel(new QueryByModelForm(), tableLayoutPanel1, ref e, singleInputHint);
-                //    //QueryByModelForm qbmf = new QueryByModelForm();
-                //    //qbmf.Text = e.Node.Text;
-                //    //qbmf.TopLevel = false;
-                //    //this.splitContainer1.Panel2.Controls.Add(qbmf);
-                //    //qbmf.Show();
-                //    break;
+                case "制定保养计划":
+                    addForm2Panel(new MaintainRegisterForm(), tableLayoutPanel1, ref e, queryHint);
+                    break;
+                case "实施保养操作":
+                    //addForm2Panel(new QueryByModelForm(), tableLayoutPanel1, ref e, queryHint);
+                    break;
                 default:
                     break;
             }
@@ -74,19 +61,26 @@ namespace manageSystem.src.maintain_manage
 
         private void RepairAndMaintainForm_Load(object sender, EventArgs e)
         {
-            this.treeView1.ExpandAll();
-            this.treeView1.Nodes[0].ImageIndex = 0;
-            this.treeView1.Nodes[0].SelectedImageIndex = 0;
-            this.treeView1.Nodes[1].ImageIndex = 1;
-            this.treeView1.Nodes[1].SelectedImageIndex = 1;
+            treeView1.ExpandAll();
+            treeView1.Nodes[0].ImageIndex = 0;
+            treeView1.Nodes[0].SelectedImageIndex = 0;
+            treeView1.Nodes[0].Nodes[0].ImageIndex = 0;
+            treeView1.Nodes[0].Nodes[0].SelectedImageIndex = 0;
+            treeView1.Nodes[0].Nodes[1].ImageIndex = 0;
+            treeView1.Nodes[0].Nodes[1].SelectedImageIndex = 0;
+            treeView1.Nodes[1].ImageIndex = 1;
+            treeView1.Nodes[1].SelectedImageIndex = 1;
+            treeView1.Nodes[1].Nodes[0].ImageIndex = 1;
+            treeView1.Nodes[1].Nodes[0].SelectedImageIndex = 1;
+            treeView1.Nodes[1].Nodes[1].ImageIndex = 1;
+            treeView1.Nodes[1].Nodes[1].SelectedImageIndex = 1;
             richTextBox1.Clear();
             label2.Text = "";
         }
 
         private void setFormSize(Form form, Panel panel)
         {
-            form.Width = panel.Width;
-            form.Height = panel.Height - 30;
+            form.Dock = DockStyle.Fill;
         }
 
         private void addForm2Panel(Form form, Panel panel, ref TreeViewEventArgs e, string hint)
@@ -94,7 +88,7 @@ namespace manageSystem.src.maintain_manage
             e.Node.ForeColor = Color.Gray;
             form.Text = e.Node.Text;
             form.TopLevel = false;
-            //setFormSize(form, tableLayoutPanel1);
+            setFormSize(form, tableLayoutPanel1);
             tableLayoutPanel1.Controls.Add(form, 0, 1);
             form.Show();
             label2.Text = e.Node.Text;

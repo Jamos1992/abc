@@ -10,12 +10,15 @@ namespace manageSystem.src.maintain_manage
     {
         private MaintainInfoManage maintainInfoManage = new MaintainInfoManage();
         private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
+        private List<MaintainManageInfo> maintainManageInfoList = new List<MaintainManageInfo>();
 
         public RepairRegisterForm()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
             setDateTimePickerEmpty(dateTimePicker1);
             setComboBoxItems();
+            dataGridView1.AutoGenerateColumns = false;
         }
         private void setComboBoxItems()
         {
@@ -59,14 +62,21 @@ namespace manageSystem.src.maintain_manage
         {
             MaintainManageInfo maintainManageInfo = getAllInput();
             string msg = maintainInfoManage.RegisterBreakTool(maintainManageInfo);
+            if (msg.Contains("成功"))
+            {
+                maintainManageInfoList.Add(maintainManageInfo);
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = maintainManageInfoList;
+                return;
+            }
             MessageBox.Show(msg);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach (Control c in tableLayoutPanel2.Controls)
+            foreach (Control c in groupBox1.Controls)
             {
-                if (c.GetType() == typeof(TextBox) || c.GetType() == typeof(ComboBox) || c is RichTextBox)
+                if (c is TextBox || c is ComboBox || c is RichTextBox)
                 {
                     c.Text = "";
                 }
@@ -84,6 +94,54 @@ namespace manageSystem.src.maintain_manage
             List<string> list = toolsInfoManage.GetSerialNumHintFromDb(str);
             if (list == null) return;
             comboBox.Items.AddRange(list.ToArray());
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex > -1)
+            {
+                DataGridViewButtonCell btnCell = dataGridView1.CurrentCell as DataGridViewButtonCell;
+                if (btnCell != null)
+                {
+                    try
+                    {
+                        string serialNum = dataGridView1.Rows[e.RowIndex].Cells["SerialNumCol"].Value.ToString();
+
+                        int affectedRow = maintainInfoManage.DeleteOneRegisterTools(serialNum);
+                        if(affectedRow < 1)
+                        {
+                            throw new Exception("删除记录失败");
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    MaintainManageInfo maintainManageInfo = GetOneToolsInfoFromGrid();
+                    for (int i = maintainManageInfoList.Count - 1; i >= 0; i--)
+                    {
+                        if (maintainManageInfoList[i].ToolSerialName == maintainManageInfo.ToolSerialName)
+                        {
+                            maintainManageInfoList.Remove(maintainManageInfoList[i]);
+                        }
+                    }
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = maintainManageInfoList;
+                }
+            }
+        }
+
+        private MaintainManageInfo GetOneToolsInfoFromGrid()
+        {
+            if (dataGridView1.SelectedRows.Count == 0) return null;
+            return new MaintainManageInfo
+            {
+                ToolSerialName = dataGridView1.SelectedRows[0].Cells[0].Value.ToString(),
+                ToolModeName = dataGridView1.SelectedRows[0].Cells[1].Value.ToString(),
+                SendFixTime = dataGridView1.SelectedRows[0].Cells[2].Value.ToString(),
+                Detail = dataGridView1.SelectedRows[0].Cells[3].Value.ToString()
+            };
         }
     }
 }

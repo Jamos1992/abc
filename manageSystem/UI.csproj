@@ -151,6 +151,12 @@
     <Compile Include="src\maintain_manage\AddSpareToolForm.Designer.cs">
       <DependentUpon>AddSpareToolForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\maintain_manage\MaintainRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\maintain_manage\MaintainRegisterForm.Designer.cs">
+      <DependentUpon>MaintainRegisterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\maintain_manage\RepairAndMaintainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\maintain_manage\AddSpareToolForm.resx">
       <DependentUpon>AddSpareToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\maintain_manage\MaintainRegisterForm.resx">
+      <DependentUpon>MaintainRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\maintain_manage\RepairAndMaintainForm.resx">
       <DependentUpon>RepairAndMaintainForm.cs</DependentUpon>

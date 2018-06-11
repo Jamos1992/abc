@@ -23,6 +23,14 @@ namespace manageSystem.src.maintain_manage
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AutoGenerateColumns = false;
+            DataGridViewDisableButtonColumn column1 = new DataGridViewDisableButtonColumn();
+            column1.Name = "ActionCol";
+            column1.HeaderText = "操作";
+            column1.Text = "维修";
+            column1.UseColumnTextForButtonValue = true;
+            column1.FlatStyle = FlatStyle.Popup;
+            column1.Width = 80;
+            dataGridView1.Columns.Add(column1);
         }
 
         private MaintainManageInfo[] GetMaintainManageInfoFromGrid()
@@ -34,14 +42,17 @@ namespace manageSystem.src.maintain_manage
             int cell = dataGridView1.Rows[0].Cells.Count;//得到总列数
             for (int i = 0; i < row; i++)//得到总行数并在之内循环    
             {
-                ktls.Add(new MaintainManageInfo
+                if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].EditedFormattedValue))
                 {
-                    ToolModeName = dataGridView1.Rows[i].Cells[1].Value.ToString(),
-                    ToolSerialName = dataGridView1.Rows[i].Cells[2].Value.ToString(),
-                    SendFixTime = dataGridView1.Rows[i].Cells[3].Value.ToString(),
-                    Status = dataGridView1.Rows[i].Cells[4].Value.ToString(),
-                    Detail = dataGridView1.Rows[i].Cells[5].Value.ToString(),
-                });
+                    ktls.Add(new MaintainManageInfo
+                    {
+                        ToolModeName = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                        ToolSerialName = dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                        SendFixTime = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                        Status = dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                        Detail = dataGridView1.Rows[i].Cells[5].Value.ToString(),
+                    });
+                }
             }
             return ktls.ToArray();
         }
@@ -51,6 +62,7 @@ namespace manageSystem.src.maintain_manage
             dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridView1.ClearSelection();
             //if (dataGridView1.Rows.Count > 0) dataGridView1.Rows[0].Selected = false;
+            setRepairBtnDisable();
         }
 
         private void RepairManageForm_Load(object sender, EventArgs e)
@@ -58,12 +70,11 @@ namespace manageSystem.src.maintain_manage
             List<OutputStruct> list = maintainInfoManage.GetAllBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
             if (list == null) return;
             BindData2Grid(list);
-            setRepairBtnDisable();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<OutputStruct> list = new List<OutputStruct>();           
+            List<OutputStruct> list = new List<OutputStruct>();
             if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
             {
                 list = maintainInfoManage.GetAllBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
@@ -80,7 +91,7 @@ namespace manageSystem.src.maintain_manage
             if (list == null)
             {
                 dataGridView1.DataSource = new List<OutputStruct>();
-                MessageBox.Show("记录不存在！");
+                MessageBox.Show("记录不存在！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             BindData2Grid(list);
@@ -90,7 +101,7 @@ namespace manageSystem.src.maintain_manage
         {
             if (dataGridView1.Rows.Count == 0)
             {
-                MessageBox.Show("没有记录可以导出,请先查询！");
+                MessageBox.Show("没有记录可以导出,请先查询！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -139,9 +150,16 @@ namespace manageSystem.src.maintain_manage
         {
             if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex > -1)
             {
-                DataGridViewButtonCell btnCell = dataGridView1.CurrentCell as DataGridViewDisableButtonCell;
+                DataGridViewDisableButtonCell btnCell =  dataGridView1.CurrentCell as DataGridViewDisableButtonCell;
+                if(dataGridView1.Rows[e.RowIndex].Cells["StatusCol"].Value.ToString() == MaintainDeclare.RepairFinished)
+                {
+                    btnCell.Enabled = false;
+                    return;
+                }
                 if (btnCell != null)
                 {
+                    ToolSerialName = getSerialNumFromGrid();
+                    Status = getStatusFromGrid();
                     RepairOperatorForm repairOperatorForm = new RepairOperatorForm();
                     if (repairOperatorForm.ShowDialog() == DialogResult.OK)
                     {
@@ -154,16 +172,19 @@ namespace manageSystem.src.maintain_manage
 
         private void setRepairBtnDisable()
         {
-            for(int i=0; i < dataGridView1.RowCount; i++)
+            for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                for(int j = 0; j < dataGridView1.ColumnCount; j++)
+                DataGridViewDisableButtonCell btnCell = dataGridView1.Rows[i].Cells["ActionCol"] as DataGridViewDisableButtonCell;
+                if (dataGridView1.Rows[i].Cells["StatusCol"].Value.ToString() == MaintainDeclare.RepairFinished)
                 {
-                    if(dataGridView1.Rows[i].Cells[j] is DataGridViewButtonCell &&dataGridView1.Rows[i].Cells[1].Value.ToString() == MaintainDeclare.RepairFinished)
-                    {
-                        (dataGridView1.Rows[i].Cells[j] as DataGridViewDisableButtonCell).Enabled=false;
-                    }
+                    btnCell.Enabled = false;
                 }
             }
+        }
+
+        private void RepairManageForm_Resize(object sender, EventArgs e)
+        {
+            setRepairBtnDisable();
         }
     }
 

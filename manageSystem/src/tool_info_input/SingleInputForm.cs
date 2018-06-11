@@ -73,7 +73,7 @@ namespace manageSystem
         private void button1_Click(object sender, EventArgs e)
         {
             string msg = toolsInfoManage.InputOneToolsInfo(getAllInput());
-            MessageBox.Show(msg);
+            MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button2_Click(object sender, EventArgs e)

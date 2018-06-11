@@ -55,7 +55,7 @@ namespace manageSystem
             ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfoBySerialAndModel(comboBox.Text.Trim(),txtBox.Text.Trim());
             if(toolsInfo == null)
             {
-                MessageBox.Show("序列号:" + comboBox.Text + ", " + "型号:" + txtBox.Text + ", " + "记录不存在!");
+                MessageBox.Show("序列号:" + comboBox.Text + ", " + "型号:" + txtBox.Text + ", " + "记录不存在!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             return toolsInfo;
@@ -108,19 +108,26 @@ namespace manageSystem
         {
             if (isTextBoxNull())
             {
-                MessageBox.Show("没有记录可以导出,请先查询！");
+                MessageBox.Show("没有记录可以导出,请先查询！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (isInputConflict())
             {
-                if (DialogResult.No == MessageBox.Show("至少有两个序列号是相同的，确定导出？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)){
+                if (DialogResult.No == MessageBox.Show("至少有两个序列号是相同的，确定导出？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)){
                     return;
                 }
             }
+            ToolsInfo[] toolsInfos = GetToolsInfoFromGrid();
+            if (toolsInfos.Length == 0)
+            {
+                MessageBox.Show("没有记录可以导出", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string msg = toolsInfoManage.ExportBatchData2Excel(saveFileDialog1.FileName, getTextBox());
-                MessageBox.Show(msg);
+                //string msg = toolsInfoManage.ExportBatchData2Excel(saveFileDialog1.FileName, getTextBox());   
+                string msg = toolsInfoManage.ExportBatchData2Excel(saveFileDialog1.FileName, toolsInfos);
+                MessageBox.Show(msg, "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             }
         }
 
@@ -190,7 +197,7 @@ namespace manageSystem
         {
             if (isTextBoxNull())
             {
-                MessageBox.Show("请输入工具序列号, 再进行查询！"); 
+                MessageBox.Show("请输入工具序列号, 再进行查询！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information); 
                 return;
             }
             if (isInputConflict())
@@ -227,25 +234,28 @@ namespace manageSystem
             int cell = dataGridView1.Rows[0].Cells.Count;//得到总列数
             for (int i = 0; i < row; i++)//得到总行数并在之内循环
             {
-                ktls.Add(new ToolsInfo
+                if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].EditedFormattedValue))
                 {
-                    SerialNum = dataGridView1.Rows[i].Cells[1].Value.ToString(),
-                    Model = dataGridView1.Rows[i].Cells[2].Value.ToString(),
-                    Category = dataGridView1.Rows[i].Cells[3].Value.ToString(),
-                    Name = dataGridView1.Rows[i].Cells[4].Value.ToString(),
-                    TorqueMin = double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
-                    TorqueMax = double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
-                    Accuracy = double.Parse(dataGridView1.Rows[i].Cells[7].Value.ToString()),
-                    Section = dataGridView1.Rows[i].Cells[8].Value.ToString(),
-                    Workstation = dataGridView1.Rows[i].Cells[9].Value.ToString(),
-                    DemarcateCycle = int.Parse(dataGridView1.Rows[i].Cells[10].Value.ToString()),
-                    Status = dataGridView1.Rows[i].Cells[11].Value.ToString(),
-                    QualityAssureDate = dataGridView1.Rows[i].Cells[12].Value.ToString(),
-                    MaintainContractStyle = dataGridView1.Rows[i].Cells[13].Value.ToString(),
-                    MaintainContractDate = dataGridView1.Rows[i].Cells[14].Value.ToString(),
-                    RepairTimes = int.Parse(dataGridView1.Rows[i].Cells[15].Value.ToString()),
-                    Remark = dataGridView1.Rows[i].Cells[16].Value.ToString()
-                });
+                    ktls.Add(new ToolsInfo
+                    {
+                        SerialNum = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                        Model = dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                        Category = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                        Name = dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                        TorqueMin = double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
+                        TorqueMax = double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
+                        Accuracy = double.Parse(dataGridView1.Rows[i].Cells[7].Value.ToString()),
+                        Section = dataGridView1.Rows[i].Cells[8].Value.ToString(),
+                        Workstation = dataGridView1.Rows[i].Cells[9].Value.ToString(),
+                        DemarcateCycle = int.Parse(dataGridView1.Rows[i].Cells[10].Value.ToString()),
+                        Status = dataGridView1.Rows[i].Cells[11].Value.ToString(),
+                        QualityAssureDate = dataGridView1.Rows[i].Cells[12].Value.ToString(),
+                        MaintainContractStyle = dataGridView1.Rows[i].Cells[13].Value.ToString(),
+                        MaintainContractDate = dataGridView1.Rows[i].Cells[14].Value.ToString(),
+                        RepairTimes = int.Parse(dataGridView1.Rows[i].Cells[15].Value.ToString()),
+                        Remark = dataGridView1.Rows[i].Cells[16].Value.ToString()
+                    });
+                }                
             }
             return ktls.ToArray();
         }

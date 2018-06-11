@@ -49,7 +49,6 @@
             this.SerialNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -194,8 +193,7 @@
             this.CheckCol,
             this.SerialNumCol,
             this.NumCol,
-            this.TimeCol,
-            this.ActionCol});
+            this.TimeCol});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
             this.dataGridView1.Location = new System.Drawing.Point(0, 94);
@@ -250,15 +248,6 @@
             this.TimeCol.HeaderText = "入库时间";
             this.TimeCol.Name = "TimeCol";
             // 
-            // ActionCol
-            // 
-            this.ActionCol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ActionCol.HeaderText = "操作";
-            this.ActionCol.Name = "ActionCol";
-            this.ActionCol.Text = "修改";
-            this.ActionCol.UseColumnTextForButtonValue = true;
-            this.ActionCol.Width = 80;
-            // 
             // RepoSpareListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -295,6 +284,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SerialNumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeCol;
-        private System.Windows.Forms.DataGridViewButtonColumn ActionCol;
     }
 }

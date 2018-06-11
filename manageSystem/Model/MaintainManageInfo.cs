@@ -7,8 +7,8 @@ namespace Model
 {
     public class MaintainManageInfo
     {
-        public string ToolModeName { get; set; }                    //工具型号
         public string ToolSerialName { get; set; }                  //工具序列号
+        public string ToolModeName { get; set; }                    //工具型号
         public string SendFixTime { get; set; }                     //送修时间
         public string SuspendTime { get; set; }                     //挂起时间
         public string FinishFixTime { get; set; }                   //维修完成时间

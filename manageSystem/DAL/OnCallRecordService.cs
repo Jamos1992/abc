@@ -26,6 +26,8 @@ namespace DAL
             {
                 onCallRecord.CallTime = reader["CallTime"].ToString();
                 onCallRecord.ArriveTime = reader["ArriveTime"].ToString();
+                onCallRecord.ToolSection = reader["ToolSection"].ToString();
+                onCallRecord.ToolWorkstation = reader["ToolWorkstation"].ToString();
                 onCallRecord.FaultToolName = reader["FaultToolName"].ToString();
                 onCallRecord.FaultReason = reader["FaultReason"].ToString();
                 onCallRecord.Detail = reader["Detail"].ToString();
@@ -49,6 +51,8 @@ namespace DAL
                 {
                     CallTime = reader["CallTime"].ToString(),
                     ArriveTime = reader["ArriveTime"].ToString(),
+                    ToolSection = reader["ToolSection"].ToString(),
+                    ToolWorkstation = reader["ToolWorkstation"].ToString(),
                     FaultToolName = reader["FaultToolName"].ToString(),
                     FaultReason = reader["FaultReason"].ToString(),
                     Detail = reader["Detail"].ToString()
@@ -74,6 +78,8 @@ namespace DAL
                 {
                     CallTime = reader["CallTime"].ToString(),
                     ArriveTime = reader["ArriveTime"].ToString(),
+                    ToolSection = reader["ToolSection"].ToString(),
+                    ToolWorkstation = reader["ToolWorkstation"].ToString(),
                     FaultToolName = reader["FaultToolName"].ToString(),
                     FaultReason = reader["FaultReason"].ToString(),
                     Detail = reader["Detail"].ToString()
@@ -92,7 +98,7 @@ namespace DAL
 
         public int InsertOnCallRecord2ExcelTable(string filePath, object obj)
         {
-            string sql = "insert into 巡线记录(客户呼叫时间,达到现场时间,故障工具,故障原因,备注)";
+            string sql = "insert into 巡线记录(客户呼叫时间,达到现场时间,工段,工位,故障工具,故障原因,备注)";
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }

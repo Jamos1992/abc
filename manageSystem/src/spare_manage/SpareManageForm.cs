@@ -6,19 +6,20 @@ namespace manageSystem
 {
     public partial class SpareManageForm : Form
     {
-        public static string singleInputHint = @"
+        public static string inputHint = @"
 操作说明：
 1、在表格内填入工具所有信息
 2、点击“录入”存盘
 3、点击“备件消耗”跳转到备件消耗页面
-3、点击“清空”删除所有表格内容";
+3、点击“清空”删除所有表格内容
+4、点击“备件消耗”跳转到备件消耗页面";
 
-        public static string singleQueryHint = @"
+        public static string queryHint = @"
 操作说明：
-1、输入型号和序列号，点击“查询”；
-2、点击“修改”，对查询结果进行修改；
-3、点击“保存”，保存修改结果；
-4、点击“导出至excel表格”，查询结果导出。";
+1、勾选日期，输入起始日期和终止日期，点击“查询”可查询该时间区间的所有记录
+2、勾选备件型号，选择或输入备件型号，点击“查询”可查询该型号的备件记录
+3、点击“清空”清除筛选条件
+4、点击“查询结果导出”可导出所有勾选的结果至excel";
 
         public SpareManageForm()
         {
@@ -44,7 +45,7 @@ namespace manageSystem
             switch (e.Node.Text)
             {
                 case "备件信息录入":
-                    addForm2Panel(new SpareInfoInputForm(), tableLayoutPanel1, ref e, singleInputHint);
+                    addForm2Panel(new SpareInfoInputForm(), tableLayoutPanel1, ref e, inputHint);
                     //SpareInfoInputForm siif = new SpareInfoInputForm();
                     //siif.Text = e.Node.Text;
                     //siif.TopLevel = false;
@@ -53,7 +54,7 @@ namespace manageSystem
                     break;
 
                 case "仓库备件清单":
-                    addForm2Panel(new RepoSpareListForm(), tableLayoutPanel1, ref e, singleInputHint);
+                    addForm2Panel(new RepoSpareListForm(), tableLayoutPanel1, ref e, queryHint);
                     //QueryRepoSpareForm qrsf = new QueryRepoSpareForm();
                     //qrsf.Text = e.Node.Text;
                     //qrsf.TopLevel = false;

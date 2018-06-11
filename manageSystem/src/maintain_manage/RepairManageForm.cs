@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using BLL;
 using Model;
 using Util;
@@ -56,6 +58,7 @@ namespace manageSystem.src.maintain_manage
             List<OutputStruct> list = maintainInfoManage.GetAllBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
             if (list == null) return;
             BindData2Grid(list);
+            setRepairBtnDisable();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -129,6 +132,138 @@ namespace manageSystem.src.maintain_manage
             else
             {
                 contextMenuStrip1.Enabled = true;
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex > -1)
+            {
+                DataGridViewButtonCell btnCell = dataGridView1.CurrentCell as DataGridViewDisableButtonCell;
+                if (btnCell != null)
+                {
+                    RepairOperatorForm repairOperatorForm = new RepairOperatorForm();
+                    if (repairOperatorForm.ShowDialog() == DialogResult.OK)
+                    {
+                        button1_Click(sender, e);
+                        Show();
+                    }
+                }
+            }
+        }
+
+        private void setRepairBtnDisable()
+        {
+            for(int i=0; i < dataGridView1.RowCount; i++)
+            {
+                for(int j = 0; j < dataGridView1.ColumnCount; j++)
+                {
+                    if(dataGridView1.Rows[i].Cells[j] is DataGridViewButtonCell &&dataGridView1.Rows[i].Cells[1].Value.ToString() == MaintainDeclare.RepairFinished)
+                    {
+                        (dataGridView1.Rows[i].Cells[j] as DataGridViewDisableButtonCell).Enabled=false;
+                    }
+                }
+            }
+        }
+    }
+
+    public class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
+    {
+        public DataGridViewDisableButtonColumn()
+        {
+            this.CellTemplate = new DataGridViewDisableButtonCell();
+        }
+    }
+
+    public class DataGridViewDisableButtonCell : DataGridViewButtonCell
+    {
+        private bool enabledValue;
+        public bool Enabled
+        {
+            get
+            {
+                return enabledValue;
+            }
+            set
+            {
+                enabledValue = value;
+            }
+        }
+
+        // Override the Clone method so that the Enabled property is copied.
+        public override object Clone()
+        {
+            DataGridViewDisableButtonCell cell =
+                (DataGridViewDisableButtonCell)base.Clone();
+            cell.Enabled = this.Enabled;
+            return cell;
+        }
+
+        // By default, enable the button cell.
+        public DataGridViewDisableButtonCell()
+        {
+            this.enabledValue = true;
+        }
+
+        protected override void Paint(Graphics graphics,
+            Rectangle clipBounds, Rectangle cellBounds, int rowIndex,
+            DataGridViewElementStates elementState, object value,
+            object formattedValue, string errorText,
+            DataGridViewCellStyle cellStyle,
+            DataGridViewAdvancedBorderStyle advancedBorderStyle,
+            DataGridViewPaintParts paintParts)
+        {
+            // The button cell is disabled, so paint the border,  
+            // background, and disabled button for the cell.
+            if (!this.enabledValue)
+            {
+                // Draw the cell background, if specified.
+                if ((paintParts & DataGridViewPaintParts.Background) ==
+                    DataGridViewPaintParts.Background)
+                {
+                    SolidBrush cellBackground =
+                        new SolidBrush(cellStyle.BackColor);
+                    graphics.FillRectangle(cellBackground, cellBounds);
+                    cellBackground.Dispose();
+                }
+
+                // Draw the cell borders, if specified.
+                if ((paintParts & DataGridViewPaintParts.Border) ==
+                    DataGridViewPaintParts.Border)
+                {
+                    PaintBorder(graphics, clipBounds, cellBounds, cellStyle,
+                        advancedBorderStyle);
+                }
+
+                // Calculate the area in which to draw the button.
+                Rectangle buttonArea = cellBounds;
+                Rectangle buttonAdjustment =
+                    this.BorderWidths(advancedBorderStyle);
+                buttonArea.X += buttonAdjustment.X;
+                buttonArea.Y += buttonAdjustment.Y;
+                buttonArea.Height -= buttonAdjustment.Height;
+                buttonArea.Width -= buttonAdjustment.Width;
+
+                // Draw the disabled button.                
+                ButtonRenderer.DrawButton(graphics, buttonArea,
+                    PushButtonState.Disabled);
+
+                // Draw the disabled button text. 
+                if (this.FormattedValue is String)
+                {
+                    TextRenderer.DrawText(graphics,
+                        (string)this.FormattedValue,
+                        this.DataGridView.Font,
+                        buttonArea, SystemColors.GrayText);
+                }
+            }
+            else
+            {
+                // The button cell is enabled, so let the base class 
+                // handle the painting.
+                base.Paint(graphics, clipBounds, cellBounds, rowIndex,
+                    elementState, value, formattedValue, errorText,
+                    cellStyle, advancedBorderStyle, paintParts);
             }
         }
     }

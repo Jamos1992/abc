@@ -55,6 +55,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -67,7 +68,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Size = new System.Drawing.Size(1034, 486);
-            this.splitContainer1.SplitterDistance = 225;
+            this.splitContainer1.SplitterDistance = 215;
             this.splitContainer1.TabIndex = 0;
             // 
             // panel1
@@ -78,7 +79,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 273);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(225, 213);
+            this.panel1.Size = new System.Drawing.Size(215, 213);
             this.panel1.TabIndex = 2;
             // 
             // richTextBox1
@@ -88,7 +89,7 @@
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(223, 211);
+            this.richTextBox1.Size = new System.Drawing.Size(213, 211);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "\n操作说明：\n1、在表格内填入工具所有信息\n2、点击\"录入\"存盘\n3、点击\"清空\"删除所有表格内容";
             // 
@@ -123,7 +124,7 @@
             treeNode3,
             treeNode4});
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(225, 486);
+            this.treeView1.Size = new System.Drawing.Size(215, 486);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -146,7 +147,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(805, 486);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(815, 486);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label2

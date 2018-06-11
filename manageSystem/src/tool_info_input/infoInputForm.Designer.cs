@@ -60,7 +60,6 @@
             this.treeviewInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeviewInput.ImageIndex = 0;
             this.treeviewInput.ImageList = this.imageList1;
-            this.treeviewInput.LabelEdit = true;
             this.treeviewInput.Location = new System.Drawing.Point(0, 0);
             this.treeviewInput.Name = "treeviewInput";
             treeNode1.Name = "节点0";

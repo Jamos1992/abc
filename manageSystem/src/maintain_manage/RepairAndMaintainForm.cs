@@ -1,28 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace manageSystem.src.maintain_manage
 {
     public partial class RepairAndMaintainForm : Form
     {
-        public static string singleInputHint = @"
+        public static string inputHint = @"
 操作说明：
-1、在表格内填入工具所有信息
-2、点击“录入”存盘
+1、在表格内填入所有信息
+2、点击“登记”存盘
 3、点击“清空”删除所有表格内容";
 
-        public static string singleQueryHint = @"
+        public static string queryHint = @"
 操作说明：
-1、输入型号和序列号，点击“查询”；
-2、点击“修改”，对查询结果进行修改；
-3、点击“保存”，保存修改结果；
-4、点击“导出至excel表格”，查询结果导出。";
+1、勾选工具状态，点击“查询”可查询所有该状态的记录
+2、点击记录中“维修”可以进入维修页面
+3、点击“导出”可以导出查询的所有结果";
         public RepairAndMaintainForm()
         {
             InitializeComponent();
@@ -48,7 +42,7 @@ namespace manageSystem.src.maintain_manage
             switch (e.Node.Text)
             {
                 case "维修登记":
-                    addForm2Panel(new RepairRegisterForm(), tableLayoutPanel1, ref e, singleInputHint);
+                    addForm2Panel(new RepairRegisterForm(), tableLayoutPanel1, ref e, inputHint);
                     //RepairRegisterForm rrf = new RepairRegisterForm();
                     //rrf.Text = e.Node.Text;
                     //rrf.TopLevel = false;
@@ -57,7 +51,7 @@ namespace manageSystem.src.maintain_manage
                     break;
 
                 case "工具维修":
-                    addForm2Panel(new RepairManageForm(), tableLayoutPanel1, ref e, singleInputHint);
+                    addForm2Panel(new RepairManageForm(), tableLayoutPanel1, ref e, queryHint);
                     //addForm2Panel(new RepairOperatorForm(), tableLayoutPanel1, ref e, singleInputHint);
                     //RepairOperatorForm rof = new RepairOperatorForm();
                     //rof.Text = e.Node.Text;

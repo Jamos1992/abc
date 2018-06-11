@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("标定计划管理");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("进入标定");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("标定报告管理");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("标定计划管理");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("进入标定");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("标定报告管理");
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -71,9 +71,9 @@
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 273);
+            this.panel1.Location = new System.Drawing.Point(0, 219);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 213);
+            this.panel1.Size = new System.Drawing.Size(217, 267);
             this.panel1.TabIndex = 1;
             // 
             // richTextBox1
@@ -83,7 +83,7 @@
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(215, 211);
+            this.richTextBox1.Size = new System.Drawing.Size(215, 265);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "\n操作说明：\n1、在表格内填入工具所有信息\n2、点击\"录入\"存盘\n3、点击\"清空\"删除所有表格内容";
             // 
@@ -99,19 +99,18 @@
             // treeviewInput
             // 
             this.treeviewInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeviewInput.LabelEdit = true;
             this.treeviewInput.Location = new System.Drawing.Point(0, 0);
             this.treeviewInput.Name = "treeviewInput";
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "标定计划管理";
-            treeNode2.Name = "节点1";
-            treeNode2.Text = "进入标定";
-            treeNode3.Name = "节点2";
-            treeNode3.Text = "标定报告管理";
+            treeNode4.Name = "节点0";
+            treeNode4.Text = "标定计划管理";
+            treeNode5.Name = "节点1";
+            treeNode5.Text = "进入标定";
+            treeNode6.Name = "节点2";
+            treeNode6.Text = "标定报告管理";
             this.treeviewInput.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode4,
+            treeNode5,
+            treeNode6});
             this.treeviewInput.Size = new System.Drawing.Size(217, 486);
             this.treeviewInput.TabIndex = 0;
             this.treeviewInput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeviewInput_AfterSelect);

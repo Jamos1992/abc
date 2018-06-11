@@ -30,14 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDemarcateForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDemarcateForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CheckCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SerialNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModelCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NextTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dtDemarcateDate = new System.Windows.Forms.DateTimePicker();
@@ -48,13 +55,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.CheckCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SerialNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModelCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NextTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -120,107 +120,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(800, 353);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.dtDemarcateDate);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.cbCycle);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cbSerialNum);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 57);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "标定登记信息";
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(710, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "   添加";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dtDemarcateDate
-            // 
-            this.dtDemarcateDate.Font = new System.Drawing.Font("宋体", 10F);
-            this.dtDemarcateDate.Location = new System.Drawing.Point(412, 20);
-            this.dtDemarcateDate.Name = "dtDemarcateDate";
-            this.dtDemarcateDate.Size = new System.Drawing.Size(130, 23);
-            this.dtDemarcateDate.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(353, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "标定日期";
-            // 
-            // cbCycle
-            // 
-            this.cbCycle.Font = new System.Drawing.Font("宋体", 10F);
-            this.cbCycle.FormattingEnabled = true;
-            this.cbCycle.Location = new System.Drawing.Point(256, 21);
-            this.cbCycle.Name = "cbCycle";
-            this.cbCycle.Size = new System.Drawing.Size(83, 21);
-            this.cbCycle.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(197, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "标定周期";
-            // 
-            // cbSerialNum
-            // 
-            this.cbSerialNum.Font = new System.Drawing.Font("宋体", 10F);
-            this.cbSerialNum.FormattingEnabled = true;
-            this.cbSerialNum.Location = new System.Drawing.Point(76, 21);
-            this.cbSerialNum.Name = "cbSerialNum";
-            this.cbSerialNum.Size = new System.Drawing.Size(109, 21);
-            this.cbSerialNum.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(9, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "工具序列号";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 26);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(124, 22);
-            this.toolStripMenuItem2.Text = "进入标定";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // CheckCol
             // 
@@ -288,6 +187,108 @@
             this.ActionCol.Text = "修改";
             this.ActionCol.UseColumnTextForButtonValue = true;
             this.ActionCol.Width = 80;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.dtDemarcateDate);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cbCycle);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cbSerialNum);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(800, 57);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "标定登记信息";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(710, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(66, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "   添加";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dtDemarcateDate
+            // 
+            this.dtDemarcateDate.Font = new System.Drawing.Font("宋体", 10F);
+            this.dtDemarcateDate.Location = new System.Drawing.Point(412, 20);
+            this.dtDemarcateDate.Name = "dtDemarcateDate";
+            this.dtDemarcateDate.Size = new System.Drawing.Size(130, 23);
+            this.dtDemarcateDate.TabIndex = 5;
+            this.dtDemarcateDate.DropDown += new System.EventHandler(this.dtDemarcateDate_DropDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(353, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "标定日期";
+            // 
+            // cbCycle
+            // 
+            this.cbCycle.Font = new System.Drawing.Font("宋体", 10F);
+            this.cbCycle.FormattingEnabled = true;
+            this.cbCycle.Location = new System.Drawing.Point(256, 21);
+            this.cbCycle.Name = "cbCycle";
+            this.cbCycle.Size = new System.Drawing.Size(83, 21);
+            this.cbCycle.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(197, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "标定周期";
+            // 
+            // cbSerialNum
+            // 
+            this.cbSerialNum.Font = new System.Drawing.Font("宋体", 10F);
+            this.cbSerialNum.FormattingEnabled = true;
+            this.cbSerialNum.Location = new System.Drawing.Point(76, 21);
+            this.cbSerialNum.Name = "cbSerialNum";
+            this.cbSerialNum.Size = new System.Drawing.Size(109, 21);
+            this.cbSerialNum.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(9, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "工具序列号";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 26);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(124, 22);
+            this.toolStripMenuItem2.Text = "进入标定";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // AddDemarcateForm
             // 

@@ -15,7 +15,7 @@ namespace manageSystem.src.demarcate_manage
             FormBorderStyle = FormBorderStyle.None;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtDemarcateDate.Format = DateTimePickerFormat.Custom;
-            dtDemarcateDate.CustomFormat = "yyyy-MM-dd";
+            dtDemarcateDate.CustomFormat = " ";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -77,6 +77,12 @@ namespace manageSystem.src.demarcate_manage
         private DemarcateRecords getDataFromGrid()
         {
             return null;
+        }
+
+        private void dtDemarcateDate_DropDown(object sender, EventArgs e)
+        {
+            dtDemarcateDate.Format = DateTimePickerFormat.Custom;
+            dtDemarcateDate.CustomFormat = "yyyy-MM-dd";
         }
     }
 }

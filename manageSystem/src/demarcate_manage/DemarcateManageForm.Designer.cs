@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("标定计划管理");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("进入标定");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("标定报告管理");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("标定计划管理");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("进入标定");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("标定报告管理");
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -101,16 +101,16 @@
             this.treeviewInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeviewInput.Location = new System.Drawing.Point(0, 0);
             this.treeviewInput.Name = "treeviewInput";
-            treeNode4.Name = "节点0";
-            treeNode4.Text = "标定计划管理";
-            treeNode5.Name = "节点1";
-            treeNode5.Text = "进入标定";
-            treeNode6.Name = "节点2";
-            treeNode6.Text = "标定报告管理";
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "标定计划管理";
+            treeNode2.Name = "节点1";
+            treeNode2.Text = "进入标定";
+            treeNode3.Name = "节点2";
+            treeNode3.Text = "标定报告管理";
             this.treeviewInput.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.treeviewInput.Size = new System.Drawing.Size(217, 486);
             this.treeviewInput.TabIndex = 0;
             this.treeviewInput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeviewInput_AfterSelect);

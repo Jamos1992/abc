@@ -21,6 +21,20 @@ namespace BLL
             return onCallRecordService.getOnCallRecordBySql(sql);
         }
 
+        public string ModifyOneRecord(OnCallRecord onCallRecord)
+        {
+            if(onCallRecord.CallTime == "" || onCallRecord.ArriveTime == "" || onCallRecord.ToolWorkstation == "")
+            {
+                return "保存失败，请补全信息";
+            }
+            int affectedRow = onCallRecordService.UpdateOnCallRecord(onCallRecord);
+            if(affectedRow < 1)
+            {
+                return "保存失败，数据库操作失败";
+            }
+            return "保存成功";
+        }
+
         public string ExportSingleData2Excel(string filePath, OnCallRecord onCallRecord)
         {
             int affected = onCallRecordService.CreateOnCallRecordExcelTable(filePath);

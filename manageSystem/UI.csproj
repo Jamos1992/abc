@@ -139,6 +139,12 @@
     <Compile Include="src\demarcate_manage\ScanCodeForm.Designer.cs">
       <DependentUpon>ScanCodeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\demarcate_manage\SingleHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\SingleHistoryForm.Designer.cs">
+      <DependentUpon>SingleHistoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\EmailAddressManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,12 @@
     </Compile>
     <Compile Include="src\on-call_record\AddRecordForm.Designer.cs">
       <DependentUpon>AddRecordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\on-call_record\ModifyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\on-call_record\ModifyForm.Designer.cs">
+      <DependentUpon>ModifyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\on-call_record\OnCallForm.cs">
       <SubType>Form</SubType>
@@ -282,6 +294,9 @@
     <EmbeddedResource Include="src\demarcate_manage\ScanCodeForm.resx">
       <DependentUpon>ScanCodeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\SingleHistoryForm.resx">
+      <DependentUpon>SingleHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\EmailAddressManageForm.resx">
       <DependentUpon>EmailAddressManageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\on-call_record\AddRecordForm.resx">
       <DependentUpon>AddRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\on-call_record\ModifyForm.resx">
+      <DependentUpon>ModifyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\on-call_record\OnCallForm.resx">
       <DependentUpon>OnCallForm.cs</DependentUpon>

@@ -8,12 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Model;
+using DAL;
 
 namespace manageSystem.src.demarcate_manage
 {
     public partial class QRCodePrintForm : Form
     {
         private DemarcateRecords demarcateRecords = new DemarcateRecords();
+        private DemarcateRecordService demarcateRecordService = new DemarcateRecordService();
         public QRCodePrintForm()
         {
             InitializeComponent();
@@ -29,6 +31,22 @@ namespace manageSystem.src.demarcate_manage
             this.printDocument1.OriginAtMargins = true;//启用页边距
             this.pageSetupDialog1.EnableMetric = true; //以毫米为单位
             this.printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom", 500, 300);
+
+            txtSerialName.BorderStyle = BorderStyle.None;
+            txtDemarNum.BorderStyle = BorderStyle.None;
+            txtWorkstation.BorderStyle = BorderStyle.None;
+            txtValid.BorderStyle = BorderStyle.None;
+            txtCheckman.BorderStyle = BorderStyle.None;
+        }
+
+        private void QRCodePrintForm_Load(object sender, EventArgs e)
+        {
+            txtSerialName.Text = demarcateRecords.SerialNum;
+            txtDemarNum.Text = demarcateRecords.DemarcateNum;
+            txtWorkstation.Text = demarcateRecords.WorkStation;
+            txtValid.Text = demarcateRecords.Validity;
+            txtCheckman.Text = demarcateRecords.Examinant;
+            picQRcode.Image = demarcateRecordService.CreateQRCode(demarcateRecords.SerialNum);
         }
 
         //打印设置
@@ -78,5 +96,7 @@ namespace manageSystem.src.demarcate_manage
             //e.Graphics.DrawString("工位：", new Font(new FontFamily("黑体"), 8), Brushes.Black, 9, 55);
             //e.Graphics.DrawString("下次标定日期：", new Font(new FontFamily("黑体"), 8), Brushes.Black, 9, 85);
         }
+
+
     }
 }

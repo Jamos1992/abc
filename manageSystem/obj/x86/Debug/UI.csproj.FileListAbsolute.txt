@@ -58,3 +58,5 @@ D:\workspace\manageSystem\bin\x86\Debug\Util.pdb
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.ScanCodeForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateHistoryForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.MaintainRegisterForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.ModifyForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.SingleHistoryForm.resources

@@ -90,6 +90,11 @@ namespace DAL
             return list;
         }
 
+        public int UpdateOnCallRecord(OnCallRecord onCallRecord)
+        {
+            return SQLHelper.UpdateValuesByStruct("OnCallRecord", onCallRecord, new string[] { "ToolWorkstation" }, new string[] { onCallRecord.ToolWorkstation });
+        }
+
         //excel operation
         public int CreateOnCallRecordExcelTable(string filePath)
         {

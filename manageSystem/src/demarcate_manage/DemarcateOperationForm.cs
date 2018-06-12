@@ -14,6 +14,7 @@ namespace manageSystem.src.demarcate_manage
     public partial class DemarcateOperationForm : Form
     {
         private DemarcateRecordManage demarcateRecordManage = new DemarcateRecordManage();
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
         private List<DemarcateData> list = new List<DemarcateData>();
         private string _portNameReceive;
         private string _baudRate;
@@ -85,6 +86,11 @@ namespace manageSystem.src.demarcate_manage
             setSerialPort();
             if (!isToolsExist(txtSerialNum.Text.Trim()))
             {
+                if (!toolsInfoManage.IsToolExistInDb(txtSerialNum.Text.Trim()))
+                {
+                    MessageBox.Show("仓库中不存在序列号为"+ txtSerialNum.Text.Trim() + "的工具，请重新输入", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (MessageBox.Show("工具序列号不在标定计划中，是否继续？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                 {
                     return;
@@ -225,9 +231,32 @@ namespace manageSystem.src.demarcate_manage
             };
         }
 
+        private DemarcateRecords GetDemarcateRecords()
+        {
+            ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfo(txtSerialNum.Text.Trim());
+            DemarcateTools demarcateTools = demarcateRecordManage.getOneDemarcateToolBySerialNum(txtSerialNum.Text.Trim());
+            if(toolsInfo == null || demarcateTools == null)
+            {
+                MessageBox.Show("工具序列号有误！","提示",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+            string nextTime = DateTime.Now.AddDays(demarcateTools.Cycle).ToString("d");
+            return new DemarcateRecords
+            {
+                DemarcateNum = "",
+                SerialNum = toolsInfo.SerialNum,
+                WorkStation = toolsInfo.Workstation,
+                Validity = nextTime,
+                Examinant = "",
+                CheckTime = DateTime.Now.ToString("d")
+            };
+        }
+
         private void btnPrintTag_Click(object sender, EventArgs e)
         {
-            QRCodePrintForm qRCodePrintForm = new QRCodePrintForm();
+            DemarcateRecords demarcateRecords = GetDemarcateRecords();
+            if (demarcateRecords == null) return;
+            QRCodePrintForm qRCodePrintForm = new QRCodePrintForm(demarcateRecords);
             qRCodePrintForm.ShowDialog();
         }
     }

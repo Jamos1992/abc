@@ -84,6 +84,11 @@ namespace BLL
             return recordList;
         }
 
+        public List<ToolsInfo> QueryToolsInfoBySql(string sql)
+        {
+            return toolsInfoService.getAllToolsInfoBySql(sql);
+        }
+
         public ToolsInfo QueryOneToolsInfoBySerialAndModel(string serial, string model)
         {
             if (string.IsNullOrEmpty(serial))

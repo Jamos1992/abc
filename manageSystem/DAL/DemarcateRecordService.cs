@@ -88,6 +88,30 @@ namespace DAL
             return list;
         }
 
+        public List<ToolsInfo> GetAllDemarcateToolsBySql(string sql)
+        {
+            List<ToolsInfo> list = new List<ToolsInfo>();
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            if (!reader.HasRows)
+            {
+                Console.WriteLine("DemarcateTools no reocrd");
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                //Console.WriteLine(reader["NextTime"]);
+                list.Add(new ToolsInfo
+                {
+                    SerialNum = reader["SerialNum"].ToString(),
+                    Workstation = reader["Workstation"].ToString(),
+                    Model = reader["Model"].ToString()
+                });
+            }
+            reader.Close();
+            return list;
+        }
+
         public DemarcateTools GetOneDemarcateTool(string serialNum)
         {
             string sql = "select * from DemarcateTools where SerialNum='" + serialNum + "'";
@@ -112,5 +136,40 @@ namespace DAL
             reader.Close();
             return demarcateTools;
         }
+
+        //public string ExportSingleData2Excel(string filePath, RepoSpareTool repoSpareTool)
+        //{
+        //    int affected = repoSpareToolService.CreatRepoSpareToolExcelTable(filePath);
+        //    if (affected < 1) return "创建导出文件失败";
+        //    affected = repoSpareToolService.InsertRepoSpareTool2ExcelTable(filePath, repoSpareTool);
+        //    if (affected < 1) return "导出数据失败";
+        //    return "导出数据成功";
+        //}
+
+        //public string ExportBatchData2Excel(string filePath, RepoSpareTool[] repoSpareTools)
+        //{
+        //    int i = 0;
+        //    foreach (RepoSpareTool repoSpareTool in repoSpareTools)
+        //    {
+        //        if (repoSpareTool == null)
+        //        {
+        //            continue;
+        //        }
+        //        if (i == 0)
+        //        {
+        //            string result = ExportSingleData2Excel(filePath, repoSpareTool);
+        //            if (result.Contains("失败"))
+        //            {
+        //                return result;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            int affected = repoSpareToolService.InsertRepoSpareTool2ExcelTable(filePath, repoSpareTool);
+        //            if (affected < 1) return "导出数据失败";
+        //        }
+        //    }
+        //    return "导出数据成功";
+        //}
     }
 }

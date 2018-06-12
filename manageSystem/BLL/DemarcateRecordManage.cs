@@ -41,5 +41,21 @@ namespace BLL
         {
             return demarcateRecordService.GetAllDemarcateTools();
         }
+
+        public List<ToolsInfo> GetallDemarcateToolsWithInfo()
+        {
+            string sql = "select * from ToolsInfo,DemarcateTools where ToolsInfo.SerialNum = DemarcateTools.SerialNum";
+            return demarcateRecordService.GetAllDemarcateToolsBySql(sql);
+        }
+
+        public List<ToolsInfo> GetallDemarcateToolsWithInfoBySql(string sql)
+        {
+            return demarcateRecordService.GetAllDemarcateToolsBySql(sql);
+        }
+
+        public DemarcateTools getOneDemarcateToolBySerialNum(string serialNum)
+        {
+            return demarcateRecordService.GetOneDemarcateTool(serialNum);
+        }
     }
 }

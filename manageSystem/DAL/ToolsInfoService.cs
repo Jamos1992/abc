@@ -160,6 +160,41 @@ namespace DAL
             return list;
         }
 
+        public List<ToolsInfo> getAllToolsInfoBySql(string sql)
+        {
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            List<ToolsInfo> list = new List<ToolsInfo>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                list.Add(new ToolsInfo
+                {
+                    SerialNum = reader["SerialNum"].ToString(),
+                    Model = reader["Model"].ToString(),
+                    Category = reader["Category"].ToString(),
+                    Name = reader["Name"].ToString(),
+                    TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
+                    TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
+                    Accuracy = double.Parse(reader["Accuracy"].ToString()),
+                    Section = reader["Section"].ToString(),
+                    DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
+                    Workstation = reader["Workstation"].ToString(),
+                    Status = reader["Status"].ToString(),
+                    QualityAssureDate = reader["QualityAssureDate"].ToString(),
+                    MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
+                    MaintainContractDate = reader["MaintainContractDate"].ToString(),
+                    RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0" : reader["RepairTimes"].ToString()),
+                    Remark = reader["Remark"].ToString()
+                });
+            }
+            if (reader != null) reader.Close();
+            return list;
+        }
+
         //excel operation
         public bool IsToolsInfoRecordExist(string filePath)
         {

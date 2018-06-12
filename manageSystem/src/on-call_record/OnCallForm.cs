@@ -14,6 +14,7 @@ namespace manageSystem.src.on_call_record
         {
             InitializeComponent();
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
+            dataGridView1.AutoGenerateColumns = false;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -105,9 +106,14 @@ namespace manageSystem.src.on_call_record
         private void button3_Click(object sender, EventArgs e)
         {
             OnCallRecord[] onCallRecords = GetOnCallRecordsFromGrid();
-            if (dataGridView1.Rows.Count == 0 || onCallRecords.Length == 0)
+            if (onCallRecords == null)
             {
                 MessageBox.Show("没有记录可以导出,请先查询！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if(onCallRecords.Length == 0)
+            {
+                MessageBox.Show("请先选择要导出的记录！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -121,8 +127,7 @@ namespace manageSystem.src.on_call_record
         {
             List<OnCallRecord> ktls = new List<OnCallRecord>();
             //遍历 DataGridView 所有行
-            int row = dataGridView1.Rows.Count;//得到总行数    
-            int cell = dataGridView1.Rows[0].Cells.Count;//得到总列数
+            int row = dataGridView1.Rows.Count;//得到总行数
             for (int i = 0; i < row; i++)//得到总行数并在之内循环    
             {
                 if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].EditedFormattedValue))
@@ -138,6 +143,38 @@ namespace manageSystem.src.on_call_record
                 }
             }
             return ktls.ToArray();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex > -1)
+            {
+                DataGridViewButtonCell btnCell = dataGridView1.CurrentCell as DataGridViewButtonCell;
+                if (btnCell != null)
+                {
+                    ModifyForm onCallForm = new ModifyForm(GetOneToolsInfoFromGrid());
+                    if(onCallForm.ShowDialog() == DialogResult.OK)
+                    {
+                        button1_Click(null, null);
+                        Show();
+                    }
+                }
+            }
+        }
+
+        private OnCallRecord GetOneToolsInfoFromGrid()
+        {
+            if (dataGridView1.SelectedRows.Count == 0) return null;
+            return new OnCallRecord
+            {
+                CallTime = dataGridView1.SelectedRows[0].Cells[1].Value.ToString(),
+                ArriveTime = dataGridView1.SelectedRows[0].Cells[2].Value.ToString(),
+                ToolSection = dataGridView1.SelectedRows[0].Cells[3].Value.ToString(),
+                ToolWorkstation = dataGridView1.SelectedRows[0].Cells[4].Value.ToString(),
+                FaultToolName = dataGridView1.SelectedRows[0].Cells[5].Value.ToString(),
+                FaultReason = dataGridView1.SelectedRows[0].Cells[6].Value.ToString(),
+                Detail = dataGridView1.SelectedRows[0].Cells[7].Value.ToString()
+            };
         }
     }
 }

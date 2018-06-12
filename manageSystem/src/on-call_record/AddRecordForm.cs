@@ -16,6 +16,8 @@ namespace manageSystem.src.on_call_record
         public AddRecordForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
         }
 
         private void AddRecordForm_Load(object sender, EventArgs e)
@@ -70,10 +72,17 @@ namespace manageSystem.src.on_call_record
             OnCallRecord onCallRecord = new OnCallRecord();
             onCallRecord.CallTime = dateTimePicker1.Text;
             onCallRecord.ArriveTime = dateTimePicker2.Text;
-            onCallRecord.FaultToolName = textBox1.Text;
+            onCallRecord.ToolSection = comboBox3.Text.Trim();
+            onCallRecord.ToolWorkstation = comboBox2.Text.Trim();
+            onCallRecord.FaultToolName = textBox1.Text.Trim();
             onCallRecord.FaultReason = comboBox1.Text;
             onCallRecord.Detail = richTextBox1.Text;
             return onCallRecord;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

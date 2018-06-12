@@ -69,7 +69,7 @@ namespace manageSystem.src.maintain_manage
                 dataGridView1.DataSource = maintainManageInfoList;
                 return;
             }
-            MessageBox.Show(msg);
+            MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button2_Click(object sender, EventArgs e)

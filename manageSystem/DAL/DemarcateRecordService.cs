@@ -74,15 +74,22 @@ namespace DAL
             }
             while (reader.Read())
             {
-                //Console.WriteLine(reader["NextTime"]);
-                list.Add(new DemarcateTools
+                try
                 {
-                    SerialNum = reader["SerialNum"].ToString(),
-                    Cycle = Convert.ToInt32(reader["Cycle"]),
-                    LastTime = reader["LastTime"].ToString(),
-                    NextTime = reader["NextTime"].ToString(),
-                    Status = reader["Status"].ToString()
-                });
+                    list.Add(new DemarcateTools
+                    {
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Cycle = Convert.ToInt32(reader["Cycle"]),
+                        LastTime = Convert.ToDateTime(reader["LastTime"].ToString()).ToString("yyyy-MM-dd"),
+                        NextTime = Convert.ToDateTime(reader["NextTime"].ToString()).ToString("yyyy-MM-dd"),
+                        Status = reader["Status"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"GetAllDemarcateTools failed, error message is: {ex.Message}");
+                }
+
             }
             reader.Close();
             return list;
@@ -100,13 +107,20 @@ namespace DAL
             }
             while (reader.Read())
             {
-                //Console.WriteLine(reader["NextTime"]);
-                list.Add(new ToolsInfo
+                try
                 {
-                    SerialNum = reader["SerialNum"].ToString(),
-                    Workstation = reader["Workstation"].ToString(),
-                    Model = reader["Model"].ToString()
-                });
+                    list.Add(new ToolsInfo
+                    {
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Workstation = reader["Workstation"].ToString(),
+                        Model = reader["Model"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"GetAllDemarcateToolsBySql failed, error message is: {ex.Message}");
+                }
+
             }
             reader.Close();
             return list;
@@ -124,14 +138,22 @@ namespace DAL
             }
             if (reader.Read())
             {
-                demarcateTools = new DemarcateTools
+                try
                 {
-                    SerialNum = reader["SerialNum"].ToString(),
-                    Cycle = Convert.ToInt32(reader["Cycle"]),
-                    LastTime = reader["LastTime"].ToString(),
-                    //NextTime = Convert.ToDateTime(reader["NextTime"] == null ? null : reader["NextTime"]),
-                    Status = reader["Status"].ToString()
-                };
+                    demarcateTools = new DemarcateTools
+                    {
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Cycle = Convert.ToInt32(reader["Cycle"]),
+                        LastTime = Convert.ToDateTime(reader["LastTime"].ToString()).ToString("yyyy-MM-dd"),
+                        NextTime = Convert.ToDateTime(reader["NextTime"].ToString()).ToString("yyyy-MM-dd"),
+                        Status = reader["Status"].ToString()
+                    };
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"GetOneDemarcateTool failed, error message is: {ex.Message}");
+                }
+
             }
             reader.Close();
             return demarcateTools;

@@ -3,6 +3,7 @@ using Model;
 using System.Data.SQLite;
 using System.Configuration;
 using Util;
+using System;
 
 namespace DAL
 {
@@ -11,7 +12,7 @@ namespace DAL
 
         public bool IsRepoSpareToolExist(string spareToolModel)
         {
-            SQLiteDataReader reader = SQLHelper.ReadTable("RepoSpareTool", new string[] { "*" }, new string[] { "SpareToolModel" }, new string[] { "=" }, new string[] { spareToolModel });
+            SQLiteDataReader reader = SQLHelper.ReadTable("RepoSpareTool", new string[] { "*" }, new string[] { "SpareToolModel" }, new string[] { "=" }, new string[] { $"'{spareToolModel}'" });
             if (reader != null && reader.HasRows)
             {
                 //MessageBox.Show("序列号(" + repoSpareTool.SpareToolModel + ") 插入失败, 已存在序列号相同的记录！");
@@ -43,9 +44,16 @@ namespace DAL
             }
             while (reader.Read())
             {
-                repoSpareTool.SpareToolModel = reader["SpareToolModel"].ToString();
-                repoSpareTool.Num = reader["Num"].ToString() != "" ? int.Parse(reader["Num"].ToString()) : 0;
-                repoSpareTool.Time = reader["Time"].ToString();
+                try
+                {
+                    repoSpareTool.SpareToolModel = reader["SpareToolModel"].ToString();
+                    repoSpareTool.Num = reader["Num"].ToString() != "" ? int.Parse(reader["Num"].ToString()) : 0;
+                    repoSpareTool.AddTime = Convert.ToDateTime(reader["Time"].ToString()).ToString("yyyy-MM-dd");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getOneRepoSpareToolFromDb failed, error message is: {ex.Message}");
+                }                
             }
             if (reader != null) reader.Close();
             return repoSpareTool;
@@ -62,12 +70,19 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new RepoSpareTool
+                try
                 {
-                    SpareToolModel = reader["SpareToolModel"].ToString(),
-                    Num = int.Parse(reader["Num"].ToString()),
-                    Time = reader["Time"].ToString()
-                });
+                    list.Add(new RepoSpareTool
+                    {
+                        SpareToolModel = reader["SpareToolModel"].ToString(),
+                        Num = reader["Num"].ToString() != "" ? int.Parse(reader["Num"].ToString()) : 0,
+                        AddTime = Convert.ToDateTime(reader["Time"].ToString()).ToString("yyyy-MM-dd")
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllRepoSpareTools failed, error message is: {ex.Message}");
+                }    
             }
             if (reader != null) reader.Close();
             return list;
@@ -84,13 +99,19 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new RepoSpareTool
+                try
                 {
-                    SpareToolModel = reader["SpareToolModel"].ToString(),
-                    Num = (int)reader["Num"],
-                    Time = reader["Time"].ToString()
-                });
-
+                    list.Add(new RepoSpareTool
+                    {
+                        SpareToolModel = reader["SpareToolModel"].ToString(),
+                        Num = reader["Num"].ToString() != "" ? int.Parse(reader["Num"].ToString()) : 0,
+                        AddTime = Convert.ToDateTime(reader["Time"].ToString()).ToString("yyyy-MM-dd")
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getRepoSpareToolBySql failed, error message is: {ex.Message}");
+                }
             }
             if (reader != null) reader.Close();
             return list;
@@ -99,12 +120,12 @@ namespace DAL
         //excel operation
         public int CreatRepoSpareToolExcelTable(string filePath)
         {
-            return EXCELHelper.CreateExcelTable(filePath, ExcelDeclare.CreatRepoSpareToolExcelSql);
+            return EXCELHelper.CreateExcelTable(filePath, ExcelDeclare.CreateRepoSpareToolExcelSql);
         }
 
         public int InsertRepoSpareTool2ExcelTable(string filePath, object obj)
         {
-            string sql = "insert into 仓库备件(备件型号,个数,入库时间,备件序列号)";
+            string sql = ExcelDeclare.InsertRepoSpareToolsExcelSql;
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }

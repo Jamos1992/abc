@@ -16,6 +16,7 @@ namespace manageSystem.src.spare_manage
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
+            dataGridView1.AutoGenerateColumns = false;
         }
         private void setDateTimePickerEmpty(Control c)
         {
@@ -125,7 +126,7 @@ namespace manageSystem.src.spare_manage
                     {
                         SpareToolModel = dataGridView1.Rows[i].Cells[1].Value.ToString(),
                         Num = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
-                        Time = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                        AddTime = dataGridView1.Rows[i].Cells[3].Value.ToString(),
                     });
                 }
             }

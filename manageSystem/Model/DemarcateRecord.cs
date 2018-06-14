@@ -24,6 +24,17 @@ namespace Model
         public string CheckTime { get; set; }               //标定时间
     }
 
+    public class DemarcateHistory
+    {
+        public string DemarcateNum { get; set; }            //标定序列号，primary key
+        public string SerialNum { get; set; }               //工具的序列号
+        public int Cycle { get; set; }                      //周期
+        public string LastTime { get; set; }                //上次标定时间
+        public string DemarcateTime { get; set; }           //标定时间      
+        public string NextTime { get; set; }                //有效期
+        public string CheckMan { get; set; }                //检查员
+    }
+
     public class DemarcateData
     {
         public string Order { get; set; }                   //标定组别

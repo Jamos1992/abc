@@ -238,15 +238,17 @@
             this.NumCol.DefaultCellStyle = dataGridViewCellStyle3;
             this.NumCol.HeaderText = "个数";
             this.NumCol.Name = "NumCol";
+            this.NumCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TimeCol
             // 
             this.TimeCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TimeCol.DataPropertyName = "Time";
+            this.TimeCol.DataPropertyName = "AddTime";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.TimeCol.DefaultCellStyle = dataGridViewCellStyle4;
-            this.TimeCol.HeaderText = "入库时间";
+            this.TimeCol.HeaderText = "入库日期";
             this.TimeCol.Name = "TimeCol";
+            this.TimeCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // RepoSpareListForm
             // 

@@ -32,22 +32,29 @@ namespace DAL
             }
             while (reader.Read())
             {
-                toolsInfo.SerialNum = reader["SerialNum"].ToString();
-                toolsInfo.Model = reader["Model"].ToString();
-                toolsInfo.Category = reader["Category"].ToString();
-                toolsInfo.Name = reader["Name"].ToString();
-                toolsInfo.TorqueMin = double.Parse(reader["TorqueMin"].ToString());
-                toolsInfo.TorqueMax = double.Parse(reader["TorqueMax"].ToString());
-                toolsInfo.Accuracy = double.Parse(reader["Accuracy"].ToString());
-                toolsInfo.Section = reader["Section"].ToString();
-                toolsInfo.DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString());
-                toolsInfo.Workstation = reader["Workstation"].ToString();
-                toolsInfo.Status = reader["Status"].ToString();
-                toolsInfo.QualityAssureDate = reader["QualityAssureDate"].ToString();
-                toolsInfo.MaintainContractStyle = reader["MaintainContractStyle"].ToString();
-                toolsInfo.MaintainContractDate = reader["MaintainContractDate"].ToString();
-                toolsInfo.RepairTimes = int.Parse(reader["RepairTimes"].ToString());
-                toolsInfo.Remark = reader["Remark"].ToString();
+                try
+                {
+                    toolsInfo.SerialNum = reader["SerialNum"].ToString();
+                    toolsInfo.Model = reader["Model"].ToString();
+                    toolsInfo.Category = reader["Category"].ToString();
+                    toolsInfo.Name = reader["Name"].ToString();
+                    toolsInfo.TorqueMin = double.Parse(reader["TorqueMin"].ToString());
+                    toolsInfo.TorqueMax = double.Parse(reader["TorqueMax"].ToString());
+                    toolsInfo.Accuracy = double.Parse(reader["Accuracy"].ToString());
+                    toolsInfo.Section = reader["Section"].ToString();
+                    toolsInfo.DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString());
+                    toolsInfo.Workstation = reader["Workstation"].ToString();
+                    toolsInfo.Status = reader["Status"].ToString();
+                    toolsInfo.QualityAssureDate = reader["QualityAssureDate"].ToString();
+                    toolsInfo.MaintainContractStyle = reader["MaintainContractStyle"].ToString();
+                    toolsInfo.MaintainContractDate = reader["MaintainContractDate"].ToString();
+                    toolsInfo.RepairTimes = int.Parse(reader["RepairTimes"].ToString());
+                    toolsInfo.Remark = reader["Remark"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getOneToolsInfoBySerial failed, error message is: {ex.Message}");
+                }
             }
             if (reader != null) reader.Close();
             return toolsInfo;
@@ -64,22 +71,29 @@ namespace DAL
             }
             while (reader.Read())
             {
-                toolsInfo.SerialNum = reader["SerialNum"].ToString();
-                toolsInfo.Model = reader["Model"].ToString();
-                toolsInfo.Category = reader["Category"].ToString();
-                toolsInfo.Name = reader["Name"].ToString();
-                toolsInfo.TorqueMin = double.Parse(reader["TorqueMin"].ToString());
-                toolsInfo.TorqueMax = double.Parse(reader["TorqueMax"].ToString());
-                toolsInfo.Accuracy = double.Parse(reader["Accuracy"].ToString());
-                toolsInfo.Section = reader["Section"].ToString();
-                toolsInfo.DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString());
-                toolsInfo.Workstation = reader["Workstation"].ToString();
-                toolsInfo.Status = reader["Status"].ToString();
-                toolsInfo.QualityAssureDate = reader["QualityAssureDate"].ToString();
-                toolsInfo.MaintainContractStyle = reader["MaintainContractStyle"].ToString();
-                toolsInfo.MaintainContractDate = reader["MaintainContractDate"].ToString();
-                toolsInfo.RepairTimes = int.Parse(reader["RepairTimes"].ToString());
-                toolsInfo.Remark = reader["Remark"].ToString();
+                try
+                {
+                    toolsInfo.SerialNum = reader["SerialNum"].ToString();
+                    toolsInfo.Model = reader["Model"].ToString();
+                    toolsInfo.Category = reader["Category"].ToString();
+                    toolsInfo.Name = reader["Name"].ToString();
+                    toolsInfo.TorqueMin = double.Parse(reader["TorqueMin"].ToString());
+                    toolsInfo.TorqueMax = double.Parse(reader["TorqueMax"].ToString());
+                    toolsInfo.Accuracy = double.Parse(reader["Accuracy"].ToString());
+                    toolsInfo.Section = reader["Section"].ToString();
+                    toolsInfo.DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString());
+                    toolsInfo.Workstation = reader["Workstation"].ToString();
+                    toolsInfo.Status = reader["Status"].ToString();
+                    toolsInfo.QualityAssureDate = reader["QualityAssureDate"].ToString();
+                    toolsInfo.MaintainContractStyle = reader["MaintainContractStyle"].ToString();
+                    toolsInfo.MaintainContractDate = reader["MaintainContractDate"].ToString();
+                    toolsInfo.RepairTimes = int.Parse(reader["RepairTimes"].ToString());
+                    toolsInfo.Remark = reader["Remark"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getOneToolsInfoBySerialAndModel failed, error message is: {ex.Message}");
+                }
             }
             if (reader != null) reader.Close();
             return toolsInfo;
@@ -101,25 +115,32 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new ToolsInfo
+                try
                 {
-                    SerialNum = reader["SerialNum"].ToString(),
-                    Model = reader["Model"].ToString(),
-                    Category = reader["Category"].ToString(),
-                    Name = reader["Name"].ToString(),
-                    TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
-                    TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
-                    Accuracy = double.Parse(reader["Accuracy"].ToString()),
-                    Section = reader["Section"].ToString(),
-                    DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
-                    Workstation = reader["Workstation"].ToString(),
-                    Status = reader["Status"].ToString(),
-                    QualityAssureDate = reader["QualityAssureDate"].ToString(),
-                    MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
-                    MaintainContractDate = reader["MaintainContractDate"].ToString(),
-                    RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0": reader["RepairTimes"].ToString()),
-                    Remark = reader["Remark"].ToString()
-                });
+                    list.Add(new ToolsInfo
+                    {
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Model = reader["Model"].ToString(),
+                        Category = reader["Category"].ToString(),
+                        Name = reader["Name"].ToString(),
+                        TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
+                        TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
+                        Accuracy = double.Parse(reader["Accuracy"].ToString()),
+                        Section = reader["Section"].ToString(),
+                        DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
+                        Workstation = reader["Workstation"].ToString(),
+                        Status = reader["Status"].ToString(),
+                        QualityAssureDate = reader["QualityAssureDate"].ToString(),
+                        MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
+                        MaintainContractDate = reader["MaintainContractDate"].ToString(),
+                        RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0" : reader["RepairTimes"].ToString()),
+                        Remark = reader["Remark"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllToolsInfo failed, error message is: {ex.Message}");
+                }
             }
             if (reader != null) reader.Close();
             return list;
@@ -136,25 +157,33 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new ToolsInfo
+                try
                 {
-                    SerialNum = reader["SerialNum"].ToString(),
-                    Model = reader["Model"].ToString(),
-                    Category = reader["Category"].ToString(),
-                    Name = reader["Name"].ToString(),
-                    TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
-                    TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
-                    Accuracy = double.Parse(reader["Accuracy"].ToString()),
-                    Section = reader["Section"].ToString(),
-                    DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
-                    Workstation = reader["Workstation"].ToString(),
-                    Status = reader["Status"].ToString(),
-                    QualityAssureDate = reader["QualityAssureDate"].ToString(),
-                    MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
-                    MaintainContractDate = reader["MaintainContractDate"].ToString(),
-                    RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0" : reader["RepairTimes"].ToString()),
-                    Remark = reader["Remark"].ToString()
-                });
+                    list.Add(new ToolsInfo
+                    {
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Model = reader["Model"].ToString(),
+                        Category = reader["Category"].ToString(),
+                        Name = reader["Name"].ToString(),
+                        TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
+                        TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
+                        Accuracy = double.Parse(reader["Accuracy"].ToString()),
+                        Section = reader["Section"].ToString(),
+                        DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
+                        Workstation = reader["Workstation"].ToString(),
+                        Status = reader["Status"].ToString(),
+                        QualityAssureDate = reader["QualityAssureDate"].ToString(),
+                        MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
+                        MaintainContractDate = reader["MaintainContractDate"].ToString(),
+                        RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0" : reader["RepairTimes"].ToString()),
+                        Remark = reader["Remark"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllToolsInfoByModel failed, error message is: {ex.Message}");
+                }
+
             }
             if (reader != null) reader.Close();
             return list;
@@ -171,25 +200,33 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new ToolsInfo
+                try
                 {
-                    SerialNum = reader["SerialNum"].ToString(),
-                    Model = reader["Model"].ToString(),
-                    Category = reader["Category"].ToString(),
-                    Name = reader["Name"].ToString(),
-                    TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
-                    TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
-                    Accuracy = double.Parse(reader["Accuracy"].ToString()),
-                    Section = reader["Section"].ToString(),
-                    DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
-                    Workstation = reader["Workstation"].ToString(),
-                    Status = reader["Status"].ToString(),
-                    QualityAssureDate = reader["QualityAssureDate"].ToString(),
-                    MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
-                    MaintainContractDate = reader["MaintainContractDate"].ToString(),
-                    RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0" : reader["RepairTimes"].ToString()),
-                    Remark = reader["Remark"].ToString()
-                });
+                    list.Add(new ToolsInfo
+                    {
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Model = reader["Model"].ToString(),
+                        Category = reader["Category"].ToString(),
+                        Name = reader["Name"].ToString(),
+                        TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
+                        TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
+                        Accuracy = double.Parse(reader["Accuracy"].ToString()),
+                        Section = reader["Section"].ToString(),
+                        DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
+                        Workstation = reader["Workstation"].ToString(),
+                        Status = reader["Status"].ToString(),
+                        QualityAssureDate = reader["QualityAssureDate"].ToString(),
+                        MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
+                        MaintainContractDate = reader["MaintainContractDate"].ToString(),
+                        RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0" : reader["RepairTimes"].ToString()),
+                        Remark = reader["Remark"].ToString()
+                    });
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine($"getAllToolsInfoBySql failed, error message is: {ex.Message}");
+                }
+                
             }
             if (reader != null) reader.Close();
             return list;
@@ -218,7 +255,7 @@ namespace DAL
 
         public int InsertToolsInfo2ExcelTable(string filePath, object obj)
         {
-            string sql = "insert into 工具信息 (工具序列号,工具型号,工具类别,工具名称,标定扭矩下限,标定扭矩上限,精度,工段,工位,标定周期,工具状态,质保期至,保养合同类型,保养合同至,累计维修次数,备注信息)";
+            string sql = ExcelDeclare.InsertToolsInfoExcelSql;
             PropertyInfo[] propertys = obj.GetType().GetProperties();
             Console.WriteLine("len of obj is {0}", propertys.Length);
             int i = 0;
@@ -249,25 +286,33 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new ToolsInfo
+                try
                 {
-                    SerialNum = reader["工具序列号"].ToString(),
-                    Model = reader["工具型号"].ToString(),
-                    Category = reader["工具类别"].ToString(),
-                    Name = reader["工具名称"].ToString(),
-                    TorqueMin = double.Parse(reader["标定扭矩下限"].ToString()),
-                    TorqueMax = double.Parse(reader["标定扭矩上限"].ToString()),
-                    Accuracy = double.Parse(reader["精度"].ToString()),
-                    Section = reader["工段"].ToString(),
-                    DemarcateCycle = int.Parse(reader["标定周期"].ToString()),
-                    Workstation = reader["工位"].ToString(),
-                    Status = reader["工具状态"].ToString(),
-                    QualityAssureDate = reader["质保期至"].ToString(),
-                    MaintainContractStyle = reader["保养合同类型"].ToString(),
-                    MaintainContractDate = reader["保养合同至"].ToString(),
-                    RepairTimes = int.Parse(reader["累计维修次数"].ToString() == "" ? "0" : reader["累计维修次数"].ToString()),
-                    Remark = reader["备注信息"].ToString()
-                });
+                    list.Add(new ToolsInfo
+                    {
+                        SerialNum = reader["工具序列号"].ToString(),
+                        Model = reader["工具型号"].ToString(),
+                        Category = reader["工具类别"].ToString(),
+                        Name = reader["工具名称"].ToString(),
+                        TorqueMin = double.Parse(reader["标定扭矩下限"].ToString()),
+                        TorqueMax = double.Parse(reader["标定扭矩上限"].ToString()),
+                        Accuracy = double.Parse(reader["精度"].ToString()),
+                        Section = reader["工段"].ToString(),
+                        DemarcateCycle = int.Parse(reader["标定周期"].ToString()),
+                        Workstation = reader["工位"].ToString(),
+                        Status = reader["工具状态"].ToString(),
+                        QualityAssureDate = reader["质保期至"].ToString(),
+                        MaintainContractStyle = reader["保养合同类型"].ToString(),
+                        MaintainContractDate = reader["保养合同至"].ToString(),
+                        RepairTimes = int.Parse(reader["累计维修次数"].ToString() == "" ? "0" : reader["累计维修次数"].ToString()),
+                        Remark = reader["备注信息"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllToolsFromExcel failed, error message is: {ex.Message}");
+                }
+
             }
             if (reader != null) reader.Close();
             return list;

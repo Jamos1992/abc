@@ -3,6 +3,7 @@ using System.Data.SQLite;
 using Model;
 using System.Configuration;
 using Util;
+using System;
 
 namespace DAL
 {
@@ -24,13 +25,21 @@ namespace DAL
             }
             while (reader.Read())
             {
-                onCallRecord.CallTime = reader["CallTime"].ToString();
-                onCallRecord.ArriveTime = reader["ArriveTime"].ToString();
-                onCallRecord.ToolSection = reader["ToolSection"].ToString();
-                onCallRecord.ToolWorkstation = reader["ToolWorkstation"].ToString();
-                onCallRecord.FaultToolName = reader["FaultToolName"].ToString();
-                onCallRecord.FaultReason = reader["FaultReason"].ToString();
-                onCallRecord.Detail = reader["Detail"].ToString();
+                try
+                {
+                    onCallRecord.CallTime = Convert.ToDateTime(reader["CallTime"].ToString()).ToString("yyyy-MM-dd HH:mm");
+                    onCallRecord.ArriveTime = Convert.ToDateTime(reader["ArriveTime"].ToString()).ToString("yyyy-MM-dd HH:mm");
+                    onCallRecord.ToolSection = reader["ToolSection"].ToString();
+                    onCallRecord.ToolWorkstation = reader["ToolWorkstation"].ToString();
+                    onCallRecord.FaultToolName = reader["FaultToolName"].ToString();
+                    onCallRecord.FaultReason = reader["FaultReason"].ToString();
+                    onCallRecord.Detail = reader["Detail"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getOneOnCallRecord failed, error message is: {ex.Message}");
+                }
+
             }
             if (reader != null) reader.Close();
             return onCallRecord;
@@ -47,17 +56,23 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new OnCallRecord
+                try
                 {
-                    CallTime = reader["CallTime"].ToString(),
-                    ArriveTime = reader["ArriveTime"].ToString(),
-                    ToolSection = reader["ToolSection"].ToString(),
-                    ToolWorkstation = reader["ToolWorkstation"].ToString(),
-                    FaultToolName = reader["FaultToolName"].ToString(),
-                    FaultReason = reader["FaultReason"].ToString(),
-                    Detail = reader["Detail"].ToString()
-                });
-                
+                    list.Add(new OnCallRecord
+                    {
+                        CallTime = Convert.ToDateTime(reader["CallTime"].ToString()).ToString("yyyy-MM-dd HH:mm"),
+                        ArriveTime = Convert.ToDateTime(reader["ArriveTime"].ToString()).ToString("yyyy-MM-dd HH:mm"),
+                        ToolSection = reader["ToolSection"].ToString(),
+                        ToolWorkstation = reader["ToolWorkstation"].ToString(),
+                        FaultToolName = reader["FaultToolName"].ToString(),
+                        FaultReason = reader["FaultReason"].ToString(),
+                        Detail = reader["Detail"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllOnCallRecord failed, error message is: {ex.Message}");
+                }   
             }
             if (reader != null) reader.Close();
             return list;
@@ -74,17 +89,23 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new OnCallRecord
+                try
                 {
-                    CallTime = reader["CallTime"].ToString(),
-                    ArriveTime = reader["ArriveTime"].ToString(),
-                    ToolSection = reader["ToolSection"].ToString(),
-                    ToolWorkstation = reader["ToolWorkstation"].ToString(),
-                    FaultToolName = reader["FaultToolName"].ToString(),
-                    FaultReason = reader["FaultReason"].ToString(),
-                    Detail = reader["Detail"].ToString()
-                });
-
+                    list.Add(new OnCallRecord
+                    {
+                        CallTime = Convert.ToDateTime(reader["CallTime"].ToString()).ToString("yyyy-MM-dd HH:mm"),
+                        ArriveTime = Convert.ToDateTime(reader["ArriveTime"].ToString()).ToString("yyyy-MM-dd HH:mm"),
+                        ToolSection = reader["ToolSection"].ToString(),
+                        ToolWorkstation = reader["ToolWorkstation"].ToString(),
+                        FaultToolName = reader["FaultToolName"].ToString(),
+                        FaultReason = reader["FaultReason"].ToString(),
+                        Detail = reader["Detail"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getOnCallRecordBySql failed, error message is: {ex.Message}");
+                }
             }
             if (reader != null) reader.Close();
             return list;
@@ -103,7 +124,7 @@ namespace DAL
 
         public int InsertOnCallRecord2ExcelTable(string filePath, object obj)
         {
-            string sql = "insert into 巡线记录(客户呼叫时间,达到现场时间,工段,工位,故障工具,故障原因,备注)";
+            string sql = ExcelDeclare.InsertOnCallRecordExcelSql;
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }

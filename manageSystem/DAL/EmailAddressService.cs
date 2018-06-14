@@ -2,6 +2,7 @@
 using System.Data.SQLite;
 using System.Configuration;
 using Model;
+using System;
 
 namespace DAL
 {
@@ -21,11 +22,18 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new EmailAddress
+                try
                 {
-                    EmailAddr = reader["EmailAddr"].ToString(),
-                    ID = (int)reader["ID"]
-                });
+                    list.Add(new EmailAddress
+                    {
+                        ID = int.Parse(reader["ID"].ToString()),
+                        EmailAddr = reader["EmailAddr"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllEmailAddrFromDb failed, error message is: {ex.Message}");
+                }
             }
             if (reader != null) reader.Close();
             return list;
@@ -48,11 +56,18 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new EmailAddress
+                try
                 {
-                    ID = int.Parse(reader["ID"].ToString()),
-                    EmailAddr = reader["EmailAddr"].ToString()
-                });
+                    list.Add(new EmailAddress
+                    {
+                        ID = int.Parse(reader["ID"].ToString()),
+                        EmailAddr = reader["EmailAddr"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"GetEmailAddresses failed, error message is: {ex.Message}");
+                }
             }
             if (reader != null) reader.Close();
             return list;

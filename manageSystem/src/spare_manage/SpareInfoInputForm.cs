@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using DAL;
 using Model;
+using manageSystem.src.spare_manage;
 
 namespace manageSystem
 {
@@ -24,7 +25,7 @@ namespace manageSystem
             RepoSpareTool repoSpareTool = new RepoSpareTool();
             repoSpareTool.SpareToolModel = txtBox.Text;
             repoSpareTool.Num = (int)upDown.Value;
-            repoSpareTool.Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            repoSpareTool.AddTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             return repoSpareTool;
         }
 
@@ -86,6 +87,16 @@ namespace manageSystem
             }
             repoSpareTools = ktls.ToArray();
             insertValue2Db(repoSpareTools);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            RepoSpareListForm repoSpareListForm = new RepoSpareListForm();
+            repoSpareListForm.FormBorderStyle = FormBorderStyle.Sizable;
+            repoSpareListForm.MinimizeBox = false;
+            repoSpareListForm.MaximizeBox = false;
+            repoSpareListForm.Text = "备件消耗";
+            repoSpareListForm.ShowDialog();
         }
     }
 }

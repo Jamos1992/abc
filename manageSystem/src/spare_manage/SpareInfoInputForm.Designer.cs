@@ -373,6 +373,7 @@
             this.button5.TabIndex = 97;
             this.button5.Text = "备件消耗";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // SpareInfoInputForm
             // 

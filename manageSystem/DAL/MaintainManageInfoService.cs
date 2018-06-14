@@ -3,6 +3,7 @@ using System.Data.SQLite;
 using Model;
 using System.Configuration;
 using Util;
+using System;
 
 namespace DAL
 {
@@ -61,15 +62,22 @@ namespace DAL
             }
             while (reader.Read())
             {
-                maintainManage.ToolSerialName = reader["ToolSerialName"].ToString();
-                maintainManage.ToolModeName = reader["ToolModeName"].ToString();
-                maintainManage.SendFixTime = reader["SendFixTime"].ToString();
-                maintainManage.SuspendTime = reader["SuspendTime"].ToString();
-                maintainManage.FinishFixTime = reader["FinishFixTime"].ToString();
-                maintainManage.Status = reader["Status"].ToString();
-                maintainManage.Detail = reader["Detail"].ToString();
-                maintainManage.UsedRepoSpareToolInfo = commonService.ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString());
-                maintainManage.UsedOtherSpareToolInfo = commonService.ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString());
+                try
+                {
+                    maintainManage.ToolSerialName = reader["ToolSerialName"].ToString();
+                    maintainManage.ToolModeName = reader["ToolModeName"].ToString();
+                    maintainManage.SendFixTime = reader["SendFixTime"].ToString();
+                    maintainManage.SuspendTime = reader["SuspendTime"].ToString();
+                    maintainManage.FinishFixTime = reader["FinishFixTime"].ToString();
+                    maintainManage.Status = reader["Status"].ToString();
+                    maintainManage.Detail = reader["Detail"].ToString();
+                    maintainManage.UsedRepoSpareToolInfo = commonService.ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString());
+                    maintainManage.UsedOtherSpareToolInfo = commonService.ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getOneBreakToolFromDb failed, error message is: {ex.Message}");
+                }                
             }
             if (reader != null) reader.Close();
             return maintainManage;
@@ -86,18 +94,25 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new OutputStruct
+                try
                 {
-                    ToolSerialName = reader["ToolSerialName"].ToString(),
-                    ToolModeName = reader["ToolModeName"].ToString(),
-                    SendFixTime = reader["SendFixTime"].ToString(),
-                    //SuspendTime = reader["SuspendTime"].ToString(),
-                    //FinishFixTime = reader["FinishFixTime"].ToString(),
-                    Status = reader["Status"].ToString(),
-                    Detail = reader["Detail"].ToString(),
-                    //UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
-                    //UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
-                });
+                    list.Add(new OutputStruct
+                    {
+                        ToolSerialName = reader["ToolSerialName"].ToString(),
+                        ToolModeName = reader["ToolModeName"].ToString(),
+                        SendFixTime = reader["SendFixTime"].ToString(),
+                        //SuspendTime = reader["SuspendTime"].ToString(),
+                        //FinishFixTime = reader["FinishFixTime"].ToString(),
+                        Status = reader["Status"].ToString(),
+                        Detail = reader["Detail"].ToString(),
+                        //UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
+                        //UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllBreakTools failed, error message is: {ex.Message}");
+                }                
             }
             if (reader != null) reader.Close();
             return list;
@@ -114,19 +129,25 @@ namespace DAL
             }
             while (reader.Read())
             {
-                list.Add(new OutputStruct
+                try
                 {
-                    ToolSerialName = reader["ToolSerialName"].ToString(),
-                    ToolModeName = reader["ToolModeName"].ToString(),
-                    SendFixTime = reader["SendFixTime"].ToString(),
-                    //SuspendTime = reader["SuspendTime"].ToString(),
-                    //FinishFixTime = reader["FinishFixTime"].ToString(),
-                    Status = reader["Status"].ToString(),
-                    Detail = reader["Detail"].ToString(),
-                    //UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
-                    //UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
-                });
-
+                    list.Add(new OutputStruct
+                    {
+                        ToolSerialName = reader["ToolSerialName"].ToString(),
+                        ToolModeName = reader["ToolModeName"].ToString(),
+                        SendFixTime = reader["SendFixTime"].ToString(),
+                        //SuspendTime = reader["SuspendTime"].ToString(),
+                        //FinishFixTime = reader["FinishFixTime"].ToString(),
+                        Status = reader["Status"].ToString(),
+                        Detail = reader["Detail"].ToString(),
+                        //UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
+                        //UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getBreakToolsBySql failed, error message is: {ex.Message}");
+                }
             }
             if (reader != null) reader.Close();
             return list;
@@ -140,12 +161,12 @@ namespace DAL
         //excel operation
         public int CreateMaintainManageInfoExcelTable(string filePath)
         {
-            return EXCELHelper.CreateExcelTable(filePath, ExcelDeclare.CreatMaintainManageInfoExcelSql);
+            return EXCELHelper.CreateExcelTable(filePath, ExcelDeclare.CreateMaintainManageInfoExcelSql);
         }
 
         public int InsertMaintainManageInfo2ExcelTable(string filePath, object obj)
         {
-            string sql = "insert into 工具维修信息(工具型号,工具序列号,送修时间,工具维修状态,送修描述)";
+            string sql = ExcelDeclare.InsertMaintainManageInfoExcelSql; 
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }

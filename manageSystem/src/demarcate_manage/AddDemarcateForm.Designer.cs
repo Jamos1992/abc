@@ -234,9 +234,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(353, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 4;
-            this.label3.Text = "标定日期";
+            this.label3.Text = "*标定日期";
             // 
             // cbCycle
             // 
@@ -253,9 +253,9 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(197, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(59, 12);
             this.label2.TabIndex = 2;
-            this.label2.Text = "标定周期";
+            this.label2.Text = "*标定周期";
             // 
             // cbSerialNum
             // 
@@ -270,11 +270,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(9, 25);
+            this.label1.Location = new System.Drawing.Point(7, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "工具序列号";
+            this.label1.Text = "*工具序列号";
             // 
             // contextMenuStrip1
             // 

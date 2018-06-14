@@ -41,7 +41,7 @@ namespace manageSystem.src.demarcate_manage
                 SerialNum = cbSerialNum.Text.Trim(),
                 Cycle = Convert.ToInt32(cbCycle.Text.Trim()),
                 LastTime = dtDemarcateDate.Text.Trim(),
-                NextTime = Convert.ToDateTime(dtDemarcateDate.Text.Trim()).AddDays(Convert.ToInt32(cbCycle.Text.Trim())).ToString("yyyy-MM-dd HH:mm:ss"),
+                NextTime = Convert.ToDateTime(dtDemarcateDate.Text.Trim()).AddDays(Convert.ToInt32(cbCycle.Text.Trim())).ToString("yyyy-MM-dd"),
                 Status = "未标定"
             };
         }

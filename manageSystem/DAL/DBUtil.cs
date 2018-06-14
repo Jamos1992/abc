@@ -38,7 +38,7 @@ namespace DAL
 
         private void CreateRepoSpareToolDb()
         {
-            string[] repoSpareToolName = new string[] { "SpareToolModel", "Num", "Time" };
+            string[] repoSpareToolName = new string[] { "SpareToolModel", "Num", "AddTime" };
             string[] repoSpareToolType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER", "DATETIME" };
             SQLHelper.CreateTable("RepoSpareTool", repoSpareToolName, repoSpareToolType);
         }
@@ -50,6 +50,7 @@ namespace DAL
             SQLHelper.CreateTable("OnCallRecord", onCallRecordName, onCallRecordType);
         }
 
+        //维修信息的数据表，包含历史数据
         private void CreateMaintainManageInfo()
         {
             string[] MaintainManageInfoName = new string[] { "ToolSerialName", "ToolModeName", "SendFixTime", "SuspendTime", "FinishFixTime", "Detail", "Status", "UsedRepoSpareToolInfo", "UsedOtherSpareToolInfo","State" };
@@ -57,11 +58,20 @@ namespace DAL
             SQLHelper.CreateTable("MaintainManageInfo", MaintainManageInfoName, MaintainManageInfoType);
         }
 
+        //标定记录登记的数据表，暂不含历史记录
         private void CreateDemarcateTools()
         {
             string[] DemarcateToolsName = new string[] { "SerialNum", "Cycle", "LastTime", "NextTime", "Status"};
             string[] DemarcateToolsType = new string[] { "VARCHAR(255)", "Integer", "DATETIME", "DATETIME", "VARCHAR(255)" };
             SQLHelper.CreateTable("DemarcateTools", DemarcateToolsName, DemarcateToolsType);
+        }
+
+        //标定完成的历史记录信息数据表，应该包含标定的登记信息（除状态和上次标定时间）以及标定序列号、标定时间、有效期、检查员
+        private void CreateDemarcateHistory()
+        {
+            string[] DemarcateHistoryName = new string[] { "DemarcateNum", "SerialNum", "Cycle", "LastTime", "DemarcateTime", "NextTime", "CheckMan" };
+            string[] DemarcateHistoryType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "Integer", "DATETIME", "DATETIME", "DATETIME", "VARCHAR(255)" };
+            SQLHelper.CreateTable("DemarcateHistory", DemarcateHistoryName, DemarcateHistoryType);
         }
     }
 }

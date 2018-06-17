@@ -30,23 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDemarcateForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDemarcateForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.CheckCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SerialNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModelCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NextTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.dtDemarcateDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.cbCycle = new System.Windows.Forms.ComboBox();
@@ -55,6 +48,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.CheckCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SerialNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CycleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NextTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -98,10 +97,9 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckCol,
             this.SerialNumCol,
-            this.ModelCol,
-            this.CategoryCol,
+            this.CycleCol,
+            this.LastTimeCol,
             this.NextTimeCol,
-            this.NameCol,
             this.ActionCol});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
@@ -120,77 +118,12 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(800, 353);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // CheckCol
-            // 
-            this.CheckCol.FalseValue = "0";
-            this.CheckCol.HeaderText = "全选";
-            this.CheckCol.Name = "CheckCol";
-            this.CheckCol.TrueValue = "1";
-            this.CheckCol.Width = 40;
-            // 
-            // SerialNumCol
-            // 
-            this.SerialNumCol.DataPropertyName = "SerialNum";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SerialNumCol.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SerialNumCol.HeaderText = "工具序列号";
-            this.SerialNumCol.Name = "SerialNumCol";
-            this.SerialNumCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SerialNumCol.Width = 120;
-            // 
-            // ModelCol
-            // 
-            this.ModelCol.DataPropertyName = "Cycle";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ModelCol.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ModelCol.HeaderText = "标定周期";
-            this.ModelCol.Name = "ModelCol";
-            this.ModelCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ModelCol.Width = 80;
-            // 
-            // CategoryCol
-            // 
-            this.CategoryCol.DataPropertyName = "LastTime";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CategoryCol.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CategoryCol.HeaderText = "起始/上次标定时间";
-            this.CategoryCol.Name = "CategoryCol";
-            this.CategoryCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CategoryCol.Width = 130;
-            // 
-            // NextTimeCol
-            // 
-            this.NextTimeCol.DataPropertyName = "NextTime";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NextTimeCol.DefaultCellStyle = dataGridViewCellStyle5;
-            this.NextTimeCol.HeaderText = "下次标定时间";
-            this.NextTimeCol.Name = "NextTimeCol";
-            this.NextTimeCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NextTimeCol.Width = 120;
-            // 
-            // NameCol
-            // 
-            this.NameCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameCol.DataPropertyName = "Status";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NameCol.DefaultCellStyle = dataGridViewCellStyle6;
-            this.NameCol.HeaderText = "标定状态";
-            this.NameCol.Name = "NameCol";
-            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ActionCol
-            // 
-            this.ActionCol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ActionCol.HeaderText = "操作";
-            this.ActionCol.Name = "ActionCol";
-            this.ActionCol.Text = "修改";
-            this.ActionCol.UseColumnTextForButtonValue = true;
-            this.ActionCol.Width = 80;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnDel);
+            this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.dtDemarcateDate);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cbCycle);
@@ -206,18 +139,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "标定登记信息";
             // 
-            // button1
+            // btnDel
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(710, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "   添加";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDel.Location = new System.Drawing.Point(720, 20);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(66, 23);
+            this.btnDel.TabIndex = 7;
+            this.btnDel.Text = "   删除";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(633, 20);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(66, 23);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "   添加";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dtDemarcateDate
             // 
@@ -290,6 +236,63 @@
             this.toolStripMenuItem2.Text = "进入标定";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
+            // CheckCol
+            // 
+            this.CheckCol.FalseValue = "0";
+            this.CheckCol.HeaderText = "全选";
+            this.CheckCol.Name = "CheckCol";
+            this.CheckCol.TrueValue = "1";
+            this.CheckCol.Width = 40;
+            // 
+            // SerialNumCol
+            // 
+            this.SerialNumCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SerialNumCol.DataPropertyName = "SerialNum";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SerialNumCol.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SerialNumCol.HeaderText = "工具序列号";
+            this.SerialNumCol.Name = "SerialNumCol";
+            this.SerialNumCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CycleCol
+            // 
+            this.CycleCol.DataPropertyName = "Cycle";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CycleCol.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CycleCol.HeaderText = "标定周期（天）";
+            this.CycleCol.Name = "CycleCol";
+            this.CycleCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CycleCol.Width = 120;
+            // 
+            // LastTimeCol
+            // 
+            this.LastTimeCol.DataPropertyName = "LastTime";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.LastTimeCol.DefaultCellStyle = dataGridViewCellStyle4;
+            this.LastTimeCol.HeaderText = "起始/上次标定时间";
+            this.LastTimeCol.Name = "LastTimeCol";
+            this.LastTimeCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.LastTimeCol.Width = 200;
+            // 
+            // NextTimeCol
+            // 
+            this.NextTimeCol.DataPropertyName = "NextTime";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NextTimeCol.DefaultCellStyle = dataGridViewCellStyle5;
+            this.NextTimeCol.HeaderText = "下次标定时间";
+            this.NextTimeCol.Name = "NextTimeCol";
+            this.NextTimeCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NextTimeCol.Width = 200;
+            // 
+            // ActionCol
+            // 
+            this.ActionCol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ActionCol.HeaderText = "操作";
+            this.ActionCol.Name = "ActionCol";
+            this.ActionCol.Text = "修改";
+            this.ActionCol.UseColumnTextForButtonValue = true;
+            this.ActionCol.Width = 80;
+            // 
             // AddDemarcateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -318,16 +321,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbSerialNum;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn SerialNumCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ModelCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CycleCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastTimeCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn NextTimeCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
         private System.Windows.Forms.DataGridViewButtonColumn ActionCol;
     }
 }

@@ -60,3 +60,7 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.Demarc
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.MaintainRegisterForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.ModifyForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.SingleHistoryForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.ModifyDemarcateToolForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateDataUploadForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperatorForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateHintForm.resources

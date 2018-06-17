@@ -113,6 +113,7 @@
             treeNode3});
             this.treeviewInput.Size = new System.Drawing.Size(217, 486);
             this.treeviewInput.TabIndex = 0;
+            this.treeviewInput.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeviewInput_BeforeSelect);
             this.treeviewInput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeviewInput_AfterSelect);
             // 
             // tableLayoutPanel1

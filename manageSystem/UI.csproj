@@ -109,6 +109,18 @@
     <Compile Include="src\demarcate_manage\ComSettingForm.Designer.cs">
       <DependentUpon>ComSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateDataUploadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateDataUploadForm.Designer.cs">
+      <DependentUpon>DemarcateDataUploadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateHintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateHintForm.Designer.cs">
+      <DependentUpon>DemarcateHintForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\demarcate_manage\DemarcateHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +138,18 @@
     </Compile>
     <Compile Include="src\demarcate_manage\DemarcateOperationForm.Designer.cs">
       <DependentUpon>DemarcateOperationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateOperatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\DemarcateOperatorForm.Designer.cs">
+      <DependentUpon>DemarcateOperatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\demarcate_manage\ModifyDemarcateToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\demarcate_manage\ModifyDemarcateToolForm.Designer.cs">
+      <DependentUpon>ModifyDemarcateToolForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\demarcate_manage\QRCodePrintForm.cs">
       <SubType>Form</SubType>
@@ -279,6 +303,12 @@
     <EmbeddedResource Include="src\demarcate_manage\ComSettingForm.resx">
       <DependentUpon>ComSettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\DemarcateDataUploadForm.resx">
+      <DependentUpon>DemarcateDataUploadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\DemarcateHintForm.resx">
+      <DependentUpon>DemarcateHintForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\demarcate_manage\DemarcateHistoryForm.resx">
       <DependentUpon>DemarcateHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +317,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\demarcate_manage\DemarcateOperationForm.resx">
       <DependentUpon>DemarcateOperationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\DemarcateOperatorForm.resx">
+      <DependentUpon>DemarcateOperatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\demarcate_manage\ModifyDemarcateToolForm.resx">
+      <DependentUpon>ModifyDemarcateToolForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\demarcate_manage\QRCodePrintForm.resx">
       <DependentUpon>QRCodePrintForm.cs</DependentUpon>

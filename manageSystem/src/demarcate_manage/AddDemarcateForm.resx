@@ -123,23 +123,36 @@
   <metadata name="SerialNumCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="ModelCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="CycleCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="CategoryCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="LastTimeCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="NextTimeCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="NameCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="ActionCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACU0lEQVQ4T4VTX0hTURw+GQ0U
+        KiijQvEtIokQlKDnCoKeCqqHXuohIvIlqIeW9tJz9VBqbevFmqO1u3uvS9nUxNZ0ZQ4MFqm12XY33ebu
+        ZttcbWN9nXO6WrlVH3z8/n/nd+AcIjscaUGSYLPb8ewPCtwKogi7JCVIFQAghDX8D/F4nB3Qp82tgZYI
+        YSczzH8OQQmHEYkoiCgKQqEQzz82m7mNLS7CJooWbZaDpglhazJEowvolibwsP81pRdd9nGef2LpQ7FU
+        4j7bhF7Hps1rAoKgFWNIq0vILKucKvUZJn0+KmJBr7YJ3YJO/QQNfwmoySR6ZC8Mz9/AMPAW3YM+nl8P
+        a7+jukA6nUYum8G3fA5fiwUUvcNQ9tZDPXYAyelJLGXzvM8yNFJdIEuH2QbGwSkYnT4YJA+m6zYhdasD
+        H08dwXI2y/ueOl2INRC1QiC/soISPfk7C3pv08uPoKi/CD/tS5w7DVV/iffNtTXCW19jrRAoFgroGZiC
+        SR6HyTYGo+cT9T145J7BxI7tWDhxGImDjfC37WFXaKoQKJfLQCoG3L0G3LsO3NcDXTd4rRCcxQfaH9hM
+        4Om8ygQ4aIkKaO+A4YFJhEF4BePoexhfzsAouOHq6ETuylkEG2oRaN2PuZ06KE263WsC7B/8FU4r8voL
+        iBxqRvTkcZ5y3dQjuJXwLWhIiCjLGfYf2JNmFERqJZnbL0f3IdF+Hu9qCOxDwxBejMI85p69s4FcDuzS
+        pbgARQtlazWGtxH46zainZAzv+WbKbdQtqwK/AurQ7U8WgcA5AecqIJsHcPH2QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACE0lEQVQ4T51TS2sTURQ+uyYu

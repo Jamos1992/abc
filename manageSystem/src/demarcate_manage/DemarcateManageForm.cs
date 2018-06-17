@@ -56,7 +56,7 @@ namespace manageSystem.src.demarcate_manage
                     addForm2Panel(new AddDemarcateForm(), tableLayoutPanel1, ref e, singleInputHint);
                     break;
                 case "进入标定":
-                    addForm2Panel(new DemarcateOperationForm(), tableLayoutPanel1, ref e, demarcateHint);
+                    addForm2Panel(new DemarcateOperatorForm(), tableLayoutPanel1, ref e, demarcateHint);
                     break;
                 case "标定报告管理":
                     addForm2Panel(new DemarcateHistoryForm(), tableLayoutPanel1, ref e, resultHint);
@@ -83,6 +83,12 @@ namespace manageSystem.src.demarcate_manage
             form.Show();
             label2.Text = e.Node.Text;
             richTextBox1.Text = hint;
+        }
+
+        private void treeviewInput_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            if (e.Action == TreeViewAction.Unknown)
+                e.Cancel = true;
         }
     }
 }

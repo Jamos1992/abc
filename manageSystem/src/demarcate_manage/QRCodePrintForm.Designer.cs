@@ -49,9 +49,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDemarNum = new System.Windows.Forms.TextBox();
             this.picQRcode = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQRcode)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // printDialog1
@@ -82,7 +86,7 @@
             // 
             this.btnSetPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSetPrint.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSetPrint.Location = new System.Drawing.Point(67, 261);
+            this.btnSetPrint.Location = new System.Drawing.Point(53, 5);
             this.btnSetPrint.Name = "btnSetPrint";
             this.btnSetPrint.Size = new System.Drawing.Size(75, 23);
             this.btnSetPrint.TabIndex = 0;
@@ -94,7 +98,7 @@
             // 
             this.btnPrePrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrePrint.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPrePrint.Location = new System.Drawing.Point(177, 261);
+            this.btnPrePrint.Location = new System.Drawing.Point(168, 5);
             this.btnPrePrint.Name = "btnPrePrint";
             this.btnPrePrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrePrint.TabIndex = 1;
@@ -106,7 +110,7 @@
             // 
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrint.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPrint.Location = new System.Drawing.Point(283, 261);
+            this.btnPrint.Location = new System.Drawing.Point(283, 5);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 2;
@@ -174,17 +178,18 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox1.Location = new System.Drawing.Point(12, 13);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(400, 240);
+            this.groupBox1.Size = new System.Drawing.Size(418, 247);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "标签信息";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.txtCheckman);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label1);
@@ -200,7 +205,7 @@
             this.panel1.ForeColor = System.Drawing.SystemColors.Control;
             this.panel1.Location = new System.Drawing.Point(3, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(394, 220);
+            this.panel1.Size = new System.Drawing.Size(412, 227);
             this.panel1.TabIndex = 11;
             // 
             // txtCheckman
@@ -251,23 +256,44 @@
             this.picQRcode.TabIndex = 3;
             this.picQRcode.TabStop = false;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(418, 247);
+            this.panel2.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnSetPrint);
+            this.panel3.Controls.Add(this.btnPrePrint);
+            this.panel3.Controls.Add(this.btnPrint);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 247);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(418, 35);
+            this.panel3.TabIndex = 13;
+            // 
             // QRCodePrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 293);
-            this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.btnPrePrint);
-            this.Controls.Add(this.btnSetPrint);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(418, 282);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.Name = "QRCodePrintForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "标签打印";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.QRCodePrintForm_Load);
+            this.Resize += new System.EventHandler(this.QRCodePrintForm_Resize);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQRcode)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -294,5 +320,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDemarNum;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

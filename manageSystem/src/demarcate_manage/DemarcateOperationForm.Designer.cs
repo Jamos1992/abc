@@ -30,29 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemarcateOperationForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemarcateOperationForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.txtSerialNum = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnPrintTag = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnScanInput = new System.Windows.Forms.Button();
-            this.btnListenCom = new System.Windows.Forms.Button();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.CheckCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.OrderCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +50,16 @@
             this.TorqueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AngleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrintTag = new System.Windows.Forms.Button();
+            this.btnScanInput = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.btnListenCom = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -111,31 +111,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "工具序列号：";
             // 
-            // btnPrintTag
-            // 
-            this.btnPrintTag.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPrintTag.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintTag.Image")));
-            this.btnPrintTag.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintTag.Location = new System.Drawing.Point(709, 70);
-            this.btnPrintTag.Name = "btnPrintTag";
-            this.btnPrintTag.Size = new System.Drawing.Size(84, 23);
-            this.btnPrintTag.TabIndex = 5;
-            this.btnPrintTag.Text = "   打印标签";
-            this.btnPrintTag.UseVisualStyleBackColor = true;
-            this.btnPrintTag.Click += new System.EventHandler(this.btnPrintTag_Click);
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(581, 71);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "  计算标定结果";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label2);
@@ -148,16 +123,6 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "开始标定(第二步)";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(155, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(233, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "（标定仪器上传的数据显示在下方表格中）";
             // 
             // toolStrip1
             // 
@@ -215,77 +180,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(800, 284);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(806, 397);
-            this.tableLayoutPanel1.TabIndex = 10;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnPrintTag);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 101);
-            this.panel1.TabIndex = 0;
-            // 
-            // btnScanInput
-            // 
-            this.btnScanInput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnScanInput.Image = ((System.Drawing.Image)(resources.GetObject("btnScanInput.Image")));
-            this.btnScanInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnScanInput.Location = new System.Drawing.Point(226, 23);
-            this.btnScanInput.Name = "btnScanInput";
-            this.btnScanInput.Size = new System.Drawing.Size(84, 23);
-            this.btnScanInput.TabIndex = 2;
-            this.btnScanInput.Text = "   扫码输入";
-            this.btnScanInput.UseVisualStyleBackColor = true;
-            this.btnScanInput.Click += new System.EventHandler(this.btnScanInput_Click);
-            // 
-            // btnListenCom
-            // 
-            this.btnListenCom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListenCom.Image = ((System.Drawing.Image)(resources.GetObject("btnListenCom.Image")));
-            this.btnListenCom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListenCom.Location = new System.Drawing.Point(15, 23);
-            this.btnListenCom.Name = "btnListenCom";
-            this.btnListenCom.Size = new System.Drawing.Size(138, 23);
-            this.btnListenCom.TabIndex = 2;
-            this.btnListenCom.Text = "   监听标定仪器数据";
-            this.btnListenCom.UseVisualStyleBackColor = true;
-            this.btnListenCom.Click += new System.EventHandler(this.btnListenCom_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(100, 22);
-            this.toolStripButton1.Text = "串口参数设置";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(76, 22);
-            this.toolStripButton2.Text = "重新标定";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // CheckCol
             // 
@@ -354,6 +248,112 @@
             this.ActionCol.UseColumnTextForButtonValue = true;
             this.ActionCol.Width = 80;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(806, 397);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnPrintTag);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(800, 101);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnPrintTag
+            // 
+            this.btnPrintTag.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrintTag.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintTag.Image")));
+            this.btnPrintTag.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintTag.Location = new System.Drawing.Point(709, 70);
+            this.btnPrintTag.Name = "btnPrintTag";
+            this.btnPrintTag.Size = new System.Drawing.Size(84, 23);
+            this.btnPrintTag.TabIndex = 5;
+            this.btnPrintTag.Text = "   打印标签";
+            this.btnPrintTag.UseVisualStyleBackColor = true;
+            this.btnPrintTag.Click += new System.EventHandler(this.btnPrintTag_Click);
+            // 
+            // btnScanInput
+            // 
+            this.btnScanInput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnScanInput.Image = ((System.Drawing.Image)(resources.GetObject("btnScanInput.Image")));
+            this.btnScanInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnScanInput.Location = new System.Drawing.Point(226, 23);
+            this.btnScanInput.Name = "btnScanInput";
+            this.btnScanInput.Size = new System.Drawing.Size(84, 23);
+            this.btnScanInput.TabIndex = 2;
+            this.btnScanInput.Text = "   扫码输入";
+            this.btnScanInput.UseVisualStyleBackColor = true;
+            this.btnScanInput.Click += new System.EventHandler(this.btnScanInput_Click);
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(581, 71);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(109, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "  计算标定结果";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(100, 22);
+            this.toolStripButton1.Text = "串口参数设置";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButton2.Text = "重新标定";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // btnListenCom
+            // 
+            this.btnListenCom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnListenCom.Image = ((System.Drawing.Image)(resources.GetObject("btnListenCom.Image")));
+            this.btnListenCom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListenCom.Location = new System.Drawing.Point(15, 23);
+            this.btnListenCom.Name = "btnListenCom";
+            this.btnListenCom.Size = new System.Drawing.Size(138, 23);
+            this.btnListenCom.TabIndex = 2;
+            this.btnListenCom.Text = "   监听标定仪器数据";
+            this.btnListenCom.UseVisualStyleBackColor = true;
+            this.btnListenCom.Click += new System.EventHandler(this.btnListenCom_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.Location = new System.Drawing.Point(155, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(233, 12);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "（标定仪器上传的数据显示在下方表格中）";
+            // 
             // DemarcateOperationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -387,8 +387,6 @@
         private System.Windows.Forms.Button btnPrintTag;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnListenCom;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -403,5 +401,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TorqueCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn AngleCol;
         private System.Windows.Forms.DataGridViewButtonColumn ActionCol;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnListenCom;
     }
 }

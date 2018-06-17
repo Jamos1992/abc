@@ -14,7 +14,7 @@ namespace manageSystem.src.demarcate_manage
 {
     public partial class QRCodePrintForm : Form
     {
-        private DemarcateRecords demarcateRecords = new DemarcateRecords();
+        public DemarcateRecords demarcateRecords = new DemarcateRecords();
         private DemarcateRecordService demarcateRecordService = new DemarcateRecordService();
         public QRCodePrintForm()
         {
@@ -97,6 +97,16 @@ namespace manageSystem.src.demarcate_manage
             //e.Graphics.DrawString("下次标定日期：", new Font(new FontFamily("黑体"), 8), Brushes.Black, 9, 85);
         }
 
-
+        private void QRCodePrintForm_Resize(object sender, EventArgs e)
+        {
+            foreach (Control c in panel1.Controls)
+            {
+                c.Location = new Point(c.Location.X + 70, c.Location.Y + 5);
+            }
+            foreach(Control c in panel3.Controls)
+            {
+                c.Location = new Point(c.Location.X + 70, c.Location.Y);
+            }
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace DAL
             CreateOnCallRecord();
             CreateMaintainManageInfo();
             CreateDemarcateTools();
+            CreateDemarcateHistory();
         }
 
         private void CreateToolsInfoDb()

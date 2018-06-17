@@ -57,5 +57,25 @@ namespace BLL
         {
             return demarcateRecordService.GetOneDemarcateTool(serialNum);
         }
+
+        public int DeleteOneDemarcateTools(DemarcateTools demarcateTools)
+        {
+            return demarcateRecordService.DeleteOneDemarcateTools(demarcateTools);
+        }
+
+        public int UpdateOneDemarcateTool(DemarcateTools demarcateTools)
+        {
+            return demarcateRecordService.UpdateOneDemarcateTools(demarcateTools);
+        }
+
+        public int UpdateOneDemarcateToolBySql(string sql)
+        {
+            return demarcateRecordService.UpdateOneDemarcateToolBySql(sql);
+        }
+
+        public int AddDemarcateHistory(DemarcateHistory demarcateHistory)
+        {
+            return demarcateRecordService.InsertDemarcateHistory(demarcateHistory);
+        }
     }
 }

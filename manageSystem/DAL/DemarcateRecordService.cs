@@ -159,6 +159,26 @@ namespace DAL
             return demarcateTools;
         }
 
+        public int DeleteOneDemarcateTools(DemarcateTools demarcateTools)
+        {
+            return SQLHelper.DeleteValuesAND("DemarcateTools", new string[] { "SerialNum" }, new string[] { demarcateTools.SerialNum }, new string[] { "=" });
+        }
+
+        public int UpdateOneDemarcateTools(DemarcateTools demarcateTools)
+        {
+            return SQLHelper.UpdateValuesByStruct("DemarcateTools", demarcateTools, new string[] { "SerialNum" }, new string[] { demarcateTools.SerialNum });
+        }
+
+        public int UpdateOneDemarcateToolBySql(string sql)
+        {
+            return SQLHelper.UpdateTableBySql(sql);
+        }
+
+        public int InsertDemarcateHistory(DemarcateHistory demarcateHistory)
+        {
+            return SQLHelper.InsertValuesByStruct("DemarcateHistory", demarcateHistory);
+        }
+
         //public string ExportSingleData2Excel(string filePath, RepoSpareTool repoSpareTool)
         //{
         //    int affected = repoSpareToolService.CreatRepoSpareToolExcelTable(filePath);

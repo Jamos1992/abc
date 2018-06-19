@@ -54,6 +54,7 @@
             this.LastTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NextTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.StatusCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -100,7 +101,8 @@
             this.CycleCol,
             this.LastTimeCol,
             this.NextTimeCol,
-            this.ActionCol});
+            this.ActionCol,
+            this.StatusCol});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
             this.dataGridView1.Location = new System.Drawing.Point(3, 66);
@@ -293,6 +295,13 @@
             this.ActionCol.UseColumnTextForButtonValue = true;
             this.ActionCol.Width = 80;
             // 
+            // StatusCol
+            // 
+            this.StatusCol.DataPropertyName = "Status";
+            this.StatusCol.HeaderText = "状态";
+            this.StatusCol.Name = "StatusCol";
+            this.StatusCol.Visible = false;
+            // 
             // AddDemarcateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -332,5 +341,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LastTimeCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn NextTimeCol;
         private System.Windows.Forms.DataGridViewButtonColumn ActionCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusCol;
     }
 }

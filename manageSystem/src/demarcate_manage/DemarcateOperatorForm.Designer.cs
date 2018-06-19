@@ -34,6 +34,8 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtCheckMan = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnScanInput = new System.Windows.Forms.Button();
             this.txtSerialNum = new System.Windows.Forms.TextBox();
@@ -43,8 +45,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnLastStep = new System.Windows.Forms.Button();
             this.btnNextStep = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtCheckMan = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -113,6 +113,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 284);
             this.panel2.TabIndex = 1;
+            // 
+            // txtCheckMan
+            // 
+            this.txtCheckMan.Location = new System.Drawing.Point(298, 70);
+            this.txtCheckMan.Name = "txtCheckMan";
+            this.txtCheckMan.Size = new System.Drawing.Size(125, 21);
+            this.txtCheckMan.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(222, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "标定检查员：";
             // 
             // label1
             // 
@@ -206,22 +222,6 @@
             this.btnNextStep.Text = "下一步";
             this.btnNextStep.Click += new System.EventHandler(this.btnNextStep_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(222, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "标定检查员：";
-            // 
-            // txtCheckMan
-            // 
-            this.txtCheckMan.Location = new System.Drawing.Point(298, 70);
-            this.txtCheckMan.Name = "txtCheckMan";
-            this.txtCheckMan.Size = new System.Drawing.Size(125, 21);
-            this.txtCheckMan.TabIndex = 5;
-            // 
             // DemarcateOperatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -232,6 +232,7 @@
             this.Controls.Add(this.panel3);
             this.Name = "DemarcateOperatorForm";
             this.Text = "DemarcateOperatorForm";
+            this.Load += new System.EventHandler(this.DemarcateOperatorForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DemarcateOperatorForm_Paint);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

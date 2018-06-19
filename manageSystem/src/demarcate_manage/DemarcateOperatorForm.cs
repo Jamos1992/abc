@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 using BLL;
 using Model;
+using Util;
 
 namespace manageSystem.src.demarcate_manage
 {
@@ -20,8 +21,10 @@ namespace manageSystem.src.demarcate_manage
 
         private DemarcateDataUploadForm demarcateDataUploadForm = new DemarcateDataUploadForm();
         private QRCodePrintForm qRCodePrintForm = new QRCodePrintForm();
+        private MaintainInfoManage maintainInfoManage = new MaintainInfoManage();
 
         private Graphics g;
+        public string serialNum;
         public DemarcateOperatorForm()
         {
             InitializeComponent();
@@ -92,7 +95,7 @@ namespace manageSystem.src.demarcate_manage
             DemarcateTools demarcateTools = demarcateRecordManage.getOneDemarcateToolBySerialNum(txtSerialNum.Text.Trim());
             if (pageNum == 2)
             {
-                if (demarcateTools.NextTime != DateTime.Now.ToString("yyyy-MM-dd"))
+                if (Convert.ToDateTime(demarcateTools.NextTime) > DateTime.Now)
                 {
                     pageNum--;
                     MessageBox.Show($"该工具的预计标定日期为{demarcateTools.NextTime}，请先标定其它工具!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -135,7 +138,25 @@ namespace manageSystem.src.demarcate_manage
                 {
                     pageNum--;
                     demarcateDataUploadForm.setResultLabel("标定结果：不合格");
-                    MessageBox.Show("标定结果不合格，无法进入下一步！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if(MessageBox.Show("标定结果不合格，是否重新标定？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK)
+                    {
+                        demarcateDataUploadForm.reDemarcateActon();
+                    }
+                    else
+                    {
+                        MaintainManageInfo maintainManageInfo = new MaintainManageInfo
+                        {
+                            ToolSerialName = txtSerialNum.Text.Trim(),
+                            ToolModeName = toolsInfoManage.QueryOneToolsInfo(txtSerialNum.Text.Trim()).Model,
+                            SendFixTime = DateTime.Now.ToString("d"),
+                            Detail = DemarcateStatusDeclare.OffGrade
+                        };
+                        string msg = maintainInfoManage.RegisterBreakTool(maintainManageInfo);
+                        if (!msg.Contains("成功"))
+                        {
+                            MessageBox.Show("移至待修出错！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     return;
                 }
                 btnNextStep.Text = "完成";
@@ -303,6 +324,11 @@ namespace manageSystem.src.demarcate_manage
             demarcateDataUploadForm = new DemarcateDataUploadForm();
             qRCodePrintForm = new QRCodePrintForm();
             demarcateDataUploadForm.setOperatorFormBtnDelegate += new setFormBtnDelegate(setFormComBtn);
+        }
+
+        private void DemarcateOperatorForm_Load(object sender, EventArgs e)
+        {
+            txtSerialNum.Text = serialNum;
         }
     }
 }

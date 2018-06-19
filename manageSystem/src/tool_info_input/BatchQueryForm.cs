@@ -127,7 +127,7 @@ namespace manageSystem
             {
                 //string msg = toolsInfoManage.ExportBatchData2Excel(saveFileDialog1.FileName, getTextBox());   
                 string msg = toolsInfoManage.ExportBatchData2Excel(saveFileDialog1.FileName, toolsInfos);
-                MessageBox.Show(msg, "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -202,7 +202,7 @@ namespace manageSystem
             }
             if (isInputConflict())
             {
-                if (DialogResult.No == MessageBox.Show("至少有两个序列号是相同的，确定查询？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information))
+                if (DialogResult.No == MessageBox.Show("至少有两个序列号是相同的，确定查询？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information))
                 {
                     return;
                 }

@@ -30,6 +30,13 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.NumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,7 +45,7 @@
             this.CycleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PlanDemaTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ActualDemaTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResultCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValidityCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CheckManCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -70,7 +77,7 @@
             this.CycleCol,
             this.PlanDemaTime,
             this.ActualDemaTime,
-            this.ResultCol,
+            this.ValidityCol,
             this.CheckManCol,
             this.ActionCol});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -90,6 +97,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(923, 391);
             this.dataGridView1.TabIndex = 39;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dataGridViewButtonColumn1
             // 
@@ -102,6 +110,9 @@
             // 
             // NumCol
             // 
+            this.NumCol.DataPropertyName = "ID";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NumCol.DefaultCellStyle = dataGridViewCellStyle2;
             this.NumCol.HeaderText = "编号";
             this.NumCol.Name = "NumCol";
             this.NumCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -111,6 +122,8 @@
             // 
             this.DemarcateNumCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.DemarcateNumCol.DataPropertyName = "DemarcateNum";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DemarcateNumCol.DefaultCellStyle = dataGridViewCellStyle3;
             this.DemarcateNumCol.HeaderText = "标定序列号";
             this.DemarcateNumCol.Name = "DemarcateNumCol";
             this.DemarcateNumCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -118,8 +131,8 @@
             // TimeCol
             // 
             this.TimeCol.DataPropertyName = "SerialNum";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeCol.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeCol.DefaultCellStyle = dataGridViewCellStyle4;
             this.TimeCol.FillWeight = 30F;
             this.TimeCol.HeaderText = "工具序列号";
             this.TimeCol.Name = "TimeCol";
@@ -130,6 +143,8 @@
             // CycleCol
             // 
             this.CycleCol.DataPropertyName = "Cycle";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CycleCol.DefaultCellStyle = dataGridViewCellStyle5;
             this.CycleCol.HeaderText = "周期";
             this.CycleCol.Name = "CycleCol";
             this.CycleCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -138,6 +153,8 @@
             // PlanDemaTime
             // 
             this.PlanDemaTime.DataPropertyName = "LastTime";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PlanDemaTime.DefaultCellStyle = dataGridViewCellStyle6;
             this.PlanDemaTime.HeaderText = "上次标定时间";
             this.PlanDemaTime.Name = "PlanDemaTime";
             this.PlanDemaTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -146,22 +163,28 @@
             // ActualDemaTime
             // 
             this.ActualDemaTime.DataPropertyName = "DemarcateTime";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ActualDemaTime.DefaultCellStyle = dataGridViewCellStyle7;
             this.ActualDemaTime.HeaderText = "标定时间";
             this.ActualDemaTime.Name = "ActualDemaTime";
             this.ActualDemaTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ActualDemaTime.Width = 120;
             // 
-            // ResultCol
+            // ValidityCol
             // 
-            this.ResultCol.DataPropertyName = "NextTime";
-            this.ResultCol.HeaderText = "有效期";
-            this.ResultCol.Name = "ResultCol";
-            this.ResultCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ResultCol.Width = 120;
+            this.ValidityCol.DataPropertyName = "NextTime";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ValidityCol.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ValidityCol.HeaderText = "有效期";
+            this.ValidityCol.Name = "ValidityCol";
+            this.ValidityCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ValidityCol.Width = 120;
             // 
             // CheckManCol
             // 
             this.CheckManCol.DataPropertyName = "CheckMan";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CheckManCol.DefaultCellStyle = dataGridViewCellStyle9;
             this.CheckManCol.HeaderText = "检查员";
             this.CheckManCol.Name = "CheckManCol";
             this.CheckManCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -184,6 +207,7 @@
             this.Name = "SingleHistoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SingleHistoryForm";
+            this.Load += new System.EventHandler(this.SingleHistoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -199,7 +223,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CycleCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlanDemaTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ActualDemaTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResultCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValidityCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn CheckManCol;
         private System.Windows.Forms.DataGridViewButtonColumn ActionCol;
     }

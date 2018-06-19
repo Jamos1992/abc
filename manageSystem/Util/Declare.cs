@@ -22,7 +22,17 @@ namespace Util
         public static string CreateRepoSpareToolExcelSql = @"CREATE TABLE 仓库备件 ([备件型号] VarChar,[个数] Integer,[入库时间] VarChar)";
         public static string InsertRepoSpareToolsExcelSql = "INSERT INTO 仓库备件(备件型号,个数,入库时间)";
 
-        public static string CreateMaintainManageInfoExcelSql = @"CREATE TABLE 工具维修信息 ([工具型号] VarChar,[工具序列号] Integer,[送修时间] VarChar,[工具维修状态] VarChar,[送修描述] VarChar)";
+        public static string CreateMaintainManageInfoExcelSql = @"CREATE TABLE 工具维修信息 ([工具型号] VarChar,[工具序列号] VarChar,[送修时间] VarChar,[工具维修状态] VarChar,[送修描述] VarChar)";
         public static string InsertMaintainManageInfoExcelSql = "INSERT INTO 工具维修信息(工具型号,工具序列号,送修时间,工具维修状态,送修描述)";
+
+        public static string CreateDemarcateHistoryExcelSql = @"CREATE TABLE 工具标定记录 ([标定序列号] VarChar,[工具序列号] VarChar,[标定周期] Integer,[上次标定时间] VarChar,[标定时间] VarChar,[有效期] VarChar,[检查员] VarChar)";
+        public static string InsertDemarcateHistoryExcelSql = "INSERT INTO 工具标定记录(标定序列号,工具序列号,标定周期,上次标定时间,标定时间,有效期,检查员)";
+    }
+
+    public class DemarcateStatusDeclare
+    {
+        public static string Normal = "正常";
+        public static string Abnormal = "逾期未标定";
+        public static string OffGrade = "标定不合格";
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DAL;
 using Model;
+using Util;
 
 namespace BLL
 {
@@ -44,7 +45,7 @@ namespace BLL
 
         public List<ToolsInfo> GetallDemarcateToolsWithInfo()
         {
-            string sql = "select * from ToolsInfo,DemarcateTools where ToolsInfo.SerialNum = DemarcateTools.SerialNum";
+            string sql = $"select * from ToolsInfo,DemarcateTools where ToolsInfo.SerialNum = DemarcateTools.SerialNum and DemarcateTools.Status!='{DemarcateStatusDeclare.OffGrade}'";
             return demarcateRecordService.GetAllDemarcateToolsBySql(sql);
         }
 
@@ -76,6 +77,47 @@ namespace BLL
         public int AddDemarcateHistory(DemarcateHistory demarcateHistory)
         {
             return demarcateRecordService.InsertDemarcateHistory(demarcateHistory);
+        }
+
+        public List<DemarcateHistory> GetDemarcateHistoriesBySerial(string serialNum)
+        {
+            return demarcateRecordService.GetDemarcateHistoriesBySerial(serialNum);
+        }
+
+        //excel operation
+        public string ExportSingleData2Excel(string filePath, DemarcateHistory demarcateHistory)
+        {
+            int affected = demarcateRecordService.CreateDemarcateHistoryExcelTable(filePath);
+            if (affected < 1) return "创建导出文件失败";
+            affected = demarcateRecordService.InsertDemarcateHistory2ExcelTable(filePath, demarcateHistory);
+            if (affected < 1) return "导出数据失败1";
+            return "导出数据成功";
+        }
+
+        public string ExportBatchData2Excel(string filePath, DemarcateHistory[] DemarcateHistories)
+        {
+            int i = 0;
+            foreach (DemarcateHistory demarcateHistory in DemarcateHistories)
+            {
+                if (demarcateHistory == null)
+                {
+                    continue;
+                }
+                if (i == 0)
+                {
+                    string result = ExportSingleData2Excel(filePath, demarcateHistory);
+                    if (result.Contains("失败"))
+                    {
+                        return result;
+                    }
+                }
+                else
+                {
+                    int affected = demarcateRecordService.InsertDemarcateHistory2ExcelTable(filePath, demarcateHistory);
+                    if (affected < 1) return "导出数据失败2";
+                }
+            }
+            return "导出数据成功";
         }
     }
 }

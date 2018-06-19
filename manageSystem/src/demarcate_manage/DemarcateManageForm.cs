@@ -30,9 +30,12 @@ namespace manageSystem.src.demarcate_manage
 1、输入工位号、工具型号或者工具序列号
 2、点击“查询”可查询相关工具信息
 3、点击“标定记录导出至excel”可以将相关工具的标定历史导出到excel中";
+
+        private string serialNum;  
         public DemarcateManageForm()
         {
             InitializeComponent();
+            
         }
         private void treeviewInput_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -52,11 +55,19 @@ namespace manageSystem.src.demarcate_manage
             }
             switch (e.Node.Text)
             {
+                case "近期标定":
+                    DemarcateHintForm demarcateHintForm = new DemarcateHintForm();
+                    demarcateHintForm.gotoDemarcate += new GotoDemarcatePageDelegate(gotoDemarcatePage);
+                    addForm2Panel(demarcateHintForm, tableLayoutPanel1, ref e, singleInputHint);
+                    break;
                 case "标定计划管理":
                     addForm2Panel(new AddDemarcateForm(), tableLayoutPanel1, ref e, singleInputHint);
                     break;
                 case "进入标定":
-                    addForm2Panel(new DemarcateOperatorForm(), tableLayoutPanel1, ref e, demarcateHint);
+                    DemarcateOperatorForm demarcateOperatorForm = new DemarcateOperatorForm();
+                    demarcateOperatorForm.serialNum = serialNum;
+                    addForm2Panel(demarcateOperatorForm, tableLayoutPanel1, ref e, demarcateHint);
+                    serialNum = "";
                     break;
                 case "标定报告管理":
                     addForm2Panel(new DemarcateHistoryForm(), tableLayoutPanel1, ref e, resultHint);
@@ -64,6 +75,20 @@ namespace manageSystem.src.demarcate_manage
                 default:
                     label2.Text = "";
                     break;
+            }
+        }
+
+        void gotoDemarcatePage(string serial)
+        {
+            treeviewInput.Focus();
+            serialNum = serial;
+            for (int i = 0; i < treeviewInput.Nodes.Count; i++)
+            {
+                if (treeviewInput.Nodes[i].Text == "进入标定")
+                {
+                    treeviewInput.SelectedNode = treeviewInput.Nodes[i];
+                    return;
+                }
             }
         }
 
@@ -85,10 +110,10 @@ namespace manageSystem.src.demarcate_manage
             richTextBox1.Text = hint;
         }
 
-        private void treeviewInput_BeforeSelect(object sender, TreeViewCancelEventArgs e)
-        {
-            if (e.Action == TreeViewAction.Unknown)
-                e.Cancel = true;
-        }
+        //private void treeviewInput_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        //{
+        //    if (e.Action == TreeViewAction.Unknown)
+        //        e.Cancel = true;
+        //}
     }
 }

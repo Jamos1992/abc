@@ -10,6 +10,7 @@ using ThoughtWorks.QRCode.Codec.Data;
 using ThoughtWorks.QRCode.Codec.Util;
 using Model;
 using System.Data.SQLite;
+using Util;
 
 namespace DAL
 {
@@ -65,7 +66,8 @@ namespace DAL
         public List<DemarcateTools> GetAllDemarcateTools()
         {
             List<DemarcateTools> list = new List<DemarcateTools>();
-            SQLiteDataReader reader = SQLHelper.ReadFullTable("DemarcateTools");
+            string sql = $"select * from DemarcateTools where Status!='{DemarcateStatusDeclare.OffGrade}'";
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             if (!reader.HasRows)
             {
                 Console.WriteLine("DemarcateTools no reocrd");
@@ -128,7 +130,7 @@ namespace DAL
 
         public DemarcateTools GetOneDemarcateTool(string serialNum)
         {
-            string sql = "select * from DemarcateTools where SerialNum='" + serialNum + "'";
+            string sql = $"select * from DemarcateTools where SerialNum='{serialNum}' and Status!='{DemarcateStatusDeclare.OffGrade}'";
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             DemarcateTools demarcateTools = new DemarcateTools();
             if (!reader.HasRows)
@@ -179,39 +181,51 @@ namespace DAL
             return SQLHelper.InsertValuesByStruct("DemarcateHistory", demarcateHistory);
         }
 
-        //public string ExportSingleData2Excel(string filePath, RepoSpareTool repoSpareTool)
-        //{
-        //    int affected = repoSpareToolService.CreatRepoSpareToolExcelTable(filePath);
-        //    if (affected < 1) return "创建导出文件失败";
-        //    affected = repoSpareToolService.InsertRepoSpareTool2ExcelTable(filePath, repoSpareTool);
-        //    if (affected < 1) return "导出数据失败";
-        //    return "导出数据成功";
-        //}
+        public List<DemarcateHistory> GetDemarcateHistoriesBySerial(string serialNum)
+        {
+            string sql = $"select * from DemarcateHistory where SerialNum='{serialNum}' order by DemarcateTime desc";
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            List<DemarcateHistory> list = new List<DemarcateHistory>();
+            if (!reader.HasRows)
+            {
+                Console.WriteLine("DemarcateHistory no reocrd");
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    list.Add(new DemarcateHistory
+                    {
+                        DemarcateNum = reader["DemarcateNum"].ToString(),
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Cycle = int.Parse(reader["Cycle"].ToString()),
+                        LastTime = Convert.ToDateTime(reader["LastTime"].ToString()).ToString("yyyy-MM-dd"),
+                        DemarcateTime = Convert.ToDateTime(reader["DemarcateTime"].ToString()).ToString("yyyy-MM-dd"),
+                        NextTime = Convert.ToDateTime(reader["NextTime"].ToString()).ToString("yyyy-MM-dd"),
+                        CheckMan = reader["CheckMan"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"GetDemarcateHistoriesBySerial failed, error message is: {ex.Message}");
+                }
+            }
+            reader.Close();
+            return list;
+        }
 
-        //public string ExportBatchData2Excel(string filePath, RepoSpareTool[] repoSpareTools)
-        //{
-        //    int i = 0;
-        //    foreach (RepoSpareTool repoSpareTool in repoSpareTools)
-        //    {
-        //        if (repoSpareTool == null)
-        //        {
-        //            continue;
-        //        }
-        //        if (i == 0)
-        //        {
-        //            string result = ExportSingleData2Excel(filePath, repoSpareTool);
-        //            if (result.Contains("失败"))
-        //            {
-        //                return result;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            int affected = repoSpareToolService.InsertRepoSpareTool2ExcelTable(filePath, repoSpareTool);
-        //            if (affected < 1) return "导出数据失败";
-        //        }
-        //    }
-        //    return "导出数据成功";
-        //}
+        //excel operation
+        public int CreateDemarcateHistoryExcelTable(string filePath)
+        {
+            return EXCELHelper.CreateExcelTable(filePath, ExcelDeclare.CreateDemarcateHistoryExcelSql);
+        }
+
+        public int InsertDemarcateHistory2ExcelTable(string filePath, object obj)
+        {
+            string sql = ExcelDeclare.InsertDemarcateHistoryExcelSql;
+            return EXCELHelper.InsertExcelTable(filePath, obj, sql);
+        }
     }
 }

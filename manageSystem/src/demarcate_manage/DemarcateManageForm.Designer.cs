@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("标定计划管理");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("进入标定");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("标定报告管理");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("近期标定");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("标定计划管理");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("进入标定");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("标定报告管理");
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -102,18 +103,20 @@
             this.treeviewInput.Location = new System.Drawing.Point(0, 0);
             this.treeviewInput.Name = "treeviewInput";
             treeNode1.Name = "节点0";
-            treeNode1.Text = "标定计划管理";
-            treeNode2.Name = "节点1";
-            treeNode2.Text = "进入标定";
-            treeNode3.Name = "节点2";
-            treeNode3.Text = "标定报告管理";
+            treeNode1.Text = "近期标定";
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "标定计划管理";
+            treeNode3.Name = "节点1";
+            treeNode3.Text = "进入标定";
+            treeNode4.Name = "节点2";
+            treeNode4.Text = "标定报告管理";
             this.treeviewInput.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
-            treeNode3});
+            treeNode3,
+            treeNode4});
             this.treeviewInput.Size = new System.Drawing.Size(217, 486);
             this.treeviewInput.TabIndex = 0;
-            this.treeviewInput.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeviewInput_BeforeSelect);
             this.treeviewInput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeviewInput_AfterSelect);
             // 
             // tableLayoutPanel1

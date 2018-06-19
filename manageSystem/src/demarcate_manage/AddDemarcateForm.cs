@@ -20,7 +20,7 @@ namespace manageSystem.src.demarcate_manage
             dtDemarcateDate.CustomFormat = " ";
         }
 
-        private bool isToolsExist(string serialNum)
+        private bool isToolsExistInRepo(string serialNum)
         {
             return toolsInfoManage.IsToolExistInDb(serialNum);
         }
@@ -32,9 +32,24 @@ namespace manageSystem.src.demarcate_manage
                 MessageBox.Show("请填写工具序列号、标定周期和标定日期", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (!isToolsExist(cbSerialNum.Text.Trim()))
+            if (!isToolsExistInRepo(cbSerialNum.Text.Trim()))
             {
                 MessageBox.Show($"序列号为{cbSerialNum.Text.Trim()}的工具不在仓库中", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (demarcateRecordManage.IsDemarcateToolExist(cbSerialNum.Text.Trim()))
+            {
+                if (MessageBox.Show($"序列号为{cbSerialNum.Text.Trim()}的工具已经在标定计划中，是否需要更新？","提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                {
+                    return;
+                }
+                int affected = demarcateRecordManage.UpdateOneDemarcateTool(getAllInput());
+                if(affected < 1)
+                {
+                    MessageBox.Show($"序列号为{cbSerialNum.Text.Trim()}的工具更新失败", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                refreshDataViewGrid();
                 return;
             }
             string msg = demarcateRecordManage.AddOneDemarcateTool(getAllInput());

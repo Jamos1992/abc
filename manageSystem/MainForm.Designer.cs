@@ -52,12 +52,13 @@
             this.RecieveManBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.sendMailbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.数据管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.工具零件信息导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsInfoImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.工具数据导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.仓库零件导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.importExcelFile = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -255,7 +256,7 @@
             // 数据管理ToolStripMenuItem
             // 
             this.数据管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.工具零件信息导入ToolStripMenuItem,
+            this.toolsInfoImport,
             this.toolStripSeparator1,
             this.工具数据导出ToolStripMenuItem,
             this.仓库零件导出ToolStripMenuItem});
@@ -263,28 +264,29 @@
             this.数据管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.数据管理ToolStripMenuItem.Text = "数据管理";
             // 
-            // 工具零件信息导入ToolStripMenuItem
+            // toolsInfoImport
             // 
-            this.工具零件信息导入ToolStripMenuItem.Name = "工具零件信息导入ToolStripMenuItem";
-            this.工具零件信息导入ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.工具零件信息导入ToolStripMenuItem.Text = "工具零件信息导入";
+            this.toolsInfoImport.Name = "toolsInfoImport";
+            this.toolsInfoImport.Size = new System.Drawing.Size(180, 22);
+            this.toolsInfoImport.Text = "工具零件信息导入";
+            this.toolsInfoImport.Click += new System.EventHandler(this.toolsInfoImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // 工具数据导出ToolStripMenuItem
             // 
             this.工具数据导出ToolStripMenuItem.Name = "工具数据导出ToolStripMenuItem";
-            this.工具数据导出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.工具数据导出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.工具数据导出ToolStripMenuItem.Text = "工具数据导出";
             this.工具数据导出ToolStripMenuItem.Click += new System.EventHandler(this.工具数据导出ToolStripMenuItem_Click);
             // 
             // 仓库零件导出ToolStripMenuItem
             // 
             this.仓库零件导出ToolStripMenuItem.Name = "仓库零件导出ToolStripMenuItem";
-            this.仓库零件导出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.仓库零件导出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.仓库零件导出ToolStripMenuItem.Text = "仓库零件导出";
             // 
             // statusStrip1
@@ -302,6 +304,10 @@
             this.pictureBox1.Size = new System.Drawing.Size(363, 50);
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
+            // 
+            // importExcelFile
+            // 
+            this.importExcelFile.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -360,9 +366,10 @@
         private System.Windows.Forms.ToolStripMenuItem 数据管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工具数据导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 仓库零件导出ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 工具零件信息导入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsInfoImport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.OpenFileDialog importExcelFile;
     }
 }

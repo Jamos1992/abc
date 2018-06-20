@@ -11,6 +11,20 @@ namespace BLL
     {
         private RepoSpareToolService repoSpareToolService = new RepoSpareToolService();
 
+        public bool IsRepoSpareToolExist(string model)
+        {
+            return repoSpareToolService.IsRepoSpareToolExist(model);
+        }
+
+        public int UpdateRepoSpareNum(string model, int num)
+        {
+            return repoSpareToolService.updateRepoSpareToolNum(num, model);
+        }
+
+        public int AddRepoSpareTool(RepoSpareTool repoSpareTool)
+        {
+            return repoSpareToolService.AddRepoSpareTool(repoSpareTool);
+        }
         public RepoSpareTool QueryOneRepoSpare(string repoModel)
         {
             return repoSpareToolService.getOneRepoSpareToolFromDb(repoModel);

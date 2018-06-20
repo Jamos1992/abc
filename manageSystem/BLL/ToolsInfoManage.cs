@@ -184,5 +184,10 @@ namespace BLL
             }
             return result;
         }
+
+        public int UpdateCycleInToolsInfo(string serialNum,int cycle)
+        {
+            return toolsInfoService.UpdateCycleInToolsInfo(serialNum, cycle);
+        }
     }
 }

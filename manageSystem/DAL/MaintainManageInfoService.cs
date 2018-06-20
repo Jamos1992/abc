@@ -16,7 +16,6 @@ namespace DAL
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             if (reader != null && reader.HasRows)
             {
-                //MessageBox.Show("序列号(" + repoSpareTool.SpareToolModel + ") 插入失败, 已存在序列号相同的记录！");
                 reader.Close();
                 return true;
             }
@@ -34,13 +33,19 @@ namespace DAL
             string sql;
             if (maintainManageInfo.State == "0")
             {
-                sql = "update MaintainManageInfo set UsedRepoSpareToolInfo='" + usedRepoSpareToolInfo + "', UsedOtherSpareToolInfo='" + usedOtherSpareToolInfo + "', Status='" + maintainManageInfo.Status + "' where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and State='0'";
+                if (maintainManageInfo.Status == MaintainDeclare.Suspend)
+                    sql = $"update MaintainManageInfo set UsedRepoSpareToolInfo='{usedRepoSpareToolInfo}', UsedOtherSpareToolInfo='{usedOtherSpareToolInfo}', Status='{maintainManageInfo.Status}', SuspendTime='{maintainManageInfo.SuspendTime}' where ToolSerialName='{maintainManageInfo.ToolSerialName}' and State='0'";
+                else
+                    sql = $"update MaintainManageInfo set UsedRepoSpareToolInfo='{usedRepoSpareToolInfo}', UsedOtherSpareToolInfo='{usedOtherSpareToolInfo}', Status='{maintainManageInfo.Status}', FinishFixTime='{maintainManageInfo.FinishFixTime}' where ToolSerialName='{maintainManageInfo.ToolSerialName }' and State='0'";
             }
             else
             {
-                sql = "update MaintainManageInfo set UsedRepoSpareToolInfo='" + usedRepoSpareToolInfo + "', UsedOtherSpareToolInfo='" + usedOtherSpareToolInfo + "', Status='" + maintainManageInfo.Status + "', State='" + maintainManageInfo.State + "' where ToolSerialName='" + maintainManageInfo.ToolSerialName + "' and State='0'";
+                if (maintainManageInfo.Status == MaintainDeclare.Suspend)
+                    sql = $"update MaintainManageInfo set UsedRepoSpareToolInfo='{usedRepoSpareToolInfo}', UsedOtherSpareToolInfo='{usedOtherSpareToolInfo}', Status='{maintainManageInfo.Status}', SuspendTime='{maintainManageInfo.SuspendTime}', State='{maintainManageInfo.State}' where ToolSerialName='{maintainManageInfo.ToolSerialName}' and State='0'";
+                else
+                    sql = $"update MaintainManageInfo set UsedRepoSpareToolInfo='{usedRepoSpareToolInfo}', UsedOtherSpareToolInfo='{usedOtherSpareToolInfo}', Status='{maintainManageInfo.Status}', FinishFixTime='{maintainManageInfo.FinishFixTime}', State='{maintainManageInfo.State}' where ToolSerialName='{maintainManageInfo.ToolSerialName}' and State='0'";
             }
-            
+
             return SQLHelper.UpdateTableBySql(sql);
         }
 
@@ -66,9 +71,7 @@ namespace DAL
                 {
                     maintainManage.ToolSerialName = reader["ToolSerialName"].ToString();
                     maintainManage.ToolModeName = reader["ToolModeName"].ToString();
-                    maintainManage.SendFixTime = reader["SendFixTime"].ToString();
-                    maintainManage.SuspendTime = reader["SuspendTime"].ToString();
-                    maintainManage.FinishFixTime = reader["FinishFixTime"].ToString();
+                    maintainManage.SendFixTime = Convert.ToDateTime(reader["SendFixTime"].ToString()).ToString("yyyy-MM-dd");
                     maintainManage.Status = reader["Status"].ToString();
                     maintainManage.Detail = reader["Detail"].ToString();
                     maintainManage.UsedRepoSpareToolInfo = commonService.ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString());
@@ -77,7 +80,7 @@ namespace DAL
                 catch (Exception ex)
                 {
                     Console.WriteLine($"getOneBreakToolFromDb failed, error message is: {ex.Message}");
-                }                
+                }
             }
             if (reader != null) reader.Close();
             return maintainManage;
@@ -100,19 +103,15 @@ namespace DAL
                     {
                         ToolSerialName = reader["ToolSerialName"].ToString(),
                         ToolModeName = reader["ToolModeName"].ToString(),
-                        SendFixTime = reader["SendFixTime"].ToString(),
-                        //SuspendTime = reader["SuspendTime"].ToString(),
-                        //FinishFixTime = reader["FinishFixTime"].ToString(),
+                        SendFixTime = Convert.ToDateTime(reader["SendFixTime"].ToString()).ToString("yyyy-MM-dd"),
                         Status = reader["Status"].ToString(),
-                        Detail = reader["Detail"].ToString(),
-                        //UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
-                        //UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
+                        Detail = reader["Detail"].ToString()
                     });
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"getAllBreakTools failed, error message is: {ex.Message}");
-                }                
+                }
             }
             if (reader != null) reader.Close();
             return list;
@@ -135,13 +134,9 @@ namespace DAL
                     {
                         ToolSerialName = reader["ToolSerialName"].ToString(),
                         ToolModeName = reader["ToolModeName"].ToString(),
-                        SendFixTime = reader["SendFixTime"].ToString(),
-                        //SuspendTime = reader["SuspendTime"].ToString(),
-                        //FinishFixTime = reader["FinishFixTime"].ToString(),
+                        SendFixTime = Convert.ToDateTime(reader["SendFixTime"].ToString()).ToString("yyyy-MM-dd"),
                         Status = reader["Status"].ToString(),
                         Detail = reader["Detail"].ToString(),
-                        //UsedRepoSpareToolInfo = ConvertStr2Dic(reader["UsedRepoSpareToolInfo"].ToString()),
-                        //UsedOtherSpareToolInfo = ConvertStr2Dic(reader["UsedOtherSpareToolInfo"].ToString())
                     });
                 }
                 catch (Exception ex)
@@ -166,7 +161,7 @@ namespace DAL
 
         public int InsertMaintainManageInfo2ExcelTable(string filePath, object obj)
         {
-            string sql = ExcelDeclare.InsertMaintainManageInfoExcelSql; 
+            string sql = ExcelDeclare.InsertMaintainManageInfoExcelSql;
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }

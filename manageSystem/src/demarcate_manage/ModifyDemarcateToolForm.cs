@@ -15,6 +15,9 @@ namespace manageSystem.src.demarcate_manage
     {
         private DemarcateTools demarcateTools = new DemarcateTools();
         private DemarcateRecordManage demarcateRecordManage = new DemarcateRecordManage();
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
+        private string cycle;
+        private string lastTime;
         public ModifyDemarcateToolForm()
         {
             InitializeComponent();
@@ -33,10 +36,18 @@ namespace manageSystem.src.demarcate_manage
             cbSerialNum.Text = demarcateTools.SerialNum;
             cbCycle.Text = demarcateTools.Cycle.ToString();
             dtDemarcateDate.Text = demarcateTools.LastTime;
+            cycle = cbCycle.Text.Trim();
+            lastTime = dtDemarcateDate.Text.Trim();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
-        {            
+        {           
+            if(cycle == cbCycle.Text.Trim() && lastTime == dtDemarcateDate.Text.Trim())
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+                return;
+            }
             try
             {
                 demarcateTools.SerialNum = cbSerialNum.Text.Trim();
@@ -48,6 +59,11 @@ namespace manageSystem.src.demarcate_manage
                 {
                     Console.WriteLine($"数据更新失败，影响行数：{affected}");
                     throw new Exception("数据更新失败");
+                }
+                affected = toolsInfoManage.UpdateCycleInToolsInfo(cbSerialNum.Text.Trim(), Convert.ToInt32(cbCycle.Text.Trim()));
+                if(affected < 1)
+                {
+                    Console.WriteLine("更新工具的周期失败");
                 }
                 DialogResult = DialogResult.OK;
                 Close();

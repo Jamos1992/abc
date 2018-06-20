@@ -48,6 +48,13 @@ namespace manageSystem.src.demarcate_manage
                     tableLayoutPanel1.Controls.Remove(c);
                 }
             }
+            foreach(Control c in panel1.Controls)
+            {
+                if(c is MonthCalendar)
+                {
+                    panel1.Controls.Remove(c);
+                }
+            }
 
             foreach (TreeNode treeNode in treeviewInput.Nodes)
             {
@@ -59,6 +66,9 @@ namespace manageSystem.src.demarcate_manage
                     DemarcateHintForm demarcateHintForm = new DemarcateHintForm();
                     demarcateHintForm.gotoDemarcate += new GotoDemarcatePageDelegate(gotoDemarcatePage);
                     addForm2Panel(demarcateHintForm, tableLayoutPanel1, ref e, singleInputHint);
+                    MonthCalendar monthCalendar = new MonthCalendar();
+                    monthCalendar.Dock = DockStyle.Top;
+                    panel1.Controls.Add(monthCalendar);
                     break;
                 case "标定计划管理":
                     addForm2Panel(new AddDemarcateForm(), tableLayoutPanel1, ref e, singleInputHint);

@@ -24,53 +24,54 @@ namespace manageSystem.src.maintain_manage
         }
         private void RepairOperatorForm_Load(object sender, EventArgs e)
         {
-            comboBox1.Text = RepairManageForm.ToolSerialName;
-            textBox1.Enabled = false;
-            textBox2.Enabled = false;
+            cboSerialNum.Text = RepairManageForm.ToolSerialName;
+            txtRepoSpare.Enabled = false;
+            txtOtherSpare.Enabled = false;
             setAllInputWhenSuspendBefore();
         }
         private void setComboBoxItems()
         {
             List<string> list = maintainInfoManage.GetSerialNameHintFromDb();
             if (list == null) return;
-            comboBox1.Items.AddRange(list.ToArray());
+            cboSerialNum.Items.AddRange(list.ToArray());
         }
 
-        private void updateAllData(string time, string nextStatus,string state)
+        private void updateAllData(string time, string nextStatus, string state)
         {
             MaintainManageInfo maintainManageInfo = getAllInput();
             if (maintainManageInfo == null) return;
-            maintainManageInfo.SuspendTime = time;
+            if (nextStatus == _finishStatus) maintainManageInfo.FinishFixTime = time;
+            if (nextStatus == _suspendStatus) maintainManageInfo.SuspendTime = time;
             maintainManageInfo.Status = nextStatus;
             maintainManageInfo.State = state;
             string msg = maintainInfoManage.UpdateBreakToolInfo(maintainManageInfo);
-            if(msg == "挂起" || msg == "未使用任何零件")
+            if (msg == "挂起" || msg == "未使用任何零件")
             {
                 DialogResult = DialogResult.OK;
                 Close();
                 return;
             }
-            MessageBox.Show(msg);
+            MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private MaintainManageInfo getAllInput()
         {
             if (!checkInput()) return null;
             MaintainManageInfo maintainManageInfo = new MaintainManageInfo();
-            maintainManageInfo.ToolSerialName = comboBox1.Text;
-            maintainManageInfo.UsedRepoSpareToolInfo = commonManage.ConvertStr2Dic(textBox1.Text);
-            maintainManageInfo.UsedOtherSpareToolInfo = commonManage.ConvertStr2Dic(textBox2.Text);
+            maintainManageInfo.ToolSerialName = cboSerialNum.Text;
+            maintainManageInfo.UsedRepoSpareToolInfo = commonManage.ConvertStr2Dic(txtRepoSpare.Text);
+            maintainManageInfo.UsedOtherSpareToolInfo = commonManage.ConvertStr2Dic(txtOtherSpare.Text);
             return maintainManageInfo;
         }
 
         private bool checkInput()
         {
-            if (comboBox1.Text == "")
+            if (cboSerialNum.Text == "")
             {
                 MessageBox.Show("工具序列号不允许为空！");
                 return false;
             }
-            if (comboBox1.Items.IndexOf(comboBox1.Text) < 0)
+            if (cboSerialNum.Items.IndexOf(cboSerialNum.Text) < 0)
             {
                 MessageBox.Show("工具尚未登记，请先登记再进行维修");
                 return false;
@@ -88,70 +89,70 @@ namespace manageSystem.src.maintain_manage
                     Console.WriteLine("maintainManageInfo is nil");
                     return;
                 }
-                textBox1.Text = commonManage.ConvertDic2Str(maintainManageInfo.UsedRepoSpareToolInfo);
-                textBox2.Text = commonManage.ConvertDic2Str(maintainManageInfo.UsedOtherSpareToolInfo);
+                txtRepoSpare.Text = commonManage.ConvertDic2Str(maintainManageInfo.UsedRepoSpareToolInfo);
+                txtOtherSpare.Text = commonManage.ConvertDic2Str(maintainManageInfo.UsedOtherSpareToolInfo);
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRepoAdd_Click(object sender, EventArgs e)
         {
             AddSpareToolForm addSpareToolForm = new AddSpareToolForm();
             addSpareToolForm.setFormTextValue += new setTextValue(textBox1_setFormTextValue);
             addSpareToolForm.ShowDialog();
         }
 
-        void textBox1_setFormTextValue(string value,int num)
+        void textBox1_setFormTextValue(string value, int num)
         {
-            if(textBox1.Text == "")
+            if (txtRepoSpare.Text == "")
             {
-                textBox1.Text += value + ":" + num.ToString();
+                txtRepoSpare.Text += value + ":" + num.ToString();
                 return;
             }
-            textBox1.Text += ", "+ value + ":" + num.ToString();
+            txtRepoSpare.Text += ", " + value + ":" + num.ToString();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnRepoRemove_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "") return;
-            string[] kvList = textBox1.Text.Split(',');
+            if (txtRepoSpare.Text == "") return;
+            string[] kvList = txtRepoSpare.Text.Split(',');
             List<string> list = kvList.ToList<string>();
             list.RemoveAt(list.Count - 1);
-            textBox1.Text = string.Join(",", list.ToArray());
+            txtRepoSpare.Text = string.Join(",", list.ToArray());
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnOtherAdd_Click(object sender, EventArgs e)
         {
             AddSpareToolForm addSpareToolForm = new AddSpareToolForm();
             addSpareToolForm.setFormTextValue += new setTextValue(textBox2_setFormTextValue);
             addSpareToolForm.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnOtherRemove_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "") return;
-            string[] kvList = textBox2.Text.Split(',');
+            if (txtOtherSpare.Text == "") return;
+            string[] kvList = txtOtherSpare.Text.Split(',');
             List<string> list = kvList.ToList<string>();
             list.RemoveAt(list.Count - 1);
-            textBox2.Text = string.Join(",", list.ToArray());
+            txtOtherSpare.Text = string.Join(",", list.ToArray());
         }
 
         void textBox2_setFormTextValue(string value, int num)
         {
-            if (textBox2.Text == "")
+            if (txtOtherSpare.Text == "")
             {
-                textBox2.Text += value + ":" + num.ToString();
+                txtOtherSpare.Text += value + ":" + num.ToString();
                 return;
             }
-            textBox2.Text += ", " + value + ":" + num.ToString();
+            txtOtherSpare.Text += ", " + value + ":" + num.ToString();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnFinish_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" && textBox2.Text == "")
+            if (txtRepoSpare.Text == "" && txtOtherSpare.Text == "")
             {
                 MessageBox.Show("未使用任何零件，无法完成维修！");
                 return;
             }
-            string finishTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string finishTime = DateTime.Now.ToString("yyyy-MM-dd");
             string finishStatus = _finishStatus;
             try
             {
@@ -163,9 +164,9 @@ namespace manageSystem.src.maintain_manage
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnSuspend_Click(object sender, EventArgs e)
         {
-            string suspendTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string suspendTime = DateTime.Now.ToString("yyyy-MM-dd");
             string suspendStatus = _suspendStatus;
             try
             {
@@ -174,7 +175,7 @@ namespace manageSystem.src.maintain_manage
             catch
             {
                 return;
-            }    
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ namespace manageSystem
     public partial class MainForm : Form
     {
         private EmailManage emailManage = new EmailManage();
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
         public MainForm()
         {
             InitializeComponent();
@@ -121,6 +122,15 @@ namespace manageSystem
             {
 
                 Show();
+            }
+        }
+
+        private void toolsInfoImport_Click(object sender, EventArgs e)
+        {
+            if (importExcelFile.ShowDialog() == DialogResult.OK)
+            {
+                string msg = toolsInfoManage.ImportBatchTools2Db(importExcelFile.FileName);
+                MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

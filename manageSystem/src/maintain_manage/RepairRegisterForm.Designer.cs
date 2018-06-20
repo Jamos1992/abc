@@ -36,13 +36,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtxtDetail = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dtpSendTime = new System.Windows.Forms.DateTimePicker();
+            this.txtModel = new System.Windows.Forms.TextBox();
+            this.cboSerialNum = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SerialNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,15 +82,15 @@
             this.label4.Text = "*工具送修描述";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // richTextBox1
+            // rtxtDetail
             // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Location = new System.Drawing.Point(120, 55);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(432, 21);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
+            this.rtxtDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtxtDetail.Location = new System.Drawing.Point(120, 55);
+            this.rtxtDetail.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.rtxtDetail.Name = "rtxtDetail";
+            this.rtxtDetail.Size = new System.Drawing.Size(432, 21);
+            this.rtxtDetail.TabIndex = 8;
+            this.rtxtDetail.Text = "";
             // 
             // label2
             // 
@@ -103,63 +103,63 @@
             this.label2.Text = "*工具序列号";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTimePicker1
+            // dtpSendTime
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(614, 23);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(129, 21);
-            this.dateTimePicker1.TabIndex = 9;
-            this.dateTimePicker1.DropDown += new System.EventHandler(this.dateTimePicker1_DropDown);
+            this.dtpSendTime.Location = new System.Drawing.Point(614, 23);
+            this.dtpSendTime.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.dtpSendTime.Name = "dtpSendTime";
+            this.dtpSendTime.Size = new System.Drawing.Size(129, 21);
+            this.dtpSendTime.TabIndex = 9;
+            this.dtpSendTime.DropDown += new System.EventHandler(this.dateTimePicker1_DropDown);
             // 
-            // textBox1
+            // txtModel
             // 
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox1.Location = new System.Drawing.Point(120, 24);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(129, 21);
-            this.textBox1.TabIndex = 10;
+            this.txtModel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtModel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtModel.Location = new System.Drawing.Point(120, 24);
+            this.txtModel.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.txtModel.Name = "txtModel";
+            this.txtModel.Size = new System.Drawing.Size(129, 21);
+            this.txtModel.TabIndex = 10;
             // 
-            // comboBox1
+            // cboSerialNum
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(356, 24);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(129, 20);
-            this.comboBox1.TabIndex = 11;
-            this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
+            this.cboSerialNum.FormattingEnabled = true;
+            this.cboSerialNum.Location = new System.Drawing.Point(356, 24);
+            this.cboSerialNum.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.cboSerialNum.Name = "cboSerialNum";
+            this.cboSerialNum.Size = new System.Drawing.Size(129, 20);
+            this.cboSerialNum.TabIndex = 11;
+            this.cboSerialNum.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(593, 55);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 21);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "   登记";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(593, 55);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 15, 3, 10);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(63, 21);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "   登记";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // button2
+            // btnClear
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(680, 55);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 15, 3, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(63, 21);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "清空";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClear.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClear.Location = new System.Drawing.Point(680, 55);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 15, 3, 10);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(63, 21);
+            this.btnClear.TabIndex = 1;
+            this.btnClear.Text = "清空";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -280,15 +280,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.richTextBox1);
+            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.txtModel);
+            this.groupBox1.Controls.Add(this.rtxtDetail);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.cboSerialNum);
+            this.groupBox1.Controls.Add(this.dtpSendTime);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
@@ -330,13 +330,13 @@
         #endregion
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtxtDetail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dtpSendTime;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox txtModel;
+        private System.Windows.Forms.ComboBox cboSerialNum;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

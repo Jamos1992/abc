@@ -49,6 +49,11 @@ namespace manageSystem.src.demarcate_manage
                     MessageBox.Show($"序列号为{cbSerialNum.Text.Trim()}的工具更新失败", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+                affected = toolsInfoManage.UpdateCycleInToolsInfo(cbSerialNum.Text.Trim(), Convert.ToInt32(cbCycle.Text.Trim()));
+                if(affected < 1)
+                {
+                    Console.WriteLine($"更新工具{cbSerialNum.Text.Trim()}的标定周期失败");
+                }
                 refreshDataViewGrid();
                 return;
             }

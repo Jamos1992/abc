@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DAL;
+using BLL;
 using Model;
 using manageSystem.src.spare_manage;
 
@@ -15,6 +15,7 @@ namespace manageSystem
 {
     public partial class SpareInfoInputForm : Form
     {
+        private RepoSpareToolManage repoSpareToolManage = new RepoSpareToolManage();
         public SpareInfoInputForm()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace manageSystem
             RepoSpareTool repoSpareTool = new RepoSpareTool();
             repoSpareTool.SpareToolModel = txtBox.Text;
             repoSpareTool.Num = (int)upDown.Value;
-            repoSpareTool.AddTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            repoSpareTool.AddTime = DateTime.Now.ToString("yyyy-MM-dd");
             return repoSpareTool;
         }
 
@@ -33,30 +34,37 @@ namespace manageSystem
         {
             if (repoSpareTools.Length == 0)
             {
-                MessageBox.Show("录入失败，输入的记录个数为0");
+                MessageBox.Show("录入失败，输入的记录个数为0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             foreach (RepoSpareTool repoSpareTool in repoSpareTools)
             {
                 try
                 {
-                    if (new RepoSpareToolService().IsRepoSpareToolExist(repoSpareTool.SpareToolModel))
+                    if (repoSpareToolManage.IsRepoSpareToolExist(repoSpareTool.SpareToolModel))
                     {
-                        MessageBox.Show("序列号(" + repoSpareTool.SpareToolModel + ") 插入失败, 已存在序列号相同的记录！");
+                        RepoSpareTool repoSpare = repoSpareToolManage.QueryOneRepoSpare(repoSpareTool.SpareToolModel);
+                        repoSpare.Num += repoSpareTool.Num;
+                        int affected = repoSpareToolManage.UpdateRepoSpareNum(repoSpare.SpareToolModel, repoSpare.Num);
+                        if(affected < 1)
+                        {
+                            MessageBox.Show("序列号(" + repoSpareTool.SpareToolModel + ") 插入失败, 已存在序列号相同的记录！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        MessageBox.Show("数据录入成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    int affectedRow = new RepoSpareToolService().AddRepoSpareTool(repoSpareTool);
+                    int affectedRow = repoSpareToolManage.AddRepoSpareTool(repoSpareTool);
                     if(affectedRow < 1)
                     {
-                        MessageBox.Show("录入失败，操作数据库失败！");
+                        MessageBox.Show("录入失败，操作数据库失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    MessageBox.Show("数据录入成功");
+                    MessageBox.Show("数据录入成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 catch
                 {
-                    MessageBox.Show("数据录入失败，操作数据库失败！");
+                    MessageBox.Show("数据录入失败，操作数据库失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

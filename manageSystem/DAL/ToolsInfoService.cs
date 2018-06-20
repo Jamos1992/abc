@@ -274,6 +274,12 @@ namespace DAL
             sql += ")";
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
+
+        public int UpdateCycleInToolsInfo(string serialNum,int cycle)
+        {
+            string sql = $"update ToolsInfo set DemarcateCycle={cycle} where SerialNum='{serialNum}'";
+            return SQLHelper.UpdateTableBySql(sql);
+        }
         public List<ToolsInfo> getAllToolsFromExcel(string filePath)
         {
             string sql = "select * from 工具信息";

@@ -11,6 +11,10 @@ namespace BLL
     {
         private OnCallRecordService onCallRecordService = new OnCallRecordService();
 
+        public int AddOnCallRecord(OnCallRecord onCallRecord)
+        {
+            return onCallRecordService.AddOnCallRecord(onCallRecord);
+        }
         public List<OnCallRecord> GetAllOnCallRecords()
         {
             return onCallRecordService.getAllOnCallRecord();

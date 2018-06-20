@@ -16,7 +16,7 @@ namespace manageSystem.src.maintain_manage
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
-            setDateTimePickerEmpty(dateTimePicker1);
+            setDateTimePickerEmpty(dtpSendTime);
             setComboBoxItems();
             dataGridView1.AutoGenerateColumns = false;
         }
@@ -24,7 +24,7 @@ namespace manageSystem.src.maintain_manage
         {
             List<string> list = toolsInfoManage.GetModelHintFromDb();
             if (list == null) return;
-            textBox1.AutoCompleteCustomSource.AddRange(list.ToArray());
+            txtModel.AutoCompleteCustomSource.AddRange(list.ToArray());
         }
 
         private void setDateTimePickerNormal(DateTimePicker dateTimePicker)
@@ -41,16 +41,16 @@ namespace manageSystem.src.maintain_manage
 
         private void dateTimePicker1_DropDown(object sender, EventArgs e)
         {
-            setDateTimePickerNormal(dateTimePicker1);
+            setDateTimePickerNormal(dtpSendTime);
         }
 
         private MaintainManageInfo getAllInput()
         {
             MaintainManageInfo maintainManageInfo = new MaintainManageInfo();
-            maintainManageInfo.ToolModeName = textBox1.Text;
-            maintainManageInfo.ToolSerialName =  comboBox1.Text;
-            maintainManageInfo.SendFixTime = dateTimePicker1.Text;
-            maintainManageInfo.Detail = richTextBox1.Text;
+            maintainManageInfo.ToolModeName = txtModel.Text;
+            maintainManageInfo.ToolSerialName =  cboSerialNum.Text;
+            maintainManageInfo.SendFixTime = dtpSendTime.Text;
+            maintainManageInfo.Detail = rtxtDetail.Text;
             maintainManageInfo.Status = "待维修";
             maintainManageInfo.UsedOtherSpareToolInfo = null;
             maintainManageInfo.UsedRepoSpareToolInfo = null;
@@ -58,8 +58,13 @@ namespace manageSystem.src.maintain_manage
             return maintainManageInfo;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!toolsInfoManage.IsToolExistInDb(cboSerialNum.Text.Trim()))
+            {
+                MessageBox.Show($"序列号为{cboSerialNum.Text.Trim()}的工具不在仓库中", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             MaintainManageInfo maintainManageInfo = getAllInput();
             string msg = maintainInfoManage.RegisterBreakTool(maintainManageInfo);
             if (msg.Contains("成功"))
@@ -72,7 +77,7 @@ namespace manageSystem.src.maintain_manage
             MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
             foreach (Control c in groupBox1.Controls)
             {
@@ -81,13 +86,13 @@ namespace manageSystem.src.maintain_manage
                     c.Text = "";
                 }
             }
-            setDateTimePickerEmpty(dateTimePicker1);
+            setDateTimePickerEmpty(dtpSendTime);
         }
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {          
-            comboBox1.Items.Clear();
-            setComboBoxList(textBox1.Text, comboBox1);
+            cboSerialNum.Items.Clear();
+            setComboBoxList(txtModel.Text, cboSerialNum);
         }
         private void setComboBoxList(string str, ComboBox comboBox)
         {

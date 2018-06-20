@@ -90,6 +90,8 @@ namespace manageSystem.src.on_call_record
         {
             setDateTimePickerEmpty(dateTimePicker1);
             setDateTimePickerEmpty(dateTimePicker2);
+            setDateTimePickerEmpty(dtpArriveTime);
+            setDateTimePickerEmpty(dtpCallTime);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -145,6 +147,19 @@ namespace manageSystem.src.on_call_record
             return ktls.ToArray();
         }
 
+        private OnCallRecord getAllInput()
+        {
+            OnCallRecord onCallRecord = new OnCallRecord();
+            onCallRecord.CallTime = dtpCallTime.Text;
+            onCallRecord.ArriveTime = dtpArriveTime.Text;
+            onCallRecord.ToolSection = cboSection.Text;
+            onCallRecord.ToolWorkstation = cboWorkstation.Text;
+            onCallRecord.FaultToolName = cboSection.Text;
+            onCallRecord.FaultReason = cboReason.Text;
+            onCallRecord.Detail = txtDeatil.Text;
+            return onCallRecord;
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex > -1)
@@ -175,6 +190,45 @@ namespace manageSystem.src.on_call_record
                 FaultReason = dataGridView1.SelectedRows[0].Cells[6].Value.ToString(),
                 Detail = dataGridView1.SelectedRows[0].Cells[7].Value.ToString()
             };
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (dtpCallTime.Text == "" || dtpArriveTime.Text == "" || cboWorkstation.Text == "" || cboReason.Text == "")
+            {
+                MessageBox.Show("提交失败，请填写必填项！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+            }
+            if (String.Compare(dtpCallTime.Text, dtpArriveTime.Text) > 0)
+            {
+                MessageBox.Show("输入的时间有误，请检查后提交！","提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int affectedRow = onCallRecordManage.AddOnCallRecord(getAllInput());
+            if (affectedRow < 1)
+            {
+                MessageBox.Show("添加失败，数据库操作失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            MessageBox.Show("添加成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void dtpCallTime_DropDown(object sender, EventArgs e)
+        {
+            setDateTimePickerNormal(dtpCallTime);
+        }
+
+        private void dtpArriveTime_DropDown(object sender, EventArgs e)
+        {
+            setDateTimePickerNormal(dtpArriveTime);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            foreach(Control c in grpAdd.Controls)
+            {
+                c.Text = "";
+            }
         }
     }
 }

@@ -60,7 +60,7 @@ namespace manageSystem.src.tool_info_input
             string msg = toolsInfoManage.UpdateOneToolsInfo(getAllInput());
             if (msg.Contains("失败"))
             {
-                MessageBox.Show(msg);
+                MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }     
             DialogResult = DialogResult.OK;

@@ -9,6 +9,8 @@ namespace manageSystem.src.demarcate_manage
         public ScanCodeForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
         }
 
         private void ScanCodeForm_Load(object sender, EventArgs e)

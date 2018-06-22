@@ -19,6 +19,8 @@ namespace manageSystem.src.maintain_manage
         public RepairOperatorForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
             status = RepairManageForm.Status;
             setComboBoxItems();
         }

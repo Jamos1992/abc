@@ -14,6 +14,8 @@ namespace manageSystem.src.tool_KPI_manage
         public ToolKPIManageForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
         }
     }
 }

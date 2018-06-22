@@ -33,10 +33,10 @@ namespace manageSystem.src.maintain_manage
             dataGridView1.Columns.Add(column1);
         }
 
-        private MaintainManageInfo[] GetMaintainManageInfoFromGrid()
+        private OutputStruct[] GetMaintainManageInfoFromGrid()
         {
-            MaintainManageInfo[] maintainManageInfo = new MaintainManageInfo[] { };
-            List<MaintainManageInfo> ktls = maintainManageInfo.ToList();
+            OutputStruct[] maintainManageInfo = new OutputStruct[] { };
+            List<OutputStruct> ktls = maintainManageInfo.ToList();
             //遍历 DataGridView 所有行
             int row = dataGridView1.Rows.Count;//得到总行数    
             int cell = dataGridView1.Rows[0].Cells.Count;//得到总列数
@@ -44,7 +44,7 @@ namespace manageSystem.src.maintain_manage
             {
                 if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].EditedFormattedValue))
                 {
-                    ktls.Add(new MaintainManageInfo
+                    ktls.Add(new OutputStruct
                     {
                         ToolModeName = dataGridView1.Rows[i].Cells[1].Value.ToString(),
                         ToolSerialName = dataGridView1.Rows[i].Cells[2].Value.ToString(),

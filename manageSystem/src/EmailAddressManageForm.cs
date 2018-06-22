@@ -13,6 +13,8 @@ namespace manageSystem.src
         public EmailAddressManageForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AutoGenerateColumns = false;

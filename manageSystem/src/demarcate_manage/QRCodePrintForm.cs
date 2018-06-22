@@ -28,9 +28,11 @@ namespace manageSystem.src.demarcate_manage
         {
             demarcateRecords = records;
             InitializeComponent();
-            this.printDocument1.OriginAtMargins = true;//启用页边距
-            this.pageSetupDialog1.EnableMetric = true; //以毫米为单位
-            this.printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom", 500, 300);
+            MinimizeBox = false;
+            MaximizeBox = false;
+            printDocument1.OriginAtMargins = true;//启用页边距
+            pageSetupDialog1.EnableMetric = true; //以毫米为单位
+            printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom", 500, 300);
 
             txtSerialName.BorderStyle = BorderStyle.None;
             txtDemarNum.BorderStyle = BorderStyle.None;

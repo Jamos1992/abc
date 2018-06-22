@@ -20,6 +20,8 @@ namespace manageSystem.src.maintain_manage
         public RepairAndMaintainForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)

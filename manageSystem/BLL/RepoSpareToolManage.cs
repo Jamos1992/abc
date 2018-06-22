@@ -40,10 +40,22 @@ namespace BLL
             return recordList;
         }
 
+        public List<RepoSpareTool> GetAllRepoSpareTools()
+        {
+            return repoSpareToolService.getAllRepoSpareTools();
+        }
+
         public string ExportSingleData2Excel(string filePath, RepoSpareTool repoSpareTool)
         {
-            int affected = repoSpareToolService.CreatRepoSpareToolExcelTable(filePath);
-            if (affected < 1) return "创建导出文件失败";
+            int affected = 0;
+            try
+            {
+                affected = repoSpareToolService.CreatRepoSpareToolExcelTable(filePath);
+                //if (affected < 1) return "创建导出文件失败";
+            }catch(Exception ex)
+            {
+                Console.WriteLine($"CreatRepoSpareToolExcelTable fail: {ex.Message}");
+            }
             affected = repoSpareToolService.InsertRepoSpareTool2ExcelTable(filePath, repoSpareTool);
             if (affected < 1) return "导出数据失败";
             return "导出数据成功";
@@ -71,6 +83,7 @@ namespace BLL
                     int affected = repoSpareToolService.InsertRepoSpareTool2ExcelTable(filePath, repoSpareTool);
                     if (affected < 1) return "导出数据失败";
                 }
+                i++;
             }
             return "导出数据成功";
         }

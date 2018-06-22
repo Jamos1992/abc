@@ -41,11 +41,21 @@ namespace BLL
 
         public string ExportSingleData2Excel(string filePath, OnCallRecord onCallRecord)
         {
-            int affected = onCallRecordService.CreateOnCallRecordExcelTable(filePath);
-            if (affected < 1) return "创建导出文件失败";
+            int affected = 0;
+            try
+            {
+                affected = onCallRecordService.CreateOnCallRecordExcelTable(filePath);
+                //if (affected < 1) return "创建导出文件失败"; 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"CreateOnCallRecordExcelTable fail: {ex.Message}");
+                //if (ex.Message != "表 '巡线记录' 已存在") return "创建导出文件失败";
+            }
             affected = onCallRecordService.InsertOnCallRecord2ExcelTable(filePath, onCallRecord);
-            if (affected < 1) return "导出数据失败";
+            if (affected < 1) return "导出数据失败";           
             return "导出数据成功";
+
         }
 
         public string ExportBatchData2Excel(string filePath, OnCallRecord[] onCallRecords)
@@ -70,6 +80,7 @@ namespace BLL
                     int affected = onCallRecordService.InsertOnCallRecord2ExcelTable(filePath, onCallRecord);
                     if (affected < 1) return "导出数据失败";
                 }
+                i++;
             }
             return "导出数据成功";
         }

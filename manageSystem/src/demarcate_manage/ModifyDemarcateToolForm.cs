@@ -21,6 +21,8 @@ namespace manageSystem.src.demarcate_manage
         public ModifyDemarcateToolForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
         }
 
         public ModifyDemarcateToolForm(DemarcateTools tools)

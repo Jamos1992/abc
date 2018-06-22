@@ -17,7 +17,7 @@ namespace Util
         public static string InsertToolsInfoExcelSql = "INSERT INTO 工具信息 (工具序列号,工具型号,工具类别,工具名称,标定扭矩下限,标定扭矩上限,精度,工段,工位,标定周期,工具状态,质保期至,保养合同类型,保养合同至,累计维修次数,备注信息)";
 
         public static string CreateOnCallRecordExcelSql = @"CREATE TABLE 巡线记录 ([客户呼叫时间] VarChar,[达到现场时间] VarChar,[工段] VarChar,[工位] VarChar,[故障工具] VarChar,[故障原因] VarChar,[备注] VarChar)";
-        public static string InsertOnCallRecordExcelSql = "INSERT INTO 巡线记录(客户呼叫时间,达到现场时间,工段,工位,故障工具,故障原因,备注)";
+        public static string InsertOnCallRecordExcelSql = "INSERT INTO 巡线记录 (客户呼叫时间,达到现场时间,工段,工位,故障工具,故障原因,备注)";
 
         public static string CreateRepoSpareToolExcelSql = @"CREATE TABLE 仓库备件 ([备件型号] VarChar,[个数] Integer,[入库时间] VarChar)";
         public static string InsertRepoSpareToolsExcelSql = "INSERT INTO 仓库备件(备件型号,个数,入库时间)";

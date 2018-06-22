@@ -4,6 +4,7 @@ using Model;
 using System.Configuration;
 using Util;
 using System;
+using System.Reflection;
 
 namespace DAL
 {
@@ -162,6 +163,21 @@ namespace DAL
         public int InsertMaintainManageInfo2ExcelTable(string filePath, object obj)
         {
             string sql = ExcelDeclare.InsertMaintainManageInfoExcelSql;
+            PropertyInfo[] propertys = obj.GetType().GetProperties();
+            int i = 0;
+            foreach (PropertyInfo pinfo in propertys)
+            {
+                if (i == 0)
+                {
+                    sql += " values(" + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                else
+                {
+                    sql += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                i++;
+            }
+            sql += ")";
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }

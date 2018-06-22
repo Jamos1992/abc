@@ -249,7 +249,6 @@ namespace DAL
         public int CreateToolsInfoExcelTable(string filePath)
         {
             string sql = ExcelDeclare.CreateToolsInfoExcelSql;
-            Console.WriteLine("sql is {0}", sql);
             return EXCELHelper.CreateExcelTable(filePath, sql);
         }
 
@@ -257,7 +256,6 @@ namespace DAL
         {
             string sql = ExcelDeclare.InsertToolsInfoExcelSql;
             PropertyInfo[] propertys = obj.GetType().GetProperties();
-            Console.WriteLine("len of obj is {0}", propertys.Length);
             int i = 0;
             foreach (PropertyInfo pinfo in propertys)
             {

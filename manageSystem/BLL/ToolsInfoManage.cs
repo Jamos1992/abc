@@ -104,8 +104,17 @@ namespace BLL
 
         public string ExportSingleData2Excel(string filePath, ToolsInfo toolsInfo)
         {
-            int affected = toolsInfoService.CreateToolsInfoExcelTable(filePath);
-            Console.WriteLine("affected is {0}", affected);
+            int affected = 0;
+            try
+            {
+                affected = toolsInfoService.CreateToolsInfoExcelTable(filePath);
+                Console.WriteLine("affected is {0}", affected);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"CreateToolsInfoExcelTable fail: {ex.Message}");
+            }
+            
             //if (affected < 1) return "创建导出文件失败";
             affected = toolsInfoService.InsertToolsInfo2ExcelTable(filePath, toolsInfo);
             if (affected < 1) return "导出数据失败";

@@ -13,6 +13,8 @@ namespace manageSystem.src.on_call_record
         public OnCallForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             dataGridView1.AutoGenerateColumns = false;
         }

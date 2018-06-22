@@ -120,7 +120,7 @@ namespace BLL
         }
 
         //excel operation
-        public string ExportSingleData2Excel(string filePath, MaintainManageInfo maintainManageInfo)
+        public string ExportSingleData2Excel(string filePath, OutputStruct maintainManageInfo)
         {
             OutputStruct outputStruct = new OutputStruct()
             {
@@ -130,18 +130,26 @@ namespace BLL
                 Status = maintainManageInfo.Status,
                 Detail = maintainManageInfo.Detail
             };
+            int affected = 0;
+            try
+            {
+                affected = maintainManageInfoService.CreateMaintainManageInfoExcelTable(filePath);
+                //if (affected < 1) return "创建导出文件失败";
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"CreateMaintainManageInfoExcelTable fail: {ex.Message}");
+            }
             
-            int affected = maintainManageInfoService.CreateMaintainManageInfoExcelTable(filePath);
-            if (affected < 1) return "创建导出文件失败";
             affected = maintainManageInfoService.InsertMaintainManageInfo2ExcelTable(filePath, outputStruct);
             if (affected < 1) return "导出数据失败";
             return "导出数据成功";
         }
 
-        public string ExportBatchData2Excel(string filePath, MaintainManageInfo[] maintainManageInfos)
+        public string ExportBatchData2Excel(string filePath, OutputStruct[] maintainManageInfos)
         {
             int i = 0;            
-            foreach (MaintainManageInfo maintainManageInfo in maintainManageInfos)
+            foreach (OutputStruct maintainManageInfo in maintainManageInfos)
             {
                 if (maintainManageInfo == null)
                 {
@@ -160,6 +168,7 @@ namespace BLL
                     int affected = maintainManageInfoService.InsertMaintainManageInfo2ExcelTable(filePath, maintainManageInfo);
                     if (affected < 1) return "导出数据失败";
                 }
+                i++;
             }
             return "导出数据成功";
         }

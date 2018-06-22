@@ -11,6 +11,8 @@ namespace manageSystem
         public SingleInputForm()
         {
             InitializeComponent();
+            MinimizeBox = false;
+            MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.None;
             importExcelFile.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
             importExcelFile.FileName = "";

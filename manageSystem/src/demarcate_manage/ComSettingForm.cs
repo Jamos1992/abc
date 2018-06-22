@@ -29,6 +29,8 @@ namespace manageSystem.src.demarcate_manage
         {
             InitializeComponent();
             InitView();
+            MinimizeBox = false;
+            MaximizeBox = false;
         }
 
         private void InitView()

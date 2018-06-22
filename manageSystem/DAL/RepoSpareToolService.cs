@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Configuration;
 using Util;
 using System;
+using System.Reflection;
 
 namespace DAL
 {
@@ -126,6 +127,21 @@ namespace DAL
         public int InsertRepoSpareTool2ExcelTable(string filePath, object obj)
         {
             string sql = ExcelDeclare.InsertRepoSpareToolsExcelSql;
+            PropertyInfo[] propertys = obj.GetType().GetProperties();
+            int i = 0;
+            foreach (PropertyInfo pinfo in propertys)
+            {
+                if (i == 0)
+                {
+                    sql += " values(" + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                else
+                {
+                    sql += ", " + "'" + pinfo.GetValue(obj, null) + "'";
+                }
+                i++;
+            }
+            sql += ")";
             return EXCELHelper.InsertExcelTable(filePath, obj, sql);
         }
     }

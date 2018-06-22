@@ -35,7 +35,8 @@ namespace manageSystem.src.demarcate_manage
         public DemarcateManageForm()
         {
             InitializeComponent();
-            
+            MinimizeBox = false;
+            MaximizeBox = false;
         }
         private void treeviewInput_AfterSelect(object sender, TreeViewEventArgs e)
         {

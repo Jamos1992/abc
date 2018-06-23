@@ -38,11 +38,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.rdoRepairing = new System.Windows.Forms.RadioButton();
+            this.rdoSuspend = new System.Windows.Forms.RadioButton();
+            this.rdoFinished = new System.Windows.Forms.RadioButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gotoRepair_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -79,11 +79,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.button3, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnExport, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnSearch, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rdoRepairing, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rdoSuspend, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rdoFinished, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -92,71 +92,71 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 43);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
-            // button3
+            // btnExport
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(703, 10);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(70, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "  导出";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExport.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(703, 10);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(70, 23);
+            this.btnExport.TabIndex = 8;
+            this.btnExport.Text = "  导出";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(603, 10);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "  查询";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(603, 10);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "  查询";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // radioButton1
+            // rdoRepairing
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButton1.Location = new System.Drawing.Point(3, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(59, 37);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "待维修";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdoRepairing.AutoSize = true;
+            this.rdoRepairing.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rdoRepairing.Location = new System.Drawing.Point(3, 3);
+            this.rdoRepairing.Name = "rdoRepairing";
+            this.rdoRepairing.Size = new System.Drawing.Size(59, 37);
+            this.rdoRepairing.TabIndex = 10;
+            this.rdoRepairing.TabStop = true;
+            this.rdoRepairing.Text = "待维修";
+            this.rdoRepairing.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdoSuspend
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButton2.Location = new System.Drawing.Point(83, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(59, 37);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "挂起中";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdoSuspend.AutoSize = true;
+            this.rdoSuspend.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rdoSuspend.Location = new System.Drawing.Point(83, 3);
+            this.rdoSuspend.Name = "rdoSuspend";
+            this.rdoSuspend.Size = new System.Drawing.Size(59, 37);
+            this.rdoSuspend.TabIndex = 11;
+            this.rdoSuspend.TabStop = true;
+            this.rdoSuspend.Text = "挂起中";
+            this.rdoSuspend.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rdoFinished
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButton3.Location = new System.Drawing.Point(163, 3);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(59, 37);
-            this.radioButton3.TabIndex = 12;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "已完成";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rdoFinished.AutoSize = true;
+            this.rdoFinished.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rdoFinished.Location = new System.Drawing.Point(163, 3);
+            this.rdoFinished.Name = "rdoFinished";
+            this.rdoFinished.Size = new System.Drawing.Size(59, 37);
+            this.rdoFinished.TabIndex = 12;
+            this.rdoFinished.TabStop = true;
+            this.rdoFinished.Text = "已完成";
+            this.rdoFinished.UseVisualStyleBackColor = true;
             // 
             // contextMenuStrip1
             // 
@@ -300,13 +300,13 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rdoRepairing;
+        private System.Windows.Forms.RadioButton rdoSuspend;
+        private System.Windows.Forms.RadioButton rdoFinished;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem gotoRepair_ToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;

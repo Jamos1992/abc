@@ -72,19 +72,19 @@ namespace manageSystem.src.maintain_manage
             BindData2Grid(list);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             List<OutputStruct> list = new List<OutputStruct>();
-            if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
+            if (!rdoRepairing.Checked && !rdoSuspend.Checked && !rdoFinished.Checked)
             {
                 list = maintainInfoManage.GetAllBreakToolsBySql("select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo order by SendFixTime desc");
             }
             else
             {
                 string sql = "select ToolSerialName,ToolModeName,SendFixTime,Status,Detail from MaintainManageInfo where";
-                if (radioButton1.Checked) sql += " Status='" + MaintainDeclare.Repairing + "'";
-                if (radioButton2.Checked) sql += " Status='" + MaintainDeclare.Suspend + "'";
-                if (radioButton3.Checked) sql += " Status='" + MaintainDeclare.RepairFinished + "'";
+                if (rdoRepairing.Checked) sql += " Status='" + MaintainDeclare.Repairing + "'";
+                if (rdoSuspend.Checked) sql += " Status='" + MaintainDeclare.Suspend + "'";
+                if (rdoFinished.Checked) sql += " Status='" + MaintainDeclare.RepairFinished + "'";
                 sql += " order by SendFixTime desc";
                 list = maintainInfoManage.GetAllBreakToolsBySql(sql);
             }
@@ -97,7 +97,7 @@ namespace manageSystem.src.maintain_manage
             BindData2Grid(list);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -118,7 +118,7 @@ namespace manageSystem.src.maintain_manage
             RepairOperatorForm repairOperatorForm = new RepairOperatorForm();
             if (repairOperatorForm.ShowDialog() == DialogResult.OK)
             {
-                button1_Click(sender, e);
+                btnSearch_Click(sender, e);
                 Show();
             }
         }
@@ -163,7 +163,7 @@ namespace manageSystem.src.maintain_manage
                     RepairOperatorForm repairOperatorForm = new RepairOperatorForm();
                     if (repairOperatorForm.ShowDialog() == DialogResult.OK)
                     {
-                        button1_Click(sender, e);
+                        btnSearch_Click(sender, e);
                         Show();
                     }
                 }

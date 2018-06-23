@@ -120,7 +120,6 @@ namespace manageSystem
             DemarcateManageForm demarcateManageForm = new DemarcateManageForm();
             if (demarcateManageForm.ShowDialog() == DialogResult.OK)
             {
-
                 Show();
             }
         }

@@ -53,9 +53,9 @@
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSpareInfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -323,9 +323,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button5, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnClear, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnAdd, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnSpareInfo, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 418);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -334,46 +334,47 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(822, 42);
             this.tableLayoutPanel1.TabIndex = 97;
             // 
-            // button3
+            // btnClear
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button3.Location = new System.Drawing.Point(489, 3);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 29);
-            this.button3.TabIndex = 93;
-            this.button3.Text = "清空";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnClear.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClear.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnClear.Location = new System.Drawing.Point(489, 3);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 29);
+            this.btnClear.TabIndex = 93;
+            this.btnClear.Text = "清空";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // button4
+            // btnAdd
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button4.Location = new System.Drawing.Point(258, 3);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 29);
-            this.button4.TabIndex = 87;
-            this.button4.Text = "录入";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAdd.Location = new System.Drawing.Point(258, 3);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 29);
+            this.btnAdd.TabIndex = 87;
+            this.btnAdd.Text = "录入";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button5
+            // btnSpareInfo
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button5.Location = new System.Drawing.Point(339, 3);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(144, 29);
-            this.button5.TabIndex = 97;
-            this.button5.Text = "备件消耗";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnSpareInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSpareInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSpareInfo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSpareInfo.Location = new System.Drawing.Point(339, 3);
+            this.btnSpareInfo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnSpareInfo.Name = "btnSpareInfo";
+            this.btnSpareInfo.Size = new System.Drawing.Size(144, 29);
+            this.btnSpareInfo.TabIndex = 97;
+            this.btnSpareInfo.Text = "备件消耗";
+            this.btnSpareInfo.UseVisualStyleBackColor = true;
+            this.btnSpareInfo.Click += new System.EventHandler(this.btnSpareInfo_Click);
             // 
             // SpareInfoInputForm
             // 
@@ -448,8 +449,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.NumericUpDown numericUpDown6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSpareInfo;
     }
 }

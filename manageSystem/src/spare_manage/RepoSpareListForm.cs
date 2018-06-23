@@ -31,30 +31,30 @@ namespace manageSystem.src.spare_manage
 
         private void dateTimePicker1_DropDown(object sender, EventArgs e)
         {
-            setDateTimePickerNormal(dateTimePicker1);
+            setDateTimePickerNormal(dtpStartTime);
         }
 
         private void dateTimePicker2_DropDown(object sender, EventArgs e)
         {
-            setDateTimePickerNormal(dateTimePicker2);
+            setDateTimePickerNormal(dtpEndTime);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             List<RepoSpareTool> list = new List<RepoSpareTool>();            
-            if (!checkBox1.Checked && !checkBox2.Checked)
+            if (!chkAddTime.Checked && !chkModel.Checked)
             {
                 list = new RepoSpareToolService().getAllRepoSpareTools();
             }
             else
             {
                 string sql = "select * from RepoSpareTool where 1=1";
-                if (checkBox1.Checked)
+                if (chkAddTime.Checked)
                 {
-                    if (dateTimePicker1.Text != "" && dateTimePicker2.Text != "") sql += " and Time>'" + dateTimePicker1.Text + "' and Time<'" + dateTimePicker2.Text + "'";
+                    if (dtpStartTime.Text != "" && dtpEndTime.Text != "") sql += " and Time>'" + dtpStartTime.Text + "' and Time<'" + dtpEndTime.Text + "'";
                     else MessageBox.Show("时间选择不对，请重新选择", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (checkBox2.Checked)
+                if (chkModel.Checked)
                 {
                     if (comboBox1.Text != "") sql += " and SpareToolModel='" + comboBox1.Text + "'";
                     else MessageBox.Show("故障原因未选择", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -72,8 +72,8 @@ namespace manageSystem.src.spare_manage
 
         private void RepoSpareListForm_Load(object sender, EventArgs e)
         {
-            setDateTimePickerEmpty(dateTimePicker1);
-            setDateTimePickerEmpty(dateTimePicker2);
+            setDateTimePickerEmpty(dtpStartTime);
+            setDateTimePickerEmpty(dtpEndTime);
             List<RepoSpareTool> list = new RepoSpareToolService().getAllRepoSpareTools();
             if (list == null) return;
             BindData2Grid(list);
@@ -85,18 +85,26 @@ namespace manageSystem.src.spare_manage
             dataGridView1.ClearSelection();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
             foreach (Control c in groupBox1.Controls)
             {
-                if (c is DateTimePicker || c is ComboBox)
+                if (c is ComboBox)
                 {
                     c.Text = "";
+                }
+                if (c is DateTimePicker)
+                {
+                    setDateTimePickerEmpty(c);
+                }
+                if(c is CheckBox)
+                {
+                    (c as CheckBox).Checked = false;
                 }
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e)
         {
             RepoSpareTool[] repoSpareTools = GetRepoSpareToolFromGrid();
             if (dataGridView1.Rows.Count == 0 || repoSpareTools.Length == 0)

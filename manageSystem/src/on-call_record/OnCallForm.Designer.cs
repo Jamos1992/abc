@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnCallForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpAdd = new System.Windows.Forms.GroupBox();
             this.dtpArriveTime = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.cboReason = new System.Windows.Forms.ComboBox();
-            this.cboSerialNum = new System.Windows.Forms.ComboBox();
+            this.cmbReason = new System.Windows.Forms.ComboBox();
+            this.cmbSerialNum = new System.Windows.Forms.ComboBox();
             this.txtDeatil = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cboWorkstation = new System.Windows.Forms.ComboBox();
+            this.cmbWorkstation = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.cboSection = new System.Windows.Forms.ComboBox();
+            this.cmbSection = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,13 +57,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.btnChart = new System.Windows.Forms.Button();
+            this.btnExcelExport = new System.Windows.Forms.Button();
+            this.btnClearSearch = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.cmbFaultReason = new System.Windows.Forms.ComboBox();
+            this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -100,13 +101,13 @@
             this.grpAdd.Controls.Add(this.label3);
             this.grpAdd.Controls.Add(this.btnClear);
             this.grpAdd.Controls.Add(this.btnAdd);
-            this.grpAdd.Controls.Add(this.cboReason);
-            this.grpAdd.Controls.Add(this.cboSerialNum);
+            this.grpAdd.Controls.Add(this.cmbReason);
+            this.grpAdd.Controls.Add(this.cmbSerialNum);
             this.grpAdd.Controls.Add(this.txtDeatil);
             this.grpAdd.Controls.Add(this.label8);
-            this.grpAdd.Controls.Add(this.cboWorkstation);
+            this.grpAdd.Controls.Add(this.cmbWorkstation);
             this.grpAdd.Controls.Add(this.label7);
-            this.grpAdd.Controls.Add(this.cboSection);
+            this.grpAdd.Controls.Add(this.cmbSection);
             this.grpAdd.Controls.Add(this.label6);
             this.grpAdd.Controls.Add(this.label5);
             this.grpAdd.Controls.Add(this.label4);
@@ -164,51 +165,53 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // cboReason
+            // cmbReason
             // 
-            this.cboReason.FormattingEnabled = true;
-            this.cboReason.Items.AddRange(new object[] {
+            this.cmbReason.FormattingEnabled = true;
+            this.cmbReason.Items.AddRange(new object[] {
             "故障原因1",
             "故障原因2",
             "故障原因3",
             "故障原因4"});
-            this.cboReason.Location = new System.Drawing.Point(694, 22);
-            this.cboReason.Name = "cboReason";
-            this.cboReason.Size = new System.Drawing.Size(147, 20);
-            this.cboReason.TabIndex = 17;
+            this.cmbReason.Location = new System.Drawing.Point(694, 22);
+            this.cmbReason.Name = "cmbReason";
+            this.cmbReason.Size = new System.Drawing.Size(147, 20);
+            this.cmbReason.TabIndex = 17;
             // 
-            // cboSerialNum
+            // cmbSerialNum
             // 
-            this.cboSerialNum.FormattingEnabled = true;
-            this.cboSerialNum.Location = new System.Drawing.Point(461, 22);
-            this.cboSerialNum.Name = "cboSerialNum";
-            this.cboSerialNum.Size = new System.Drawing.Size(147, 20);
-            this.cboSerialNum.TabIndex = 16;
+            this.cmbSerialNum.FormattingEnabled = true;
+            this.cmbSerialNum.Location = new System.Drawing.Point(461, 22);
+            this.cmbSerialNum.Name = "cmbSerialNum";
+            this.cmbSerialNum.Size = new System.Drawing.Size(147, 20);
+            this.cmbSerialNum.TabIndex = 16;
             // 
             // txtDeatil
             // 
-            this.txtDeatil.Location = new System.Drawing.Point(463, 58);
+            this.txtDeatil.Location = new System.Drawing.Point(461, 58);
             this.txtDeatil.Name = "txtDeatil";
-            this.txtDeatil.Size = new System.Drawing.Size(378, 21);
+            this.txtDeatil.Size = new System.Drawing.Size(380, 21);
             this.txtDeatil.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label8.Location = new System.Drawing.Point(427, 62);
+            this.label8.Location = new System.Drawing.Point(405, 62);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 14;
-            this.label8.Text = "备注";
+            this.label8.Text = "备    注";
             // 
-            // cboWorkstation
+            // cmbWorkstation
             // 
-            this.cboWorkstation.FormattingEnabled = true;
-            this.cboWorkstation.Location = new System.Drawing.Point(303, 58);
-            this.cboWorkstation.Name = "cboWorkstation";
-            this.cboWorkstation.Size = new System.Drawing.Size(84, 20);
-            this.cboWorkstation.TabIndex = 13;
+            this.cmbWorkstation.FormattingEnabled = true;
+            this.cmbWorkstation.Location = new System.Drawing.Point(303, 58);
+            this.cmbWorkstation.Name = "cmbWorkstation";
+            this.cmbWorkstation.Size = new System.Drawing.Size(84, 20);
+            this.cmbWorkstation.TabIndex = 13;
+            this.cmbWorkstation.SelectedIndexChanged += new System.EventHandler(this.cmbWorkstation_SelectedIndexChanged);
+            this.cmbWorkstation.SelectionChangeCommitted += new System.EventHandler(this.cmbWorkstation_SelectionChangeCommitted);
             // 
             // label7
             // 
@@ -220,13 +223,15 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "*工位";
             // 
-            // cboSection
+            // cmbSection
             // 
-            this.cboSection.FormattingEnabled = true;
-            this.cboSection.Location = new System.Drawing.Point(303, 22);
-            this.cboSection.Name = "cboSection";
-            this.cboSection.Size = new System.Drawing.Size(84, 20);
-            this.cboSection.TabIndex = 11;
+            this.cmbSection.FormattingEnabled = true;
+            this.cmbSection.Location = new System.Drawing.Point(303, 22);
+            this.cmbSection.Name = "cmbSection";
+            this.cmbSection.Size = new System.Drawing.Size(84, 20);
+            this.cmbSection.TabIndex = 11;
+            this.cmbSection.SelectedIndexChanged += new System.EventHandler(this.cmbSection_SelectedIndexChanged);
+            this.cmbSection.SelectionChangeCommitted += new System.EventHandler(this.cmbSection_SelectionChangeCommitted);
             // 
             // label6
             // 
@@ -286,13 +291,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.btnChart);
+            this.groupBox1.Controls.Add(this.btnExcelExport);
+            this.groupBox1.Controls.Add(this.btnClearSearch);
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.cmbFaultReason);
+            this.groupBox1.Controls.Add(this.dtpEndTime);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtpStartTime);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -304,81 +310,92 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询筛选条件";
             // 
-            // button3
+            // btnChart
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(901, 25);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "   查询结果导出";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnChart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnChart.Location = new System.Drawing.Point(816, 26);
+            this.btnChart.Name = "btnChart";
+            this.btnChart.Size = new System.Drawing.Size(75, 23);
+            this.btnChart.TabIndex = 9;
+            this.btnChart.Text = "问题统计";
+            this.btnChart.UseVisualStyleBackColor = true;
+            this.btnChart.Click += new System.EventHandler(this.btnChart_Click);
             // 
-            // button2
+            // btnExcelExport
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(725, 26);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "清空";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnExcelExport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExcelExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelExport.Image")));
+            this.btnExcelExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcelExport.Location = new System.Drawing.Point(901, 26);
+            this.btnExcelExport.Name = "btnExcelExport";
+            this.btnExcelExport.Size = new System.Drawing.Size(111, 23);
+            this.btnExcelExport.TabIndex = 8;
+            this.btnExcelExport.Text = "   查询结果导出";
+            this.btnExcelExport.UseVisualStyleBackColor = true;
+            this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
             // 
-            // button1
+            // btnClearSearch
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(644, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "   查询";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClearSearch.Location = new System.Drawing.Point(725, 26);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnClearSearch.TabIndex = 7;
+            this.btnClearSearch.Text = "清空";
+            this.btnClearSearch.UseVisualStyleBackColor = true;
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
-            // comboBox1
+            // btnSearch
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(644, 26);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "   查询";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // cmbFaultReason
+            // 
+            this.cmbFaultReason.FormattingEnabled = true;
+            this.cmbFaultReason.Items.AddRange(new object[] {
             "故障原因1",
             "故障原因2",
             "故障原因3",
             "故障原因4"});
-            this.comboBox1.Location = new System.Drawing.Point(489, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 5;
+            this.cmbFaultReason.Location = new System.Drawing.Point(489, 28);
+            this.cmbFaultReason.Name = "cmbFaultReason";
+            this.cmbFaultReason.Size = new System.Drawing.Size(121, 20);
+            this.cmbFaultReason.TabIndex = 5;
             // 
-            // dateTimePicker2
+            // dtpEndTime
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(234, 27);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(134, 21);
-            this.dateTimePicker2.TabIndex = 4;
-            this.dateTimePicker2.DropDown += new System.EventHandler(this.dateTimePicker2_DropDown);
+            this.dtpEndTime.Location = new System.Drawing.Point(242, 27);
+            this.dtpEndTime.Name = "dtpEndTime";
+            this.dtpEndTime.Size = new System.Drawing.Size(134, 21);
+            this.dtpEndTime.TabIndex = 4;
+            this.dtpEndTime.DropDown += new System.EventHandler(this.dtpEndTime_DropDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label1.Location = new System.Drawing.Point(211, 31);
+            this.label1.Location = new System.Drawing.Point(219, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 3;
             this.label1.Text = "至";
             // 
-            // dateTimePicker1
+            // dtpStartTime
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(67, 27);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(138, 21);
-            this.dateTimePicker1.TabIndex = 2;
-            this.dateTimePicker1.DropDown += new System.EventHandler(this.dateTimePicker1_DropDown);
+            this.dtpStartTime.Location = new System.Drawing.Point(75, 27);
+            this.dtpStartTime.Name = "dtpStartTime";
+            this.dtpStartTime.Size = new System.Drawing.Size(138, 21);
+            this.dtpStartTime.TabIndex = 2;
+            this.dtpStartTime.DropDown += new System.EventHandler(this.dtpStartTime_DropDown);
             // 
             // checkBox2
             // 
@@ -395,7 +412,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.checkBox1.Location = new System.Drawing.Point(13, 29);
+            this.checkBox1.Location = new System.Drawing.Point(21, 29);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(48, 16);
             this.checkBox1.TabIndex = 0;
@@ -411,14 +428,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle49;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -461,8 +478,8 @@
             // SerialNumCol
             // 
             this.SerialNumCol.DataPropertyName = "CallTime";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SerialNumCol.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SerialNumCol.DefaultCellStyle = dataGridViewCellStyle50;
             this.SerialNumCol.HeaderText = "客户呼叫时间";
             this.SerialNumCol.Name = "SerialNumCol";
             this.SerialNumCol.ReadOnly = true;
@@ -472,8 +489,8 @@
             // ModelCol
             // 
             this.ModelCol.DataPropertyName = "ArriveTime";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ModelCol.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ModelCol.DefaultCellStyle = dataGridViewCellStyle51;
             this.ModelCol.HeaderText = "达到现场时间";
             this.ModelCol.Name = "ModelCol";
             this.ModelCol.ReadOnly = true;
@@ -483,8 +500,8 @@
             // ToolSectionCol
             // 
             this.ToolSectionCol.DataPropertyName = "ToolSection";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ToolSectionCol.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ToolSectionCol.DefaultCellStyle = dataGridViewCellStyle52;
             this.ToolSectionCol.HeaderText = "故障工段";
             this.ToolSectionCol.Name = "ToolSectionCol";
             this.ToolSectionCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -492,8 +509,8 @@
             // ToolWorkstationCol
             // 
             this.ToolWorkstationCol.DataPropertyName = "ToolWorkstation";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ToolWorkstationCol.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ToolWorkstationCol.DefaultCellStyle = dataGridViewCellStyle53;
             this.ToolWorkstationCol.HeaderText = "故障工位";
             this.ToolWorkstationCol.Name = "ToolWorkstationCol";
             this.ToolWorkstationCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -501,8 +518,8 @@
             // CategoryCol
             // 
             this.CategoryCol.DataPropertyName = "FaultToolName";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CategoryCol.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CategoryCol.DefaultCellStyle = dataGridViewCellStyle54;
             this.CategoryCol.HeaderText = "故障工具";
             this.CategoryCol.Name = "CategoryCol";
             this.CategoryCol.ReadOnly = true;
@@ -511,8 +528,8 @@
             // NameCol
             // 
             this.NameCol.DataPropertyName = "FaultReason";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NameCol.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NameCol.DefaultCellStyle = dataGridViewCellStyle55;
             this.NameCol.HeaderText = "故障原因";
             this.NameCol.Name = "NameCol";
             this.NameCol.ReadOnly = true;
@@ -523,8 +540,8 @@
             // 
             this.TorqueMinCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TorqueMinCol.DataPropertyName = "Detail";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TorqueMinCol.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TorqueMinCol.DefaultCellStyle = dataGridViewCellStyle56;
             this.TorqueMinCol.HeaderText = "备注";
             this.TorqueMinCol.Name = "TorqueMinCol";
             this.TorqueMinCol.ReadOnly = true;
@@ -575,13 +592,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpEndTime;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DateTimePicker dtpStartTime;
+        private System.Windows.Forms.ComboBox cmbFaultReason;
+        private System.Windows.Forms.Button btnClearSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnExcelExport;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckCol;
@@ -600,17 +617,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cboReason;
-        private System.Windows.Forms.ComboBox cboSerialNum;
+        private System.Windows.Forms.ComboBox cmbReason;
+        private System.Windows.Forms.ComboBox cmbSerialNum;
         private System.Windows.Forms.TextBox txtDeatil;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DateTimePicker dtpArriveTime;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cboWorkstation;
+        private System.Windows.Forms.ComboBox cmbWorkstation;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cboSection;
+        private System.Windows.Forms.ComboBox cmbSection;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnChart;
     }
 }

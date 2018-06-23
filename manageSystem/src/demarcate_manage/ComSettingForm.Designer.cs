@@ -42,9 +42,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -184,37 +184,37 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "端口号";
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Location = new System.Drawing.Point(28, 298);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 28);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "保  存";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSave.Location = new System.Drawing.Point(28, 298);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(82, 28);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "保  存";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // button2
+            // btnClear
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button2.Location = new System.Drawing.Point(124, 298);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 28);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "取  消";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClear.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnClear.Location = new System.Drawing.Point(124, 298);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(85, 28);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "取  消";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // ComSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(236, 339);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Name = "ComSettingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -234,9 +234,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
         private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.ComboBox cb_timeout;
         private System.Windows.Forms.ComboBox cb_checkBit;
         private System.Windows.Forms.ComboBox cb_stopBit;

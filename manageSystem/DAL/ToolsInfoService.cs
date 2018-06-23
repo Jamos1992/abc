@@ -146,6 +146,81 @@ namespace DAL
             return list;
         }
 
+        public List<string> getAllSection()
+        {
+            string sql = "select distinct Section from ToolsInfo";
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            List<string> list = new List<string>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    list.Add(reader["Section"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllSection failed, error message is: {ex.Message}");
+                }
+            }
+            if (reader != null) reader.Close();
+            return list;
+        }
+
+        public List<string> getAllWorkstationBySection(string section)
+        {
+            string sql = $"select distinct Workstation from ToolsInfo where Section='{section}'";
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            List<string> list = new List<string>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    list.Add(reader["Workstation"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllWorkstationBySection failed, error message is: {ex.Message}");
+                }
+            }
+            if (reader != null) reader.Close();
+            return list;
+        }
+
+        public List<string> getAllSerilaNumByWorkstation(string workstation)
+        {
+            string sql = $"select distinct SerialNum from ToolsInfo where Workstation='{workstation}'";
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            List<string> list = new List<string>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    list.Add(reader["SerialNum"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getAllSerilaNumByWorkstation failed, error message is: {ex.Message}");
+                }
+            }
+            if (reader != null) reader.Close();
+            return list;
+        }
+
         public List<ToolsInfo> getAllToolsInfoByModel(string model)
         {
             SQLiteDataReader reader = SQLHelper.ReadTableBySql("select * from ToolsInfo where Model='" + model + "'");

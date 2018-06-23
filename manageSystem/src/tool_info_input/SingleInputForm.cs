@@ -26,22 +26,22 @@ namespace manageSystem
         {
             return new ToolsInfo()
             {
-                SerialNum = serialNumBox.Text.Trim(),
-                Model = modelBox.Text.Trim(),
-                Category = categoryBox.Text.Trim(),
-                Name = nameBox.Text.Trim(),
-                TorqueMin = torqueMinBox.Text == "" ? 0 : double.Parse(torqueMinBox.Text.Trim()),
-                TorqueMax = torqueMaxBox.Text == "" ? 0 : double.Parse(torqueMaxBox.Text.Trim()),
-                Accuracy = accuracyBox.Text == "" ? 0 : double.Parse(accuracyBox.Text.Trim()),
-                Section = sectionBox.Text.Trim(),
-                DemarcateCycle = int.Parse(cycleBox.Value.ToString()),
-                Workstation = workstationBox.Text.Trim(),
-                Status = statusBox.Text.Trim(),
-                QualityAssureDate = qualityBox.Text.Trim(),
-                MaintainContractStyle = cbContractStyle.Text.Trim(),
-                MaintainContractDate = maintainBox.Text.Trim(),
-                RepairTimes = int.Parse(repairTimeBox.Value.ToString()),
-                Remark = remarkBox.Text.Trim()
+                SerialNum = txtSerialNum.Text.Trim(),
+                Model = cmbModel.Text.Trim(),
+                Category = cmbCategory.Text.Trim(),
+                Name = cmbName.Text.Trim(),
+                TorqueMin = txtTorqueMin.Text == "" ? 0 : double.Parse(txtTorqueMin.Text.Trim()),
+                TorqueMax = txtTorqueMax.Text == "" ? 0 : double.Parse(txtTorqueMax.Text.Trim()),
+                Accuracy = txtAccuracy.Text == "" ? 0 : double.Parse(txtAccuracy.Text.Trim()),
+                Section = cmbSection.Text.Trim(),
+                DemarcateCycle = int.Parse(nudCycle.Value.ToString()),
+                Workstation = cmbWorkstation.Text.Trim(),
+                Status = cmbStatus.Text.Trim(),
+                QualityAssureDate = dtpQuality.Text.Trim(),
+                MaintainContractStyle = cmbContractStyle.Text.Trim(),
+                MaintainContractDate = dtpMaintain.Text.Trim(),
+                RepairTimes = int.Parse(nudRepairTime.Value.ToString()),
+                Remark = txtRemark.Text.Trim()
             };
         }
 
@@ -63,22 +63,22 @@ namespace manageSystem
             dateTimePicker.CustomFormat = "yyyy-MM-dd";
         }
 
-        private void dateTimePicker1_DropDown(object sender, EventArgs e)
+        private void dtpQuality_DropDown(object sender, EventArgs e)
         {
-            setDateTimePickerNormal(qualityBox);
+            setDateTimePickerNormal(dtpQuality);
         }
-        private void dateTimePicker3_DropDown(object sender, EventArgs e)
+        private void dtpMaintain_DropDown(object sender, EventArgs e)
         {
-            this.setDateTimePickerNormal(maintainBox);
+            setDateTimePickerNormal(dtpMaintain);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             string msg = toolsInfoManage.InputOneToolsInfo(getAllInput());
             MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnExcelImport_Click(object sender, EventArgs e)
         {
             foreach (Control c in this.Controls)
             {
@@ -92,6 +92,26 @@ namespace manageSystem
             {
                 string msg = toolsInfoManage.ImportBatchTools2Db(importExcelFile.FileName);
                 MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            foreach(Control c in Controls)
+            {
+                if(c is TextBox || c is NumericUpDown)
+                {
+                    c.Text = "";
+                }
+                if(c is ComboBox)
+                {
+                    c.Text = "";
+                    (c as ComboBox).SelectedIndex = -1;
+                }
+                if(c is DateTimePicker)
+                {
+                    setDateTimePickerEmpty();
+                }
             }
         }
     }

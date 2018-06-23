@@ -28,6 +28,9 @@ namespace manageSystem.src.demarcate_manage
             List<DemarcateHistory> demacateHistoryList = demarcateRecordManage.GetDemarcateHistoriesBySerial(serialNum);
             if(demacateHistoryList == null)
             {
+                MessageBox.Show("该工具尚未进行过任何标定，无记录！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Dispose();
+                Close();
                 return;
             }
             if (demacateHistoryList != null)

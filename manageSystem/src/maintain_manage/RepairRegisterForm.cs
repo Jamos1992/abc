@@ -48,9 +48,9 @@ namespace manageSystem.src.maintain_manage
         {
             MaintainManageInfo maintainManageInfo = new MaintainManageInfo();
             maintainManageInfo.ToolModeName = txtModel.Text;
-            maintainManageInfo.ToolSerialName =  cboSerialNum.Text;
+            maintainManageInfo.ToolSerialName =  cmbSerialNum.Text;
             maintainManageInfo.SendFixTime = dtpSendTime.Text;
-            maintainManageInfo.Detail = rtxtDetail.Text;
+            maintainManageInfo.Detail = rtxDetail.Text;
             maintainManageInfo.Status = "待维修";
             maintainManageInfo.UsedOtherSpareToolInfo = null;
             maintainManageInfo.UsedRepoSpareToolInfo = null;
@@ -60,9 +60,9 @@ namespace manageSystem.src.maintain_manage
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!toolsInfoManage.IsToolExistInDb(cboSerialNum.Text.Trim()))
+            if (!toolsInfoManage.IsToolExistInDb(cmbSerialNum.Text.Trim()))
             {
-                MessageBox.Show($"序列号为{cboSerialNum.Text.Trim()}的工具不在仓库中", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"序列号为{cmbSerialNum.Text.Trim()}的工具不在仓库中", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             MaintainManageInfo maintainManageInfo = getAllInput();
@@ -91,8 +91,8 @@ namespace manageSystem.src.maintain_manage
 
         private void comboBox1_DropDown(object sender, EventArgs e)
         {          
-            cboSerialNum.Items.Clear();
-            setComboBoxList(txtModel.Text, cboSerialNum);
+            cmbSerialNum.Items.Clear();
+            setComboBoxList(txtModel.Text, cmbSerialNum);
         }
         private void setComboBoxList(string str, ComboBox comboBox)
         {

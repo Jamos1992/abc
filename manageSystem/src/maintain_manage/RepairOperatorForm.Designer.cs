@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepairOperatorForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.cboSerialNum = new System.Windows.Forms.ComboBox();
+            this.cmbSerialNum = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRepoSpare = new System.Windows.Forms.TextBox();
             this.btnRepoAdd = new System.Windows.Forms.Button();
@@ -54,14 +54,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "选择送修工具：";
             // 
-            // cboSerialNum
+            // cmbSerialNum
             // 
-            this.cboSerialNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.cboSerialNum.FormattingEnabled = true;
-            this.cboSerialNum.Location = new System.Drawing.Point(180, 47);
-            this.cboSerialNum.Name = "cboSerialNum";
-            this.cboSerialNum.Size = new System.Drawing.Size(185, 20);
-            this.cboSerialNum.TabIndex = 1;
+            this.cmbSerialNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSerialNum.FormattingEnabled = true;
+            this.cmbSerialNum.Location = new System.Drawing.Point(180, 47);
+            this.cmbSerialNum.Name = "cmbSerialNum";
+            this.cmbSerialNum.Size = new System.Drawing.Size(185, 20);
+            this.cmbSerialNum.TabIndex = 1;
             // 
             // label2
             // 
@@ -211,7 +211,7 @@
             this.Controls.Add(this.btnRepoAdd);
             this.Controls.Add(this.txtRepoSpare);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cboSerialNum);
+            this.Controls.Add(this.cmbSerialNum);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RepairOperatorForm";
@@ -227,7 +227,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboSerialNum;
+        private System.Windows.Forms.ComboBox cmbSerialNum;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtRepoSpare;
         private System.Windows.Forms.Button btnRepoAdd;

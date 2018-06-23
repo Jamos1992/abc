@@ -56,14 +56,16 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnToolDataExport = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSpareToolExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOnCallExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMaintainExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDemarcateExport = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.importExcelFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btnOnCallExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnMaintainExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDemarcateExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblWelcome = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,24 +167,24 @@
             // 驻场人员登记ToolStripMenuItem
             // 
             this.驻场人员登记ToolStripMenuItem.Name = "驻场人员登记ToolStripMenuItem";
-            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.驻场人员登记ToolStripMenuItem.Text = "驻场人员登记";
             // 
             // 查看驻场人员信息ToolStripMenuItem
             // 
             this.查看驻场人员信息ToolStripMenuItem.Name = "查看驻场人员信息ToolStripMenuItem";
-            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.查看驻场人员信息ToolStripMenuItem.Text = "查看驻场人员信息";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(172, 22);
+            this.btnExit.Size = new System.Drawing.Size(180, 22);
             this.btnExit.Text = "退出";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -281,31 +283,54 @@
             // btnToolsInfoImport
             // 
             this.btnToolsInfoImport.Name = "btnToolsInfoImport";
-            this.btnToolsInfoImport.Size = new System.Drawing.Size(180, 22);
+            this.btnToolsInfoImport.Size = new System.Drawing.Size(172, 22);
             this.btnToolsInfoImport.Text = "工具零件信息导入";
             this.btnToolsInfoImport.Click += new System.EventHandler(this.toolsInfoImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
             // btnToolDataExport
             // 
             this.btnToolDataExport.Name = "btnToolDataExport";
-            this.btnToolDataExport.Size = new System.Drawing.Size(180, 22);
+            this.btnToolDataExport.Size = new System.Drawing.Size(172, 22);
             this.btnToolDataExport.Text = "工具数据导出";
             this.btnToolDataExport.Click += new System.EventHandler(this.btnToolDataExport_Click);
             // 
             // btnSpareToolExport
             // 
             this.btnSpareToolExport.Name = "btnSpareToolExport";
-            this.btnSpareToolExport.Size = new System.Drawing.Size(180, 22);
+            this.btnSpareToolExport.Size = new System.Drawing.Size(172, 22);
             this.btnSpareToolExport.Text = "仓库零件导出";
             this.btnSpareToolExport.Click += new System.EventHandler(this.btnSpareToolExport_Click);
             // 
+            // btnOnCallExport
+            // 
+            this.btnOnCallExport.Name = "btnOnCallExport";
+            this.btnOnCallExport.Size = new System.Drawing.Size(172, 22);
+            this.btnOnCallExport.Text = "OnCall记录导出";
+            this.btnOnCallExport.Click += new System.EventHandler(this.btnOnCallExport_Click);
+            // 
+            // btnMaintainExport
+            // 
+            this.btnMaintainExport.Name = "btnMaintainExport";
+            this.btnMaintainExport.Size = new System.Drawing.Size(172, 22);
+            this.btnMaintainExport.Text = "维修数据导出";
+            this.btnMaintainExport.Click += new System.EventHandler(this.btnMaintainExport_Click);
+            // 
+            // btnDemarcateExport
+            // 
+            this.btnDemarcateExport.Name = "btnDemarcateExport";
+            this.btnDemarcateExport.Size = new System.Drawing.Size(172, 22);
+            this.btnDemarcateExport.Text = "标定历史记录导出";
+            this.btnDemarcateExport.Click += new System.EventHandler(this.btnDemarcateExport_Click);
+            // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblWelcome});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(686, 22);
@@ -324,26 +349,11 @@
             // 
             this.importExcelFile.FileName = "openFileDialog1";
             // 
-            // btnOnCallExport
+            // lblWelcome
             // 
-            this.btnOnCallExport.Name = "btnOnCallExport";
-            this.btnOnCallExport.Size = new System.Drawing.Size(180, 22);
-            this.btnOnCallExport.Text = "OnCall记录导出";
-            this.btnOnCallExport.Click += new System.EventHandler(this.btnOnCallExport_Click);
-            // 
-            // btnMaintainExport
-            // 
-            this.btnMaintainExport.Name = "btnMaintainExport";
-            this.btnMaintainExport.Size = new System.Drawing.Size(180, 22);
-            this.btnMaintainExport.Text = "维修数据导出";
-            this.btnMaintainExport.Click += new System.EventHandler(this.btnMaintainExport_Click);
-            // 
-            // btnDemarcateExport
-            // 
-            this.btnDemarcateExport.Name = "btnDemarcateExport";
-            this.btnDemarcateExport.Size = new System.Drawing.Size(180, 22);
-            this.btnDemarcateExport.Text = "标定历史记录导出";
-            this.btnDemarcateExport.Click += new System.EventHandler(this.btnDemarcateExport_Click);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(192, 17);
+            this.lblWelcome.Text = "欢迎进入Desoutte工具管理系统！";
             // 
             // MainForm
             // 
@@ -368,6 +378,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -411,5 +423,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnOnCallExport;
         private System.Windows.Forms.ToolStripMenuItem btnMaintainExport;
         private System.Windows.Forms.ToolStripMenuItem btnDemarcateExport;
+        private System.Windows.Forms.ToolStripStatusLabel lblWelcome;
     }
 }

@@ -29,22 +29,22 @@ namespace manageSystem.src.demarcate_manage
         {
             demarcateTools = tools;
             InitializeComponent();
-            dtDemarcateDate.Format = DateTimePickerFormat.Custom;
-            dtDemarcateDate.CustomFormat = "yyyy-MM-dd";
+            dtpDemarcateDate.Format = DateTimePickerFormat.Custom;
+            dtpDemarcateDate.CustomFormat = "yyyy-MM-dd";
         }
 
         private void ModifyDemarcateToolForm_Load(object sender, EventArgs e)
         {
-            cbSerialNum.Text = demarcateTools.SerialNum;
-            cbCycle.Text = demarcateTools.Cycle.ToString();
-            dtDemarcateDate.Text = demarcateTools.LastTime;
-            cycle = cbCycle.Text.Trim();
-            lastTime = dtDemarcateDate.Text.Trim();
+            cmbSerialNum.Text = demarcateTools.SerialNum;
+            cmbCycle.Text = demarcateTools.Cycle.ToString();
+            dtpDemarcateDate.Text = demarcateTools.LastTime;
+            cycle = cmbCycle.Text.Trim();
+            lastTime = dtpDemarcateDate.Text.Trim();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {           
-            if(cycle == cbCycle.Text.Trim() && lastTime == dtDemarcateDate.Text.Trim())
+            if(cycle == cmbCycle.Text.Trim() && lastTime == dtpDemarcateDate.Text.Trim())
             {
                 DialogResult = DialogResult.OK;
                 Close();
@@ -52,17 +52,17 @@ namespace manageSystem.src.demarcate_manage
             }
             try
             {
-                demarcateTools.SerialNum = cbSerialNum.Text.Trim();
-                demarcateTools.Cycle = int.Parse(cbCycle.Text.Trim());
-                demarcateTools.LastTime = dtDemarcateDate.Text.Trim();
-                demarcateTools.NextTime = Convert.ToDateTime(dtDemarcateDate.Text.Trim()).AddDays(demarcateTools.Cycle).ToString("yyyy-MM-dd");
+                demarcateTools.SerialNum = cmbSerialNum.Text.Trim();
+                demarcateTools.Cycle = int.Parse(cmbCycle.Text.Trim());
+                demarcateTools.LastTime = dtpDemarcateDate.Text.Trim();
+                demarcateTools.NextTime = Convert.ToDateTime(dtpDemarcateDate.Text.Trim()).AddDays(demarcateTools.Cycle).ToString("yyyy-MM-dd");
                 int affected = demarcateRecordManage.UpdateOneDemarcateTool(demarcateTools);
                 if(affected < 1)
                 {
                     Console.WriteLine($"数据更新失败，影响行数：{affected}");
                     throw new Exception("数据更新失败");
                 }
-                affected = toolsInfoManage.UpdateCycleInToolsInfo(cbSerialNum.Text.Trim(), Convert.ToInt32(cbCycle.Text.Trim()));
+                affected = toolsInfoManage.UpdateCycleInToolsInfo(cmbSerialNum.Text.Trim(), Convert.ToInt32(cmbCycle.Text.Trim()));
                 if(affected < 1)
                 {
                     Console.WriteLine("更新工具的周期失败");

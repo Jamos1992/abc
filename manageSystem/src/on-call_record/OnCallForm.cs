@@ -10,6 +10,7 @@ namespace manageSystem.src.on_call_record
     public partial class OnCallForm : Form
     {
         private OnCallRecordManage onCallRecordManage = new OnCallRecordManage();
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
         public OnCallForm()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace manageSystem.src.on_call_record
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             OnCallForm toolsInfo = new OnCallForm();
             List<OnCallRecord> list = new List<OnCallRecord>();           
@@ -41,12 +42,12 @@ namespace manageSystem.src.on_call_record
                 string sql = "select * from OnCallRecord where 1=1";
                 if (checkBox1.Checked)
                 {
-                    if (dateTimePicker1.Text != "" && dateTimePicker2.Text != "") sql += " and CallTime>'" + dateTimePicker1.Text + "' and CallTime<'" + dateTimePicker2.Text + "'";
+                    if (dtpStartTime.Text != "" && dtpEndTime.Text != "") sql += " and CallTime>'" + dtpStartTime.Text + "' and CallTime<'" + dtpEndTime.Text + "'";
                     else MessageBox.Show("时间选择不对，请重新选择", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 if (checkBox2.Checked)
                 {
-                    if (comboBox1.Text != "") sql += " and FaultReason='" + comboBox1.Text + "'";
+                    if (cmbFaultReason.Text != "") sql += " and FaultReason='" + cmbFaultReason.Text + "'";
                     else MessageBox.Show("故障原因未选择", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 list = onCallRecordManage.GetOnCallRecordBySql(sql);
@@ -72,14 +73,14 @@ namespace manageSystem.src.on_call_record
             dateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm";
         }
 
-        private void dateTimePicker1_DropDown(object sender, EventArgs e)
+        private void dtpStartTime_DropDown(object sender, EventArgs e)
         {
-            setDateTimePickerNormal(dateTimePicker1);
+            setDateTimePickerNormal(dtpStartTime);
         }
 
-        private void dateTimePicker2_DropDown(object sender, EventArgs e)
+        private void dtpEndTime_DropDown(object sender, EventArgs e)
         {
-            setDateTimePickerNormal(dateTimePicker2);
+            setDateTimePickerNormal(dtpEndTime);
         }
 
         private void setDateTimePickerEmpty(Control c)
@@ -90,13 +91,17 @@ namespace manageSystem.src.on_call_record
 
         private void OnCallForm_Load(object sender, EventArgs e)
         {
-            setDateTimePickerEmpty(dateTimePicker1);
-            setDateTimePickerEmpty(dateTimePicker2);
+            setDateTimePickerEmpty(dtpStartTime);
+            setDateTimePickerEmpty(dtpEndTime);
             setDateTimePickerEmpty(dtpArriveTime);
             setDateTimePickerEmpty(dtpCallTime);
+            List<string> hint = new List<string>();
+            hint = toolsInfoManage.GetSectionHintFromDb();
+            if (hint == null) return;
+            cmbSection.Items.AddRange(hint.ToArray());
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnClearSearch_Click(object sender, EventArgs e)
         {
             foreach(Control c in groupBox1.Controls)
             {
@@ -107,7 +112,7 @@ namespace manageSystem.src.on_call_record
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnExcelExport_Click(object sender, EventArgs e)
         {
             OnCallRecord[] onCallRecords = GetOnCallRecordsFromGrid();
             if (onCallRecords == null)
@@ -154,10 +159,10 @@ namespace manageSystem.src.on_call_record
             OnCallRecord onCallRecord = new OnCallRecord();
             onCallRecord.CallTime = dtpCallTime.Text;
             onCallRecord.ArriveTime = dtpArriveTime.Text;
-            onCallRecord.ToolSection = cboSection.Text;
-            onCallRecord.ToolWorkstation = cboWorkstation.Text;
-            onCallRecord.FaultToolName = cboSection.Text;
-            onCallRecord.FaultReason = cboReason.Text;
+            onCallRecord.ToolSection = cmbSection.Text;
+            onCallRecord.ToolWorkstation = cmbWorkstation.Text;
+            onCallRecord.FaultToolName = cmbSection.Text;
+            onCallRecord.FaultReason = cmbReason.Text;
             onCallRecord.Detail = txtDeatil.Text;
             return onCallRecord;
         }
@@ -172,7 +177,7 @@ namespace manageSystem.src.on_call_record
                     ModifyForm onCallForm = new ModifyForm(GetOneToolsInfoFromGrid());
                     if(onCallForm.ShowDialog() == DialogResult.OK)
                     {
-                        button1_Click(null, null);
+                        btnSearch_Click(null, null);
                         Show();
                     }
                 }
@@ -196,7 +201,7 @@ namespace manageSystem.src.on_call_record
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (dtpCallTime.Text == "" || dtpArriveTime.Text == "" || cboWorkstation.Text == "" || cboReason.Text == "")
+            if (dtpCallTime.Text == "" || dtpArriveTime.Text == "" || cmbWorkstation.Text == "" || cmbReason.Text == "")
             {
                 MessageBox.Show("提交失败，请填写必填项！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
@@ -229,8 +234,66 @@ namespace manageSystem.src.on_call_record
         {
             foreach(Control c in grpAdd.Controls)
             {
-                c.Text = "";
+                if(c is TextBox || c is ComboBox || c is DateTimePicker)
+                {
+                    c.Text = "";
+                }
+                if(c is DateTimePicker)
+                {
+                    setDateTimePickerEmpty(c);
+                }                
             }
+        }
+
+        private void btnChart_Click(object sender, EventArgs e)
+        {
+            OnCallRecord[] onCallRecords = GetOnCallRecordsFromGrid();
+            if(onCallRecords.Length == 0)
+            {
+                MessageBox.Show("选择要查看的序列号记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            ChartForm chartForm = new ChartForm();
+            chartForm.ShowDialog();
+        }
+
+        private void cmbSection_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cmbWorkstation_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cmbSection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbWorkstation.Text = "";
+            cmbSerialNum.Text = "";
+            List<string> hint = new List<string>();
+            if (cmbSection.Text.Trim() == "") return;
+            hint = toolsInfoManage.GetWorkstationHintFromDb(cmbSection.Text.Trim());
+            if (hint == null)
+            {
+                return;
+            }
+            cmbWorkstation.Items.Clear();
+            cmbWorkstation.Items.AddRange(hint.ToArray());
+        }
+
+        private void cmbWorkstation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbSerialNum.Text = "";
+            List<string> hint = new List<string>();
+            if (cmbWorkstation.Text.Trim() == "") return;
+            hint = toolsInfoManage.GetSerialNumHintByWorkstationFromDb(cmbWorkstation.Text.Trim());
+            if (hint == null)
+            {
+                return;
+            }
+            cmbSerialNum.Items.Clear();
+            cmbSerialNum.Items.AddRange(hint.ToArray());
         }
     }
 }

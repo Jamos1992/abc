@@ -36,11 +36,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.rtxtDetail = new System.Windows.Forms.RichTextBox();
+            this.rtxDetail = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpSendTime = new System.Windows.Forms.DateTimePicker();
             this.txtModel = new System.Windows.Forms.TextBox();
-            this.cboSerialNum = new System.Windows.Forms.ComboBox();
+            this.cmbSerialNum = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -82,15 +82,15 @@
             this.label4.Text = "*工具送修描述";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // rtxtDetail
+            // rtxDetail
             // 
-            this.rtxtDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtxtDetail.Location = new System.Drawing.Point(120, 55);
-            this.rtxtDetail.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.rtxtDetail.Name = "rtxtDetail";
-            this.rtxtDetail.Size = new System.Drawing.Size(432, 21);
-            this.rtxtDetail.TabIndex = 8;
-            this.rtxtDetail.Text = "";
+            this.rtxDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtxDetail.Location = new System.Drawing.Point(120, 55);
+            this.rtxDetail.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.rtxDetail.Name = "rtxDetail";
+            this.rtxDetail.Size = new System.Drawing.Size(432, 21);
+            this.rtxDetail.TabIndex = 8;
+            this.rtxDetail.Text = "";
             // 
             // label2
             // 
@@ -122,15 +122,15 @@
             this.txtModel.Size = new System.Drawing.Size(129, 21);
             this.txtModel.TabIndex = 10;
             // 
-            // cboSerialNum
+            // cmbSerialNum
             // 
-            this.cboSerialNum.FormattingEnabled = true;
-            this.cboSerialNum.Location = new System.Drawing.Point(356, 24);
-            this.cboSerialNum.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.cboSerialNum.Name = "cboSerialNum";
-            this.cboSerialNum.Size = new System.Drawing.Size(129, 20);
-            this.cboSerialNum.TabIndex = 11;
-            this.cboSerialNum.DropDown += new System.EventHandler(this.comboBox1_DropDown);
+            this.cmbSerialNum.FormattingEnabled = true;
+            this.cmbSerialNum.Location = new System.Drawing.Point(356, 24);
+            this.cmbSerialNum.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.cmbSerialNum.Name = "cmbSerialNum";
+            this.cmbSerialNum.Size = new System.Drawing.Size(129, 20);
+            this.cmbSerialNum.TabIndex = 11;
+            this.cmbSerialNum.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             // 
             // btnSave
             // 
@@ -284,10 +284,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtModel);
-            this.groupBox1.Controls.Add(this.rtxtDetail);
+            this.groupBox1.Controls.Add(this.rtxDetail);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cboSerialNum);
+            this.groupBox1.Controls.Add(this.cmbSerialNum);
             this.groupBox1.Controls.Add(this.dtpSendTime);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -330,13 +330,13 @@
         #endregion
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox rtxtDetail;
+        private System.Windows.Forms.RichTextBox rtxDetail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpSendTime;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox txtModel;
-        private System.Windows.Forms.ComboBox cboSerialNum;
+        private System.Windows.Forms.ComboBox cmbSerialNum;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

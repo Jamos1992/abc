@@ -26,7 +26,7 @@ namespace manageSystem.src.maintain_manage
         }
         private void RepairOperatorForm_Load(object sender, EventArgs e)
         {
-            cboSerialNum.Text = RepairManageForm.ToolSerialName;
+            cmbSerialNum.Text = RepairManageForm.ToolSerialName;
             txtRepoSpare.Enabled = false;
             txtOtherSpare.Enabled = false;
             setAllInputWhenSuspendBefore();
@@ -35,7 +35,7 @@ namespace manageSystem.src.maintain_manage
         {
             List<string> list = maintainInfoManage.GetSerialNameHintFromDb();
             if (list == null) return;
-            cboSerialNum.Items.AddRange(list.ToArray());
+            cmbSerialNum.Items.AddRange(list.ToArray());
         }
 
         private void updateAllData(string time, string nextStatus, string state)
@@ -60,7 +60,7 @@ namespace manageSystem.src.maintain_manage
         {
             if (!checkInput()) return null;
             MaintainManageInfo maintainManageInfo = new MaintainManageInfo();
-            maintainManageInfo.ToolSerialName = cboSerialNum.Text;
+            maintainManageInfo.ToolSerialName = cmbSerialNum.Text;
             maintainManageInfo.UsedRepoSpareToolInfo = commonManage.ConvertStr2Dic(txtRepoSpare.Text);
             maintainManageInfo.UsedOtherSpareToolInfo = commonManage.ConvertStr2Dic(txtOtherSpare.Text);
             return maintainManageInfo;
@@ -68,12 +68,12 @@ namespace manageSystem.src.maintain_manage
 
         private bool checkInput()
         {
-            if (cboSerialNum.Text == "")
+            if (cmbSerialNum.Text == "")
             {
                 MessageBox.Show("工具序列号不允许为空！");
                 return false;
             }
-            if (cboSerialNum.Items.IndexOf(cboSerialNum.Text) < 0)
+            if (cmbSerialNum.Items.IndexOf(cmbSerialNum.Text) < 0)
             {
                 MessageBox.Show("工具尚未登记，请先登记再进行维修");
                 return false;

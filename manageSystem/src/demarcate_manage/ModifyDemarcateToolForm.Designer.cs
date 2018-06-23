@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtDemarcateDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpDemarcateDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbCycle = new System.Windows.Forms.ComboBox();
+            this.cmbCycle = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbSerialNum = new System.Windows.Forms.ComboBox();
+            this.cmbSerialNum = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // dtDemarcateDate
+            // dtpDemarcateDate
             // 
-            this.dtDemarcateDate.Font = new System.Drawing.Font("宋体", 10F);
-            this.dtDemarcateDate.Location = new System.Drawing.Point(171, 116);
-            this.dtDemarcateDate.Name = "dtDemarcateDate";
-            this.dtDemarcateDate.Size = new System.Drawing.Size(130, 23);
-            this.dtDemarcateDate.TabIndex = 11;
+            this.dtpDemarcateDate.Font = new System.Drawing.Font("宋体", 10F);
+            this.dtpDemarcateDate.Location = new System.Drawing.Point(171, 116);
+            this.dtpDemarcateDate.Name = "dtpDemarcateDate";
+            this.dtpDemarcateDate.Size = new System.Drawing.Size(130, 23);
+            this.dtpDemarcateDate.TabIndex = 11;
             // 
             // label3
             // 
@@ -56,14 +56,14 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "*标定日期";
             // 
-            // cbCycle
+            // cmbCycle
             // 
-            this.cbCycle.Font = new System.Drawing.Font("宋体", 10F);
-            this.cbCycle.FormattingEnabled = true;
-            this.cbCycle.Location = new System.Drawing.Point(171, 80);
-            this.cbCycle.Name = "cbCycle";
-            this.cbCycle.Size = new System.Drawing.Size(83, 21);
-            this.cbCycle.TabIndex = 9;
+            this.cmbCycle.Font = new System.Drawing.Font("宋体", 10F);
+            this.cmbCycle.FormattingEnabled = true;
+            this.cmbCycle.Location = new System.Drawing.Point(171, 80);
+            this.cmbCycle.Name = "cmbCycle";
+            this.cmbCycle.Size = new System.Drawing.Size(83, 21);
+            this.cmbCycle.TabIndex = 9;
             // 
             // label2
             // 
@@ -75,15 +75,15 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "*标定周期";
             // 
-            // cbSerialNum
+            // cmbSerialNum
             // 
-            this.cbSerialNum.Enabled = false;
-            this.cbSerialNum.Font = new System.Drawing.Font("宋体", 10F);
-            this.cbSerialNum.FormattingEnabled = true;
-            this.cbSerialNum.Location = new System.Drawing.Point(171, 41);
-            this.cbSerialNum.Name = "cbSerialNum";
-            this.cbSerialNum.Size = new System.Drawing.Size(130, 21);
-            this.cbSerialNum.TabIndex = 7;
+            this.cmbSerialNum.Enabled = false;
+            this.cmbSerialNum.Font = new System.Drawing.Font("宋体", 10F);
+            this.cmbSerialNum.FormattingEnabled = true;
+            this.cmbSerialNum.Location = new System.Drawing.Point(171, 41);
+            this.cmbSerialNum.Name = "cmbSerialNum";
+            this.cmbSerialNum.Size = new System.Drawing.Size(130, 21);
+            this.cmbSerialNum.TabIndex = 7;
             // 
             // label1
             // 
@@ -126,11 +126,11 @@
             this.ClientSize = new System.Drawing.Size(410, 215);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dtDemarcateDate);
+            this.Controls.Add(this.dtpDemarcateDate);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbCycle);
+            this.Controls.Add(this.cmbCycle);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbSerialNum);
+            this.Controls.Add(this.cmbSerialNum);
             this.Controls.Add(this.label1);
             this.Name = "ModifyDemarcateToolForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -143,11 +143,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dtDemarcateDate;
+        private System.Windows.Forms.DateTimePicker dtpDemarcateDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbCycle;
+        private System.Windows.Forms.ComboBox cmbCycle;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbSerialNum;
+        private System.Windows.Forms.ComboBox cmbSerialNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;

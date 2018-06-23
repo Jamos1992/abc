@@ -26,7 +26,7 @@ namespace manageSystem.src.demarcate_manage
             dataGridView1.ClearSelection();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             List<ToolsInfo> list = new List<ToolsInfo>();
             if (txtWorkstation.Text == "" && txtSerialNum.Text == "" && txtModel.Text == "")

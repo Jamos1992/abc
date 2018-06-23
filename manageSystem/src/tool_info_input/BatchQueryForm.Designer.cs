@@ -30,33 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatchQueryForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.button1 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnExcelExport = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.CheckCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SerialNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,19 +84,6 @@
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(690, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 23);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "   导出到excel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -141,9 +128,9 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnExcelExport);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label2);
@@ -154,29 +141,42 @@
             this.panel1.Size = new System.Drawing.Size(800, 51);
             this.panel1.TabIndex = 36;
             // 
-            // button2
+            // btnExcelExport
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(475, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 23);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "  查询";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnExcelExport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExcelExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelExport.Image")));
+            this.btnExcelExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcelExport.Location = new System.Drawing.Point(690, 14);
+            this.btnExcelExport.Name = "btnExcelExport";
+            this.btnExcelExport.Size = new System.Drawing.Size(98, 23);
+            this.btnExcelExport.TabIndex = 25;
+            this.btnExcelExport.Text = "   导出到excel";
+            this.btnExcelExport.UseVisualStyleBackColor = true;
+            this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
             // 
-            // button4
+            // btnSearch
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Location = new System.Drawing.Point(412, 14);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(41, 23);
-            this.button4.TabIndex = 40;
-            this.button4.Text = "+";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(475, 14);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(65, 23);
+            this.btnSearch.TabIndex = 41;
+            this.btnSearch.Text = "  查询";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdd.Location = new System.Drawing.Point(412, 14);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(41, 23);
+            this.btnAdd.TabIndex = 40;
+            this.btnAdd.Text = "+";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dataGridView1
             // 
@@ -187,14 +187,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -246,8 +246,8 @@
             // SerialNumCol
             // 
             this.SerialNumCol.DataPropertyName = "SerialNum";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SerialNumCol.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SerialNumCol.DefaultCellStyle = dataGridViewCellStyle20;
             this.SerialNumCol.HeaderText = "工具序列号";
             this.SerialNumCol.Name = "SerialNumCol";
             this.SerialNumCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -255,8 +255,8 @@
             // ModelCol
             // 
             this.ModelCol.DataPropertyName = "Model";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ModelCol.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ModelCol.DefaultCellStyle = dataGridViewCellStyle21;
             this.ModelCol.HeaderText = "工具型号";
             this.ModelCol.Name = "ModelCol";
             this.ModelCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -264,8 +264,8 @@
             // CategoryCol
             // 
             this.CategoryCol.DataPropertyName = "Category";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CategoryCol.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CategoryCol.DefaultCellStyle = dataGridViewCellStyle22;
             this.CategoryCol.HeaderText = "工具类别";
             this.CategoryCol.Name = "CategoryCol";
             this.CategoryCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -274,8 +274,8 @@
             // NameCol
             // 
             this.NameCol.DataPropertyName = "Name";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NameCol.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NameCol.DefaultCellStyle = dataGridViewCellStyle23;
             this.NameCol.HeaderText = "工具名称";
             this.NameCol.Name = "NameCol";
             this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -284,36 +284,38 @@
             // TorqueMinCol
             // 
             this.TorqueMinCol.DataPropertyName = "TorqueMin";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TorqueMinCol.DefaultCellStyle = dataGridViewCellStyle6;
-            this.TorqueMinCol.HeaderText = "标定扭矩下限";
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TorqueMinCol.DefaultCellStyle = dataGridViewCellStyle24;
+            this.TorqueMinCol.HeaderText = "标定扭矩下限(Nm)";
             this.TorqueMinCol.Name = "TorqueMinCol";
             this.TorqueMinCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TorqueMinCol.Width = 120;
             // 
             // TorqueMaxCol
             // 
             this.TorqueMaxCol.DataPropertyName = "TorqueMax";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TorqueMaxCol.DefaultCellStyle = dataGridViewCellStyle7;
-            this.TorqueMaxCol.HeaderText = "标定扭矩上限";
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TorqueMaxCol.DefaultCellStyle = dataGridViewCellStyle25;
+            this.TorqueMaxCol.HeaderText = "标定扭矩上限(Nm)";
             this.TorqueMaxCol.Name = "TorqueMaxCol";
             this.TorqueMaxCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TorqueMaxCol.Width = 120;
             // 
             // AccuracyCol
             // 
             this.AccuracyCol.DataPropertyName = "Accuracy";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.AccuracyCol.DefaultCellStyle = dataGridViewCellStyle8;
-            this.AccuracyCol.HeaderText = "精度";
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.AccuracyCol.DefaultCellStyle = dataGridViewCellStyle26;
+            this.AccuracyCol.HeaderText = "精度(%)";
             this.AccuracyCol.Name = "AccuracyCol";
             this.AccuracyCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.AccuracyCol.Width = 50;
+            this.AccuracyCol.Width = 60;
             // 
             // SectionCol
             // 
             this.SectionCol.DataPropertyName = "Section";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SectionCol.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SectionCol.DefaultCellStyle = dataGridViewCellStyle27;
             this.SectionCol.HeaderText = "工段";
             this.SectionCol.Name = "SectionCol";
             this.SectionCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -322,8 +324,8 @@
             // WorkstationCol
             // 
             this.WorkstationCol.DataPropertyName = "Workstation";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.WorkstationCol.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.WorkstationCol.DefaultCellStyle = dataGridViewCellStyle28;
             this.WorkstationCol.HeaderText = "工位";
             this.WorkstationCol.Name = "WorkstationCol";
             this.WorkstationCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -331,9 +333,9 @@
             // DemarcateCycleCol
             // 
             this.DemarcateCycleCol.DataPropertyName = "DemarcateCycle";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DemarcateCycleCol.DefaultCellStyle = dataGridViewCellStyle11;
-            this.DemarcateCycleCol.HeaderText = "标定周期";
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DemarcateCycleCol.DefaultCellStyle = dataGridViewCellStyle29;
+            this.DemarcateCycleCol.HeaderText = "标定周期(天)";
             this.DemarcateCycleCol.Name = "DemarcateCycleCol";
             this.DemarcateCycleCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.DemarcateCycleCol.Width = 60;
@@ -341,8 +343,8 @@
             // StatusCol
             // 
             this.StatusCol.DataPropertyName = "Status";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.StatusCol.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.StatusCol.DefaultCellStyle = dataGridViewCellStyle30;
             this.StatusCol.HeaderText = "工具状态";
             this.StatusCol.Name = "StatusCol";
             this.StatusCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -351,8 +353,8 @@
             // QualityAssureDateCol
             // 
             this.QualityAssureDateCol.DataPropertyName = "QualityAssureDate";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.QualityAssureDateCol.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.QualityAssureDateCol.DefaultCellStyle = dataGridViewCellStyle31;
             this.QualityAssureDateCol.HeaderText = "质保期至";
             this.QualityAssureDateCol.Name = "QualityAssureDateCol";
             this.QualityAssureDateCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -360,8 +362,8 @@
             // MaintainContractStyleCol
             // 
             this.MaintainContractStyleCol.DataPropertyName = "MaintainContractStyle";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MaintainContractStyleCol.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MaintainContractStyleCol.DefaultCellStyle = dataGridViewCellStyle32;
             this.MaintainContractStyleCol.HeaderText = "保养合同类型";
             this.MaintainContractStyleCol.Name = "MaintainContractStyleCol";
             this.MaintainContractStyleCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -369,8 +371,8 @@
             // MaintainContractDateCol
             // 
             this.MaintainContractDateCol.DataPropertyName = "MaintainContractDate";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MaintainContractDateCol.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MaintainContractDateCol.DefaultCellStyle = dataGridViewCellStyle33;
             this.MaintainContractDateCol.HeaderText = "保养合同至";
             this.MaintainContractDateCol.Name = "MaintainContractDateCol";
             this.MaintainContractDateCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -378,8 +380,8 @@
             // RepairTimesCol
             // 
             this.RepairTimesCol.DataPropertyName = "RepairTimes";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.RepairTimesCol.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.RepairTimesCol.DefaultCellStyle = dataGridViewCellStyle34;
             this.RepairTimesCol.HeaderText = "累计维修次数";
             this.RepairTimesCol.Name = "RepairTimesCol";
             this.RepairTimesCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -387,8 +389,8 @@
             // RemarkCol
             // 
             this.RemarkCol.DataPropertyName = "Remark";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.RemarkCol.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.RemarkCol.DefaultCellStyle = dataGridViewCellStyle35;
             this.RemarkCol.HeaderText = "备注信息";
             this.RemarkCol.Name = "RemarkCol";
             this.RemarkCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -396,9 +398,9 @@
             // ActionCol
             // 
             this.ActionCol.DataPropertyName = "SerialNum";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.ActionCol.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.ActionCol.DefaultCellStyle = dataGridViewCellStyle36;
             this.ActionCol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ActionCol.HeaderText = "操作";
             this.ActionCol.Name = "ActionCol";
@@ -456,16 +458,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExcelExport;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ChangeToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;

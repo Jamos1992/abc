@@ -16,8 +16,8 @@ namespace manageSystem.src.demarcate_manage
             FormBorderStyle = FormBorderStyle.None;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AutoGenerateColumns = false;
-            dtDemarcateDate.Format = DateTimePickerFormat.Custom;
-            dtDemarcateDate.CustomFormat = " ";
+            dtpDemarcateDate.Format = DateTimePickerFormat.Custom;
+            dtpDemarcateDate.CustomFormat = " ";
         }
 
         private bool isToolsExistInRepo(string serialNum)
@@ -27,32 +27,32 @@ namespace manageSystem.src.demarcate_manage
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (cbSerialNum.Text == "" || cbCycle.Text == "" || dtDemarcateDate.Text == "")
+            if (cmbSerialNum.Text == "" || cmbCycle.Text == "" || dtpDemarcateDate.Text == "")
             {
                 MessageBox.Show("请填写工具序列号、标定周期和标定日期", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (!isToolsExistInRepo(cbSerialNum.Text.Trim()))
+            if (!isToolsExistInRepo(cmbSerialNum.Text.Trim()))
             {
-                MessageBox.Show($"序列号为{cbSerialNum.Text.Trim()}的工具不在仓库中", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"序列号为{cmbSerialNum.Text.Trim()}的工具不在仓库中", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (demarcateRecordManage.IsDemarcateToolExist(cbSerialNum.Text.Trim()))
+            if (demarcateRecordManage.IsDemarcateToolExist(cmbSerialNum.Text.Trim()))
             {
-                if (MessageBox.Show($"序列号为{cbSerialNum.Text.Trim()}的工具已经在标定计划中，是否需要更新？","提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                if (MessageBox.Show($"序列号为{cmbSerialNum.Text.Trim()}的工具已经在标定计划中，是否需要更新？","提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                 {
                     return;
                 }
                 int affected = demarcateRecordManage.UpdateOneDemarcateTool(getAllInput());
                 if(affected < 1)
                 {
-                    MessageBox.Show($"序列号为{cbSerialNum.Text.Trim()}的工具更新失败", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"序列号为{cmbSerialNum.Text.Trim()}的工具更新失败", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                affected = toolsInfoManage.UpdateCycleInToolsInfo(cbSerialNum.Text.Trim(), Convert.ToInt32(cbCycle.Text.Trim()));
+                affected = toolsInfoManage.UpdateCycleInToolsInfo(cmbSerialNum.Text.Trim(), Convert.ToInt32(cmbCycle.Text.Trim()));
                 if(affected < 1)
                 {
-                    Console.WriteLine($"更新工具{cbSerialNum.Text.Trim()}的标定周期失败");
+                    Console.WriteLine($"更新工具{cmbSerialNum.Text.Trim()}的标定周期失败");
                 }
                 refreshDataViewGrid();
                 return;
@@ -70,10 +70,10 @@ namespace manageSystem.src.demarcate_manage
         {
             return new DemarcateTools
             {
-                SerialNum = cbSerialNum.Text.Trim(),
-                Cycle = Convert.ToInt32(cbCycle.Text.Trim()),
-                LastTime = dtDemarcateDate.Text.Trim(),
-                NextTime = Convert.ToDateTime(dtDemarcateDate.Text.Trim()).AddDays(Convert.ToInt32(cbCycle.Text.Trim())).ToString("yyyy-MM-dd"),
+                SerialNum = cmbSerialNum.Text.Trim(),
+                Cycle = Convert.ToInt32(cmbCycle.Text.Trim()),
+                LastTime = dtpDemarcateDate.Text.Trim(),
+                NextTime = Convert.ToDateTime(dtpDemarcateDate.Text.Trim()).AddDays(Convert.ToInt32(cmbCycle.Text.Trim())).ToString("yyyy-MM-dd"),
                 Status = "未标定"
             };
         }
@@ -114,8 +114,8 @@ namespace manageSystem.src.demarcate_manage
 
         private void dtDemarcateDate_DropDown(object sender, EventArgs e)
         {
-            dtDemarcateDate.Format = DateTimePickerFormat.Custom;
-            dtDemarcateDate.CustomFormat = "yyyy-MM-dd";
+            dtpDemarcateDate.Format = DateTimePickerFormat.Custom;
+            dtpDemarcateDate.CustomFormat = "yyyy-MM-dd";
         }
 
         private void btnDel_Click(object sender, EventArgs e)

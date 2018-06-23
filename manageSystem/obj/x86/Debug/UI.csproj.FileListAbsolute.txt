@@ -64,3 +64,4 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.Modify
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateDataUploadForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperatorForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateHintForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.ChartForm.resources

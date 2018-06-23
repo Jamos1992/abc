@@ -16,5 +16,10 @@ namespace manageSystem.src.maintain_manage
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

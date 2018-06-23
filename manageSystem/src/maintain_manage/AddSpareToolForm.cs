@@ -27,22 +27,22 @@ namespace manageSystem.src.maintain_manage
         {
             List<string> list = repoSpareToolManage.GetSpareModelHintFromDb();
             if (list == null) return;
-            textBox1.AutoCompleteCustomSource.AddRange(list.ToArray());
+            txtSpareToolName.AutoCompleteCustomSource.AddRange(list.ToArray());
 
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void btnOk_Click(object sender, EventArgs e)
         {
-            int num = (int)numericUpDown1.Value;
+            int num = (int)nudNum.Value;
             if(num == 0)
             {
                 MessageBox.Show("数量必须大于0");
                 return;
             }
-            setFormTextValue(textBox1.Text,num);
+            setFormTextValue(txtSpareToolName.Text,num);
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }

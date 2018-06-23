@@ -69,7 +69,7 @@ namespace manageSystem
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             RepoSpareTool[] repoSpareTools = new RepoSpareTool[] { };
             List<RepoSpareTool> ktls = repoSpareTools.ToList();
@@ -97,7 +97,7 @@ namespace manageSystem
             insertValue2Db(repoSpareTools);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnSpareInfo_Click(object sender, EventArgs e)
         {
             RepoSpareListForm repoSpareListForm = new RepoSpareListForm();
             repoSpareListForm.FormBorderStyle = FormBorderStyle.Sizable;
@@ -105,6 +105,17 @@ namespace manageSystem
             repoSpareListForm.MaximizeBox = false;
             repoSpareListForm.Text = "备件消耗";
             repoSpareListForm.ShowDialog();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            foreach(Control c in Controls)
+            {
+                if(c is TextBox || c is NumericUpDown)
+                {
+                    c.Text = "";
+                }
+            }
         }
     }
 }

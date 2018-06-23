@@ -72,6 +72,21 @@ namespace BLL
             return toolsInfoService.getAllToolsInfo();
         }
 
+        public List<string> GetSectionHintFromDb()
+        {
+            return toolsInfoService.getAllSection();
+        }
+
+        public List<string> GetWorkstationHintFromDb(string section)
+        {
+            return toolsInfoService.getAllWorkstationBySection(section);
+        }
+
+        public List<string> GetSerialNumHintByWorkstationFromDb(string workstation)
+        {
+            return toolsInfoService.getAllSerilaNumByWorkstation(workstation);
+        }
+
         public List<string> GetSerialNumHintFromDb(string model)
         {
             List<string> recordList = new List<string>();

@@ -55,7 +55,7 @@ namespace manageSystem.src.demarcate_manage
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace manageSystem.src.demarcate_manage
             }    
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
             Close();
             //if (serialPort1.IsOpen)

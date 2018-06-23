@@ -104,7 +104,7 @@ namespace manageSystem
             return false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnExcelExport_Click(object sender, EventArgs e)
         {
             if (isTextBoxNull())
             {
@@ -137,7 +137,7 @@ namespace manageSystem
             setComboBoxList(textBox1.Text, comboBox1);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             groupBox1.Height += 30;
             dataGridView1.Height -= 30;
@@ -193,7 +193,7 @@ namespace manageSystem
                 }
             });
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             if (isTextBoxNull())
             {

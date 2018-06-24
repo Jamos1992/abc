@@ -21,6 +21,7 @@ namespace DAL
             CreateMaintainManageInfo();
             CreateDemarcateTools();
             CreateDemarcateHistory();
+            CreateMaintainInfo();
         }
 
         private void CreateToolsInfoDb()
@@ -57,6 +58,14 @@ namespace DAL
             string[] MaintainManageInfoName = new string[] { "ToolSerialName", "ToolModeName", "SendFixTime", "SuspendTime", "FinishFixTime", "Detail", "Status", "UsedRepoSpareToolInfo", "UsedOtherSpareToolInfo","State" };
             string[] MaintainManageInfoType = new string[] { "VARCHAR(255)", "VARCHAR(255)", "DATETIME", "DATETIME", "DATETIME", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)" };
             SQLHelper.CreateTable("MaintainManageInfo", MaintainManageInfoName, MaintainManageInfoType);
+        }
+
+        //保养
+        private void CreateMaintainInfo()
+        {
+            string[] MaintainInfoName = new string[] { "ToolSerialName", "ToolModeName", "ToolWorkstation", "Cycle","LastTime", "NextTime", "Status" };
+            string[] MaintainInfoType = new string[] { "VARCHAR(255)", "VARCHAR(255)", "VARCHAR(255)", "INTERGER", "DATETIME", "DATETIME", "VARCHAR(255)" };
+            SQLHelper.CreateTable("MaintainInfo", MaintainInfoName, MaintainInfoType);
         }
 
         //标定记录登记的数据表，暂不含历史记录

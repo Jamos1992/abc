@@ -26,4 +26,16 @@ namespace Model
         public string Detail { get; set; }                          //送修描述
         public string Status { get; set; }                          //工具维修状态
     }
+
+    public class MaintainInfo
+    {
+        public string ToolSerialName { get; set; }                  //工具序列号
+        public string ToolModel { get; set; }                       //工具型号
+        public string ToolWorkstation { get; set; }                 //工位号
+        public int Cycle { get; set; }                              //周期
+        public string LastTime { get; set; }                        //保养起始日期
+        public string NextTime { get; set; }                        //下次保养日期
+        public string Status { get; set; }                          //工具保养状态
+        public int Times { get; set; }                              //次数
+    }
 }

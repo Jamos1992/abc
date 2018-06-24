@@ -154,6 +154,51 @@ namespace DAL
             return SQLHelper.DeleteValuesAND("MaintainManageInfo", new string[] { "ToolSerialName" }, new string[] { serialNum }, new string[] { "=" });
         }
 
+        //保养
+        public int InsertOneMaintainTool(MaintainInfo maintainInfo)
+        {
+           return SQLHelper.InsertValuesByStruct("MaintainInfo", maintainInfo);
+        }
+
+        public int updateOneMaintainTool(MaintainInfo maintainInfo)
+        {
+            string sql = $"update MaintainInfo set Cycle={maintainInfo.Cycle}, LastTime='{maintainInfo.LastTime}', NextTime='{maintainInfo.NextTime}' where ToolSerialName='{maintainInfo.ToolSerialName}'";
+            return SQLHelper.UpdateTableBySql(sql);
+        }
+
+        public List<MaintainInfo> QueryMaintainBySql(string sql)
+        {
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            List<MaintainInfo> list = new List<MaintainInfo>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    list.Add(new MaintainInfo
+                    {
+                        ToolSerialName = reader["ToolSerialName"].ToString(),
+                        ToolModel = reader["ToolModeName"].ToString(),
+                        ToolWorkstation = reader["ToolWorkstation"].ToString(),
+                        Cycle = Convert.ToInt32(reader["Cycle"].ToString()),
+                        LastTime = Convert.ToDateTime(reader["LastTime"].ToString()).ToString("yyyy-MM-dd"),
+                        NextTime = Convert.ToDateTime(reader["NextTime"].ToString()).ToString("yyyy-MM-dd"),
+                        Status = reader["Status"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"QueryOneMaintainBySql failed, error message is: {ex.Message}");
+                }
+            }
+            if (reader != null) reader.Close();
+            return list;
+        }
+
         //excel operation
         public int CreateMaintainManageInfoExcelTable(string filePath)
         {

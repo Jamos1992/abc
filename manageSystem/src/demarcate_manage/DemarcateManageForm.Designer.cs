@@ -154,7 +154,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "DemarcateManageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DemarcateManageForm";
+            this.Text = "标定管理";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

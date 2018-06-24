@@ -65,3 +65,5 @@ D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.Demarc
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateOperatorForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.demarcate_manage.DemarcateHintForm.resources
 D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.on_call_record.ChartForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.ModifyMaintainForm.resources
+D:\workspace\manageSystem\obj\x86\Debug\manageSystem.src.maintain_manage.MoveToPlanForm.resources

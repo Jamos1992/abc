@@ -10,6 +10,7 @@ namespace BLL
     {
         private MaintainManageInfoService maintainManageInfoService = new MaintainManageInfoService();
         private RepoSpareToolService repoSpareToolService = new RepoSpareToolService();
+        private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
         public List<OutputStruct> GetAllBreakTools()
         {
             return maintainManageInfoService.getAllBreakTools();
@@ -117,6 +118,35 @@ namespace BLL
         public int DeleteOneRegisterTools(string serialNum)
         {
             return maintainManageInfoService.DeleteOneRegisterTools(serialNum);
+        }
+
+        //保养
+        public int InsertOneMaintainInfo(MaintainInfo maintainInfo)
+        {
+            return maintainManageInfoService.InsertOneMaintainTool(maintainInfo);
+        }
+        
+        public int UpdateOneMaintainInfo(MaintainInfo maintainInfo)
+        {
+            return maintainManageInfoService.updateOneMaintainTool(maintainInfo);
+        }
+
+        public List<MaintainInfo> QueryOneMaintainBySerial(string serial)
+        {
+            string sql = $"select * from MaintainInfo where ToolSerialName='{serial}'";
+            return maintainManageInfoService.QueryMaintainBySql(sql);
+        }
+
+        public List<MaintainInfo> QueryAllMaintainInfo()
+        {
+            string sql = $"select * from MaintainInfo";
+            return maintainManageInfoService.QueryMaintainBySql(sql);
+        }
+
+        public List<ToolsInfo> QueryAllMaintainNotInPlan()
+        {
+            string sql = $"select * from ToolsInfo where SerialNum not in (select ToolSerialName from MaintainInfo)";
+            return toolsInfoManage.QueryToolsInfoBySql(sql);
         }
 
         //excel operation

@@ -25,8 +25,8 @@ namespace Util
         public static string CreateMaintainManageInfoExcelSql = @"CREATE TABLE 工具维修信息 ([工具型号] VarChar,[工具序列号] VarChar,[送修时间] VarChar,[工具维修状态] VarChar,[送修描述] VarChar)";
         public static string InsertMaintainManageInfoExcelSql = "INSERT INTO 工具维修信息(工具型号,工具序列号,送修时间,工具维修状态,送修描述)";
 
-        public static string CreateDemarcateHistoryExcelSql = @"CREATE TABLE 工具标定记录 ([标定序列号] VarChar,[工具序列号] VarChar,[标定周期] Integer,[上次标定时间] VarChar,[标定时间] VarChar,[有效期] VarChar,[检查员] VarChar)";
-        public static string InsertDemarcateHistoryExcelSql = "INSERT INTO 工具标定记录(标定序列号,工具序列号,标定周期,上次标定时间,标定时间,有效期,检查员)";
+        public static string CreateDemarcateHistoryExcelSql = @"CREATE TABLE 工具标定记录 ([标定序列号] VarChar,[工具序列号] VarChar,[标定周期] Integer,[上次标定时间] VarChar,[标定时间] VarChar,[有效期] VarChar,[检查员] VarChar,[工具型号] VarChar,[工具类别] VarChar,[工具名称] VarChar,[标定扭矩下限] Integer,[标定扭矩上限] Integer,[精度] Integer,[工段] VarChar,[工位] VarChar,[工具状态] VarChar,[质保期至] VarChar,[保养合同类型] VarChar,[保养合同至] VarChar,[累计维修次数] Integer,[备注信息] VarChar)";
+        public static string InsertDemarcateHistoryExcelSql = "INSERT INTO 工具标定记录(标定序列号,工具序列号,标定周期,上次标定时间,标定时间,有效期,检查员,工具型号,工具类别,工具名称,标定扭矩下限,标定扭矩上限,精度,工段,工位,工具状态,质保期至,保养合同类型,保养合同至,累计维修次数,备注信息)";
     }
 
     public class DemarcateStatusDeclare

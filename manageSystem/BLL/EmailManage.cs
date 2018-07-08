@@ -30,10 +30,23 @@ namespace BLL
 
         private void sendSingleEmail(string toAddr)
         {
+            
+            string body = $@"发自***工厂：
+
+            上周* 月*日至 * 月 * 日，
+	        校准计划完成{}把工具，实际完成{}把工具校准。{}把工具在校准计划内，但未能按时完成。
+	        保养计划完成{}把工具，实际完成{}把工具保养。{}把工具在保养计划内，但未能按时完成。
+	        近一周内发生现场On-Call {}次，记录如下：
+            {}
+
+            近一个月内进入维修状态工具* 把，其中维修完成* 把。消耗备件* 个，消耗记录列表：
+		    备件序列号1 消耗日期1
+            {}
+            ";
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress(EmailAddrFrom);
             mailMessage.To.Add(new MailAddress(toAddr));
-            mailMessage.Subject = "发送邮件测试";
+            mailMessage.Subject = "Desoutter工具管理系统自动发送";
             mailMessage.Body = "这是我发的第一封邮件";
             SmtpClient client = new SmtpClient();
             client.Host = "smtp.163.com";

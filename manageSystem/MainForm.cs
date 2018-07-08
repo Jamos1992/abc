@@ -8,6 +8,8 @@ using System;
 using System.Windows.Forms;
 using Model;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 
 namespace manageSystem
 {
@@ -210,5 +212,20 @@ namespace manageSystem
                 Show();
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            btnKPI.Visible = false;
+            btnKPI.Enabled = false;
+        }
+
+        //protected override void OnClick(EventArgs e)
+        //{
+        //    base.OnClick(e);
+        //    GraphicsPath path = new GraphicsPath();
+        //    path.AddEllipse(this.btnToolsInfo.ClientRectangle);
+        //    Region reg = new Region(path);
+        //    this.btnToolsInfo.Region = reg;
+        //}
     }
 }

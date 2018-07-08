@@ -33,6 +33,41 @@ namespace DAL
             return SQLHelper.UpdateTableBySql(sql);
         }
 
+        public int inSertRepoSpareUseHistory(SpareToolUseHistory spareToolUseHistory)
+        {
+            return SQLHelper.InsertValuesByStruct("SpareToolUseHistory", spareToolUseHistory);
+        }
+
+        public List<SpareToolUseHistory> getSpareToolUseHistoryByDays(int days)
+        {
+            string sql = $"select * from SpareToolUseHistory where UseTime >= {DateTime.Now.AddDays(0 - days)}";
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            List<SpareToolUseHistory> spareToolUseHistories = new List<SpareToolUseHistory>();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    spareToolUseHistories.Add(new SpareToolUseHistory
+                    {
+                        SpareToolModel = reader["SpareToolModel"].ToString(),
+                        Num = reader["Num"].ToString() != "" ? int.Parse(reader["Num"].ToString()) : 0,
+                        UseTime = Convert.ToDateTime(reader["UseTime"].ToString()).ToString("yyyy-MM-dd"),
+                    });                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getSpareToolUseHistoryByDays failed, error message is: {ex.Message}");
+                }
+            }
+            if (reader != null) reader.Close();
+            return spareToolUseHistories;
+        }
+
         public RepoSpareTool getOneRepoSpareToolFromDb(string spareToolModel)
         {
             string sql = "select * from RepoSpareTool where SpareToolModel='" + spareToolModel + "'";

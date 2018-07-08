@@ -21,6 +21,11 @@ namespace DAL
             return SQLHelper.InsertValuesByStruct("ToolsInfo", toolsInfo);
         }
 
+        public int updateToolsInfoBySql(string sql)
+        {
+            return SQLHelper.UpdateTableBySql(sql);
+        }
+
         public ToolsInfo getOneToolsInfoBySerial(string SerialNum)
         {
             SQLiteDataReader reader = SQLHelper.ReadTable("ToolsInfo", new string[] { "*" }, new string[] { "SerialNum" }, new string[] { "=" }, new string[] { "'" + SerialNum + "'" });

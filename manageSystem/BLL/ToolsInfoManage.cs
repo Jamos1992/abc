@@ -42,6 +42,11 @@ namespace BLL
             return "保存成功";
         }
 
+        public int UpdateToolsInfoBySql(string sql)
+        {
+            return toolsInfoService.updateToolsInfoBySql(sql);
+        }
+
         public bool IsToolExistInDb(string serialNum)
         {
             return QueryOneToolsInfo(serialNum) != null;

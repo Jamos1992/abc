@@ -47,6 +47,20 @@
             this.ActualDemaTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValidityCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CheckManCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModelCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TorqueMinCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TorqueMaxCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AccuracyCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SectionCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WorkstationCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QualityAssureDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaintainContractStyleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaintainContractDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RepairTimesCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RemarkCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ActionCol = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -79,6 +93,20 @@
             this.ActualDemaTime,
             this.ValidityCol,
             this.CheckManCol,
+            this.ModelCol,
+            this.CategoryCol,
+            this.NameCol,
+            this.TorqueMinCol,
+            this.TorqueMaxCol,
+            this.AccuracyCol,
+            this.SectionCol,
+            this.WorkstationCol,
+            this.StatusCol,
+            this.QualityAssureDateCol,
+            this.MaintainContractStyleCol,
+            this.MaintainContractDateCol,
+            this.RepairTimesCol,
+            this.RemarkCol,
             this.ActionCol});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
@@ -120,7 +148,6 @@
             // 
             // DemarcateNumCol
             // 
-            this.DemarcateNumCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.DemarcateNumCol.DataPropertyName = "DemarcateNum";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.DemarcateNumCol.DefaultCellStyle = dataGridViewCellStyle3;
@@ -158,7 +185,6 @@
             this.PlanDemaTime.HeaderText = "上次标定时间";
             this.PlanDemaTime.Name = "PlanDemaTime";
             this.PlanDemaTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PlanDemaTime.Width = 120;
             // 
             // ActualDemaTime
             // 
@@ -168,7 +194,6 @@
             this.ActualDemaTime.HeaderText = "标定时间";
             this.ActualDemaTime.Name = "ActualDemaTime";
             this.ActualDemaTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ActualDemaTime.Width = 120;
             // 
             // ValidityCol
             // 
@@ -178,7 +203,6 @@
             this.ValidityCol.HeaderText = "有效期";
             this.ValidityCol.Name = "ValidityCol";
             this.ValidityCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ValidityCol.Width = 120;
             // 
             // CheckManCol
             // 
@@ -188,6 +212,107 @@
             this.CheckManCol.HeaderText = "检查员";
             this.CheckManCol.Name = "CheckManCol";
             this.CheckManCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ModelCol
+            // 
+            this.ModelCol.DataPropertyName = "Model";
+            this.ModelCol.HeaderText = "工具型号";
+            this.ModelCol.Name = "ModelCol";
+            this.ModelCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CategoryCol
+            // 
+            this.CategoryCol.DataPropertyName = "Category";
+            this.CategoryCol.HeaderText = "工具类别";
+            this.CategoryCol.Name = "CategoryCol";
+            this.CategoryCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // NameCol
+            // 
+            this.NameCol.DataPropertyName = "Name";
+            this.NameCol.HeaderText = "工具名称";
+            this.NameCol.Name = "NameCol";
+            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TorqueMinCol
+            // 
+            this.TorqueMinCol.DataPropertyName = "TorqueMin";
+            this.TorqueMinCol.HeaderText = "标定扭矩下限";
+            this.TorqueMinCol.Name = "TorqueMinCol";
+            this.TorqueMinCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TorqueMaxCol
+            // 
+            this.TorqueMaxCol.DataPropertyName = "TorqueMax";
+            this.TorqueMaxCol.HeaderText = "标定扭矩上限";
+            this.TorqueMaxCol.Name = "TorqueMaxCol";
+            this.TorqueMaxCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // AccuracyCol
+            // 
+            this.AccuracyCol.DataPropertyName = "Accuracy";
+            this.AccuracyCol.HeaderText = "精度";
+            this.AccuracyCol.Name = "AccuracyCol";
+            this.AccuracyCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.AccuracyCol.Width = 60;
+            // 
+            // SectionCol
+            // 
+            this.SectionCol.DataPropertyName = "Section";
+            this.SectionCol.HeaderText = "工段";
+            this.SectionCol.Name = "SectionCol";
+            this.SectionCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SectionCol.Width = 70;
+            // 
+            // WorkstationCol
+            // 
+            this.WorkstationCol.DataPropertyName = "Workstation";
+            this.WorkstationCol.HeaderText = "工位";
+            this.WorkstationCol.Name = "WorkstationCol";
+            this.WorkstationCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.WorkstationCol.Width = 70;
+            // 
+            // StatusCol
+            // 
+            this.StatusCol.DataPropertyName = "Status";
+            this.StatusCol.HeaderText = "工具状态";
+            this.StatusCol.Name = "StatusCol";
+            this.StatusCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // QualityAssureDateCol
+            // 
+            this.QualityAssureDateCol.DataPropertyName = "QualityAssureDate";
+            this.QualityAssureDateCol.HeaderText = "质保期至";
+            this.QualityAssureDateCol.Name = "QualityAssureDateCol";
+            this.QualityAssureDateCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // MaintainContractStyleCol
+            // 
+            this.MaintainContractStyleCol.DataPropertyName = "MaintainContractStyle";
+            this.MaintainContractStyleCol.HeaderText = "保养合同类型";
+            this.MaintainContractStyleCol.Name = "MaintainContractStyleCol";
+            this.MaintainContractStyleCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // MaintainContractDateCol
+            // 
+            this.MaintainContractDateCol.DataPropertyName = "MaintainContractDate";
+            this.MaintainContractDateCol.HeaderText = "保养合同至";
+            this.MaintainContractDateCol.Name = "MaintainContractDateCol";
+            this.MaintainContractDateCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RepairTimesCol
+            // 
+            this.RepairTimesCol.DataPropertyName = "RepairTimes";
+            this.RepairTimesCol.HeaderText = "维修次数";
+            this.RepairTimesCol.Name = "RepairTimesCol";
+            this.RepairTimesCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RemarkCol
+            // 
+            this.RemarkCol.DataPropertyName = "Remark";
+            this.RemarkCol.HeaderText = "备注信息";
+            this.RemarkCol.Name = "RemarkCol";
+            this.RemarkCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ActionCol
             // 
@@ -225,6 +350,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ActualDemaTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValidityCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn CheckManCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModelCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TorqueMinCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TorqueMaxCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AccuracyCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SectionCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WorkstationCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QualityAssureDateCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaintainContractStyleCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaintainContractDateCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RepairTimesCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RemarkCol;
         private System.Windows.Forms.DataGridViewButtonColumn ActionCol;
     }
 }

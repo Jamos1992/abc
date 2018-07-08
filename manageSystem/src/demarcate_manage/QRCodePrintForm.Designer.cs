@@ -46,17 +46,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDemarNum = new System.Windows.Forms.TextBox();
+            this.picQRcode = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.nudPrintNum = new System.Windows.Forms.NumericUpDown();
-            this.picQRcode = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picQRcode)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrintNum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picQRcode)).BeginInit();
             this.SuspendLayout();
             // 
             // printDialog1
@@ -90,7 +90,7 @@
             this.btnPrint.Location = new System.Drawing.Point(217, 6);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(96, 23);
-            this.btnPrint.TabIndex = 2;
+            this.btnPrint.TabIndex = 0;
             this.btnPrint.Text = "打印";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -228,6 +228,16 @@
             this.txtDemarNum.Size = new System.Drawing.Size(100, 21);
             this.txtDemarNum.TabIndex = 12;
             // 
+            // picQRcode
+            // 
+            this.picQRcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picQRcode.Location = new System.Drawing.Point(229, 34);
+            this.picQRcode.Name = "picQRcode";
+            this.picQRcode.Size = new System.Drawing.Size(151, 145);
+            this.picQRcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picQRcode.TabIndex = 3;
+            this.picQRcode.TabStop = false;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.groupBox1);
@@ -248,16 +258,6 @@
             this.panel3.Size = new System.Drawing.Size(407, 35);
             this.panel3.TabIndex = 13;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(82, 11);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "份数：";
-            // 
             // nudPrintNum
             // 
             this.nudPrintNum.Location = new System.Drawing.Point(129, 7);
@@ -275,15 +275,15 @@
             0,
             0});
             // 
-            // picQRcode
+            // label6
             // 
-            this.picQRcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picQRcode.Location = new System.Drawing.Point(229, 34);
-            this.picQRcode.Name = "picQRcode";
-            this.picQRcode.Size = new System.Drawing.Size(151, 145);
-            this.picQRcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picQRcode.TabIndex = 3;
-            this.picQRcode.TabStop = false;
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label6.Location = new System.Drawing.Point(82, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "份数：";
             // 
             // QRCodePrintForm
             // 
@@ -300,11 +300,11 @@
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picQRcode)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrintNum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picQRcode)).EndInit();
             this.ResumeLayout(false);
 
         }

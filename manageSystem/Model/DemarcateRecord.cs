@@ -41,7 +41,6 @@ namespace Model
         public double Accuracy { get; set; }                            //精度
         public string Section { get; set; }                          //工段
         public string Workstation { get; set; }                      //工位
-        public int DemarcateCycle { get; set; }                      //标定周期
         public string Status { get; set; }                           //工具状态
         public string QualityAssureDate { get; set; }                //质保期至
         public string MaintainContractStyle { get; set; }            //保养合同类型

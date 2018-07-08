@@ -48,6 +48,7 @@ namespace manageSystem.src.demarcate_manage
             txtValid.Text = demarcateRecords.Validity;
             txtCheckman.Text = demarcateRecords.Examinant;
             picQRcode.Image = demarcateRecordService.CreateQRCode(demarcateRecords.SerialNum);
+            picQRcode.Focus();
         }
 
         //打印设置

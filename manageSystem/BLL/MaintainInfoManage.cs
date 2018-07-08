@@ -11,6 +11,7 @@ namespace BLL
         private MaintainManageInfoService maintainManageInfoService = new MaintainManageInfoService();
         private RepoSpareToolService repoSpareToolService = new RepoSpareToolService();
         private ToolsInfoManage toolsInfoManage = new ToolsInfoManage();
+        private RepoSpareToolManage repoSpareToolManage = new RepoSpareToolManage();
         public List<OutputStruct> GetAllBreakTools()
         {
             return maintainManageInfoService.getAllBreakTools();
@@ -76,6 +77,15 @@ namespace BLL
                         int num = repoSpareTool.Num - item.Value;
                         Console.WriteLine("num is {0}", num);
                         int affectedRow = repoSpareToolService.updateRepoSpareToolNum(num, item.Key);
+                        if (affectedRow < 1)
+                        {
+                            return "更新数据库失败！";
+                        }
+                        SpareToolUseHistory spareToolUseHistory = new SpareToolUseHistory();
+                        spareToolUseHistory.SpareToolModel = item.Key;
+                        spareToolUseHistory.Num = item.Value;
+                        spareToolUseHistory.UseTime = DateTime.Now.ToString("yyyy-MM-dd");
+                        affectedRow = repoSpareToolManage.InsertSpareUseHistory(spareToolUseHistory);
                         if (affectedRow < 1)
                         {
                             return "更新数据库失败！";

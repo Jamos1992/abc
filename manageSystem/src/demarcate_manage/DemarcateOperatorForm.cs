@@ -127,14 +127,7 @@ namespace manageSystem.src.demarcate_manage
                         return;
                     }
                 }
-                g.DrawEllipse(new Pen(Color.Gray, 2), 50, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Gray), 50, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Green, 2), 385, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Green), 385, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Yellow, 2), 720, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Yellow), 720, gbStep.Height / 2 - 5, 10, 10);
+                
                 btnNextStep.Text = "下一步";
                 //btnLastStep.Visible = true;
                 btnNextStep.Enabled = true;
@@ -149,10 +142,7 @@ namespace manageSystem.src.demarcate_manage
                 demarcateDataUploadForm.SerialNum = txtSerialNum.Text.Trim();
                 demarcateDataUploadForm.CheckMan = cmbCheckMan.Text.Trim();
                 panel2.Controls.Add(demarcateDataUploadForm);
-                demarcateDataUploadForm.Show();
-
-                //Graphics g = gbStep.CreateGraphics();
-                
+                demarcateDataUploadForm.Show();                
             }
             if (pageNum == 3)
             {
@@ -165,9 +155,10 @@ namespace manageSystem.src.demarcate_manage
                 {
                     pageNum--;
                     demarcateDataUploadForm.setResultLabel("标定结果：不合格");
-                    if(MessageBox.Show("标定结果不合格，是否重新标定？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK)
+                    if(MessageBox.Show("标定结果不合格，是否重新标定？\n点击确定将会清除标定数据\n点击取消将会把工具标记为待修", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK)
                     {
                         demarcateDataUploadForm.reDemarcateActon();
+                        demarcateDataUploadForm.setResultLabel("标定结果：");
                     }
                     else
                     {
@@ -175,13 +166,13 @@ namespace manageSystem.src.demarcate_manage
                         {
                             ToolSerialName = txtSerialNum.Text.Trim(),
                             ToolModeName = toolsInfoManage.QueryOneToolsInfo(txtSerialNum.Text.Trim()).Model,
-                            SendFixTime = DateTime.Now.ToString("d"),
+                            SendFixTime = DateTime.Now.ToString("yyyy-MM-dd"),
                             Detail = DemarcateStatusDeclare.OffGrade
                         };
                         string msg = maintainInfoManage.RegisterBreakTool(maintainManageInfo);
                         if (!msg.Contains("成功"))
                         {
-                            MessageBox.Show("移至待修出错！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"移至待修出错！原因：{msg}", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     return;
@@ -209,14 +200,7 @@ namespace manageSystem.src.demarcate_manage
                 qRCodePrintForm.Show();
 
                 //Graphics g = gbStep.CreateGraphics();
-                g.DrawEllipse(new Pen(Color.Gray, 2), 50, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Gray), 50, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Gray, 2), 385, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Gray), 385, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Green, 2), 720, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Green), 720, gbStep.Height / 2 - 5, 10, 10);
+               
             }
             if(pageNum == 4)
             {
@@ -244,6 +228,15 @@ namespace manageSystem.src.demarcate_manage
                     }
                     string sql = $"update DemarcateTools set LastTime='{demarcateHistory.DemarcateTime}',NextTime='{demarcateHistory.NextTime}' where SerialNum='{demarcateDataUploadForm.SerialNum}'";
                     affected = demarcateRecordManage.UpdateOneDemarcateToolBySql(sql);
+                    if (affected < 1)
+                    {
+                        throw new Exception("系统出现错误，请重新标定!");
+                    }
+                    //更新维修次数
+                    ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfo(qRCodePrintForm.demarcateRecords.SerialNum);
+                    int repairTimes = toolsInfo.RepairTimes++;
+                    sql = $"update ToolsInfo set RepairTimes={repairTimes} where SerialNum='{toolsInfo.SerialNum}'";
+                    affected = toolsInfoManage.UpdateToolsInfoBySql(sql);
                     if (affected < 1)
                     {
                         throw new Exception("系统出现错误，请重新标定!");
@@ -284,6 +277,15 @@ namespace manageSystem.src.demarcate_manage
                 {
                     throw new Exception("系统出现错误，请重新标定!");
                 }
+                //更新维修次数
+                ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfo(qRCodePrintForm.demarcateRecords.SerialNum);
+                int repairTimes = toolsInfo.RepairTimes++;
+                sql = $"update ToolsInfo set RepairTimes={repairTimes} where SerialNum='{toolsInfo.SerialNum}'";
+                affected = toolsInfoManage.UpdateToolsInfoBySql(sql);
+                if (affected < 1)
+                {
+                    throw new Exception("系统出现错误，请重新标定!");
+                }
                 MessageBox.Show($"工具{txtSerialNum.Text.Trim()}标定完成！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -314,16 +316,6 @@ namespace manageSystem.src.demarcate_manage
                         c.Visible = true;
                     }
                 }
-                //Graphics g = gbStep.CreateGraphics();
-                g.DrawEllipse(new Pen(Color.Green, 2), 50, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Green), 50, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Yellow, 2), 385, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Yellow), 385, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Yellow, 2), 720, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Yellow), 720, gbStep.Height / 2 - 5, 10, 10);
-
             }
             if (pageNum == 2)
             {
@@ -342,15 +334,6 @@ namespace manageSystem.src.demarcate_manage
                         c.Visible = false;
                     }
                 }
-                //Graphics g = gbStep.CreateGraphics();
-                g.DrawEllipse(new Pen(Color.Gray, 2), 50, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Gray), 50, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Green, 2), 385, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Green), 385, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Yellow, 2), 720, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Yellow), 720, gbStep.Height / 2 - 5, 10, 10);
             }
         }
         private void paint_stepLine()
@@ -378,7 +361,44 @@ namespace manageSystem.src.demarcate_manage
 
         private void DemarcateOperatorForm_Paint(object sender, PaintEventArgs e)
         {
-            paint_stepLine();
+            if(pageNum == 1)
+            {
+                paint_stepLine();
+            }
+            else if(pageNum == 2)
+            {
+                g.DrawEllipse(new Pen(Color.Gray, 2), 50, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Gray), 50, gbStep.Height / 2 - 5, 10, 10);
+
+                g.DrawEllipse(new Pen(Color.Green, 2), 385, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Green), 385, gbStep.Height / 2 - 5, 10, 10);
+
+                g.DrawEllipse(new Pen(Color.Yellow, 2), 720, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Yellow), 720, gbStep.Height / 2 - 5, 10, 10);
+            }
+            else if(pageNum == 3)
+            {
+                g.DrawEllipse(new Pen(Color.Gray, 2), 50, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Gray), 50, gbStep.Height / 2 - 5, 10, 10);
+
+                g.DrawEllipse(new Pen(Color.Gray, 2), 385, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Gray), 385, gbStep.Height / 2 - 5, 10, 10);
+
+                g.DrawEllipse(new Pen(Color.Green, 2), 720, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Green), 720, gbStep.Height / 2 - 5, 10, 10);
+            }
+            else
+            {
+                g.DrawEllipse(new Pen(Color.Gray, 2), 50, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Gray), 50, gbStep.Height / 2 - 5, 10, 10);
+
+                g.DrawEllipse(new Pen(Color.Gray, 2), 385, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Gray), 385, gbStep.Height / 2 - 5, 10, 10);
+
+                g.DrawEllipse(new Pen(Color.Green, 2), 720, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Gray), 720, gbStep.Height / 2 - 5, 10, 10);
+            }
+            
             //Thread t1 = new Thread(new ThreadStart(paint_stepLine));
         }
 

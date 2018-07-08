@@ -45,6 +45,16 @@ namespace BLL
             return repoSpareToolService.getAllRepoSpareTools();
         }
 
+        public int InsertSpareUseHistory(SpareToolUseHistory spareToolUseHistory)
+        {
+            return repoSpareToolService.inSertRepoSpareUseHistory(spareToolUseHistory);
+        }
+
+        public List<SpareToolUseHistory> GetSpareToolUseHistoryByDays(int days)
+        {
+            return repoSpareToolService.getSpareToolUseHistoryByDays(days);
+        }
+
         public string ExportSingleData2Excel(string filePath, RepoSpareTool repoSpareTool)
         {
             int affected = 0;

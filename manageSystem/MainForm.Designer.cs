@@ -59,13 +59,15 @@
             this.btnOnCallExport = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMaintainExport = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDemarcateExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnComSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblWelcome = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.importExcelFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnComSetting = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.大屏KPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,7 +85,7 @@
             // 
             // btnMaintain
             // 
-            this.btnMaintain.Location = new System.Drawing.Point(388, 346);
+            this.btnMaintain.Location = new System.Drawing.Point(112, 338);
             this.btnMaintain.Name = "btnMaintain";
             this.btnMaintain.Size = new System.Drawing.Size(185, 63);
             this.btnMaintain.TabIndex = 13;
@@ -93,9 +95,9 @@
             // 
             // btnKPI
             // 
-            this.btnKPI.Location = new System.Drawing.Point(112, 346);
+            this.btnKPI.Location = new System.Drawing.Point(0, 396);
             this.btnKPI.Name = "btnKPI";
-            this.btnKPI.Size = new System.Drawing.Size(185, 63);
+            this.btnKPI.Size = new System.Drawing.Size(71, 29);
             this.btnKPI.TabIndex = 12;
             this.btnKPI.Text = "服务报告管理";
             this.btnKPI.UseVisualStyleBackColor = true;
@@ -278,7 +280,9 @@
             this.btnSpareToolExport,
             this.btnOnCallExport,
             this.btnMaintainExport,
-            this.btnDemarcateExport});
+            this.btnDemarcateExport,
+            this.toolStripSeparator3,
+            this.大屏KPIToolStripMenuItem});
             this.数据管理ToolStripMenuItem.Name = "数据管理ToolStripMenuItem";
             this.数据管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.数据管理ToolStripMenuItem.Text = "数据管理";
@@ -286,49 +290,64 @@
             // btnToolsInfoImport
             // 
             this.btnToolsInfoImport.Name = "btnToolsInfoImport";
-            this.btnToolsInfoImport.Size = new System.Drawing.Size(172, 22);
+            this.btnToolsInfoImport.Size = new System.Drawing.Size(180, 22);
             this.btnToolsInfoImport.Text = "工具零件信息导入";
             this.btnToolsInfoImport.Click += new System.EventHandler(this.toolsInfoImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // btnToolDataExport
             // 
             this.btnToolDataExport.Name = "btnToolDataExport";
-            this.btnToolDataExport.Size = new System.Drawing.Size(172, 22);
+            this.btnToolDataExport.Size = new System.Drawing.Size(180, 22);
             this.btnToolDataExport.Text = "工具数据导出";
             this.btnToolDataExport.Click += new System.EventHandler(this.btnToolDataExport_Click);
             // 
             // btnSpareToolExport
             // 
             this.btnSpareToolExport.Name = "btnSpareToolExport";
-            this.btnSpareToolExport.Size = new System.Drawing.Size(172, 22);
+            this.btnSpareToolExport.Size = new System.Drawing.Size(180, 22);
             this.btnSpareToolExport.Text = "仓库零件导出";
             this.btnSpareToolExport.Click += new System.EventHandler(this.btnSpareToolExport_Click);
             // 
             // btnOnCallExport
             // 
             this.btnOnCallExport.Name = "btnOnCallExport";
-            this.btnOnCallExport.Size = new System.Drawing.Size(172, 22);
+            this.btnOnCallExport.Size = new System.Drawing.Size(180, 22);
             this.btnOnCallExport.Text = "OnCall记录导出";
             this.btnOnCallExport.Click += new System.EventHandler(this.btnOnCallExport_Click);
             // 
             // btnMaintainExport
             // 
             this.btnMaintainExport.Name = "btnMaintainExport";
-            this.btnMaintainExport.Size = new System.Drawing.Size(172, 22);
+            this.btnMaintainExport.Size = new System.Drawing.Size(180, 22);
             this.btnMaintainExport.Text = "维修数据导出";
             this.btnMaintainExport.Click += new System.EventHandler(this.btnMaintainExport_Click);
             // 
             // btnDemarcateExport
             // 
             this.btnDemarcateExport.Name = "btnDemarcateExport";
-            this.btnDemarcateExport.Size = new System.Drawing.Size(172, 22);
+            this.btnDemarcateExport.Size = new System.Drawing.Size(180, 22);
             this.btnDemarcateExport.Text = "标定历史记录导出";
             this.btnDemarcateExport.Click += new System.EventHandler(this.btnDemarcateExport_Click);
+            // 
+            // 设置ToolStripMenuItem
+            // 
+            this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnComSetting});
+            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
+            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.设置ToolStripMenuItem.Text = "设置";
+            // 
+            // btnComSetting
+            // 
+            this.btnComSetting.Name = "btnComSetting";
+            this.btnComSetting.Size = new System.Drawing.Size(148, 22);
+            this.btnComSetting.Text = "串口参数设置";
+            this.btnComSetting.Click += new System.EventHandler(this.btnComSetting_Click);
             // 
             // statusStrip1
             // 
@@ -358,20 +377,16 @@
             // 
             this.importExcelFile.FileName = "openFileDialog1";
             // 
-            // 设置ToolStripMenuItem
+            // toolStripSeparator3
             // 
-            this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnComSetting});
-            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
-            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.设置ToolStripMenuItem.Text = "设置";
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
-            // btnComSetting
+            // 大屏KPIToolStripMenuItem
             // 
-            this.btnComSetting.Name = "btnComSetting";
-            this.btnComSetting.Size = new System.Drawing.Size(180, 22);
-            this.btnComSetting.Text = "串口参数设置";
-            this.btnComSetting.Click += new System.EventHandler(this.btnComSetting_Click);
+            this.大屏KPIToolStripMenuItem.Name = "大屏KPIToolStripMenuItem";
+            this.大屏KPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.大屏KPIToolStripMenuItem.Text = "大屏KPI导出";
             // 
             // MainForm
             // 
@@ -394,6 +409,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Desoutter工具管理系统";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -444,5 +460,7 @@
         private System.Windows.Forms.ToolStripStatusLabel lblWelcome;
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnComSetting;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem 大屏KPIToolStripMenuItem;
     }
 }

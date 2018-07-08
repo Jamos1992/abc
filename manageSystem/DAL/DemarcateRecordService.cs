@@ -213,7 +213,6 @@ namespace DAL
                         TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
                         Accuracy = double.Parse(reader["Accuracy"].ToString()),
                         Section = reader["Section"].ToString(),
-                        DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
                         Workstation = reader["Workstation"].ToString(),
                         Status = reader["Status"].ToString(),
                         QualityAssureDate = reader["QualityAssureDate"].ToString(),

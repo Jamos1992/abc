@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckMan.cs" />
     <Compile Include="DemarcateRecord.cs" />
     <Compile Include="EmailAddress.cs" />
     <Compile Include="MaintainManageInfo.cs" />

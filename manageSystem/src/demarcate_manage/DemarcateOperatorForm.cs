@@ -23,8 +23,13 @@ namespace manageSystem.src.demarcate_manage
         private QRCodePrintForm qRCodePrintForm = new QRCodePrintForm();
         private MaintainInfoManage maintainInfoManage = new MaintainInfoManage();
 
+        private CheckManManage checkManManage = new CheckManManage();
+        private Button btnFinsih = new Button();
+
         private Graphics g;
         public string serialNum;
+
+        private bool IsdemarcateFinsih = false;
         public DemarcateOperatorForm()
         {
             InitializeComponent();
@@ -33,6 +38,16 @@ namespace manageSystem.src.demarcate_manage
             //paint_stepLine();
             demarcateDataUploadForm.setOperatorFormBtnDelegate += new setFormBtnDelegate(setFormComBtn);
             g = gbStep.CreateGraphics();
+            toolStripButton1.Visible = false;
+
+            
+            btnFinsih.Text = "完成";
+            btnFinsih.Font = btnNextStep.Font;
+            btnFinsih.ForeColor = btnNextStep.ForeColor;
+            btnFinsih.FlatStyle = FlatStyle.Popup;
+            btnFinsih.Visible = false;
+            btnFinsih.Height = btnNextStep.Height;
+            btnFinsih.Click += new EventHandler(btnFinish_Click);
         }
 
         private void setFormComBtn()
@@ -73,7 +88,7 @@ namespace manageSystem.src.demarcate_manage
                     MessageBox.Show("序列号不能为空，请输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if(txtCheckMan.Text.Trim() == "")
+                if(cmbCheckMan.Text.Trim() == "")
                 {
                     MessageBox.Show("标定检查员不能为空，请输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -82,14 +97,23 @@ namespace manageSystem.src.demarcate_manage
                 {
                     if (!toolsInfoManage.IsToolExistInDb(txtSerialNum.Text.Trim()))
                     {
-                        MessageBox.Show("仓库中不存在序列号为" + txtSerialNum.Text.Trim() + "的工具，请重新输入", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("仓库中不存在序列号为" + txtSerialNum.Text.Trim() + "的工具，请先录入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if (MessageBox.Show("工具序列号不在标定计划中，是否继续？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                     {
                         return;
                     }
-                } 
+                }
+                try
+                {
+                    checkManManage.AddOneName(cmbCheckMan.Text.Trim());
+                }
+                catch (Exception ex)
+                {
+                    Console.Write("add name fail",ex.Message);
+                }
+                
             }
             pageNum++;
             DemarcateTools demarcateTools = demarcateRecordManage.getOneDemarcateToolBySerialNum(txtSerialNum.Text.Trim());
@@ -98,9 +122,19 @@ namespace manageSystem.src.demarcate_manage
                 if (Convert.ToDateTime(demarcateTools.NextTime) > DateTime.Now)
                 {
                     pageNum--;
-                    MessageBox.Show($"该工具的预计标定日期为{demarcateTools.NextTime}，请先标定其它工具!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                    if(MessageBox.Show($"该工具的预计标定日期为{demarcateTools.NextTime}，确定要继续标定吗？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.Cancel)
+                    {
+                        return;
+                    }
                 }
+                g.DrawEllipse(new Pen(Color.Gray, 2), 50, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Gray), 50, gbStep.Height / 2 - 5, 10, 10);
+
+                g.DrawEllipse(new Pen(Color.Green, 2), 385, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Green), 385, gbStep.Height / 2 - 5, 10, 10);
+
+                g.DrawEllipse(new Pen(Color.Yellow, 2), 720, gbStep.Height / 2 - 5, 10, 10);
+                g.FillEllipse(new SolidBrush(Color.Yellow), 720, gbStep.Height / 2 - 5, 10, 10);
                 btnNextStep.Text = "下一步";
                 //btnLastStep.Visible = true;
                 btnNextStep.Enabled = true;
@@ -113,19 +147,12 @@ namespace manageSystem.src.demarcate_manage
                 demarcateDataUploadForm.Dock = DockStyle.Fill;
                 demarcateDataUploadForm.TopLevel = false;
                 demarcateDataUploadForm.SerialNum = txtSerialNum.Text.Trim();
-                demarcateDataUploadForm.CheckMan = txtCheckMan.Text.Trim();
+                demarcateDataUploadForm.CheckMan = cmbCheckMan.Text.Trim();
                 panel2.Controls.Add(demarcateDataUploadForm);
                 demarcateDataUploadForm.Show();
 
                 //Graphics g = gbStep.CreateGraphics();
-                g.DrawEllipse(new Pen(Color.Gray, 2), 50, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Gray), 50, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Green, 2), 385, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Green), 385, gbStep.Height / 2 - 5, 10, 10);
-
-                g.DrawEllipse(new Pen(Color.Yellow, 2), 720, gbStep.Height / 2 - 5, 10, 10);
-                g.FillEllipse(new SolidBrush(Color.Yellow), 720, gbStep.Height / 2 - 5, 10, 10);
+                
             }
             if (pageNum == 3)
             {
@@ -159,10 +186,15 @@ namespace manageSystem.src.demarcate_manage
                     }
                     return;
                 }
-                btnNextStep.Text = "完成";
+                btnNextStep.Text = "进入下一个工具标定";
+                //btnNextStep.Location = new Point(btnNextStep.Location.X -90, btnNextStep.Location.Y);
                 btnNextStep.Enabled = true;
                 //btnLastStep.Visible = true;
                 btnLastStep.Enabled = true;
+                btnFinsih.Visible = true;
+                btnFinsih.Location = new Point(btnNextStep.Location.X - btnFinsih.Width - 15, btnNextStep.Location.Y);
+                panel3.Controls.Add(btnFinsih);
+                btnFinsih.BringToFront();
                 foreach (Control c in panel2.Controls)
                 {
                     c.Visible = false;
@@ -188,6 +220,11 @@ namespace manageSystem.src.demarcate_manage
             }
             if(pageNum == 4)
             {
+                if (IsdemarcateFinsih)
+                {
+                    toolStripButton2_Click(null, null);
+                    return;
+                }
                 try
                 {
                     DemarcateHistory demarcateHistory = new DemarcateHistory
@@ -219,6 +256,42 @@ namespace manageSystem.src.demarcate_manage
                 }
                 toolStripButton2_Click(null, null);
             }
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+            DemarcateTools demarcateTools = demarcateRecordManage.getOneDemarcateToolBySerialNum(txtSerialNum.Text.Trim());
+            try
+            {
+                DemarcateHistory demarcateHistory = new DemarcateHistory
+                {
+                    DemarcateNum = qRCodePrintForm.demarcateRecords.DemarcateNum,
+                    SerialNum = qRCodePrintForm.demarcateRecords.SerialNum,
+                    Cycle = demarcateTools.Cycle,
+                    LastTime = demarcateTools.LastTime,
+                    DemarcateTime = DateTime.Now.ToString("yyyy-MM-dd"),
+                    NextTime = DateTime.Now.AddDays(demarcateTools.Cycle).ToString("yyyy-MM-dd"),
+                    CheckMan = qRCodePrintForm.demarcateRecords.Examinant
+                };
+                int affected = demarcateRecordManage.AddDemarcateHistory(demarcateHistory);
+                if (affected < 1)
+                {
+                    throw new Exception("系统出现错误，请重新标定!");
+                }
+                string sql = $"update DemarcateTools set LastTime='{demarcateHistory.DemarcateTime}',NextTime='{demarcateHistory.NextTime}' where SerialNum='{demarcateDataUploadForm.SerialNum}'";
+                affected = demarcateRecordManage.UpdateOneDemarcateToolBySql(sql);
+                if (affected < 1)
+                {
+                    throw new Exception("系统出现错误，请重新标定!");
+                }
+                MessageBox.Show($"工具{txtSerialNum.Text.Trim()}标定完成！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            IsdemarcateFinsih = true;
         }
 
         private void btnLastStep_Click(object sender, EventArgs e)
@@ -313,7 +386,7 @@ namespace manageSystem.src.demarcate_manage
         {
             btnNextStep.Text = "下一步";
             txtSerialNum.Text = "";
-            demarcateDataUploadForm.CloseSerialPort();
+            demarcateDataUploadForm.CloseSerialPort();           
             qRCodePrintForm.Close();
             pageNum = 1;
             toolStripButton1.Enabled = true;
@@ -321,14 +394,28 @@ namespace manageSystem.src.demarcate_manage
             {
                 c.Visible = true;
             }
-            demarcateDataUploadForm = new DemarcateDataUploadForm();
+            demarcateDataUploadForm.Visible = false;
+            //demarcateDataUploadForm.setOperatorFormBtnDelegate -= new setFormBtnDelegate(setFormComBtn);
+            //demarcateDataUploadForm = new DemarcateDataUploadForm();
+
             qRCodePrintForm = new QRCodePrintForm();
-            demarcateDataUploadForm.setOperatorFormBtnDelegate += new setFormBtnDelegate(setFormComBtn);
+            //demarcateDataUploadForm.setOperatorFormBtnDelegate += new setFormBtnDelegate(setFormComBtn);
         }
 
         private void DemarcateOperatorForm_Load(object sender, EventArgs e)
         {
             txtSerialNum.Text = serialNum;
+        }
+
+        private void cmbCheckMan_DropDown(object sender, EventArgs e)
+        {
+            cmbCheckMan.Items.Clear();
+            List<CheckMan> checkMen = checkManManage.GetAllName();
+            if (checkMen == null) return;
+            foreach(CheckMan c in checkMen)
+            {
+                cmbCheckMan.Items.Add(c.Name);
+            }
         }
     }
 }

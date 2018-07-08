@@ -19,7 +19,7 @@ namespace manageSystem.src.demarcate_manage
         public QRCodePrintForm()
         {
             InitializeComponent();
-            this.printDocument1.OriginAtMargins = true;//启用页边距
+            //this.printDocument1.OriginAtMargins = true;//启用页边距
             this.pageSetupDialog1.EnableMetric = true; //以毫米为单位
             this.printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom", 500, 300);
         }
@@ -30,9 +30,8 @@ namespace manageSystem.src.demarcate_manage
             InitializeComponent();
             MinimizeBox = false;
             MaximizeBox = false;
-            printDocument1.OriginAtMargins = true;//启用页边距
+            //printDocument1.OriginAtMargins = true;//启用页边距
             pageSetupDialog1.EnableMetric = true; //以毫米为单位
-            printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom", 500, 300);
 
             txtSerialName.BorderStyle = BorderStyle.None;
             txtDemarNum.BorderStyle = BorderStyle.None;
@@ -66,10 +65,12 @@ namespace manageSystem.src.demarcate_manage
         //打印
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (this.printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                this.printDocument1.Print();
-            }
+            printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom", 500, 300);
+            printDocument1.PrinterSettings.Copies = (short)nudPrintNum.Value;
+            printPreviewDialog1.Document = printDocument1;
+            //显示打印预览
+            DialogResult result = printPreviewDialog1.ShowDialog();
+            //printDocument1.Print();
         }
 
         //打印内容的设置
@@ -83,20 +84,19 @@ namespace manageSystem.src.demarcate_manage
             //e.Graphics.DrawImage(myFormImage, 0, 0);
 
             ////打印内容 为 局部的 this.groupBox1
-            Bitmap _NewBitmap = new Bitmap((int)(panel1.Width * 1.25), (int)(panel1.Height * 1.25));
-            panel1.DrawToBitmap(_NewBitmap, new Rectangle(0, 0, _NewBitmap.Width, _NewBitmap.Height));
-            e.Graphics.DrawImage(_NewBitmap, 0, 0, _NewBitmap.Width, _NewBitmap.Height);
+            //Bitmap _NewBitmap = new Bitmap((int)(panel1.Width * 1.25), (int)(panel1.Height * 1.25));
+            //panel1.DrawToBitmap(_NewBitmap, new Rectangle(0, 0, _NewBitmap.Width, _NewBitmap.Height));
+            //e.Graphics.DrawImage(_NewBitmap, 0, 0, _NewBitmap.Width, _NewBitmap.Height);
 
             //打印内容 为 自定义文本内容 
-            //Font font = new Font("宋体", 12);
-            //Brush bru = Brushes.Blue;
-            //for (int i = 1; i <= 5; i++)
-            //{
-            //    e.Graphics.DrawString("Hello world ", font, bru, i * 20, i * 20);
-            //}
-            //e.Graphics.DrawString("工具序列号：", new Font(new FontFamily("黑体"), 8), Brushes.Black, 0, 0);
-            //e.Graphics.DrawString("工位：", new Font(new FontFamily("黑体"), 8), Brushes.Black, 9, 55);
-            //e.Graphics.DrawString("下次标定日期：", new Font(new FontFamily("黑体"), 8), Brushes.Black, 9, 85);
+            Font font = new Font("宋体", 12);
+            Brush brush = Brushes.Blue;
+            e.Graphics.DrawString($"标定序列号： {txtDemarNum.Text.Trim()}", new Font(new FontFamily("黑体"), 8), Brushes.Black, 80, 80);
+            e.Graphics.DrawString($"工具序列号： {txtSerialName.Text.Trim()}", new Font(new FontFamily("黑体"), 8), Brushes.Black, 80, 110);
+            e.Graphics.DrawString($"工      位： {txtWorkstation.Text.Trim()}", new Font(new FontFamily("黑体"), 8), Brushes.Black, 80, 140);
+            e.Graphics.DrawString($"标定有效期： {txtValid.Text.Trim()}", new Font(new FontFamily("黑体"), 8), Brushes.Black, 80, 170);
+            e.Graphics.DrawString($"检  查  员： {txtCheckman.Text.Trim()}", new Font(new FontFamily("黑体"), 8), Brushes.Black, 80, 200);
+            e.Graphics.DrawImage(picQRcode.Image, 280, 80, 135, 135);
         }
 
         private void QRCodePrintForm_Resize(object sender, EventArgs e)

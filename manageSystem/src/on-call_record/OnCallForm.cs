@@ -17,6 +17,7 @@ namespace manageSystem.src.on_call_record
             MinimizeBox = false;
             MaximizeBox = false;
             saveFileDialog1.Filter = "Excel文件(*.xls, *.xlsx)|*.xls;*.xlsx";
+            btnChart.Visible = false;
             dataGridView1.AutoGenerateColumns = false;
         }
 

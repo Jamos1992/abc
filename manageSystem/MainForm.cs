@@ -201,5 +201,14 @@ namespace manageSystem
                 MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnComSetting_Click(object sender, EventArgs e)
+        {
+            ComSettingForm comSettingForm = new ComSettingForm();
+            if (comSettingForm.ShowDialog() == DialogResult.OK)
+            {
+                Show();
+            }
+        }
     }
 }

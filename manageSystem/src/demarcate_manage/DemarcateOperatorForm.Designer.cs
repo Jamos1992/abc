@@ -34,7 +34,6 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtCheckMan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnScanInput = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnLastStep = new System.Windows.Forms.Button();
             this.btnNextStep = new System.Windows.Forms.Button();
+            this.cmbCheckMan = new System.Windows.Forms.ComboBox();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -97,29 +97,22 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(806, 362);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(806, 353);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtCheckMan);
+            this.panel2.Controls.Add(this.cmbCheckMan);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnScanInput);
             this.panel2.Controls.Add(this.txtSerialNum);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 75);
+            this.panel2.Location = new System.Drawing.Point(3, 73);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 284);
+            this.panel2.Size = new System.Drawing.Size(800, 277);
             this.panel2.TabIndex = 1;
-            // 
-            // txtCheckMan
-            // 
-            this.txtCheckMan.Location = new System.Drawing.Point(298, 70);
-            this.txtCheckMan.Name = "txtCheckMan";
-            this.txtCheckMan.Size = new System.Drawing.Size(125, 21);
-            this.txtCheckMan.TabIndex = 5;
             // 
             // label2
             // 
@@ -176,7 +169,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 66);
+            this.panel1.Size = new System.Drawing.Size(800, 64);
             this.panel1.TabIndex = 0;
             // 
             // gbStep
@@ -185,7 +178,7 @@
             this.gbStep.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.gbStep.Location = new System.Drawing.Point(0, 0);
             this.gbStep.Name = "gbStep";
-            this.gbStep.Size = new System.Drawing.Size(800, 66);
+            this.gbStep.Size = new System.Drawing.Size(800, 64);
             this.gbStep.TabIndex = 6;
             this.gbStep.TabStop = false;
             this.gbStep.Text = "标定流程";
@@ -195,16 +188,16 @@
             this.panel3.Controls.Add(this.btnLastStep);
             this.panel3.Controls.Add(this.btnNextStep);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 387);
+            this.panel3.Location = new System.Drawing.Point(0, 378);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(806, 35);
+            this.panel3.Size = new System.Drawing.Size(806, 44);
             this.panel3.TabIndex = 10;
             // 
             // btnLastStep
             // 
             this.btnLastStep.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLastStep.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnLastStep.Location = new System.Drawing.Point(12, 6);
+            this.btnLastStep.Location = new System.Drawing.Point(12, 12);
             this.btnLastStep.Name = "btnLastStep";
             this.btnLastStep.Size = new System.Drawing.Size(75, 23);
             this.btnLastStep.TabIndex = 0;
@@ -214,13 +207,23 @@
             // btnNextStep
             // 
             this.btnNextStep.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNextStep.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnNextStep.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnNextStep.Location = new System.Drawing.Point(719, 6);
+            this.btnNextStep.Location = new System.Drawing.Point(612, 9);
             this.btnNextStep.Name = "btnNextStep";
-            this.btnNextStep.Size = new System.Drawing.Size(75, 23);
+            this.btnNextStep.Size = new System.Drawing.Size(182, 26);
             this.btnNextStep.TabIndex = 1;
             this.btnNextStep.Text = "下一步";
             this.btnNextStep.Click += new System.EventHandler(this.btnNextStep_Click);
+            // 
+            // cmbCheckMan
+            // 
+            this.cmbCheckMan.FormattingEnabled = true;
+            this.cmbCheckMan.Location = new System.Drawing.Point(298, 70);
+            this.cmbCheckMan.Name = "cmbCheckMan";
+            this.cmbCheckMan.Size = new System.Drawing.Size(125, 20);
+            this.cmbCheckMan.TabIndex = 5;
+            this.cmbCheckMan.DropDown += new System.EventHandler(this.cmbCheckMan_DropDown);
             // 
             // DemarcateOperatorForm
             // 
@@ -262,7 +265,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox gbStep;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCheckMan;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbCheckMan;
     }
 }

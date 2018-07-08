@@ -22,6 +22,7 @@ namespace DAL
             CreateDemarcateTools();
             CreateDemarcateHistory();
             CreateMaintainInfo();
+            CreateCheckManList();
         }
 
         private void CreateToolsInfoDb()
@@ -82,6 +83,13 @@ namespace DAL
             string[] DemarcateHistoryName = new string[] { "DemarcateNum", "SerialNum", "Cycle", "LastTime", "DemarcateTime", "NextTime", "CheckMan" };
             string[] DemarcateHistoryType = new string[] { "VARCHAR(255) PRIMARY KEY", "VARCHAR(255)", "Integer", "DATETIME", "DATETIME", "DATETIME", "VARCHAR(255)" };
             SQLHelper.CreateTable("DemarcateHistory", DemarcateHistoryName, DemarcateHistoryType);
+        }
+
+        private void CreateCheckManList()
+        {
+            string[] CheckManName = new string[] { "Name" };
+            string[] CheckManType = new string[] { "VARCHAR(255) PRIMARY KEY" };
+            SQLHelper.CreateTable("CheckMan", CheckManName, CheckManType);
         }
     }
 }

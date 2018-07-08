@@ -31,6 +31,8 @@ namespace manageSystem.src.demarcate_manage
         public string SerialNum;
         public string CheckMan;
 
+        //private bool comOpenStatus = false;
+
         public bool DemarcateResult = false;
         public DemarcateDataUploadForm()
         {
@@ -66,8 +68,7 @@ namespace manageSystem.src.demarcate_manage
                 dataGridView1.DataSource = list;
             }));
         }
-
-        private void btnListenCom_Click(object sender, EventArgs e)
+        private void openComListen(object sender, EventArgs e)
         {
             setSerialPort();
             if (SerialPort.GetPortNames().Length <= 0)
@@ -94,12 +95,17 @@ namespace manageSystem.src.demarcate_manage
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
             btnListenCom.Enabled = false;
             setOperatorFormBtnDelegate();
+        }
+
+        private void btnListenCom_Click(object sender, EventArgs e)
+        {
+            openComListen(sender,e);
             //toolStripButton1.Enabled = !serialPort1.IsOpen;
         }
 
@@ -173,7 +179,7 @@ namespace manageSystem.src.demarcate_manage
             }
         }
 
-        private DemarcateData GetOneToolsInfoFromGrid()
+        private DemarcateData GetOneToolsInfoFromGrid() 
         {
             if (dataGridView1.SelectedRows.Count == 0) return null;
             return new DemarcateData
@@ -184,6 +190,24 @@ namespace manageSystem.src.demarcate_manage
                 Torque = dataGridView1.SelectedRows[0].Cells[4].Value.ToString(),
                 Angle = dataGridView1.SelectedRows[0].Cells[5].Value.ToString(),
             };
+        }
+
+        private List<DemarcateData> GetAllToolsInfoFromGrid()
+        {
+            if (dataGridView1.Rows.Count <= 0) return null;
+            List<DemarcateData> demarcateDatas = new List<DemarcateData>();
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                demarcateDatas.Add(new DemarcateData
+                {
+                    Order = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    Date = dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                    Time = dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                    Torque = dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                    Angle = dataGridView1.Rows[i].Cells[5].Value.ToString(),
+                });
+            }
+            return demarcateDatas;
         }
 
         public DemarcateRecords GetDemarcateRecords()
@@ -214,6 +238,16 @@ namespace manageSystem.src.demarcate_manage
                 MessageBox.Show("请先使用标定仪器标定！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
+            List<DemarcateData> demarcateDatas = GetAllToolsInfoFromGrid();
+            ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfo(SerialNum);
+            foreach (DemarcateData demarcate in demarcateDatas)
+            {
+                if (double.Parse(demarcate.Torque) > toolsInfo.TorqueMax || double.Parse(demarcate.Torque) < toolsInfo.TorqueMin)
+                {
+                    DemarcateResult = false;
+                    return true;
+                }
+            }
             DemarcateResult = true;
             return true;
         }
@@ -238,7 +272,27 @@ namespace manageSystem.src.demarcate_manage
                 }
             }
             dataGridView1.DataSource = new List<DemarcateData>();
-            Close();
+            Visible = false;
+            //Close();
+        }
+
+        private void DemarcateDataUploadForm_Load(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                try
+                {
+                    serialPort1.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            dataGridView1.DataSource = new List<DemarcateData>();
+            btnListenCom.Visible = false;
+            openComListen(sender, e);
         }
     }
 

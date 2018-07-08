@@ -184,7 +184,7 @@ namespace DAL
 
         public List<DemarcateHistory> GetDemarcateHistoriesBySerial(string serialNum)
         {
-            string sql = $"select * from DemarcateHistory where SerialNum='{serialNum}' order by DemarcateTime desc";
+            string sql = $"select * from DemarcateHistory, ToolsInfo where DemarcateHistory.SerialNum=ToolsInfo.SerialNum and DemarcateHistory.SerialNum='{serialNum}' order by DemarcateTime desc;";
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             List<DemarcateHistory> list = new List<DemarcateHistory>();
             if (!reader.HasRows)
@@ -205,7 +205,22 @@ namespace DAL
                         LastTime = Convert.ToDateTime(reader["LastTime"].ToString()).ToString("yyyy-MM-dd"),
                         DemarcateTime = Convert.ToDateTime(reader["DemarcateTime"].ToString()).ToString("yyyy-MM-dd"),
                         NextTime = Convert.ToDateTime(reader["NextTime"].ToString()).ToString("yyyy-MM-dd"),
-                        CheckMan = reader["CheckMan"].ToString()
+                        CheckMan = reader["CheckMan"].ToString(),
+                        Model = reader["Model"].ToString(),
+                        Category = reader["Category"].ToString(),
+                        Name = reader["Name"].ToString(),
+                        TorqueMin = double.Parse(reader["TorqueMin"].ToString()),
+                        TorqueMax = double.Parse(reader["TorqueMax"].ToString()),
+                        Accuracy = double.Parse(reader["Accuracy"].ToString()),
+                        Section = reader["Section"].ToString(),
+                        DemarcateCycle = int.Parse(reader["DemarcateCycle"].ToString()),
+                        Workstation = reader["Workstation"].ToString(),
+                        Status = reader["Status"].ToString(),
+                        QualityAssureDate = reader["QualityAssureDate"].ToString(),
+                        MaintainContractStyle = reader["MaintainContractStyle"].ToString(),
+                        MaintainContractDate = reader["MaintainContractDate"].ToString(),
+                        RepairTimes = int.Parse(reader["RepairTimes"].ToString() == "" ? "0" : reader["RepairTimes"].ToString()),
+                        Remark = reader["Remark"].ToString()
                     });
                 }
                 catch (Exception ex)

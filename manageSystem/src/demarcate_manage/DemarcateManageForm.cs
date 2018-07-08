@@ -31,7 +31,7 @@ namespace manageSystem.src.demarcate_manage
 2、点击“查询”可查询相关工具信息
 3、点击“标定记录导出至excel”可以将相关工具的标定历史导出到excel中";
 
-        private string serialNum;  
+        private string serialNum;
         public DemarcateManageForm()
         {
             InitializeComponent();

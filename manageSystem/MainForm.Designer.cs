@@ -60,10 +60,12 @@
             this.btnMaintainExport = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDemarcateExport = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblWelcome = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.importExcelFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.lblWelcome = new System.Windows.Forms.ToolStripStatusLabel();
+            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnComSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -145,7 +147,8 @@
             this.菜单ToolStripMenuItem,
             this.功能ToolStripMenuItem,
             this.邮件ToolStripMenuItem,
-            this.数据管理ToolStripMenuItem});
+            this.数据管理ToolStripMenuItem,
+            this.设置ToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -167,24 +170,24 @@
             // 驻场人员登记ToolStripMenuItem
             // 
             this.驻场人员登记ToolStripMenuItem.Name = "驻场人员登记ToolStripMenuItem";
-            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.驻场人员登记ToolStripMenuItem.Text = "驻场人员登记";
             // 
             // 查看驻场人员信息ToolStripMenuItem
             // 
             this.查看驻场人员信息ToolStripMenuItem.Name = "查看驻场人员信息ToolStripMenuItem";
-            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.查看驻场人员信息ToolStripMenuItem.Text = "查看驻场人员信息";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(169, 6);
             // 
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(180, 22);
+            this.btnExit.Size = new System.Drawing.Size(172, 22);
             this.btnExit.Text = "退出";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -337,6 +340,12 @@
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // lblWelcome
+            // 
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(192, 17);
+            this.lblWelcome.Text = "欢迎进入Desoutte工具管理系统！";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(157, 44);
@@ -349,11 +358,20 @@
             // 
             this.importExcelFile.FileName = "openFileDialog1";
             // 
-            // lblWelcome
+            // 设置ToolStripMenuItem
             // 
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(192, 17);
-            this.lblWelcome.Text = "欢迎进入Desoutte工具管理系统！";
+            this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnComSetting});
+            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
+            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.设置ToolStripMenuItem.Text = "设置";
+            // 
+            // btnComSetting
+            // 
+            this.btnComSetting.Name = "btnComSetting";
+            this.btnComSetting.Size = new System.Drawing.Size(180, 22);
+            this.btnComSetting.Text = "串口参数设置";
+            this.btnComSetting.Click += new System.EventHandler(this.btnComSetting_Click);
             // 
             // MainForm
             // 
@@ -424,5 +442,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnMaintainExport;
         private System.Windows.Forms.ToolStripMenuItem btnDemarcateExport;
         private System.Windows.Forms.ToolStripStatusLabel lblWelcome;
+        private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnComSetting;
     }
 }

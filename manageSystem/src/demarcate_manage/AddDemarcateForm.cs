@@ -29,7 +29,7 @@ namespace manageSystem.src.demarcate_manage
         {
             if (cmbSerialNum.Text == "" || cmbCycle.Text == "" || dtpDemarcateDate.Text == "")
             {
-                MessageBox.Show("请填写工具序列号、标定周期和标定日期", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("请填写工具序列号、校准周期和校准日期", "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (!isToolsExistInRepo(cmbSerialNum.Text.Trim()))
@@ -39,7 +39,7 @@ namespace manageSystem.src.demarcate_manage
             }
             if (demarcateRecordManage.IsDemarcateToolExist(cmbSerialNum.Text.Trim()))
             {
-                if (MessageBox.Show($"序列号为{cmbSerialNum.Text.Trim()}的工具已经在标定计划中，是否需要更新？","提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                if (MessageBox.Show($"序列号为{cmbSerialNum.Text.Trim()}的工具已经在校准计划中，是否需要更新？","提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                 {
                     return;
                 }
@@ -52,7 +52,7 @@ namespace manageSystem.src.demarcate_manage
                 affected = toolsInfoManage.UpdateCycleInToolsInfo(cmbSerialNum.Text.Trim(), Convert.ToInt32(cmbCycle.Text.Trim()));
                 if(affected < 1)
                 {
-                    Console.WriteLine($"更新工具{cmbSerialNum.Text.Trim()}的标定周期失败");
+                    Console.WriteLine($"更新工具{cmbSerialNum.Text.Trim()}的校准周期失败");
                 }
                 refreshDataViewGrid();
                 return;
@@ -74,7 +74,7 @@ namespace manageSystem.src.demarcate_manage
                 Cycle = Convert.ToInt32(cmbCycle.Text.Trim()),
                 LastTime = dtpDemarcateDate.Text.Trim(),
                 NextTime = Convert.ToDateTime(dtpDemarcateDate.Text.Trim()).AddDays(Convert.ToInt32(cmbCycle.Text.Trim())).ToString("yyyy-MM-dd"),
-                Status = "未标定"
+                Status = "未校准"
             };
         }
 
@@ -135,7 +135,7 @@ namespace manageSystem.src.demarcate_manage
                     if (affected < 1)
                     {
                         errDelTimes++;
-                        Console.WriteLine($"{tool.SerialNum}工具的标定记录删除失败");
+                        Console.WriteLine($"{tool.SerialNum}工具的校准记录删除失败");
                     }
                 }
                 refreshDataViewGrid();

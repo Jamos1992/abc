@@ -27,6 +27,11 @@ namespace BLL
             return maintainManageInfoService.getOneBreakToolFromDb(serialNum);
         }
 
+        public List<OutputStruct> GetBreakToolBySql(string sql)
+        {
+            return maintainManageInfoService.getBreakToolsBySql(sql);
+        }
+
         public List<string> GetSerialNameHintFromDb()
         {
             List<string> recordList = new List<string>();
@@ -146,6 +151,8 @@ namespace BLL
             string sql = $"select * from MaintainInfo where ToolSerialName='{serial}'";
             return maintainManageInfoService.QueryMaintainBySql(sql);
         }
+
+        public List<>
 
         public List<MaintainInfo> QueryAllMaintainInfo()
         {

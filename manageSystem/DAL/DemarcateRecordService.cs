@@ -98,6 +98,73 @@ namespace DAL
             return list;
         }
 
+        public List<DemarcateTools> GetDemarcateToolsBySql(string sql)
+        {
+            List<DemarcateTools> list = new List<DemarcateTools>();
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            if (!reader.HasRows)
+            {
+                Console.WriteLine("DemarcateTools no reocrd");
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    list.Add(new DemarcateTools
+                    {
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Cycle = Convert.ToInt32(reader["Cycle"]),
+                        LastTime = Convert.ToDateTime(reader["LastTime"].ToString()).ToString("yyyy-MM-dd"),
+                        NextTime = Convert.ToDateTime(reader["NextTime"].ToString()).ToString("yyyy-MM-dd"),
+                        Status = reader["Status"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"GetAllDemarcateTools failed, error message is: {ex.Message}");
+                }
+
+            }
+            reader.Close();
+            return list;
+        }
+
+        public List<DemarcateHistory> getDemarcateHistoryBySql(string sql)
+        {
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            List<DemarcateHistory> list = new List<DemarcateHistory>();
+            if (!reader.HasRows)
+            {
+                Console.WriteLine("DemarcateHistory no reocrd");
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    list.Add(new DemarcateHistory
+                    {
+                        DemarcateNum = reader["DemarcateNum"].ToString(),
+                        SerialNum = reader["SerialNum"].ToString(),
+                        Cycle = int.Parse(reader["Cycle"].ToString()),
+                        LastTime = Convert.ToDateTime(reader["LastTime"].ToString()).ToString("yyyy-MM-dd"),
+                        DemarcateTime = Convert.ToDateTime(reader["DemarcateTime"].ToString()).ToString("yyyy-MM-dd"),
+                        NextTime = Convert.ToDateTime(reader["NextTime"].ToString()).ToString("yyyy-MM-dd"),
+                        CheckMan = reader["CheckMan"].ToString()
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"getDemarcateHistoryBySql failed, error message is: {ex.Message}");
+                }
+            }
+            reader.Close();
+            return list;
+        }
+
         public List<ToolsInfo> GetAllDemarcateToolsBySql(string sql)
         {
             List<ToolsInfo> list = new List<ToolsInfo>();

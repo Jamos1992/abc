@@ -54,6 +54,11 @@ namespace BLL
             return demarcateRecordService.GetAllDemarcateToolsBySql(sql);
         }
 
+        public List<DemarcateTools> GetDemarcateToolsBySql(string sql)
+        {
+            return demarcateRecordService.GetDemarcateToolsBySql(sql);
+        }
+
         public DemarcateTools getOneDemarcateToolBySerialNum(string serialNum)
         {
             return demarcateRecordService.GetOneDemarcateTool(serialNum);
@@ -97,6 +102,11 @@ namespace BLL
             }
             if (demarcateHistories.Count == 0) return null;
             return demarcateHistories;
+        }
+
+        public List<DemarcateHistory> GetDemarcateHistoryBySql(string sql)
+        {
+            return demarcateRecordService.getDemarcateHistoryBySql(sql);
         }
 
         public List<DemarcateHistory> GetDemarcateHistoriesBySerial(string serialNum)

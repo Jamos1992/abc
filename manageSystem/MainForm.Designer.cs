@@ -59,6 +59,8 @@
             this.btnOnCallExport = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMaintainExport = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDemarcateExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.大屏KPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnComSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -66,8 +68,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.importExcelFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.大屏KPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -119,7 +119,7 @@
             this.btnDemarcate.Name = "btnDemarcate";
             this.btnDemarcate.Size = new System.Drawing.Size(185, 63);
             this.btnDemarcate.TabIndex = 10;
-            this.btnDemarcate.Text = "标定管理";
+            this.btnDemarcate.Text = "校准管理";
             this.btnDemarcate.UseVisualStyleBackColor = true;
             this.btnDemarcate.Click += new System.EventHandler(this.btnDemarcate_Click);
             // 
@@ -290,49 +290,60 @@
             // btnToolsInfoImport
             // 
             this.btnToolsInfoImport.Name = "btnToolsInfoImport";
-            this.btnToolsInfoImport.Size = new System.Drawing.Size(180, 22);
+            this.btnToolsInfoImport.Size = new System.Drawing.Size(172, 22);
             this.btnToolsInfoImport.Text = "工具零件信息导入";
             this.btnToolsInfoImport.Click += new System.EventHandler(this.toolsInfoImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
             // btnToolDataExport
             // 
             this.btnToolDataExport.Name = "btnToolDataExport";
-            this.btnToolDataExport.Size = new System.Drawing.Size(180, 22);
+            this.btnToolDataExport.Size = new System.Drawing.Size(172, 22);
             this.btnToolDataExport.Text = "工具数据导出";
             this.btnToolDataExport.Click += new System.EventHandler(this.btnToolDataExport_Click);
             // 
             // btnSpareToolExport
             // 
             this.btnSpareToolExport.Name = "btnSpareToolExport";
-            this.btnSpareToolExport.Size = new System.Drawing.Size(180, 22);
+            this.btnSpareToolExport.Size = new System.Drawing.Size(172, 22);
             this.btnSpareToolExport.Text = "仓库零件导出";
             this.btnSpareToolExport.Click += new System.EventHandler(this.btnSpareToolExport_Click);
             // 
             // btnOnCallExport
             // 
             this.btnOnCallExport.Name = "btnOnCallExport";
-            this.btnOnCallExport.Size = new System.Drawing.Size(180, 22);
+            this.btnOnCallExport.Size = new System.Drawing.Size(172, 22);
             this.btnOnCallExport.Text = "OnCall记录导出";
             this.btnOnCallExport.Click += new System.EventHandler(this.btnOnCallExport_Click);
             // 
             // btnMaintainExport
             // 
             this.btnMaintainExport.Name = "btnMaintainExport";
-            this.btnMaintainExport.Size = new System.Drawing.Size(180, 22);
+            this.btnMaintainExport.Size = new System.Drawing.Size(172, 22);
             this.btnMaintainExport.Text = "维修数据导出";
             this.btnMaintainExport.Click += new System.EventHandler(this.btnMaintainExport_Click);
             // 
             // btnDemarcateExport
             // 
             this.btnDemarcateExport.Name = "btnDemarcateExport";
-            this.btnDemarcateExport.Size = new System.Drawing.Size(180, 22);
+            this.btnDemarcateExport.Size = new System.Drawing.Size(172, 22);
             this.btnDemarcateExport.Text = "标定历史记录导出";
             this.btnDemarcateExport.Click += new System.EventHandler(this.btnDemarcateExport_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(169, 6);
+            // 
+            // 大屏KPIToolStripMenuItem
+            // 
+            this.大屏KPIToolStripMenuItem.Name = "大屏KPIToolStripMenuItem";
+            this.大屏KPIToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.大屏KPIToolStripMenuItem.Text = "大屏KPI导出";
             // 
             // 设置ToolStripMenuItem
             // 
@@ -376,17 +387,6 @@
             // importExcelFile
             // 
             this.importExcelFile.FileName = "openFileDialog1";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // 大屏KPIToolStripMenuItem
-            // 
-            this.大屏KPIToolStripMenuItem.Name = "大屏KPIToolStripMenuItem";
-            this.大屏KPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.大屏KPIToolStripMenuItem.Text = "大屏KPI导出";
             // 
             // MainForm
             // 

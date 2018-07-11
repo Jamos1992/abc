@@ -90,7 +90,7 @@ namespace manageSystem.src.demarcate_manage
                 }
                 if(cmbCheckMan.Text.Trim() == "")
                 {
-                    MessageBox.Show("标定检查员不能为空，请输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("校准检查员不能为空，请输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!isToolsExist(txtSerialNum.Text.Trim()))
@@ -100,7 +100,7 @@ namespace manageSystem.src.demarcate_manage
                         MessageBox.Show("仓库中不存在序列号为" + txtSerialNum.Text.Trim() + "的工具，请先录入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (MessageBox.Show("工具序列号不在标定计划中，是否继续？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                    if (MessageBox.Show("工具序列号不在校准计划中，是否继续？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                     {
                         return;
                     }
@@ -122,7 +122,7 @@ namespace manageSystem.src.demarcate_manage
                 if (Convert.ToDateTime(demarcateTools.NextTime) > DateTime.Now)
                 {
                     pageNum--;
-                    if(MessageBox.Show($"该工具的预计标定日期为{demarcateTools.NextTime}，确定要继续标定吗？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.Cancel)
+                    if(MessageBox.Show($"该工具的预计校准日期为{demarcateTools.NextTime}，确定要继续校准吗？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.Cancel)
                     {
                         return;
                     }
@@ -154,11 +154,11 @@ namespace manageSystem.src.demarcate_manage
                 if (!demarcateDataUploadForm.DemarcateResult)
                 {
                     pageNum--;
-                    demarcateDataUploadForm.setResultLabel("标定结果：不合格");
-                    if(MessageBox.Show("标定结果不合格，是否重新标定？\n点击确定将会清除标定数据\n点击取消将会把工具标记为待修", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK)
+                    demarcateDataUploadForm.setResultLabel("校准结果：不合格");
+                    if(MessageBox.Show("校准结果不合格，是否重新校准？\n点击确定将会清除校准数据\n点击取消将会把工具标记为待修", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK)
                     {
                         demarcateDataUploadForm.reDemarcateActon();
-                        demarcateDataUploadForm.setResultLabel("标定结果：");
+                        demarcateDataUploadForm.setResultLabel("校准结果：");
                     }
                     else
                     {
@@ -177,7 +177,7 @@ namespace manageSystem.src.demarcate_manage
                     }
                     return;
                 }
-                btnNextStep.Text = "进入下一个工具标定";
+                btnNextStep.Text = "进入下一个工具校准";
                 //btnNextStep.Location = new Point(btnNextStep.Location.X -90, btnNextStep.Location.Y);
                 btnNextStep.Enabled = true;
                 //btnLastStep.Visible = true;
@@ -224,13 +224,13 @@ namespace manageSystem.src.demarcate_manage
                     int affected = demarcateRecordManage.AddDemarcateHistory(demarcateHistory);
                     if (affected < 1)
                     {
-                        throw new Exception("系统出现错误，请重新标定!");
+                        throw new Exception("系统出现错误，请重新校准!");
                     }
                     string sql = $"update DemarcateTools set LastTime='{demarcateHistory.DemarcateTime}',NextTime='{demarcateHistory.NextTime}' where SerialNum='{demarcateDataUploadForm.SerialNum}'";
                     affected = demarcateRecordManage.UpdateOneDemarcateToolBySql(sql);
                     if (affected < 1)
                     {
-                        throw new Exception("系统出现错误，请重新标定!");
+                        throw new Exception("系统出现错误，请重新校准!");
                     }
                     //更新维修次数
                     ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfo(qRCodePrintForm.demarcateRecords.SerialNum);
@@ -239,7 +239,7 @@ namespace manageSystem.src.demarcate_manage
                     affected = toolsInfoManage.UpdateToolsInfoBySql(sql);
                     if (affected < 1)
                     {
-                        throw new Exception("系统出现错误，请重新标定!");
+                        throw new Exception("系统出现错误，请重新校准!");
                     }
                 }
                 catch(Exception ex)
@@ -269,13 +269,13 @@ namespace manageSystem.src.demarcate_manage
                 int affected = demarcateRecordManage.AddDemarcateHistory(demarcateHistory);
                 if (affected < 1)
                 {
-                    throw new Exception("系统出现错误，请重新标定!");
+                    throw new Exception("系统出现错误，请重新校准!");
                 }
                 string sql = $"update DemarcateTools set LastTime='{demarcateHistory.DemarcateTime}',NextTime='{demarcateHistory.NextTime}' where SerialNum='{demarcateDataUploadForm.SerialNum}'";
                 affected = demarcateRecordManage.UpdateOneDemarcateToolBySql(sql);
                 if (affected < 1)
                 {
-                    throw new Exception("系统出现错误，请重新标定!");
+                    throw new Exception("系统出现错误，请重新校准!");
                 }
                 //更新维修次数
                 ToolsInfo toolsInfo = toolsInfoManage.QueryOneToolsInfo(qRCodePrintForm.demarcateRecords.SerialNum);
@@ -284,9 +284,9 @@ namespace manageSystem.src.demarcate_manage
                 affected = toolsInfoManage.UpdateToolsInfoBySql(sql);
                 if (affected < 1)
                 {
-                    throw new Exception("系统出现错误，请重新标定!");
+                    throw new Exception("系统出现错误，请重新校准!");
                 }
-                MessageBox.Show($"工具{txtSerialNum.Text.Trim()}标定完成！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"工具{txtSerialNum.Text.Trim()}校准完成！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -349,7 +349,7 @@ namespace manageSystem.src.demarcate_manage
 
             g.DrawEllipse(new Pen(Color.Yellow, 2), 385, gbStep.Height / 2 - 5, 10, 10);
             g.FillEllipse(new SolidBrush(Color.Yellow), 385, gbStep.Height / 2 - 5, 10, 10);
-            g.DrawString("标定仪器标定", label7.Font, new SolidBrush(Color.Black), 352, gbStep.Height / 2 + 12);
+            g.DrawString("校准仪器校准", label7.Font, new SolidBrush(Color.Black), 352, gbStep.Height / 2 + 12);
 
             g.DrawEllipse(new Pen(Color.Yellow, 2), 720, gbStep.Height / 2 - 5, 10, 10);
             g.FillEllipse(new SolidBrush(Color.Yellow), 720, gbStep.Height / 2 - 5, 10, 10);

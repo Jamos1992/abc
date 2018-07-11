@@ -34,6 +34,7 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cmbCheckMan = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnScanInput = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnLastStep = new System.Windows.Forms.Button();
             this.btnNextStep = new System.Windows.Forms.Button();
-            this.cmbCheckMan = new System.Windows.Forms.ComboBox();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -78,7 +78,7 @@
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(76, 22);
-            this.toolStripButton2.Text = "重新标定";
+            this.toolStripButton2.Text = "重新校准";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // tableLayoutPanel1
@@ -113,6 +113,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 277);
             this.panel2.TabIndex = 1;
+            // 
+            // cmbCheckMan
+            // 
+            this.cmbCheckMan.FormattingEnabled = true;
+            this.cmbCheckMan.Location = new System.Drawing.Point(298, 70);
+            this.cmbCheckMan.Name = "cmbCheckMan";
+            this.cmbCheckMan.Size = new System.Drawing.Size(125, 20);
+            this.cmbCheckMan.TabIndex = 5;
+            this.cmbCheckMan.DropDown += new System.EventHandler(this.cmbCheckMan_DropDown);
             // 
             // label2
             // 
@@ -181,7 +190,7 @@
             this.gbStep.Size = new System.Drawing.Size(800, 64);
             this.gbStep.TabIndex = 6;
             this.gbStep.TabStop = false;
-            this.gbStep.Text = "标定流程";
+            this.gbStep.Text = "校准流程";
             // 
             // panel3
             // 
@@ -215,15 +224,6 @@
             this.btnNextStep.TabIndex = 1;
             this.btnNextStep.Text = "下一步";
             this.btnNextStep.Click += new System.EventHandler(this.btnNextStep_Click);
-            // 
-            // cmbCheckMan
-            // 
-            this.cmbCheckMan.FormattingEnabled = true;
-            this.cmbCheckMan.Location = new System.Drawing.Point(298, 70);
-            this.cmbCheckMan.Name = "cmbCheckMan";
-            this.cmbCheckMan.Size = new System.Drawing.Size(125, 20);
-            this.cmbCheckMan.TabIndex = 5;
-            this.cmbCheckMan.DropDown += new System.EventHandler(this.cmbCheckMan_DropDown);
             // 
             // DemarcateOperatorForm
             // 

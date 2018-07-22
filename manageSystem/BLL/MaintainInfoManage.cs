@@ -152,8 +152,6 @@ namespace BLL
             return maintainManageInfoService.QueryMaintainBySql(sql);
         }
 
-        public List<>
-
         public List<MaintainInfo> QueryAllMaintainInfo()
         {
             string sql = $"select * from MaintainInfo";

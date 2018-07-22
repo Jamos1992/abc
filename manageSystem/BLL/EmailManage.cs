@@ -77,7 +77,7 @@ namespace BLL
             }
             return emailContent;
         }
-private void sendSingleEmail(string toAddr, EmailContent emailContent)
+        private void sendSingleEmail(string toAddr, EmailContent emailContent)
         {
             string onCallRecord = string.Empty;
             if (emailContent.OnCallRecords.Length >0)
@@ -95,17 +95,15 @@ private void sendSingleEmail(string toAddr, EmailContent emailContent)
                 {
                     spareToolUse += $"备件序列号:{spareToolUsedHistory.SpareToolModel} 	消耗日期:{spareToolUsedHistory.UseTime}\n";
                 }
-            }            
+            }           
             string body = $@"发自***工厂：
-
-            上周* 月*日至 * 月 * 日，
-	        校准计划完成{emailContent.DemarcateWeekPlan}把工具，实际完成{emailContent.DemarcateWeekFinished}把工具校准。{emailContent.DemarcateWeekUnFinished}把工具在校准计划内，但未能按时完成。
-	        近一周内发生现场On-Call {emailContent.OnCallRecords.Length}次，记录如下：
-            {onCallRecord}
-
-            近一个月内进入维修状态工具{emailContent.MonthRepairRecord}把，其中维修完成{emailContent.MonthRepairFinsihed}把。消耗备件{emailContent.MonthSpareUsed}个，消耗记录列表：
-            {spareToolUse}
-            ";
+        上周{DateTime.Now.Date.AddDays(0-7).ToString("MM月dd日")}至{DateTime.Now.Date.AddDays(0-1).ToString("MM月dd日")},
+        校准计划完成{emailContent.DemarcateWeekPlan}把工具，实际完成{emailContent.DemarcateWeekFinished}把工具校准。{emailContent.DemarcateWeekUnFinished}把工具在校准计划内，但未能按时完成。
+        近一周内发生现场On-Call {emailContent.OnCallRecords.Length}次，记录如下：
+        {onCallRecord}
+        近一个月内进入维修状态工具{emailContent.MonthRepairRecord}把，其中维修完成{emailContent.MonthRepairFinsihed}把。消耗备件{emailContent.MonthSpareUsed}个，消耗记录列表：
+        {spareToolUse}
+        ";
 
             //保养计划完成{ emailContent.MonthRepairRecord}
             //把工具，实际完成{ emailContent.MonthRepairFinsihed}

@@ -53,7 +53,8 @@ namespace manageSystem.src.maintain_manage
                 case "制定保养计划":
                     addForm2Panel(new MaintainRegisterForm(), tableLayoutPanel1, ref e, queryHint);
                     break;
-                case "实施保养操作":
+                case "保养计算器":
+                    addForm2Panel(new MaintainCaclForm(), tableLayoutPanel1, ref e, queryHint);
                     //addForm2Panel(new QueryByModelForm(), tableLayoutPanel1, ref e, queryHint);
                     break;
                 default:

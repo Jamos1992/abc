@@ -5,6 +5,7 @@ using System.Configuration;
 using Util;
 using System;
 using System.Reflection;
+using Model;
 
 namespace DAL
 {
@@ -40,7 +41,7 @@ namespace DAL
 
         public List<SpareToolUseHistory> getSpareToolUseHistoryByDays(int days)
         {
-            string sql = $"select * from SpareToolUseHistory where UseTime >= {DateTime.Now.AddDays(0 - days)}";
+            string sql = $"select * from SpareToolUseHistory where UseTime >= '{DateTime.Now.AddDays(0 - days)}'";
             SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
             List<SpareToolUseHistory> spareToolUseHistories = new List<SpareToolUseHistory>();
             if (!reader.HasRows)

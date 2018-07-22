@@ -34,8 +34,8 @@
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("维修管理", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("制定保养计划");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("实施保养操作");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("保养计算器");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("制定保养计划");
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("保养管理", 1, -2, new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode5});
@@ -120,10 +120,10 @@
             treeNode3.ImageIndex = 0;
             treeNode3.Name = "节点0";
             treeNode3.Text = "维修管理";
-            treeNode4.Name = "节点0";
-            treeNode4.Text = "制定保养计划";
-            treeNode5.Name = "节点1";
-            treeNode5.Text = "实施保养操作";
+            treeNode4.Name = "节点1";
+            treeNode4.Text = "保养计算器";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "制定保养计划";
             treeNode6.ImageIndex = 1;
             treeNode6.Name = "节点4";
             treeNode6.SelectedImageIndex = -2;

@@ -21,7 +21,6 @@ namespace Model
         public OnCallRecord[] OnCallRecords { get; set; }           //oncall次数
         public int MonthRepairRecord { get; set; }                  //近一月维修记录
         public int MonthRepairFinsihed { get; set; }                //维修完成
-        public int MonthSpareUsed { get; set; }                     //消耗的备件数
-        public 
+        public int MonthSpareUsed { get; set; }                     //消耗的备件数 
     }
 }

@@ -15,6 +15,37 @@ namespace DAL
             return SQLHelper.InsertTableBySql(sql);
         }
 
+        public int DeleteOneWorker(string name)
+        {
+            string sql = $"delete from CheckMan where Name='{name}'";
+            return SQLHelper.ExecuteNonQuery(sql);
+        }
+
+        public CheckMan GetCheckManByName(string name)
+        {
+            string sql = $"select * from CheckMan where Name='{name}'";
+            SQLiteDataReader reader = SQLHelper.ReadTableBySql(sql);
+            CheckMan checkMan = new CheckMan();
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            while (reader.Read())
+            {
+                try
+                {
+                    checkMan.Name = reader["Name"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"GetCheckManByName failed, error message is: {ex.Message}");
+                }
+            }
+            if (reader != null) reader.Close();
+            return checkMan;
+        }
+
         public List<CheckMan> GetAllCheckMan()
         {
             List<CheckMan> list = new List<CheckMan>();

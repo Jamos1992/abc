@@ -219,6 +219,21 @@ namespace manageSystem
             btnKPI.Enabled = false;
         }
 
+        private void btnWorkerRegister_Click(object sender, EventArgs e)
+        {
+            WorkerRegisterForm workerRegisterForm = new WorkerRegisterForm();
+            if(workerRegisterForm.ShowDialog() == DialogResult.OK)
+            {
+                Show();
+            }
+        }
+
+        private void btnWorkerList_Click(object sender, EventArgs e)
+        {
+            WorkerListForm workerList = new WorkerListForm();
+            workerList.ShowDialog();
+        }
+
         //protected override void OnClick(EventArgs e)
         //{
         //    base.OnClick(e);

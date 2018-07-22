@@ -182,6 +182,12 @@
     <Compile Include="src\maintain_manage\AddSpareToolForm.Designer.cs">
       <DependentUpon>AddSpareToolForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\maintain_manage\MaintainCaclForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\maintain_manage\MaintainCaclForm.Designer.cs">
+      <DependentUpon>MaintainCaclForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\maintain_manage\MaintainRegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,12 @@
     <Compile Include="src\spare_manage\RepoSpareListForm.Designer.cs">
       <DependentUpon>RepoSpareListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\spare_manage\SpareRecommandForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\spare_manage\SpareRecommandForm.Designer.cs">
+      <DependentUpon>SpareRecommandForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\ToolDataExportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +328,18 @@
     <Compile Include="src\tool_KPI_manage\ToolKPIManageForm.Designer.cs">
       <DependentUpon>ToolKPIManageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\WorkerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\WorkerListForm.Designer.cs">
+      <DependentUpon>WorkerListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\WorkerRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\WorkerRegisterForm.Designer.cs">
+      <DependentUpon>WorkerRegisterForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="src\demarcate_manage\AddDemarcateForm.resx">
       <DependentUpon>AddDemarcateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,6 +382,9 @@
     <EmbeddedResource Include="src\maintain_manage\AddSpareToolForm.resx">
       <DependentUpon>AddSpareToolForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\maintain_manage\MaintainCaclForm.resx">
+      <DependentUpon>MaintainCaclForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\maintain_manage\MaintainRegisterForm.resx">
       <DependentUpon>MaintainRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -393,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\spare_manage\RepoSpareListForm.resx">
       <DependentUpon>RepoSpareListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\spare_manage\SpareRecommandForm.resx">
+      <DependentUpon>SpareRecommandForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ToolDataExportForm.resx">
       <DependentUpon>ToolDataExportForm.cs</DependentUpon>
@@ -433,6 +463,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\tool_KPI_manage\ToolKPIManageForm.resx">
       <DependentUpon>ToolKPIManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\WorkerListForm.resx">
+      <DependentUpon>WorkerListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\WorkerRegisterForm.resx">
+      <DependentUpon>WorkerRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

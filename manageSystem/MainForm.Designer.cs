@@ -37,8 +37,8 @@
             this.btnToolsInfo = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.菜单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.驻场人员登记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看驻场人员信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnWorkerRegister = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnWorkerList = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,9 +65,9 @@
             this.btnComSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblWelcome = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.importExcelFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -161,35 +161,37 @@
             // 菜单ToolStripMenuItem
             // 
             this.菜单ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.驻场人员登记ToolStripMenuItem,
-            this.查看驻场人员信息ToolStripMenuItem,
+            this.btnWorkerRegister,
+            this.btnWorkerList,
             this.toolStripSeparator2,
             this.btnExit});
             this.菜单ToolStripMenuItem.Name = "菜单ToolStripMenuItem";
             this.菜单ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.菜单ToolStripMenuItem.Text = "菜单";
             // 
-            // 驻场人员登记ToolStripMenuItem
+            // btnWorkerRegister
             // 
-            this.驻场人员登记ToolStripMenuItem.Name = "驻场人员登记ToolStripMenuItem";
-            this.驻场人员登记ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.驻场人员登记ToolStripMenuItem.Text = "驻场人员登记";
+            this.btnWorkerRegister.Name = "btnWorkerRegister";
+            this.btnWorkerRegister.Size = new System.Drawing.Size(180, 22);
+            this.btnWorkerRegister.Text = "驻场人员登记";
+            this.btnWorkerRegister.Click += new System.EventHandler(this.btnWorkerRegister_Click);
             // 
-            // 查看驻场人员信息ToolStripMenuItem
+            // btnWorkerList
             // 
-            this.查看驻场人员信息ToolStripMenuItem.Name = "查看驻场人员信息ToolStripMenuItem";
-            this.查看驻场人员信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.查看驻场人员信息ToolStripMenuItem.Text = "查看驻场人员信息";
+            this.btnWorkerList.Name = "btnWorkerList";
+            this.btnWorkerList.Size = new System.Drawing.Size(180, 22);
+            this.btnWorkerList.Text = "查看驻场人员信息";
+            this.btnWorkerList.Click += new System.EventHandler(this.btnWorkerList_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(172, 22);
+            this.btnExit.Size = new System.Drawing.Size(180, 22);
             this.btnExit.Text = "退出";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -205,6 +207,7 @@
             this.功能ToolStripMenuItem.Name = "功能ToolStripMenuItem";
             this.功能ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.功能ToolStripMenuItem.Text = "功能";
+            this.功能ToolStripMenuItem.Visible = false;
             // 
             // 工具信息录入ToolStripMenuItem
             // 
@@ -376,6 +379,10 @@
             this.lblWelcome.Size = new System.Drawing.Size(192, 17);
             this.lblWelcome.Text = "欢迎进入Desoutte工具管理系统！";
             // 
+            // importExcelFile
+            // 
+            this.importExcelFile.FileName = "openFileDialog1";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(157, 44);
@@ -383,10 +390,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(363, 50);
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
-            // 
-            // importExcelFile
-            // 
-            this.importExcelFile.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -439,8 +442,8 @@
         private System.Windows.Forms.ToolStripMenuItem 备件管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工具KPIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维修保养管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 驻场人员登记ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 查看驻场人员信息ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnWorkerRegister;
+        private System.Windows.Forms.ToolStripMenuItem btnWorkerList;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem 邮件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnRecieveMan;

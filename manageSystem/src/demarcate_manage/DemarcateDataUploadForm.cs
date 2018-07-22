@@ -95,6 +95,7 @@ namespace manageSystem.src.demarcate_manage
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     //MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }

@@ -15,8 +15,8 @@ namespace manageSystem.src.maintain_manage
     {
         private MaintainInfoManage maintainInfoManage = new MaintainInfoManage();
         private MaintainInfo maintainInfo = new MaintainInfo();
-        private string cycle;
-        private string lastTime;
+        private string cycle = string.Empty;
+        private string lastTime = string.Empty;
         public MoveToPlanForm()
         {
             InitializeComponent();

@@ -15,6 +15,16 @@ namespace BLL
             return checkManService.InsertCheckMan(name);
         }
 
+        public bool IsNameExist(string name)
+        {
+            return checkManService.GetCheckManByName(name) != null;
+        }
+
+        public int DeleteOneWorker(string name)
+        {
+            return checkManService.DeleteOneWorker(name);
+        }
+
         public List<CheckMan> GetAllName()
         {
             return checkManService.GetAllCheckMan();

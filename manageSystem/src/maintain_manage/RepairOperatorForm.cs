@@ -164,6 +164,7 @@ namespace manageSystem.src.maintain_manage
             {
                 return;
             }
+            maintainInfoManage.InsertOneMaintainInfo
         }
 
         private void btnSuspend_Click(object sender, EventArgs e)

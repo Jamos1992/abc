@@ -24,6 +24,7 @@ namespace DAL
             CreateMaintainInfo();
             CreateCheckManList();
             CreateSpareToolUseHistory();
+            CreateRepairHistory();
         }
 
         private void CreateToolsInfoDb()
@@ -98,6 +99,13 @@ namespace DAL
             string[] SpareToolUseHistoryName = new string[] { "SpareToolModel", "Num", "UseTime" };
             string[] SpareToolUseHistoryType = new string[] { "VARCHAR(255) PRIMARY KEY", "INTEGER", "DATETIME" };
             SQLHelper.CreateTable("SpareToolUseHistory", SpareToolUseHistoryName, SpareToolUseHistoryType);
+        }
+
+        private void CreateRepairHistory()
+        {
+            string[] RepairHistoryName = new string[] { "ToolSerialName", "ToolModeName", "SendFixTime", "FinishFixTime", "Detail","UsedRepoSpareToolInfo", "UsedOtherSpareToolInfo"};
+            string[] RepairHistoryType = new string[] { "VARCHAR(255)", "VARCHAR(255)", "DATETIME", "DATETIME", "VARCHAR(255)","VARCHAR(255)", "VARCHAR(255)"};
+            SQLHelper.CreateTable("RepairHistory", RepairHistoryName, RepairHistoryType);
         }
     }
 }

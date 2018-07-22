@@ -96,6 +96,20 @@ namespace BLL
                             return "更新数据库失败！";
                         }
                     }
+                    int affected = maintainManageInfoService.InsertOneRepairHistory(new RepairHistory
+                    {
+                        ToolSerialName = maintainManageInfo.ToolSerialName,
+                        ToolModeName = maintainManageInfo.ToolModeName,
+                        SendFixTime = maintainManageInfo.SendFixTime,
+                        FinishFixTime = maintainManageInfo.FinishFixTime,
+                        Detail = maintainManageInfo.Detail,
+                        UsedOtherSpareToolInfo = maintainManageInfo.UsedOtherSpareToolInfo,
+                        UsedRepoSpareToolInfo = maintainManageInfo.UsedRepoSpareToolInfo
+                    });
+                    if(affected < 1)
+                    {
+                        return "更新数据库失败！";
+                    }
                 }
                 return "挂起";
             }
@@ -139,6 +153,11 @@ namespace BLL
         public int InsertOneMaintainInfo(MaintainInfo maintainInfo)
         {
             return maintainManageInfoService.InsertOneMaintainTool(maintainInfo);
+        }
+
+        public int InsertOneRepairHistory()
+        {
+            return maintainManageInfoService.InsertOneRepairHistory();
         }
         
         public int UpdateOneMaintainInfo(MaintainInfo maintainInfo)

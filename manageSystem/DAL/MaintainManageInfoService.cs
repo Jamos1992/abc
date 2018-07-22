@@ -160,6 +160,11 @@ namespace DAL
            return SQLHelper.InsertValuesByStruct("MaintainInfo", maintainInfo);
         }
 
+        public int InsertOneRepairHistory(RepairHistory repairHistory)
+        {
+            return SQLHelper.InsertValuesByStruct("RepairHistory", repairHistory);
+        }
+
         public int updateOneMaintainTool(MaintainInfo maintainInfo)
         {
             string sql = $"update MaintainInfo set Cycle={maintainInfo.Cycle}, LastTime='{maintainInfo.LastTime}', NextTime='{maintainInfo.NextTime}' where ToolSerialName='{maintainInfo.ToolSerialName}'";

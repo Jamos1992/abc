@@ -52,6 +52,7 @@ namespace manageSystem
                     addForm2Panel(new RepoSpareListForm(), tableLayoutPanel1, ref e, queryHint);
                     break;
                 case "建议采购备件查询":
+                    addForm2Panel(new SpareRecommandForm(), tableLayoutPanel1, ref e, queryHint);
                     break;
                 default:
                     break;
